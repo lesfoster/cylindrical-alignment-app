@@ -1,0 +1,104 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="en">
+      Cylindrical Blast Viewer: allows viewing of Biomolecular
+      alignment data, in 3D, by forming the alignments into a
+      cylinder, such that the alignments area arranged like the staves
+      of a barrel. The cylinder can spin, and if it spins, it can
+      do so at two different speeds.  When stopped, properties can
+      be seen for the aligned values.
+      Copyright (C) 2005 Leslie L. Foster
+
+      This program is free software; you can redistribute it and/or
+      modify it under the terms of the GNU General Public License
+      as published by the Free Software Foundation; either version 2
+      of the License, or (at your option) any later version.
+
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.
+
+      You should have received a copy of the GNU General Public License
+      along with this program; if not, write to the Free Software
+      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:element name="cylinder">
+    <xsd:complexType>
+
+      <xsd:sequence>
+
+        <xsd:element name="entity" minOccurs="1" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+
+              <xsd:element name="subentity" minOccurs="1" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+
+                    <xsd:element name="p" minOccurs="0" maxOccurs="unbounded">
+                      <xsd:complexType>
+                        <xsd:attribute name="name" type="xsd:string" />
+                        <xsd:attribute name="value" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+
+                  </xsd:sequence>
+                  <xsd:attribute name="strand" type="StrandType" use="required" />
+                  <xsd:attribute name="send" type="positiveInt" use="required" />
+                  <xsd:attribute name="sstart" type="positiveInt" use="required" />
+                  <xsd:attribute name="qend" type="positiveInt" use="required" />
+                  <xsd:attribute name="qstart" type="positiveInt" use="required" />
+                  <xsd:attribute name="priority" type="nonNegativeInt" use="optional" default="0" />
+                </xsd:complexType>
+              </xsd:element>
+
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+
+      <xsd:attribute name="order" type="OrderType" />
+      <xsd:attribute name="anchor_name" type="xsd:string" use="required" />
+      <xsd:attribute name="anchor_length" type="positiveInt" use="required" />
+      <xsd:attribute name="version" type="VersionType" use="required" />
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:simpleType name="StrandType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="1" />
+      <xsd:enumeration value="-1" />
+      <xsd:enumeration value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="OrderType">
+    <xsd:restriction base="xsd:NMTOKEN">
+      <xsd:enumeration value="ascending" />
+      <xsd:enumeration value="descending" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="VersionType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="1\.0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="positiveInt" id="positiveInt">
+    <xsd:restriction base="xsd:int">
+      <xsd:minInclusive value="1"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="nonNegativeInt" id="nonNegativeInt">
+    <xsd:restriction base="xsd:int">
+      <xsd:minInclusive value="0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><cylinder anchor_name="GeneIdent_410_635_project_3_human" anchor_length="21644" version="1.0">
+<entity>
+<subentity strand="1" send="21644" sstart="1" qend="21644" qstart="1">
+<p value="Anchor" name="subEntityType"/>
+<p value="lcl|GeneIdent_410_635_project_3_human" name="defline"/>
+</subentity>
+</entity>
+<entity>
+<subentity qend="426" qstart="232" send="426" sstart="232" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="1706" qstart="1578" send="1706" sstart="1578" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="5237" qstart="5046" send="5237" sstart="5046" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="6964" qstart="6729" send="6964" sstart="6729" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="10965" qstart="10673" send="10965" sstart="10673" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="11533" qstart="11390" send="11533" sstart="11390" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="12296" qstart="12168" send="12296" sstart="12168" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="13407" qstart="13292" send="13407" sstart="13292" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="14156" qstart="14151" send="14156" sstart="14151" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="1706" qstart="1578" send="1706" sstart="1578" strand="1"><p value="exon:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="1706" qstart="1584" send="1706" sstart="1584" strand="1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="5237" qstart="5046" send="5237" sstart="5046" strand="1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="6964" qstart="6729" send="6964" sstart="6729" strand="1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="10965" qstart="10673" send="10965" sstart="10673" strand="1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="11533" qstart="11390" send="11533" sstart="11390" strand="1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="12331" qstart="12168" send="12331" sstart="12168" strand="1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="1706" qstart="1584" send="1706" sstart="1584" strand="1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity><subentity qend="5126" qstart="5046" send="5126" sstart="5046" strand="1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity><subentity qend="5237" qstart="5186" send="5237" sstart="5186" strand="1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity><subentity qend="6964" qstart="6775" send="6964" sstart="6775" strand="1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity><subentity qend="11156" qstart="10673" send="11156" sstart="10673" strand="1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="3282" qstart="3043" send="3282" sstart="3043" strand="1"><p value="repeat_region:RepeatMasker: AluJb" name="subEntityType"/><p value="RepeatMasker: AluJb" name="note"/></subentity></entity>
+<entity>
+<subentity qend="3855" qstart="3731" send="3855" sstart="3731" strand="1"><p value="repeat_region:RepeatMasker: FLAM_C" name="subEntityType"/><p value="RepeatMasker: FLAM_C" name="note"/></subentity></entity>
+<entity>
+<subentity qend="4171" qstart="3861" send="4171" sstart="3861" strand="1"><p value="repeat_region:RepeatMasker: AluSg" name="subEntityType"/><p value="RepeatMasker: AluSg" name="note"/></subentity></entity>
+<entity>
+<subentity qend="4297" qstart="4226" send="4297" sstart="4226" strand="1"><p value="repeat_region:RepeatMasker: L1MCa" name="subEntityType"/><p value="RepeatMasker: L1MCa" name="note"/></subentity></entity>
+<entity>
+<subentity qend="4523" qstart="4358" send="4523" sstart="4358" strand="-1"><p value="repeat_region:RepeatMasker: AluJb" name="subEntityType"/><p value="RepeatMasker: AluJb" name="note"/></subentity></entity>
+<entity>
+<subentity qend="20098" qstart="20039" send="20098" sstart="20039" strand="-1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="18170" qstart="17968" send="18170" sstart="17968" strand="-1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="12768" qstart="12617" send="12768" sstart="12617" strand="-1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="5271" qstart="4967" send="5271" sstart="4967" strand="-1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="5237" qstart="5046" send="5237" sstart="5046" strand="1"><p value="exon:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="6424" qstart="6314" send="6424" sstart="6314" strand="1"><p value="repeat_region:RepeatMasker: L1PA7" name="subEntityType"/><p value="RepeatMasker: L1PA7" name="note"/></subentity></entity>
+<entity>
+<subentity qend="6513" qstart="6455" send="6513" sstart="6455" strand="1"><p value="exon:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="6605" qstart="6515" send="6605" sstart="6515" strand="-1"><p value="repeat_region:RepeatMasker: MIR" name="subEntityType"/><p value="RepeatMasker: MIR" name="note"/></subentity></entity>
+<entity>
+<subentity qend="6964" qstart="6768" send="6964" sstart="6768" strand="1"><p value="exon:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="6827" qstart="6786" send="6827" sstart="6786" strand="1"><p value="repeat_unit:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="7865" qstart="7719" send="7865" sstart="7719" strand="-1"><p value="repeat_region:RepeatMasker: L2" name="subEntityType"/><p value="RepeatMasker: L2" name="note"/></subentity></entity>
+<entity>
+<subentity qend="8351" qstart="8091" send="8351" sstart="8091" strand="-1"><p value="repeat_region:RepeatMasker: MER46A" name="subEntityType"/><p value="RepeatMasker: MER46A" name="note"/></subentity></entity>
+<entity>
+<subentity qend="8406" qstart="8352" send="8406" sstart="8352" strand="-1"><p value="repeat_region:RepeatMasker: L1MEc" name="subEntityType"/><p value="RepeatMasker: L1MEc" name="note"/></subentity></entity>
+<entity>
+<subentity qend="8534" qstart="8408" send="8534" sstart="8408" strand="1"><p value="repeat_region:RepeatMasker: AluJb" name="subEntityType"/><p value="RepeatMasker: AluJb" name="note"/></subentity></entity>
+<entity>
+<subentity qend="8632" qstart="8592" send="8632" sstart="8592" strand="1"><p value="repeat_region:RepeatMasker: Alu" name="subEntityType"/><p value="RepeatMasker: Alu" name="note"/></subentity></entity>
+<entity>
+<subentity qend="8846" qstart="8633" send="8846" sstart="8633" strand="1"><p value="repeat_region:RepeatMasker: AluSg/x" name="subEntityType"/><p value="RepeatMasker: AluSg/x" name="note"/></subentity></entity>
+<entity>
+<subentity qend="9361" qstart="8848" send="9361" sstart="8848" strand="-1"><p value="repeat_region:RepeatMasker: L1MEc" name="subEntityType"/><p value="RepeatMasker: L1MEc" name="note"/></subentity></entity>
+<entity>
+<subentity qend="9707" qstart="9395" send="9707" sstart="9395" strand="-1"><p value="repeat_region:RepeatMasker: AluSx" name="subEntityType"/><p value="RepeatMasker: AluSx" name="note"/></subentity></entity>
+<entity>
+<subentity qend="9956" qstart="9714" send="9956" sstart="9714" strand="-1"><p value="repeat_region:RepeatMasker: L1MEc" name="subEntityType"/><p value="RepeatMasker: L1MEc" name="note"/></subentity></entity>
+<entity>
+<subentity qend="10270" qstart="9957" send="10270" sstart="9957" strand="-1"><p value="repeat_region:RepeatMasker: AluY" name="subEntityType"/><p value="RepeatMasker: AluY" name="note"/></subentity></entity>
+<entity>
+<subentity qend="10402" qstart="10271" send="10402" sstart="10271" strand="-1"><p value="repeat_region:RepeatMasker: L1MEc" name="subEntityType"/><p value="RepeatMasker: L1MEc" name="note"/></subentity></entity>
+<entity>
+<subentity qend="10442" qstart="10405" send="10442" sstart="10405" strand="-1"><p value="repeat_region:RepeatMasker: L2" name="subEntityType"/><p value="RepeatMasker: L2" name="note"/></subentity></entity>
+<entity>
+<subentity qend="10965" qstart="10673" send="10965" sstart="10673" strand="1"><p value="exon:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="12296" qstart="12168" send="12296" sstart="12168" strand="1"><p value="exon:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="12485" qstart="12398" send="12485" sstart="12398" strand="1"><p value="exon:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="12881" qstart="12617" send="12881" sstart="12617" strand="-1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity><subentity qend="12485" qstart="12463" send="12485" sstart="12463" strand="-1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="14319" qstart="14280" send="14319" sstart="14280" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="14444" qstart="14381" send="14444" sstart="14381" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="16064" qstart="15946" send="16064" sstart="15946" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="16667" qstart="16662" send="16667" sstart="16662" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="14483" qstart="14381" send="14483" sstart="14381" strand="1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity><subentity qend="16378" qstart="16296" send="16378" sstart="16296" strand="1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="21622" qstart="21507" send="21622" sstart="21507" strand="-1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="20787" qstart="20733" send="20787" sstart="20733" strand="-1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="20158" qstart="20039" send="20158" sstart="20039" strand="-1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="18170" qstart="17968" send="18170" sstart="17968" strand="-1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="17391" qstart="17325" send="17391" sstart="17325" strand="-1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity><subentity qend="16708" qstart="16703" send="16708" sstart="16703" strand="-1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity></entity>
+<entity>
+<subentity qend="17054" qstart="16900" send="17054" sstart="16900" strand="1"><p value="repeat_region:RepeatMasker: FRAM" name="subEntityType"/><p value="RepeatMasker: FRAM" name="note"/></subentity></entity>
+<entity>
+<subentity qend="18601" qstart="18308" send="18601" sstart="18308" strand="1"><p value="repeat_region:RepeatMasker: AluSx" name="subEntityType"/><p value="RepeatMasker: AluSx" name="note"/></subentity></entity>
+<entity>
+<subentity qend="19552" qstart="19287" send="19552" sstart="19287" strand="1"><p value="repeat_region:RepeatMasker: AluJb" name="subEntityType"/><p value="RepeatMasker: AluJb" name="note"/></subentity></entity>
+<entity>
+<subentity qend="21554" qstart="21314" send="21554" sstart="21314" strand="-1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity><subentity qend="21150" qstart="20966" send="21150" sstart="20966" strand="-1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity></entity>
+
+</cylinder>

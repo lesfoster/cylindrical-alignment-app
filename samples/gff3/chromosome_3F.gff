@@ -1,0 +1,628 @@
+##gff-version   3
+##sequence-region DDB0215151 1 16660
+##species http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=352472
+# generated: Wed Dec 15 03:46:37 2010
+DDB0215151	Sequencing Center	chromosome	1	16660	.	+	.	ID=DDB0215151;Name=3F
+DDB0215151	Sequencing Center	contig	101	4005	.	+	.	ID=DDB0215152;Parent=DDB0215151;Name=DDB0215152;description=Contig from Sequencing Center%3B ( JC2b245h01.s1 );Dbxref=Contig ID:JC2b245h01.s1,Contig GI Number:90970343,Scaffold GI Number:93569025,Accession Number:AAFI02000248,Scaffold Accession Number:CH709169,SeqID for Genbank:DDB0215152.02,Genome V. 2.0 ID:JF3V1_0C0001
+DDB0215151	.	gene	1119	1331	.	-	.	ID=DDB_G0294318;Name=DDB_G0294318
+DDB0215151	Sequencing Center	mRNA	1119	1331	.	-	.	ID=DDB0215156;Parent=DDB_G0294318;Name=DDB0215156;description=JF3V1_0C0001_05455: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60324.1,Inparanoid V. 5.1:DDB0215156,Protein Accession Number:EAL60324.1,Protein GI Number:60462073,UniProt:Q54AN7,Genome V. 2.0 ID:JF3V1_0C0001_05455,Genome V. 1.0 ID:JF3V1_0C0001_05455
+DDB0215151	Sequencing Center	exon	1119	1331	.	-	.	Parent=DDB0215156
+DDB0215151	Sequencing Center	CDS	1119	1331	.	-	.	Parent=DDB0215156
+DDB0215151	.	gene	1564	3538	.	+	.	ID=DDB_G0294320;Name=DDB_G0294320_RTE;description=long terminal repeat retrotransposon Skipper GAG-PRO-POL%3B refer to GenBank AF049230 for full length consensus element
+DDB0215151	Sequencing Center	mRNA	1564	3538	.	+	.	ID=DDB0215157;Parent=DDB_G0294320;Name=DDB0215157;description=JF3V1_0C0001_05456: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60325.1,Inparanoid V. 5.1:DDB0215157,Protein Accession Number:EAL60325.1,Protein GI Number:60462074,UniProt:Q54AN6,Genome V. 2.0 ID:JF3V1_0C0001_05456,Genome V. 1.0 ID:JF3V1_0C0001_05456
+DDB0215151	Sequencing Center	exon	1564	1811	.	+	.	Parent=DDB0215157
+DDB0215151	Sequencing Center	CDS	1564	1811	.	+	.	Parent=DDB0215157
+DDB0215151	Sequencing Center	exon	1871	2054	.	+	.	Parent=DDB0215157
+DDB0215151	Sequencing Center	CDS	1871	2054	.	+	.	Parent=DDB0215157
+DDB0215151	Sequencing Center	exon	2215	2616	.	+	.	Parent=DDB0215157
+DDB0215151	Sequencing Center	CDS	2215	2616	.	+	.	Parent=DDB0215157
+DDB0215151	Sequencing Center	exon	2646	2745	.	+	.	Parent=DDB0215157
+DDB0215151	Sequencing Center	CDS	2646	2745	.	+	.	Parent=DDB0215157
+DDB0215151	Sequencing Center	exon	2799	3538	.	+	.	Parent=DDB0215157
+DDB0215151	Sequencing Center	CDS	2799	3538	.	+	.	Parent=DDB0215157
+DDB0215151	.	gene	3594	3995	.	+	.	ID=DDB_G0294322;Name=DDB_G0294322_RTE;description=ORF2 encoding reverse transcriptase (RT) and integrase (IN) proteins of long terminal repeat retrotransposon Skipper%3B refer to AF049230 for consensus element
+DDB0215151	Sequencing Center	mRNA	3594	3995	.	+	.	ID=DDB0215158;Parent=DDB_G0294322;Name=DDB0215158;description=JF3V1_0C0001_05457: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60326.1,Inparanoid V. 5.1:DDB0215158,Protein Accession Number:EAL60326.1,Protein GI Number:60462075,UniProt:Q54AN5,Genome V. 2.0 ID:JF3V1_0C0001_05457,Genome V. 1.0 ID:JF3V1_0C0001_05457;qualifier=Partial%2C 3%27 missing
+DDB0215151	Sequencing Center	exon	3594	3995	.	+	.	Parent=DDB0215158
+DDB0215151	Sequencing Center	CDS	3594	3995	.	+	.	Parent=DDB0215158
+DDB0215151	Sequencing Center	contig	4106	9205	.	+	.	ID=DDB0215153;Parent=DDB0215151;Name=DDB0215153;description=Contig from Sequencing Center%3B ( JC3f69h09.r1 );Dbxref=Contig ID:JC3f69h09.r1,Contig GI Number:90970342,Scaffold GI Number:93569024,Accession Number:AAFI02000249,Scaffold Accession Number:CH709170,SeqID for Genbank:DDB0215153.02,Genome V. 2.0 ID:JF3V1_0C0002
+DDB0215151	.	gene	4168	4887	.	-	.	ID=DDB_G0294324;Name=DDB_G0294324_RTE;description=ORF1 protein fragment of DIRS1 retrotransposon%3B refer to Genbank M11339 for full-length element
+DDB0215151	Sequencing Center	mRNA	4168	4887	.	-	.	ID=DDB0215159;Parent=DDB_G0294324;Name=DDB0215159;description=JF3V1_0C0002_05639: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60318.1,Inparanoid V. 5.1:DDB0215159,Protein Accession Number:EAL60318.1,Protein GI Number:60462066,UniProt:Q54AN4,Genome V. 2.0 ID:JF3V1_0C0002_05639,Genome V. 1.0 ID:JF3V1_0C0002_05639
+DDB0215151	Sequencing Center	exon	4168	4887	.	-	.	Parent=DDB0215159
+DDB0215151	Sequencing Center	CDS	4168	4887	.	-	.	Parent=DDB0215159
+DDB0215151	.	gene	5068	5738	.	-	.	ID=DDB_G0294326;Name=DDB_G0294326_TE;description=ORF2 (contains 2 introns) encoding a protein of unknown function of the putative DNA transposon DDT-A%3B refer to AF298201 for full-length consensus element
+DDB0215151	Sequencing Center	mRNA	5068	5738	.	-	.	ID=DDB0215160;Parent=DDB_G0294326;Name=DDB0215160;description=JF3V1_0C0002_05640: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60319.1,Inparanoid V. 5.1:DDB0215160,Protein Accession Number:EAL60319.1,Protein GI Number:60462067,UniProt:Q54AN3,Genome V. 2.0 ID:JF3V1_0C0002_05640,Genome V. 1.0 ID:JF3V1_0C0002_05640
+DDB0215151	Sequencing Center	exon	5580	5738	.	-	.	Parent=DDB0215160
+DDB0215151	Sequencing Center	CDS	5580	5738	.	-	.	Parent=DDB0215160
+DDB0215151	Sequencing Center	exon	5276	5504	.	-	.	Parent=DDB0215160
+DDB0215151	Sequencing Center	CDS	5276	5504	.	-	.	Parent=DDB0215160
+DDB0215151	Sequencing Center	exon	5068	5180	.	-	.	Parent=DDB0215160
+DDB0215151	Sequencing Center	CDS	5068	5180	.	-	.	Parent=DDB0215160
+DDB0215151	.	gene	6019	6912	.	-	.	ID=DDB_G0294328;Name=DDB_G0294328_TE;description=ORF1 encoding a protein of unknown function of the putative DNA transposon DDT-A%3B refer to AF298201 for full-length consensus element
+DDB0215151	Sequencing Center	mRNA	6019	6912	.	-	.	ID=DDB0215161;Parent=DDB_G0294328;Name=DDB0215161;description=JF3V1_0C0002_05641: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60320.1,Inparanoid V. 5.1:DDB0215161,Protein Accession Number:EAL60320.1,Protein GI Number:60462068,UniProt:Q54AN2,Genome V. 2.0 ID:JF3V1_0C0002_05641,Genome V. 1.0 ID:JF3V1_0C0002_05641
+DDB0215151	Sequencing Center	exon	6894	6912	.	-	.	Parent=DDB0215161
+DDB0215151	Sequencing Center	CDS	6894	6912	.	-	.	Parent=DDB0215161
+DDB0215151	Sequencing Center	exon	6019	6401	.	-	.	Parent=DDB0215161
+DDB0215151	Sequencing Center	CDS	6019	6401	.	-	.	Parent=DDB0215161
+DDB0215151	.	gene	7427	7498	.	-	.	ID=DDB_G0294330;Name=DDB_G0294330
+DDB0215151	Sequencing Center	mRNA	7427	7498	.	-	.	ID=DDB0215162;Parent=DDB_G0294330;Name=DDB0215162;description=JF3V1_0C0002_05642: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60321.1,Inparanoid V. 5.1:DDB0215162,Protein Accession Number:EAL60321.1,Protein GI Number:60462069,UniProt:Q54AN1,Genome V. 2.0 ID:JF3V1_0C0002_05642,Genome V. 1.0 ID:JF3V1_0C0002_05642
+DDB0215151	Sequencing Center	exon	7427	7498	.	-	.	Parent=DDB0215162
+DDB0215151	Sequencing Center	CDS	7427	7498	.	-	.	Parent=DDB0215162
+DDB0215151	.	gene	7990	8707	.	-	.	ID=DDB_G0294332;Name=DDB_G0294332_RTE;description=ORF2 protein fragment of DIRS1 retrotransposon%3B refer to Genbank M11339 for full-length element
+DDB0215151	Sequencing Center	mRNA	7990	8707	.	-	.	ID=DDB0215163;Parent=DDB_G0294332;Name=DDB0215163;description=JF3V1_0C0002_05643: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=3;Dbxref=Protein Accession Version:EAL60322.1,Inparanoid V. 5.1:DDB0215163,Protein Accession Number:EAL60322.1,Protein GI Number:60462070,UniProt:Q54AN0,Genome V. 2.0 ID:JF3V1_0C0002_05643,Genome V. 1.0 ID:JF3V1_0C0002_05643;qualifier=Partial%2C 5%27 missing
+DDB0215151	Sequencing Center	exon	8589	8707	.	-	.	Parent=DDB0215163
+DDB0215151	Sequencing Center	CDS	8589	8707	.	-	.	Parent=DDB0215163
+DDB0215151	Sequencing Center	exon	7990	8502	.	-	.	Parent=DDB0215163
+DDB0215151	Sequencing Center	CDS	7990	8502	.	-	.	Parent=DDB0215163
+DDB0215151	Sequencing Center	contig	9306	16660	.	+	.	ID=DDB0215154;Parent=DDB0215151;Name=DDB0215154;description=Contig from Sequencing Center%3B ( JC3c30d11.r1 );Dbxref=Contig ID:JC3c30d11.r1,Contig GI Number:90970341,Scaffold GI Number:93569023,Accession Number:AAFI02000250,Scaffold Accession Number:CH709171,SeqID for Genbank:DDB0215154.02,Genome V. 2.0 ID:JF3V1_0C0003
+DDB0215151	.	gene	9306	9417	.	-	.	ID=DDB_G0294334;Name=DDB_G0294334
+DDB0215151	Sequencing Center	mRNA	9306	9417	.	-	.	ID=DDB0215164;Parent=DDB_G0294334;Name=DDB0215164;description=JF3V1_0C0003_05659: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60314.1,Inparanoid V. 5.1:DDB0215164,Protein Accession Number:EAL60314.1,Protein GI Number:60462061,UniProt:Q54AM9,Genome V. 2.0 ID:JF3V1_0C0003_05659,Genome V. 1.0 ID:JF3V1_0C0003_05659;qualifier=Partial%2C 3%27 missing
+DDB0215151	Sequencing Center	exon	9306	9417	.	-	.	Parent=DDB0215164
+DDB0215151	Sequencing Center	CDS	9306	9417	.	-	.	Parent=DDB0215164
+DDB0215151	.	gene	10123	11422	.	-	.	ID=DDB_G0294336;Name=DDB_G0294336
+DDB0215151	Sequencing Center	mRNA	10123	11422	.	-	.	ID=DDB0215165;Parent=DDB_G0294336;Name=DDB0215165;description=JF3V1_0C0003_05660: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60315.1,Inparanoid V. 5.1:DDB0215165,Protein Accession Number:EAL60315.1,Protein GI Number:60462062,UniProt:Q54AM8,Genome V. 2.0 ID:JF3V1_0C0003_05660,Genome V. 1.0 ID:JF3V1_0C0003_05660
+DDB0215151	Sequencing Center	exon	11108	11422	.	-	.	Parent=DDB0215165
+DDB0215151	Sequencing Center	CDS	11108	11422	.	-	.	Parent=DDB0215165
+DDB0215151	Sequencing Center	exon	10123	11073	.	-	.	Parent=DDB0215165
+DDB0215151	Sequencing Center	CDS	10123	11073	.	-	.	Parent=DDB0215165
+DDB0215151	.	gene	11485	13805	.	-	.	ID=DDB_G0294338;Name=DDB_G0294338
+DDB0215151	Sequencing Center	mRNA	11485	13805	.	-	.	ID=DDB0215166;Parent=DDB_G0294338;Name=DDB0215166;description=JF3V1_0C0003_05661: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60316.1,Inparanoid V. 5.1:DDB0215166,Protein Accession Number:EAL60316.1,Protein GI Number:60462063,UniProt:Q54AM7,Genome V. 2.0 ID:JF3V1_0C0003_05661,Genome V. 1.0 ID:JF3V1_0C0003_05661;qualifier=Partial%2C 5%27 missing
+DDB0215151	Sequencing Center	exon	12966	13805	.	-	.	Parent=DDB0215166
+DDB0215151	Sequencing Center	CDS	12966	13805	.	-	.	Parent=DDB0215166
+DDB0215151	Sequencing Center	exon	12142	12891	.	-	.	Parent=DDB0215166
+DDB0215151	Sequencing Center	CDS	12142	12891	.	-	.	Parent=DDB0215166
+DDB0215151	Sequencing Center	exon	11485	11976	.	-	.	Parent=DDB0215166
+DDB0215151	Sequencing Center	CDS	11485	11976	.	-	.	Parent=DDB0215166
+DDB0215151	.	gene	16145	16660	.	+	.	ID=DDB_G0294340;Name=DDB_G0294340_TE;description=ORF1 encoding a protein of unknown function of the putative DNA transposon DDT-A%3B refer to AF298201 for full-length consensus element
+DDB0215151	Sequencing Center	mRNA	16145	16660	.	+	.	ID=DDB0215167;Parent=DDB_G0294340;Name=DDB0215167;description=JF3V1_0C0003_05662: Obtained from Geneid output run by Dictyostelium Genome Consortium at The Welcome Trust Sanger Institute;translation_start=1;Dbxref=Protein Accession Version:EAL60317.1,Inparanoid V. 5.1:DDB0215167,Protein Accession Number:EAL60317.1,Protein GI Number:60462064,UniProt:Q54AM6,Genome V. 2.0 ID:JF3V1_0C0003_05662,Genome V. 1.0 ID:JF3V1_0C0003_05662;qualifier=Partial%2C 3%27 missing
+DDB0215151	Sequencing Center	exon	16145	16212	.	+	.	Parent=DDB0215167
+DDB0215151	Sequencing Center	CDS	16145	16212	.	+	.	Parent=DDB0215167
+DDB0215151	Sequencing Center	exon	16293	16660	.	+	.	Parent=DDB0215167
+DDB0215151	Sequencing Center	CDS	16293	16660	.	+	.	Parent=DDB0215167
+DDB0215151	Sequencing Center	gap	1	100	.	+	.	ID=DDB0232434;Parent=DDB0215151;Name=DDB0232434;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	174494	174593	.	+	.	ID=DDB0232435;Parent=DDB0215151;Name=DDB0232435;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	186470	186569	.	+	.	ID=DDB0232436;Parent=DDB0215151;Name=DDB0232436;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1792929	1793028	.	+	.	ID=DDB0232437;Parent=DDB0215151;Name=DDB0232437;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2402820	2402919	.	+	.	ID=DDB0232438;Parent=DDB0215151;Name=DDB0232438;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	4923497	4923596	.	+	.	ID=DDB0232439;Parent=DDB0215151;Name=DDB0232439;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1	100	.	+	.	ID=DDB0232445;Parent=DDB0215151;Name=DDB0232445;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	924284	924383	.	+	.	ID=DDB0232446;Parent=DDB0215151;Name=DDB0232446;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1256624	1256723	.	+	.	ID=DDB0232447;Parent=DDB0215151;Name=DDB0232447;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1383101	1383200	.	+	.	ID=DDB0232644;Parent=DDB0215151;Name=DDB0232644;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1384702	1384801	.	+	.	ID=DDB0232645;Parent=DDB0215151;Name=DDB0232645;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1590588	1590687	.	+	.	ID=DDB0232646;Parent=DDB0215151;Name=DDB0232646;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	1623807	1623906	.	+	.	ID=DDB0232647;Parent=DDB0215151;Name=DDB0232647;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1627737	1627836	.	+	.	ID=DDB0232648;Parent=DDB0215151;Name=DDB0232648;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1647549	1647648	.	+	.	ID=DDB0232649;Parent=DDB0215151;Name=DDB0232649;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1666224	1666323	.	+	.	ID=DDB0232650;Parent=DDB0215151;Name=DDB0232650;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1683843	1683942	.	+	.	ID=DDB0232651;Parent=DDB0215151;Name=DDB0232651;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1737638	1737737	.	+	.	ID=DDB0232652;Parent=DDB0215151;Name=DDB0232652;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1742914	1743013	.	+	.	ID=DDB0232653;Parent=DDB0215151;Name=DDB0232653;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1809903	1810002	.	+	.	ID=DDB0232654;Parent=DDB0215151;Name=DDB0232654;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1901191	1901290	.	+	.	ID=DDB0232655;Parent=DDB0215151;Name=DDB0232655;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1902703	1902802	.	+	.	ID=DDB0232656;Parent=DDB0215151;Name=DDB0232656;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1922406	1922505	.	+	.	ID=DDB0232657;Parent=DDB0215151;Name=DDB0232657;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1926960	1927059	.	+	.	ID=DDB0232658;Parent=DDB0215151;Name=DDB0232658;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1937610	1937709	.	+	.	ID=DDB0232659;Parent=DDB0215151;Name=DDB0232659;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2076934	2077033	.	+	.	ID=DDB0232660;Parent=DDB0215151;Name=DDB0232660;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2172502	2172601	.	+	.	ID=DDB0232661;Parent=DDB0215151;Name=DDB0232661;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2190415	2190514	.	+	.	ID=DDB0232662;Parent=DDB0215151;Name=DDB0232662;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2197486	2197585	.	+	.	ID=DDB0232663;Parent=DDB0215151;Name=DDB0232663;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2322082	2322181	.	+	.	ID=DDB0232664;Parent=DDB0215151;Name=DDB0232664;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2443040	2443139	.	+	.	ID=DDB0232665;Parent=DDB0215151;Name=DDB0232665;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2535720	2535819	.	+	.	ID=DDB0232666;Parent=DDB0215151;Name=DDB0232666;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2561279	2561378	.	+	.	ID=DDB0232667;Parent=DDB0215151;Name=DDB0232667;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2578278	2578377	.	+	.	ID=DDB0232668;Parent=DDB0215151;Name=DDB0232668;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2579447	2579546	.	+	.	ID=DDB0232669;Parent=DDB0215151;Name=DDB0232669;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2595780	2595879	.	+	.	ID=DDB0232670;Parent=DDB0215151;Name=DDB0232670;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2619712	2619811	.	+	.	ID=DDB0232671;Parent=DDB0215151;Name=DDB0232671;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2629483	2629582	.	+	.	ID=DDB0232672;Parent=DDB0215151;Name=DDB0232672;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2644145	2644244	.	+	.	ID=DDB0232673;Parent=DDB0215151;Name=DDB0232673;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2730067	2730166	.	+	.	ID=DDB0232674;Parent=DDB0215151;Name=DDB0232674;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2799899	2799998	.	+	.	ID=DDB0232675;Parent=DDB0215151;Name=DDB0232675;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2919127	2919226	.	+	.	ID=DDB0232676;Parent=DDB0215151;Name=DDB0232676;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2940979	2941078	.	+	.	ID=DDB0232677;Parent=DDB0215151;Name=DDB0232677;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2955804	2955903	.	+	.	ID=DDB0232678;Parent=DDB0215151;Name=DDB0232678;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2962177	2962276	.	+	.	ID=DDB0232679;Parent=DDB0215151;Name=DDB0232679;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2974234	2974333	.	+	.	ID=DDB0232680;Parent=DDB0215151;Name=DDB0232680;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3001431	3001530	.	+	.	ID=DDB0232681;Parent=DDB0215151;Name=DDB0232681;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3058930	3059029	.	+	.	ID=DDB0232682;Parent=DDB0215151;Name=DDB0232682;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3273850	3273949	.	+	.	ID=DDB0232683;Parent=DDB0215151;Name=DDB0232683;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3513848	3513947	.	+	.	ID=DDB0232684;Parent=DDB0215151;Name=DDB0232684;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3539675	3539774	.	+	.	ID=DDB0232685;Parent=DDB0215151;Name=DDB0232685;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3610672	3610771	.	+	.	ID=DDB0232686;Parent=DDB0215151;Name=DDB0232686;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3654897	3654996	.	+	.	ID=DDB0232687;Parent=DDB0215151;Name=DDB0232687;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3694756	3694855	.	+	.	ID=DDB0232688;Parent=DDB0215151;Name=DDB0232688;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3701849	3701948	.	+	.	ID=DDB0232689;Parent=DDB0215151;Name=DDB0232689;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3714854	3714953	.	+	.	ID=DDB0232690;Parent=DDB0215151;Name=DDB0232690;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3716194	3716293	.	+	.	ID=DDB0232691;Parent=DDB0215151;Name=DDB0232691;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3717247	3717346	.	+	.	ID=DDB0232692;Parent=DDB0215151;Name=DDB0232692;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3756811	3756910	.	+	.	ID=DDB0232693;Parent=DDB0215151;Name=DDB0232693;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3758080	3758179	.	+	.	ID=DDB0232694;Parent=DDB0215151;Name=DDB0232694;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3763599	3763698	.	+	.	ID=DDB0232695;Parent=DDB0215151;Name=DDB0232695;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3846954	3847053	.	+	.	ID=DDB0232696;Parent=DDB0215151;Name=DDB0232696;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	4006063	4006162	.	+	.	ID=DDB0232697;Parent=DDB0215151;Name=DDB0232697;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	4137043	4137142	.	+	.	ID=DDB0232698;Parent=DDB0215151;Name=DDB0232698;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	4414634	4414733	.	+	.	ID=DDB0232699;Parent=DDB0215151;Name=DDB0232699;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	4416820	4416919	.	+	.	ID=DDB0232700;Parent=DDB0215151;Name=DDB0232700;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	4434907	4435006	.	+	.	ID=DDB0232701;Parent=DDB0215151;Name=DDB0232701;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	4486667	4486766	.	+	.	ID=DDB0232702;Parent=DDB0215151;Name=DDB0232702;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	4491236	4491335	.	+	.	ID=DDB0232703;Parent=DDB0215151;Name=DDB0232703;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	4562919	4563018	.	+	.	ID=DDB0232704;Parent=DDB0215151;Name=DDB0232704;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	4590602	4590701	.	+	.	ID=DDB0232705;Parent=DDB0215151;Name=DDB0232705;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	4727155	4727254	.	+	.	ID=DDB0232706;Parent=DDB0215151;Name=DDB0232706;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	4798580	4798679	.	+	.	ID=DDB0232707;Parent=DDB0215151;Name=DDB0232707;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	4800478	4800577	.	+	.	ID=DDB0232708;Parent=DDB0215151;Name=DDB0232708;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	4946790	4946889	.	+	.	ID=DDB0232709;Parent=DDB0215151;Name=DDB0232709;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	1	100	.	+	.	ID=DDB0232787;Parent=DDB0215151;Name=DDB0232787;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	12142	12241	.	+	.	ID=DDB0232788;Parent=DDB0215151;Name=DDB0232788;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	611279	611378	.	+	.	ID=DDB0232789;Parent=DDB0215151;Name=DDB0232789;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	618332	618431	.	+	.	ID=DDB0232790;Parent=DDB0215151;Name=DDB0232790;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	627337	627436	.	+	.	ID=DDB0232791;Parent=DDB0215151;Name=DDB0232791;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	633315	633414	.	+	.	ID=DDB0232792;Parent=DDB0215151;Name=DDB0232792;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	666800	666899	.	+	.	ID=DDB0232793;Parent=DDB0215151;Name=DDB0232793;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	733634	733733	.	+	.	ID=DDB0232794;Parent=DDB0215151;Name=DDB0232794;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	735011	735110	.	+	.	ID=DDB0232795;Parent=DDB0215151;Name=DDB0232795;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	746165	746264	.	+	.	ID=DDB0232796;Parent=DDB0215151;Name=DDB0232796;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	841477	841576	.	+	.	ID=DDB0232797;Parent=DDB0215151;Name=DDB0232797;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	968759	968858	.	+	.	ID=DDB0232798;Parent=DDB0215151;Name=DDB0232798;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1299301	1299400	.	+	.	ID=DDB0232799;Parent=DDB0215151;Name=DDB0232799;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	1378289	1378388	.	+	.	ID=DDB0232800;Parent=DDB0215151;Name=DDB0232800;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	1530930	1531029	.	+	.	ID=DDB0232801;Parent=DDB0215151;Name=DDB0232801;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	1760144	1760243	.	+	.	ID=DDB0232802;Parent=DDB0215151;Name=DDB0232802;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	1768391	1768490	.	+	.	ID=DDB0232803;Parent=DDB0215151;Name=DDB0232803;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1769422	1769521	.	+	.	ID=DDB0232804;Parent=DDB0215151;Name=DDB0232804;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1777291	1777390	.	+	.	ID=DDB0232805;Parent=DDB0215151;Name=DDB0232805;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2002172	2002271	.	+	.	ID=DDB0232806;Parent=DDB0215151;Name=DDB0232806;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2008505	2008604	.	+	.	ID=DDB0232807;Parent=DDB0215151;Name=DDB0232807;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2093761	2093860	.	+	.	ID=DDB0232808;Parent=DDB0215151;Name=DDB0232808;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2302703	2302802	.	+	.	ID=DDB0232809;Parent=DDB0215151;Name=DDB0232809;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2320575	2320674	.	+	.	ID=DDB0232810;Parent=DDB0215151;Name=DDB0232810;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2594700	2594799	.	+	.	ID=DDB0232811;Parent=DDB0215151;Name=DDB0232811;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2731968	2732067	.	+	.	ID=DDB0232812;Parent=DDB0215151;Name=DDB0232812;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2767404	2767503	.	+	.	ID=DDB0232813;Parent=DDB0215151;Name=DDB0232813;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2773435	2773534	.	+	.	ID=DDB0232814;Parent=DDB0215151;Name=DDB0232814;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2790899	2790998	.	+	.	ID=DDB0232815;Parent=DDB0215151;Name=DDB0232815;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2827581	2827680	.	+	.	ID=DDB0232816;Parent=DDB0215151;Name=DDB0232816;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2839152	2839251	.	+	.	ID=DDB0232817;Parent=DDB0215151;Name=DDB0232817;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2842293	2842392	.	+	.	ID=DDB0232818;Parent=DDB0215151;Name=DDB0232818;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2858956	2859055	.	+	.	ID=DDB0232819;Parent=DDB0215151;Name=DDB0232819;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2871438	2871537	.	+	.	ID=DDB0232820;Parent=DDB0215151;Name=DDB0232820;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2874168	2874267	.	+	.	ID=DDB0232821;Parent=DDB0215151;Name=DDB0232821;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2904130	2904229	.	+	.	ID=DDB0232822;Parent=DDB0215151;Name=DDB0232822;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2926669	2926768	.	+	.	ID=DDB0232823;Parent=DDB0215151;Name=DDB0232823;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2933374	2933473	.	+	.	ID=DDB0232824;Parent=DDB0215151;Name=DDB0232824;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2946749	2946848	.	+	.	ID=DDB0232825;Parent=DDB0215151;Name=DDB0232825;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2948797	2948896	.	+	.	ID=DDB0232826;Parent=DDB0215151;Name=DDB0232826;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2955899	2955998	.	+	.	ID=DDB0232827;Parent=DDB0215151;Name=DDB0232827;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2960784	2960883	.	+	.	ID=DDB0232828;Parent=DDB0215151;Name=DDB0232828;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2986171	2986270	.	+	.	ID=DDB0232829;Parent=DDB0215151;Name=DDB0232829;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3258960	3259059	.	+	.	ID=DDB0232830;Parent=DDB0215151;Name=DDB0232830;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3317658	3317757	.	+	.	ID=DDB0232831;Parent=DDB0215151;Name=DDB0232831;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3364716	3364815	.	+	.	ID=DDB0232832;Parent=DDB0215151;Name=DDB0232832;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3368464	3368563	.	+	.	ID=DDB0232833;Parent=DDB0215151;Name=DDB0232833;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3384037	3384136	.	+	.	ID=DDB0232834;Parent=DDB0215151;Name=DDB0232834;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3431588	3431687	.	+	.	ID=DDB0232835;Parent=DDB0215151;Name=DDB0232835;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3587426	3587525	.	+	.	ID=DDB0232836;Parent=DDB0215151;Name=DDB0232836;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3602280	3602379	.	+	.	ID=DDB0232837;Parent=DDB0215151;Name=DDB0232837;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	1	100	.	+	.	ID=DDB0232888;Parent=DDB0215151;Name=DDB0232888;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	58466	58565	.	+	.	ID=DDB0232889;Parent=DDB0215151;Name=DDB0232889;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	69652	69751	.	+	.	ID=DDB0232890;Parent=DDB0215151;Name=DDB0232890;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	72346	72445	.	+	.	ID=DDB0232891;Parent=DDB0215151;Name=DDB0232891;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	74662	74761	.	+	.	ID=DDB0232892;Parent=DDB0215151;Name=DDB0232892;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	79719	79818	.	+	.	ID=DDB0232893;Parent=DDB0215151;Name=DDB0232893;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	83869	83968	.	+	.	ID=DDB0232894;Parent=DDB0215151;Name=DDB0232894;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	95987	96086	.	+	.	ID=DDB0232895;Parent=DDB0215151;Name=DDB0232895;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	98671	98770	.	+	.	ID=DDB0232896;Parent=DDB0215151;Name=DDB0232896;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	103273	103372	.	+	.	ID=DDB0232897;Parent=DDB0215151;Name=DDB0232897;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	109954	110053	.	+	.	ID=DDB0232898;Parent=DDB0215151;Name=DDB0232898;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	114001	114100	.	+	.	ID=DDB0232899;Parent=DDB0215151;Name=DDB0232899;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	123613	123712	.	+	.	ID=DDB0232900;Parent=DDB0215151;Name=DDB0232900;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	127472	127571	.	+	.	ID=DDB0232901;Parent=DDB0215151;Name=DDB0232901;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	135918	136017	.	+	.	ID=DDB0232902;Parent=DDB0215151;Name=DDB0232902;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	144947	145046	.	+	.	ID=DDB0232903;Parent=DDB0215151;Name=DDB0232903;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	147664	147763	.	+	.	ID=DDB0232904;Parent=DDB0215151;Name=DDB0232904;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	148876	148975	.	+	.	ID=DDB0232905;Parent=DDB0215151;Name=DDB0232905;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	152256	152355	.	+	.	ID=DDB0232906;Parent=DDB0215151;Name=DDB0232906;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	164159	164258	.	+	.	ID=DDB0232907;Parent=DDB0215151;Name=DDB0232907;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	154309	154408	.	+	.	ID=DDB0232908;Parent=DDB0215151;Name=DDB0232908;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	156717	156816	.	+	.	ID=DDB0232909;Parent=DDB0215151;Name=DDB0232909;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	1	100	.	+	.	ID=DDB0232910;Parent=DDB0215151;Name=DDB0232910;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	4006	4105	.	+	.	ID=DDB0232911;Parent=DDB0215151;Name=DDB0232911;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	9206	9305	.	+	.	ID=DDB0232912;Parent=DDB0215151;Name=DDB0232912;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	1	100	.	+	.	ID=DDB0232913;Parent=DDB0215151;Name=DDB0232913;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	2444	2543	.	+	.	ID=DDB0232914;Parent=DDB0215151;Name=DDB0232914;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	7039	7138	.	+	.	ID=DDB0232915;Parent=DDB0215151;Name=DDB0232915;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	12318	12417	.	+	.	ID=DDB0232916;Parent=DDB0215151;Name=DDB0232916;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	18115	18214	.	+	.	ID=DDB0232917;Parent=DDB0215151;Name=DDB0232917;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	20701	20800	.	+	.	ID=DDB0232918;Parent=DDB0215151;Name=DDB0232918;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	22950	23049	.	+	.	ID=DDB0232919;Parent=DDB0215151;Name=DDB0232919;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	25289	25388	.	+	.	ID=DDB0232920;Parent=DDB0215151;Name=DDB0232920;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	29044	29143	.	+	.	ID=DDB0232921;Parent=DDB0215151;Name=DDB0232921;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	33212	33311	.	+	.	ID=DDB0232922;Parent=DDB0215151;Name=DDB0232922;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	35837	35936	.	+	.	ID=DDB0232923;Parent=DDB0215151;Name=DDB0232923;description=Gap generated from gap finding genome version 2.5
+DDB0215151	Sequencing Center	gap	82335	82434	.	+	.	ID=DDB0237478;Parent=DDB0215151;Name=DDB0237478;description=Added as padding for addition of contig: DDB0237477;gap_type=sequence
+DDB0215151	Sequencing Center	gap	13570	13670	.	+	.	ID=DDB0304840;Parent=DDB0215151;Name=DDB0304840;description=Added as padding for addition of contig: DDB0302697;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2263032	2263131	.	+	.	ID=DDB0232448;Parent=DDB0215151;Name=DDB0232448;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2888075	2888174	.	+	.	ID=DDB0232449;Parent=DDB0215151;Name=DDB0232449;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3143612	3143711	.	+	.	ID=DDB0232450;Parent=DDB0215151;Name=DDB0232450;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3768655	3768754	.	+	.	ID=DDB0232451;Parent=DDB0215151;Name=DDB0232451;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	4924706	4924805	.	+	.	ID=DDB0232452;Parent=DDB0215151;Name=DDB0232452;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	6219939	6220038	.	+	.	ID=DDB0232453;Parent=DDB0215151;Name=DDB0232453;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	6768699	6768798	.	+	.	ID=DDB0232454;Parent=DDB0215151;Name=DDB0232454;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	7044285	7044384	.	+	.	ID=DDB0232455;Parent=DDB0215151;Name=DDB0232455;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	7073556	7073655	.	+	.	ID=DDB0232456;Parent=DDB0215151;Name=DDB0232456;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	7076120	7076219	.	+	.	ID=DDB0232457;Parent=DDB0215151;Name=DDB0232457;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	7151077	7151176	.	+	.	ID=DDB0232458;Parent=DDB0215151;Name=DDB0232458;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	7952030	7952129	.	+	.	ID=DDB0232459;Parent=DDB0215151;Name=DDB0232459;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	8312445	8312544	.	+	.	ID=DDB0232460;Parent=DDB0215151;Name=DDB0232460;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	8370654	8370753	.	+	.	ID=DDB0232461;Parent=DDB0215151;Name=DDB0232461;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	8484098	8484197	.	+	.	ID=DDB0232462;Parent=DDB0215151;Name=DDB0232462;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1	100	.	+	.	ID=DDB0232480;Parent=DDB0215151;Name=DDB0232480;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1104409	1104508	.	+	.	ID=DDB0232481;Parent=DDB0215151;Name=DDB0232481;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1421822	1421921	.	+	.	ID=DDB0232482;Parent=DDB0215151;Name=DDB0232482;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1445611	1445710	.	+	.	ID=DDB0232483;Parent=DDB0215151;Name=DDB0232483;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1581346	1581445	.	+	.	ID=DDB0232484;Parent=DDB0215151;Name=DDB0232484;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1705907	1706006	.	+	.	ID=DDB0232485;Parent=DDB0215151;Name=DDB0232485;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1714976	1715075	.	+	.	ID=DDB0232486;Parent=DDB0215151;Name=DDB0232486;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1736771	1736870	.	+	.	ID=DDB0232487;Parent=DDB0215151;Name=DDB0232487;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2019161	2019260	.	+	.	ID=DDB0232488;Parent=DDB0215151;Name=DDB0232488;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2312748	2312847	.	+	.	ID=DDB0232489;Parent=DDB0215151;Name=DDB0232489;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2551184	2551283	.	+	.	ID=DDB0232490;Parent=DDB0215151;Name=DDB0232490;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2645864	2645963	.	+	.	ID=DDB0232491;Parent=DDB0215151;Name=DDB0232491;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	2682767	2682866	.	+	.	ID=DDB0232492;Parent=DDB0215151;Name=DDB0232492;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3305798	3305897	.	+	.	ID=DDB0232493;Parent=DDB0215151;Name=DDB0232493;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3480836	3480935	.	+	.	ID=DDB0232494;Parent=DDB0215151;Name=DDB0232494;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3699640	3699739	.	+	.	ID=DDB0232495;Parent=DDB0215151;Name=DDB0232495;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3782956	3783055	.	+	.	ID=DDB0232496;Parent=DDB0215151;Name=DDB0232496;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3909226	3909325	.	+	.	ID=DDB0232497;Parent=DDB0215151;Name=DDB0232497;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	4417159	4417258	.	+	.	ID=DDB0232498;Parent=DDB0215151;Name=DDB0232498;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	4657191	4657290	.	+	.	ID=DDB0232499;Parent=DDB0215151;Name=DDB0232499;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	4990422	4990521	.	+	.	ID=DDB0232500;Parent=DDB0215151;Name=DDB0232500;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	5166442	5166541	.	+	.	ID=DDB0232501;Parent=DDB0215151;Name=DDB0232501;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	5365701	5365800	.	+	.	ID=DDB0232502;Parent=DDB0215151;Name=DDB0232502;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	5495584	5495683	.	+	.	ID=DDB0232503;Parent=DDB0215151;Name=DDB0232503;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	5602331	5602430	.	+	.	ID=DDB0232504;Parent=DDB0215151;Name=DDB0232504;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	6357200	6357299	.	+	.	ID=DDB0232505;Parent=DDB0215151;Name=DDB0232505;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1	100	.	+	.	ID=DDB0232531;Parent=DDB0215151;Name=DDB0232531;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	5676	5775	.	+	.	ID=DDB0232532;Parent=DDB0215151;Name=DDB0232532;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	201973	202072	.	+	.	ID=DDB0232533;Parent=DDB0215151;Name=DDB0232533;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	295036	295135	.	+	.	ID=DDB0232534;Parent=DDB0215151;Name=DDB0232534;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	423379	423478	.	+	.	ID=DDB0232535;Parent=DDB0215151;Name=DDB0232535;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	537868	537967	.	+	.	ID=DDB0232536;Parent=DDB0215151;Name=DDB0232536;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	546660	546759	.	+	.	ID=DDB0232537;Parent=DDB0215151;Name=DDB0232537;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	603965	604064	.	+	.	ID=DDB0232538;Parent=DDB0215151;Name=DDB0232538;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	866692	866791	.	+	.	ID=DDB0232539;Parent=DDB0215151;Name=DDB0232539;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1058500	1058599	.	+	.	ID=DDB0232540;Parent=DDB0215151;Name=DDB0232540;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1257479	1257578	.	+	.	ID=DDB0232541;Parent=DDB0215151;Name=DDB0232541;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1426152	1426251	.	+	.	ID=DDB0232542;Parent=DDB0215151;Name=DDB0232542;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1456604	1456703	.	+	.	ID=DDB0232543;Parent=DDB0215151;Name=DDB0232543;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1462939	1463038	.	+	.	ID=DDB0232544;Parent=DDB0215151;Name=DDB0232544;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1464373	1464472	.	+	.	ID=DDB0232545;Parent=DDB0215151;Name=DDB0232545;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	1465846	1465945	.	+	.	ID=DDB0232546;Parent=DDB0215151;Name=DDB0232546;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1664405	1664504	.	+	.	ID=DDB0232547;Parent=DDB0215151;Name=DDB0232547;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2001302	2001401	.	+	.	ID=DDB0232548;Parent=DDB0215151;Name=DDB0232548;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2007766	2007865	.	+	.	ID=DDB0232549;Parent=DDB0215151;Name=DDB0232549;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2178481	2178580	.	+	.	ID=DDB0232550;Parent=DDB0215151;Name=DDB0232550;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2195412	2195511	.	+	.	ID=DDB0232551;Parent=DDB0215151;Name=DDB0232551;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2200851	2200950	.	+	.	ID=DDB0232552;Parent=DDB0215151;Name=DDB0232552;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2221003	2221102	.	+	.	ID=DDB0232553;Parent=DDB0215151;Name=DDB0232553;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2391975	2392074	.	+	.	ID=DDB0232554;Parent=DDB0215151;Name=DDB0232554;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2532537	2532636	.	+	.	ID=DDB0232555;Parent=DDB0215151;Name=DDB0232555;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2562513	2562612	.	+	.	ID=DDB0232556;Parent=DDB0215151;Name=DDB0232556;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2847946	2848045	.	+	.	ID=DDB0232557;Parent=DDB0215151;Name=DDB0232557;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	2919193	2919292	.	+	.	ID=DDB0232558;Parent=DDB0215151;Name=DDB0232558;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2976388	2976487	.	+	.	ID=DDB0232559;Parent=DDB0215151;Name=DDB0232559;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3019560	3019659	.	+	.	ID=DDB0232560;Parent=DDB0215151;Name=DDB0232560;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3075849	3075948	.	+	.	ID=DDB0232561;Parent=DDB0215151;Name=DDB0232561;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3090637	3090736	.	+	.	ID=DDB0232562;Parent=DDB0215151;Name=DDB0232562;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3660709	3660808	.	+	.	ID=DDB0232563;Parent=DDB0215151;Name=DDB0232563;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3711254	3711353	.	+	.	ID=DDB0232564;Parent=DDB0215151;Name=DDB0232564;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3715435	3715534	.	+	.	ID=DDB0232565;Parent=DDB0215151;Name=DDB0232565;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	3917034	3917133	.	+	.	ID=DDB0232566;Parent=DDB0215151;Name=DDB0232566;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	3936630	3936729	.	+	.	ID=DDB0232567;Parent=DDB0215151;Name=DDB0232567;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	3944336	3944435	.	+	.	ID=DDB0232568;Parent=DDB0215151;Name=DDB0232568;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	4539635	4539734	.	+	.	ID=DDB0232569;Parent=DDB0215151;Name=DDB0232569;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	4566480	4566579	.	+	.	ID=DDB0232570;Parent=DDB0215151;Name=DDB0232570;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	4597723	4597822	.	+	.	ID=DDB0232571;Parent=DDB0215151;Name=DDB0232571;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	4639600	4639699	.	+	.	ID=DDB0232572;Parent=DDB0215151;Name=DDB0232572;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	4952301	4952400	.	+	.	ID=DDB0232573;Parent=DDB0215151;Name=DDB0232573;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	5000036	5000135	.	+	.	ID=DDB0232574;Parent=DDB0215151;Name=DDB0232574;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	5053210	5053309	.	+	.	ID=DDB0232575;Parent=DDB0215151;Name=DDB0232575;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	5166320	5166419	.	+	.	ID=DDB0232576;Parent=DDB0215151;Name=DDB0232576;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	5181760	5181859	.	+	.	ID=DDB0232577;Parent=DDB0215151;Name=DDB0232577;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	5186835	5186934	.	+	.	ID=DDB0232578;Parent=DDB0215151;Name=DDB0232578;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	5213075	5213174	.	+	.	ID=DDB0232579;Parent=DDB0215151;Name=DDB0232579;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	5346955	5347054	.	+	.	ID=DDB0232580;Parent=DDB0215151;Name=DDB0232580;description=Gap generated from gap finding genome version 2.5;gap_type=clone
+DDB0215151	Sequencing Center	gap	5351764	5351863	.	+	.	ID=DDB0232581;Parent=DDB0215151;Name=DDB0232581;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1	100	.	+	.	ID=DDB0232633;Parent=DDB0215151;Name=DDB0232633;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	94444	94543	.	+	.	ID=DDB0232634;Parent=DDB0215151;Name=DDB0232634;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	284012	284111	.	+	.	ID=DDB0232635;Parent=DDB0215151;Name=DDB0232635;description=Gap generated from gap finding genome version 2.5;gap_type=repeat
+DDB0215151	Sequencing Center	gap	327383	327482	.	+	.	ID=DDB0232636;Parent=DDB0215151;Name=DDB0232636;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	429537	429636	.	+	.	ID=DDB0232637;Parent=DDB0215151;Name=DDB0232637;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	560821	560920	.	+	.	ID=DDB0232638;Parent=DDB0215151;Name=DDB0232638;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	845392	845491	.	+	.	ID=DDB0232639;Parent=DDB0215151;Name=DDB0232639;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	885316	885415	.	+	.	ID=DDB0232640;Parent=DDB0215151;Name=DDB0232640;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	905280	905379	.	+	.	ID=DDB0232641;Parent=DDB0215151;Name=DDB0232641;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1040384	1040483	.	+	.	ID=DDB0232642;Parent=DDB0215151;Name=DDB0232642;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	1041185	1041284	.	+	.	ID=DDB0232643;Parent=DDB0215151;Name=DDB0232643;description=Gap generated from gap finding genome version 2.5;gap_type=fragment
+DDB0215151	Sequencing Center	gap	2817	2916	.	+	.	ID=DDB0237476;Parent=DDB0215151;Name=DDB0237476;description=Added as padding for addition of contig: DDB0237475;gap_type=sequence
+##FASTA
+>DDB0215151 [organism=Dictyostelium discoideum] [strain=AX4]
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNTGAATCTTGTAAAGGCTAAG
+GAAAGGTTGTTGATTTGATCCTCCATTGATTTCATTCTTAAATCAAAGGATTCAGCGCTA
+TTAGAGACAGAGGTACTACTACTAGAGGCATCATTATTATTAACAGTGGTAGACATATTT
+TATTGTTGATATCTAAAATTATAATATGAGAAAAATAATAATATTAAAAATTAATAAAGA
+GAAATAATTATTTGTATAAAATTTGTGTGTGTGTGTATCTTAAATATATATAGGAGGAAT
+TCCCAAATAAAATAAATTGTTTTAGTTTTTGTGCCACTATTTATACGTTTTTATTTTCTT
+AAAAATTTCGCAAAACTCAAAAAAATAAGAGTTTTCGACCCTTCACAACTTTGTGCATAG
+TGTCGGTTCGGAATTTTTCAGTTTTTCGACCTTACACAATGATCGCGTCATTGTGCCGGT
+TCGAAATTTTTACTTTTCTTTCGAAAATTTTTTTATTCTTCGAATGTTCTAGAACATTCT
+AAAAAATTATCTTAAATATTTGGGAAATTCAAATAAATAAATGTTATTCATAATATATAT
+ATATATATGATAATATAAATCTATCTGGAATCGATAGCTTATTGGGCTTCCCACCTAGTT
+TTTTTGCTTTCTCTTCTACCTCTGATAAAATAGATACCATCTTCTCAAAGGTAGGGCGTT
+TAATCCCTATTTAACGGCAAAATGACTCCTCATTCATCACGAACTTGATTCGACAGAATA
+ATAACAATTTATATAAGGTTATGCAAGTCTATAGTTGAAATGTAGTTTTTTCAGCGCTTG
+CAAACATGCTGAGTGTCCATAAGCCAAGTAAAATGATTCACCTCTGATAAAATCTGTTTT
+TCAATATAGTGTGGTAATAGCCTGTTGGCTGTCGTATGCGCTTGATCTTTATGGATAGAT
+GTTTTGTCAATATCCAGCTGCAGCTTCTGAAAATAACAAGAAGATATTAAACACATCATG
+ATAGCGATCAATGGCATTGTGACTTTTTCTAAGCGATGTTATGCATATGCTGATTTTTTA
+CAGGTGTTATTCATAGGATACTTGATATAATAGCTGGTGAGTGGTCGTTTCGTATATGCT
+CTATAATGGCTTACATACACCAATCCCATGGTATCGGTATTGTTGTTGCAACACCTACAC
+TGGCGTGGTCTAAGAAACCAACTCTGGTTAATATCTGAGATAGTGTCTAATCCAGATAAC
+AACGTCACCATTGAGCAATACGGTGTACCGAATACCACAGCAGCTTTGTATGAAGCACAT
+AAGTTCCTTTATCTGAACGCATGTCCTGGTTCAGTGCTACAACCAGATCGTGATGATCGC
+GATGAACTGCGTAAACAGGTAGCTTCCGCTATTATCTTCCTCAATACCAACACTCATCTG
+TACAATGCACTTCGCGTCACTGGTGAGTTCGAAATTTCTGAGCGCACTATTGAGTGGGTT
+CGTATGTTGGCCGATGATGGCATTATTGTATCTGGCTTCTCAACGGTGATTACCAAAAAC
+CGTACCGTTGACAATATCCCTTTAGATACAGCGGCTAGTTCAAAAGATGTATTCGTCAAA
+GAATTCGAGACGGGCACTTACCTCAACATCAAAACACCGGTTGCTGACAAAATCGGAACC
+CCCAGGAAATGCGGATTACATGAAGGCCTACGTCGGGGAATAATACATGAGCGATACAGA
+CATCATGAAGAGTATCGCCCAAGCCGGCGCAACTCCTTTAAAAGTAAACCACTTCAGTTT
+TAACAATAAGTTCATGGTTCATCGTATTACTCATCTCATTATTACATAGTACTGGTACAA
+GTGATACTGCTCTCATTCCGACTCTCAAATGTTTAATCGTTCCAAACAGAGAAAACATGG
+ATAAACCCAAGATTATAATTAACTCTCATTCCAAAGAAAAACAATTCAAATTAATTCTCG
+ATACTGGAAGTAATGTTAGTTTAATCAATAAGAGGTTGATTTCAAAAGATATGAAGAACC
+ACGTTCACAAAACGAAAGCCAAGATTAACTTCCCGCTACTAGACGTCAAAGAAGAGTTTG
+TTGAACAAATCAATATACAAGTTAACAATGAAATTCATAACTTCTTTATTATAGAATTGG
+ATATCATTGATGTACTTTTCGGATAATGATATCCTTAAGGACTCTATCATTAACCAAAAA
+GATAAAATAATCAAGTTGAATAACAGTACATACAAAATTAATTATCAAGAGTCGAATCAA
+TTACATTGTAATGTAAAAGCTCCAAGAAAACATGTTACCGTATCCAATGATAATCAGTCA
+CAGTCACATAATCTACTAGATGATGATGAAGATATCAAAGAACAAGTTACAAAGTTTGTT
+GAAAGCATCCCATCACAACTTTGTGATATACTGGTTAAAACTAATCCAGAAGAAGAAGAG
+ATACAAGCAGTACGTGATTTCATTAATGATTCATTCGAAGATGTTATAGTAGATAAAATC
+CTGATATTCCAGATCAGATTAACAATTCCAGAAGAGGTAATATCATACATAATATCATTA
+TAAAGAAAGATCAAGATGTTGAACCAACAAAGAAACAAATCTATTACTCAACAGATGATC
+ATAAGAGACATGTCGAAGAAATGGTTATCAAATTTATAGATTTAGGTATTATCAAAAGAT
+CAGAATCAAATTACTCATCTCCAATCATGTTATTAAAGAAGAGGATTCATGGCGTGTAGT
+CCACGACTATCGTCAACTAAATAAAGTCACTATTAGAGACGATCATCCATTCACTCCGGT
+TGATAGTCTTTTAAATCAATGTAAAGATTCAAAGCTTTTCTCAAAGTTTGACATGATTAT
+GGGTTATTTCCAAGTGTTAATTAATCCAGAACACGCAAAGTACACCGCTTTCATTACACA
+TATTGGTAAATTTGAATATACTAGAATGCCACAAGGTTTAGTCAACTCTCCATCCACATT
+CGCCAGATTGATGGTCGAAATATTTGGAAAAATCAAAAGTTTATTACAATACTTTGATGA
+TCTTTTGGTTCATTCAAAACTCGACTACATGGTACATTTCATTGAAATCATTAGAATGCT
+TCTATATTGTAGAAAGTACCTATTATTCATTTCAAGAGAAAAGAGTGAAATGTTAAAGAC
+TGAAGTTGATTTCCTTGGTTTTCACATTCATAAAGATGGTATATCTCCAAGAGCTGCAAA
+GGTTAGAGCTATCTCTGAGTTACCTGAACCAAGAAACGCCAAAGAAGCTGAAGCTGCATT
+AGGTCTTTTTGGATTCTTCAGGAGACACATTGAAAATTACGCTGAAAAAACCTATCACCT
+TTCCAAAGAATCAAAAGGAAAAAACAAGAAAACACTTTCTGATGAATCACTCAAAGAATT
+CAATAATCTAAAGAAAGAGTTTGAAGGTGAAAATATTGTCGCTATTCCAATGGGATGAAT
+CGTTTTTAAATAAAATTAAGGAAGAATAAATCAATTCTCAATGGCTATTAGAGATGAAAA
+AGAATCCAAATTTATGCATTGAAGAAATTAATGATATCTGTTACCTTAGTGAAGATGGGT
+TCAAGAAATTAATCATCATAGATAAAGAAACTATTCATACCGTCATTAGAGAATATCACG
+ATACCAAATATAGTGGTCATCACGCTTTAGATATCACATACAATAATATAAGACAAGATT
+ACTATTTCAAAGAAATGTTTTCTATTATCAAGAGGTACATAAAGTCTTGTGCAACATGTC
+AATTGAACATTAACCGTAAAGATAATGGTATACTCCAAAGTTTAGAAATTCCCTTTGAAG
+TTTGGAGAGATATATCAATCGATTTCTTATTGCTACCAAAAACAATGTATGCAATAAACG
+GATTTACAGTTGAAGTCGATCAAGTTTGTGTCATTGTTTGTAGATNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNNNNNNNNNNNNTTCTTTTAACATTCTAAAAAATTATCTTAAATATT
+TGGGAAATTCAAATAAATAAATGTTATTCATAATATATATATATATATGATAATATAAAT
+TGGTAAGAGTACTTCAGAACCATAGATTTCTTTTGCGATGTTGTTACGACGGACACGACT
+AAGCGATGCTTGAGCATTAACAGCTAAGACGATTGCACTCTGAGTTAAGTAACTAATAAG
+TTCTACATCGACATTAGAGCTATCAGATGATAACATACTTGACATGAGAAGCAAAGGTTT
+CAAGCTATCGTTGATTCGCTTTTCGACAATCAACAAGTCAGTATCATTGTTCTTGACGTT
+GGATGATACAGTAATACCTTCAGGTGTACCGAATGGAGCGACATTCACTTGGAAGTTAGA
+TGGAAAGTTGAATACTTTATTCAATTCGGATATCTCATCTTTCTTGAGGATACATTCTTC
+TTCGACGAGTAAACCTTGATTGTTTACCATATGTTTGTACTGACCAAGTAAGGTATCGGA
+TAATTGATAATCGGTTGGAACTTCGACATTGTTACTTGATTCATCTTCACTTTGTTCATT
+CTCGGTGTCAGAGTTATCATGAGAAGGTTGGCTACTTGAATTGGTATTAGAAGAGAACAT
+AGGTTCTTTCATGAATCTTGTAAAGGCTAAGGAAAGGTTGTTGATTTGATCTTCCATTGA
+TTTCATTCTTAAATCAAAGGATTCAGCGCTATTAGAGGCAGAGGTACTACTACTAGAGGC
+TTCGTTATTATTAACAGTGGTAGACATATTTTATTGTTGATATCTAAAATTATAATATGA
+GAAAAAAAATAATAATAAAAATTAATAAAGAGAAATAATTATTTGTATAAAATTTGTGTG
+TGTGTGTATCTTAAATATATATAGGAGGAATTCCCAAATAAAATAAATCAAATTGTTTTA
+GTTTTTTGTGCCACTATTTATACGTTTTTATTTTCTTAAAAATTTCGCAAAACTCAAAAA
+AAATAAGAGTTTTCGACCCTTTACAACTTTGTGCATAGTGTCGGTTCGGAATTTTTCAGA
+GAAAGTAAAGCAGGGGAAAACTATATTTCATAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAATAAATAATTTTGAAAATTTTGATTATATTAATTTATACACACA
+ATTTCATTACCAAAAAATACTTGGTTATCGGAAATATAAACTTTAAGATTGTGGTTTTTT
+TCACCTTTTGAATAAATGGCTAAACTGTCAGCTACTTTTGTTCTTGTGTTACTTTTCTTA
+TTACTTACCCATTTCGTTAACCTTTCAAAAATATTTTGACTGGTACAATCTTCGTTACTA
+CCACCAGCTTGTTTAATTATTCCAGTAATAAAGAAATTTGAAACCTATTTATTTAAATTT
+AATAATTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAAACTATTAATCTGGTAACATACA
+TCGCCATCTGAATAGTATTTACTTTGACAAACTTTCTGAAGACTTTCGTATTCCAATATG
+TATGTTACACGTGGGTTTGTGGCTATTTGCACTGTTTCTTGGATTGGTGGAACAGTTGGC
+CTTGGAACTCTTCTAATTATTATTCTCTGGTTTTCCATTGGGTTTGGAGCATTTGCATTT
+CCTAATACATTACCTATTGACAAATTATTAAATGATTCATCTCCGATAGAAATATTATTG
+TTTTATCTTCTTTGGATTGGTGATTGGTTAAAATCAGGTACATTACCATTCGGTGCTATA
+AAATTTGCAGATGAATTCATTTTAAAAAAATATGTATTGAAATCATTTTGGCTTTTTCAG
+TCTGCCCGAAAATGAAAAAAAAATAAAAAAAAAAATCATTTTTTACATAACAATGTAAAA
+ATTATGTAAAAAAGGTTTTTAATTTTTTAATTTTTTATTTTTTGAAGCCGAGAATTTATC
+GTGGCATTTGTAAATTATAAGGTAATTGGTATCATCAATTTGAATTGGTATAACATTATT
+TAGAATATTATCATATGTAATATAATTTAATTCATTTGAAAGAAAATGGTATTTATTAAA
+TTGGTCACCAACATATTTGTCAAAATAATTTAATAATATTGCATGTTTTATTATGTTATC
+ATCCATTTCAATCATTGATATTGAATTGATAATACCTGACCATCTACCTGAAAGTTCATT
+ATCTGATGCAACTTCAACTGCATCACCAACATTGTATATTTCTTTATTATTTTTAATTGA
+TGAGTGAAAAGTTATATTTTTATAATTTTGAAATAATGAATCTAATTTAATTTTTATGTT
+ATCTAAATTATCTGGATTTTTTATTTTGTATCTGGCGTGGCGGACCTATATGCTAAAGAA
+TACACCAGTTTTTAGGGCATACCTTAAAAGTTTCGTAACAGCAAAACGATTATTGTCAGC
+AACCTAATCTAGTGCCCTGTACCCCCCTTATTGACTTAATTAGTAAAACGTCTACGATGG
+ACTCATGGCCATTAATAGCAACAGCTCCTAGTGCATAATTAATTCTTTTTTGGAAATGGC
+CATTTTCAACAGCACATTCCAATGCATCATTGATGTTTTTTTGCATTGCTCCGACTAATA
+AGGGTTTAGTAGTACATACAAATCATCTGCTAGGCAGTCTGCAGTAGTTGGGTGATTATT
+GCTAATAGCCAATTTTAATGCCTCCCACCTATCTTCTGCTGTAGATGATTTGTCAAAGAG
+GAACGCAACAATGGCATCATGGCCAAGCATAGCAGTATTTTTTATTTCCTTACCCATTTG
+TGCTTCTGGCATCTTTCATAGGAAGAGTTTAATAATCGAGAGGTAACCATGCGCCACATC
+ATTTCAGAATGCTATATTGTGTTGTTCCGTTACCTTATTCGAATCTAACATGAACTTTAC
+AATAGATATGCGCTCATTCTTGAAAGAAGATCGGGAAGAGCGATTCGGCTATGGTATCTT
+CTGTTGCCCTATCTAATAAGAACTCCACGATAAAAATAATTATTCTGTATAGTCGCGATT
+ACGAGGGCCCTATTTATATTTTCTAGTGTAGCATTATTATCTAAACTTAACTTTTGTTCT
+ACAATAGAAAGATCATTGTTTCTATCTGCGAAATGTAGTGGTGTTTGTCCAAGATAGTCT
+TTTGCATTTACATCAGCTCCCTTGTTAAGGAGGAGTTGTATGGCTCCTTCTAATCTAGCA
+TAATGGAGCGGAGTTCTGCCTCGATGATCTGTTTTGGTTATATTTTCACCTTTTTCTATA
+GTCAGTTTTACTTTTTCTACTGTTTGAGTTGTTATCGCTATTTTGATCAAAAAGTTTGAT
+CTCGGTTCGAATTTTGTCTCTCAACAGGTTGATTCTTAAAAATCAAGTCTAAACTCATTG
+GATGCTTCGTGACTATATCTATATATTTAATTAAAAATTTAATTTATTAAATTATATTTT
+ATATTAAATATATATATATATATTATGAATATCATTTATTCATTTGAATTTCCCAAATAT
+TTAAGATAATTTTTTAGAATGTTCTAGAACATTCGAAGAATAAAAAATTTTCGAAAGAAA
+AGTAAAAATTTCGAACCGGCACAATGACGCGATCATTGTGTAAGGTCGAAAAAACTGAAA
+AATTCCGAACCGACACTATGCAAAAAGTTGTGAAGGGTCGAAAACTCTTAATTTTTTGAG
+TTTTGCGAAATTTTTAAGAAAATAAAAACGTATAAATAGTGGCACTAAAAACTAAAAAAC
+AATTTGATTTATGGAATTCCGACTAAGTGCGGATGGGATGGGACTAATATATATATATAT
+ATTTAATATAAAATATAATTTAATAAATTAAATTTTTAATTTATATTATCATATATATAT
+ATATATATATTATGAAATTTGGACGACAGTATTTAAGAAACCACCAGATTTTTCACCAAT
+GATTCTTTTATCGTAGAAGGTATCTACAGTATCATTTGATTTCCAACGACCCATCTTCTT
+GACAACGTGGAACGGAACGTTATTGGACAACAGCAGAGAAGCCATAGCGGAACGGGTAGA
+GTGAGATTTGAACTTGGCAATATCAATGCCTGACTTTGAGAGTGTTGATAATACAATTGA
+ATTAATATCATTAACTTGGAGCGGTTCACCCTCATTCTTAATAAAGACAGAGTCACCCGA
+ATGGGGCTTTCTTCTTCCTTTAGAGGCTCTAAGGTATGTTGCAAGGTGGCGAACAGGGCA
+TACTTGAGAGTTTGTATCATCTAACCATGTTAATTCTAAGATTGAAACAACACCACTTCT
+TTGTTCTTTAGCATTAATAACTGGACCTTTGATTGAGTCAGTAGTATTAATGAGACCTTT
+GAACGACCACTTCACCAAGTCTGATGATCTTGCTAAACCAAACTTTTACAGAGAACAAGT
+GTCTTGTTTAATAGCGCAGTGTATGTGTACTTAGGGATGACTTTGATAGTAGATAAGTGC
+TTGAATACTTGGTTTGCATCCCATATCTCTTTATACTTTGCAGATGAAGGACGCCACTTG
+TGAATACCAGTCATTATTCTTGTGATGAATGGATCATTAACAACATCAGTTTGATTCCTA
+ACTGGAGCTATATACTTTGAGAGTGGAAGGTTCCCAAGACTTCATTAACAGCTCAGCTGT
+TTTTGTATTTGTTGTACGAGCGAAGGACATTTATATTATCATATATATATATATATTATG
+AATAACATTTATTTATTTGAATTTCCCAAATATTTAAGATAATTTTTTAGAATGTTCTAG
+AACATTCGAAGAATAAAAAATTTTCGAAAGAAAAGTAAAAATTTCGAACCGGCACAATGA
+CGCGATCATTGCACAAGGTCGAAAAAACTGAAAAATTCCGAACCGACACTATGCACAAAG
+TTGTGAAGGGTCGAAAACTCTTATTTTTTTGAGTTTTGCGAAATTTTTAAGAAAATAAAA
+ACGTATAAATAGTGGCACTAAAAACTAAAAACAATTTGATTTATTTTATTTGGGAATTCC
+TCCTATATATATTTAAGATACACACACACACAAATTTTATACAAATAATTATTTCTCTTT
+ATTAATTTTTAATATTATTATTTTTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+NNNNNTACCCAAAAGGGATCGATCCCCCGACCCTCTATCAAAGGTAGTCTCATCAACCAT
+TACACCATTTGATTGCTTTGATGAAAATTTAAAAATGATAGAATATTTTATCCCCATTTT
+TTTTTTCTAAAATTAGATCTTTTTTATTAAAAACCTTAAATTTATGTTTAAAGGAAATTT
+AAATTCACTTTAAATCTACTTTAAATCTACTTTAAATCCTATTTAAAATTAATTTAAAAT
+AAATTTTAAAGGTATTTTTAAATATCTTAAAAATTATCTTAAAAATTACCTTAAAAATCA
+CCTTTAAAATCACCTTTAAAATCACCTTTAAAATTGCTTAAAAATTTATTTTAAAGCAAA
+TTTTAAAGGCATTTTTAAATATCTTAAAAATTACCTTAAAAATTACCTTAAAAATGAATT
+TTTTAAACGCGGCTTTAAATTCAATTTAAATCCAATTTAAATCAACTTTTCTTTAAATTT
+GCTTTAAAGGTTCATTTTTCTTTGCTGTGTCGCTGTGTACTTGTGTGACCCTTGAACACA
+CAGAAATAATTAATAATAAATAATAAATAACAAATAATATTATATCTCTTATATAATATA
+ATAAAGCTTTCGTTTGTGCACAATTTGGAATAAAACAACAATGAATTAATTTTTATTTTA
+TTTTCTATTTATACTAAAATTAATTTTACTAAAGAAACCATTGGTAAAATTTCCGAGAAT
+AAAGTAAGAATCTTGTATTTGTTAACGTCTTTTCAGTTACAAATTTATTTCTATATTTGT
+ATTTTACCAGGGTTAAAAACTTTATATATTAATTTATGTCGCTTAATTGTTCGCGATTAT
+TACACTCACCCCCGCTCTATTTGATTTTGGGAGTACTACAGGGAGTTGTGTTACAGCTTG
+ACCATGTTGTGGTGTGCTAGTTGATGGTGGTGGACTCGATACTACAATACTTGGATTAAC
+TAATCTGCTGAATGATAATTCATTCATTGATACTTGGGATGGTTGATTTATGAATGAAGG
+TAATTGGTTCAATTTGTTTATTTTGTTGAAATATCTCTTGCAATTTCTTAATGACTGTGT
+TGTTGACATGTTTGAACCCAATGGTACTTGTATTTGTATTGTTTGGTTTGAAAGTATCCT
+AACAACTTTAAACGGTCCAATCCAACTTGGTCTGAACTTCTTTAATTCTTCTTCTTTTAC
+GGTTTGATTTTTCAAGAGTACATAATCTCCCGGTGAGATTGAATTCTTTCTTGTTTTTAA
+TCCATCATAATATTGCTTCTGCTTTGTTTGAGATTCTTGAATTTTTGTTTTTGCAATCTC
+TAAACTTTTGTTGATTGTTTCTTCCAACTTTCCAACATAATTATCATTGGTTGTTGCTGA
+ATTATTGAATGGATTTAATGTACCAAGATCACTTGGTATAGTTGCTTCTCTTCCATAAAG
+CATTGAGAATGGGCTTGCACCTGTTGATGTATGGACTGAGATTCGATATGCGAATAAACA
+TGAATCAAGATACAAATCCCACATAGTGTGAACTTCTTGTGTGAATGATTTTAACATAAT
+TACGATGGTCTTATTGAACCTTTCAACTAATCCATCAGTCTGTGGGTGGTATGGGCTTGT
+ATTTACTTTCTTTACTTTGAATAATTCATTTACACTACTTATAACTTTATTCAAGAATGA
+TGTACCACAATCCGATAGTAATCTTTTTGGACAACCGTGTCTTGATATAATTAAATTTGA
+AGTAATGTATTGCTGTTGTTTCGGCAGTGCAATCTACGGTTGCTGCTGCTTCAACCCACT
+TCGTAACATAATCTGAAAACACAATTATGTACTTATGACCTGACATTGATGGTACTTTCA
+TTGGTCCAACGAAATCTACTGCAACCAAGTCCCATGGTTTCTCTACTATAATGGTTCCCA
+ACTCTGGTGAGAACTTACTGAATGGACTGGTTTTCATCTTTTGACATATATCACAATTGT
+TGATGTATTCTTTAACATCCATACCCATATTATTCCAGTAATATCTTGATGCTAACTTTG
+AGTAGGTCTTTTGATATCCAAGATGTCCGCCAACTAATGAACAGTCGTGGAACTTCTCTA
+ATACTTCTTTTTGCATTGACATTGGTACAACTATTCAAATGGCTACTATTTGAGGTCTCT
+TAAAGAATAATGTTGGATTTACTATTAATCTAAGTATTTAAAGATTGGGACTAAGTGTTT
+ATCTTTTCTTTGTTCCTCTGCAATCTTTAAGTCTAAGATTGAATCTAATTTGACTGATTC
+ACCCATTGATATAACTGACATTACTTCTTCTACTGGACAACTACTAAGTGCGTCTGCAAA
+AGTATTCTCCTTACCACTTCTATATTTAAATGTGATATTGTAACTAGCCAACTTAACATT
+CCAATTGATAAATCTCTTGTTTCTGATCTTCCCAAGATCATTTCTAAGGAATGATACTGC
+ACTGTTATCAGTGACTACTAATGTTTCTTGGGTGCCAATGATATAATGAAATTCTTCTAA
+TGCACATACTACGCTTAAACATTCTTTTTCAGAGGCTGAGTAATTCTTTTCAGTGTCTCT
+GATGGTTCTTGAATAGAATGATATAATACCGTGATCTTGACAAAGAGTTGCTCCAACACC
+GATATCACTTGCATCAGTTTCGAGTTTGAATGGTTTCTGAATCAATTGTTATGTATCTGG
+GTACACTAAAATGATCTTATTGTTCTTCAACCTTTCGATTATATTGATACAGATTGACTT
+ATAAGCGTCATTCCATTCGAATATGGTGTCTTGTCTTAATAATTGGTATATTGGTTTGAT
+TTTTGATGCGAAATTATCTACAAATTTCCTGAAGAAATTTAATGTGCCGATCAATCTTTG
+TAATTCTTTTACATTCTTTGGATCTAATAACTTCATTAATGGATCTAGTCTATCATAATC
+TATTTGAACACCATTCGATTCTATGATATGACCTAAGAATTTTACTTCTTCTTGGAAAAA
+TTGACATTTGCTCAATTTGGCTAACAGTTTATTATCTCTCATTTTCTTGAAGATACCTTC
+TAGATGTGGTGTATGATCCATTACTGATTTTGAGTGAGATAATATATCATCATAAAATGA
+TTGTAAGGTAAGTCTATTCTCCTCTTTGAATATCTTGTGAATGGTCCTTTGGAAGACTGC
+TGGTGCATTACACAATCCAAATGGCATTACATTGAATTCGAATAAACCTTGTGGTACTGA
+AAAGGCTGTTAAGTATTTATCACCTTCTCTAATTCGTATTTGATAGTATCCACTTATCAT
+GTCTAATTTTGAGTATACATGAGATCCTTTAATTTGATTCCATATTTCATTAATATCTGG
+TATTGGATATCGATCCTTTACAGTGATATTATTTAATTTTGTATAATTAATACACATTCT
+CATACTCCCGTCTGGTTTTGGACGTAATACTACACTTGATGATACTTGACTATTTGATTC
+TCTTATAATCTTGTACTTTAATAATTCTTTAATATGTTCATCTAAGAAGTCTTTTTGTTC
+ATTTGTGAACTTCACTGGATATGCTTGAAATGATGCATCCTTTTGAGTTAACTTGATTTG
+ATGTTCAACTCCACTAATCGCACCTGGTTCAGTCAATGTATTTGTGAATACATCCTGGGA
+CTAACTCTCTTTAAATCTTGCTGGTTTGTTGTAAAAGATACTTGTTCAGTAATGGTATTG
+ACTTCTTCTTTGCACTGATTTGCAAAGTGACCAAGCTTGCCACATTTATAACATTTAAGT
+GGTTTCCCTTTTGGTTTGTTTTTATATTGGTGTTTTTTAACGTTTGCATAATTGTTCTGT
+TCTTGTTTAACATTATAATCAGGGTGTTTACCTGATGGTGGAAATGGTATCCTGGTTGGT
+CTTATAACTTGTTGTTGTCGTTGAATTTGGGGTTGTTGGTCTTGTACGTTATTATTGATT
+CTATTTTCTTTATCAATAAATTTGTCTGTAAATCCAGCATTGTAAAATTCTAAGCTATCA
+TACTTGAATTTTGAATTTGCTTTTGTACGAGCTATCATTATAGCCTCATCTAATAATTTT
+GGTGCACCTTCGTCAATTGACTTTTTGATTTCTATATCACTGACCCCTCTAATAAATAAT
+TCAATTTGTCTTTCACTGGTTAATGGAGGATTGATTTGAGCATTGAGTGATCCAAATGCT
+GTGATGTACTTCATGAATTTATCAAATTTTTGATCGGTGAGTTTTGATAATTCATCTTCT
+GGTTTAAAAAATTTCTTCATATCATATCTTTTAATCATTTCTTTTTTTAAATCATTATAA
+TTTTCTACTATTTTTGATTTTTGAATAAAAGTAGTTAATGCTGAACCCAAAAAATATTTA
+ATTATTTTTCTTTTGACTTCATTATATTCTCCATTATTTTCACCAGTGATTTCGATATAT
+TCAAATAGTGTTGAAATATTTAATGACTCTAAGTCATTATCAGCAAAATAAATTTTATTT
+TTTGCCTTTTTTTTTTTTTTTTTTTTTTCTTTTTGAGAGGTTTTTTTTTTTTTTTTTTTT
+TTCTTGAAAAGTGTTTTGAACTTGATTTACTTGAATTAATTTGATTTGATTAATTTATTT
+TAATTTGATATATCTTGATTTGGTTTACTTTGATTTGATTTACCTTGATTTGATTTTATT
+TTTATTTTGTAATGTTTGAAATTTAAATTAATTTTAATTGAATTTTGAAACTTGTATTAT
+TTGAAATTAAATGGAATTTATTTAAATTATTATTATTTAATTTTAATTTGATTTATTTAA
+TTTATTTAATTTATTTAATTTATTTAATTTATTTAATTTATTTGAAAATTTCCTTTTTTG
+GGACCAATATTTAAAAATTTTAATTAATTTAATTGAAAAATTGTTTTTTCAATTTTGAAA
+CGTTTCTTTTTAATTAATTTTAAGGATTTTTAATTTTTTAAAAAATATATTTTTATATTT
+TTTTTTTTTCCTCTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTCCCCAACCGAAAC
+TATTATTTTTTTTTTCTTATTTATAAACCTCTCCTAATGTGATTGTTGTTTTTATTATTA
+CTATTATTATTATTTGTTGACCGATGTCGCCAAATGTAATGAACGTCGTATTCCAATTCC
+TATGGGATACTCTTTATAATTTGTATATACGTATATACTTGTGTGACCCTTGAACACACA
+GAAATAATTAATAATAAATAATAAATAACAAATAATATTATATCTCTTATATAATATAAT
+AAAGCTTTCGTTTGTGCACAATTTGGAATAAAACAACAATGAATTAATTTTTATTTTATT
+TTCTATTTATACTAAAATTAATTTTACTAAAGAAACCATTGGTAAAATTTCTGAGAATAA
+AGTAAGAATCTTGTATTTGTTAACGTCTTTTCAGTTACAAATTTATTTCTATATTTGTAT
+TTTACCAGGGTTAAAAACTTTATATATTAATTTATGTCGCTTAATTGTTCGCGATTATTA
+CAAAATTTAAAAATGATAGAATATTTTATCCCCATTTTTTTGTTCTAAAATTAGATCTTT
+TTTATTAAAAACCTTAAATTTATGTTTAAAGGAAATTTAAATTCACTTTAAATCTACTTT
+AAATCTACTTTAAATCTACTTTAAATCCTATTTAAAATAAAATTAAAATAAATTTTAAAG
+GTATTTTTAAATATCTTAAAAATTATCTTAAAAATTACCTTAAAAATCACCTTTAAAATC
+ACCTTTAAAATCACCTTTAAAATCACCTTTAAAATTGCTTAAAAATTTATTTTAAAGCAA
+ATTTTAAAGGCATTTTTAAATATCTTAAAATTACCTTAAAAATTACCTTAAAAATGAATT
+TTTTAAACGCGGCTTTAAATTCAATTTAAATCCAATTTAAATCAACTTTGCTTTAAATTT
+GCTTTAAAGGTGCATTTTTCTTTGCTGTATATAAACCAATGCCAATAAAAAAAGAATATT
+GCCATTTAAAAAGGTTTGTAATTCTTTAGAATAATTTTTTTTATTTTCATTTTTATTCCT
+AATATAGTTTACAAAAATTCAAAAAAAATTTTAAAAATTTATCCGTTAAATAACGGCTTC
+GAAATCCGGACCTCGCTTTTAAAGCGATTAAAAAGCTAATTTTTAAGGTACAAAGCGAAG
+AAAAATGCACCTTTAAAGCCAATTTAAAGCAAATTCAATTTAAATTTGCTTTAAATTGGC
+TTTAATGATGCTTTTTAAAAAGGTAATTTTAAAGATATTTTTAAGGTCATTTAAAATTTA
+ATTAATTTATAATTTAAAAAAGTTATTTTTAATGTAATTTAAAATTACTTAATAATATGC
+ATGCCACACATGTGACAAACCAAGAGATGGTTTATTTATTTGCCATTCAGGTACATTAAG
+AAAACAAGAAGATATTACAAATTTTCACTCCAACAAACCAAATTATGCTGAATTAAATGC
+TGATATAGAATAAAAAAAAGTATGGGAAAAAAAAGCAAAAGATATTGGTATCAAAGGTGT
+GGGCAGAGGGTGAGTCGAACCTTTGTCCATTAATTATTTAAAAACACAACCAGTCATATT
+ACATAATATTTTATTAGGTGTCGCACAAAGATGTTTAAATTACATTTTTGATAAATATAA
+AAATAAAATTGCAAATTTTTTAAATAATTTAAAAAATGCAAAAATAATAGTAACAAACCA
+AAACCATCAATTTCACTATTTGCAAATAAAACAAGGAAGAGAGAATATTATATTACCTTT
+TAATATCAATTAAGATTCAAATATCAAATGATAATTTTTTAATTATGGAACAATTAGTAA
+CTATATGTTTAAATTATATAGTTACTCTTTTGATGAAAATGATTTAAATTCACTTCAAGT
+ATTAATTGAATCGTTTAATGCAAAAGGAAATTTAATTACTGTAACAGAAATAATGAATTT
+CCACATGTTGTTACATTATCCAATCTATATAGAAAATTGGGTGCACCAAAATACACTTCA
+GCTGAAACTTTTGAAGCACAATTATCAAGAATTAAAAATTATTTAAATAATAATACAAAT
+AATAGGGATGAACAATATGAAAGGGTTACCAAATTAAACATGGTGAAATTTTTTAATTCA
+GTAGATAAATTAAAAAGTATTGAACCTGAAAGTACAGCATTAATTATTAGTACCAAAATA
+AAAAATCCAGATAATTTAGATAAAATAAAAATTAAATTAGATTCATTATTTCAAAATTAT
+AAAAATTTAACTTTTCACTCATCAATTAAAAATAATAAAGAAATATACAATGCTGGTGAT
+GCAGTTGAAGATGCATCATATAATGAACTTTCAGGTAGGG

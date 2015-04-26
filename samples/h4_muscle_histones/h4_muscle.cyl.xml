@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8'?><cylinder anchor_name='h4_muscle.aln' anchor_length='190' version='1.0'>
+<entity>
+<subentity strand='0' send='188' sstart='1' qend='188' qstart='1'>
+<p value='Anchor' name='subEntityType'/>
+<p value='h4_muscle.aln' name='defline'/>
+</subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MTGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='43' send='174' sstart='43' strand='0'><p value='SER---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQ-ITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYCEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='38' send='174' sstart='38' strand='0'><p value='MQFIYGGC---AFSGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDSVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GA' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='173' qstart='41' send='173' sstart='41' strand='0'><p value='MAKGK----RSTD-------AK---------G---SQRRQKKVLRDN---IRGITRGCVRRMARRGGVKR-ISTEVYEEVRRVLKAYVEDIVRCSTAYTEYARKKTVTASDVVTALRKQGHILYGY------A' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGK---GKGK------GY-----------G---KSKRHSKE-KDT---LGGITKPAIRRLARRGGVKR-ISSTIYQQTREVLKAFLEVVLRDSLTYTEHGQRKTVTSQDVVYALKRQGRTLYGF------GI' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDSVTYTEHAKRKTVTALDVVYALKRSGRTLYGF------GA' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYCEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MTGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISAMIYEETRGVLKSFLESVIRDAVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MTGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISAMIYEETRGVLKSFLEGVIRDAVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYDETRGVLKLFLESVIRDSVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GA' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDSVTYTEHARRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDAVTYTEHARRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISAMIYEETRGVLKTFLEGVIRDAVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MAGR---GKVGK-----GYGK--------VG---AKRHTKKSLKET---IMGITKPAIRRLARRGGVKR-ISSLIYEETRNVLRSFLENVIRDSVTYTEHAKRKTVTALDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MTGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRSVLKVFLENVIRDAVTYCEHAKRKTVTAMDVVYALKHQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GVGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYCEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDAVTYTEHARRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDAVTYTEHARRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='40' send='174' sstart='40' strand='0'><p value='MSGTGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISALIYEEVRVVLKQFLENVIRDAVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MTGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MTGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='173' qstart='41' send='173' sstart='41' strand='0'><p value='MAKGK----RSTD-------AK---------G---SQRRQKKVLRDN---IRGITRGCVRRMARRGGVKR-ISSEVYEEVRRVLKAYVEDIVRCSTAYTEYARKKTVTACDVVTALRKQGHILYGY------A' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLVRRGGVKR-ISGLIYEETRGVLKIFLENVIRDAVTYTEHPRRKTGTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYCEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='50' send='174' sstart='50' strand='0'><p value='KGGK-----GLGK---------G---GAKRHRKSYRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---RKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDAVTYTEHARRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISAMIYEETRGVLKSFLESVIRDAVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDAVTYTEHARRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MAGRGKGGKGGK-----GYGK--------VG---AKRHTKKALRET---ILGVTKPAIRRLARRGGVKR-ISSLVYEETRAVLKGFLENVIRDSVTYTEHAKRKTVTALDVVYALKRQGKTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISGLIYDETRGVLKLFLESVIRDSVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GA' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='164' qstart='42' send='164' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLY' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEEVRNVLKTFLESVIRDAVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MAGR---GKVGK-----GYGK--------VG---AKRHTKKSLKET---IMGITKPAIRRLARRGGVKR-ISSLIYEETRNVLRSFLENVIRDSVTYTEHAKRKTVTALDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MTGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='38' send='174' sstart='38' strand='0'><p value='SKYTMSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRNVLKVFLESVIKDSVTYTEHARRKTVVSMDVVYALKRQGRTLYGF------GN' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='164' qstart='42' send='164' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------R---RAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLY' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAATYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYCEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MTGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISAMIYEETRGVLKTFLEGVIRDAVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEEIRGVLKVFLENVIKDSIMYTEHAKRKTVTAMDIVYSLKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYCEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYCEHAKRKTVTSMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='173' qstart='37' send='173' sstart='37' strand='0'><p value='MATDTGSGR---GKGGK---GVTLGKGSKGAKASKG---GKRIRTKTQQDA---LKGITKPAIRRLARRGGVKR-INGAVYDETRNVLKQFLEQVIRDSVTYTEHAKRRTVTAMDVVYALKRQGRTLYGY------S' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDSVTYTEHARRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYRLKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='21' send='174' sstart='21' strand='0'><p value='MGTLKKSPSLLHTVVLQAELTMSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='32' send='174' sstart='32' strand='0'><p value='NPTNTNTNTSMTGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MTGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='43' send='174' sstart='43' strand='0'><p value='AGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTALDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='173' qstart='41' send='173' sstart='41' strand='0'><p value='MAKGK----RSAD-------AK---------G---SQKRQKKVLRDN---IRGITRGCVRRMARRGGVKR-ISSEIYEEVRRVLKAYVEDIVRCSTAYTEYARKKTVTASDVVNALRKRGQILYGY------A' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='43' send='174' sstart='43' strand='0'><p value='SGR---GKGGK-----GLGK---------G---GAKRHRKVLRDD---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='173' qstart='41' send='173' sstart='41' strand='0'><p value='MAKGK----RVGE-------SK---------G---AQKRQKKVLRDN---VRGITRGSIRRLARRAGVKR-ISGVIYDEVRGVLKTFVESIVRDAGAYTEYSRKKTVTAAHVVFALRKRGKVLYGY------D' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='32' send='174' sstart='32' strand='0'><p value='PFTSLISFFIMTGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='27' send='174' sstart='27' strand='0'><p value='MSFLHLTCESSTESTMSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYCEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKIFLENVIRDSVTYTEHAKRKTVTALDVVYALKRSGRTLYGF------GA' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAILRLARRGGVKR-ISGLIYEDVRAVLKSVLESVIRDAVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYCEHAKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='163' qstart='42' send='163' sstart='42' strand='0'><p value='MSVR---GKAGK-----GLGK---------G---GAKCHRKVLSDN---IQGITKCTIRRLARHGGVKR-ILGLIYEETRRVFKVFLENVIWYAVTNTEHAKRKTVTAMAVVYVLKRQGRTL' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='163' qstart='42' send='163' sstart='42' strand='0'><p value='MSVR---GKGGK-----GLGK---------G---GATCHRKVLSDN---IQGITKCTIRRLAQHGGVKR-ISGLIYEETPRVFKVFLENVIWYAVTNTEHAKRKTVTAMAVVYVLKRQGRTL' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='43' send='174' sstart='43' strand='0'><p value='SGR---GKGGK-----GLGK---------G---GAKRHRKVLRDB---IZGITKPAIRRLARRGGVKR-ISBTIYZZTRGVLKVFLENVIRDAVTYTEHARRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKVLRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRGVLKVFLENVIRDAVTYTEHPKRKTVTAMDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+<entity>
+<subentity qend='174' qstart='42' send='174' sstart='42' strand='0'><p value='MSGR---GKGGK-----GLGK---------G---GAKRHRKILRDN---IQGITKPAIRRLARRGGVKR-ISGLIYEETRSVLKVFLENVIRDAVTYTEHAKRKTVTSLDVVYALKRQGRTLYGF------GG' name='subject_align'/><p value='CLUSTAL W Alignment' name='subEntityType'/></subentity>
+</entity>
+</cylinder>

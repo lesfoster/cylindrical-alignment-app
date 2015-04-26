@@ -1,0 +1,20 @@
+Progress of Development: The Cylindrical Alignment App
+
+Background:
+This is a refactoring/porting from Java3D to JavaFX, of the Cylindrical BLAST
+Viewer.  It will leverage NetBeans platform, for event routing between major
+views and subviews, and will be an attempt at fixing some of the deployment and
+environment problems which plague the Java3D implementation from 2005.
+
+L. Foster
+
+3/8/2015 - Have made skeletal app, with top components, along with having
+borrowed some aspects of the Molecule Sample App from Oracle.
+
+- Need to pull down, from old system, the following:
+* legend_model package.
+* data_source package.
+
+4/14/2015 - Have at least setup code to place entire cylinder, axis glyph and
+label onto the screen.  Positioning is completely wrong.  Needs debug.  Have
+completed pulldown of data source.

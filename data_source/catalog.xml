@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/xsd/cylinder.xsd" uri="src/conf/xml-resources/jaxb/cyl/cylinder.xsd"/>
+</catalog>

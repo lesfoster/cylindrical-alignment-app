@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN"
+                            "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="xml">
+        <folder name="entities">
+            <folder name="self_lesfoster_cylindrical_alignment_legend_top_component">
+                <file name="Legend" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
+                    <!--self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent-->
+                    <attr name="hint.originalPublicID" stringvalue="-//self.lesfoster.cylindrical_alignment.legend.top_component//Legend//EN"/>
+                </file>
+            </folder>
+        </folder>
+        <folder name="memory">
+            <folder name="self">
+                <folder name="lesfoster">
+                    <folder name="cylindrical_alignment">
+                        <folder name="legend">
+                            <folder name="top_component">
+                                <file name="LegendTopComponent">
+                                    <!--self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent-->
+                                    <attr name="settings.providerPath" stringvalue="xml/lookups//self_lesfoster_cylindrical_alignment_legend_top_component/Legend.instance"/>
+                                </file>
+                            </folder>
+                        </folder>
+                    </folder>
+                </folder>
+            </folder>
+        </folder>
+        <folder name="lookups">
+            <folder name="self_lesfoster_cylindrical_alignment_legend_top_component">
+                <file name="Legend.instance">
+                    <!--self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent-->
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.create" name="instanceCreate"/>
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.properties" name="settings.convertor"/>
+                    <attr name="settings.instanceClass" stringvalue="self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent"/>
+                    <attr name="settings.instanceOf" stringvalue="self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent"/>
+                    <attr boolvalue="true" name="xmlproperties.preventStoring"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Window">
+            <file name="self-lesfoster-cylindrical_alignment-legend-top_component-LegendTopComponent.shadow">
+                <!--self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent-->
+                <attr name="originalFile" stringvalue="Actions/Window/self-lesfoster-cylindrical_alignment-legend-top_component-LegendTopComponent.instance"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="LegendTopComponent.settings">
+                <!--self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
+<settings version="1.0">
+  <instance class="self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent"/>
+</settings>
+]]></file>
+        </folder>
+        <folder name="Modes">
+            <folder name="explorer">
+                <file name="LegendTopComponent.wstcref">
+                    <!--self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tc-ref PUBLIC "-//NetBeans//DTD Top Component in Mode Properties 2.0//EN" "http://www.netbeans.org/dtds/tc-ref2_0.dtd">
+<tc-ref version="2.0">
+  <tc-id id="LegendTopComponent"/>
+  <state opened="true"/>
+</tc-ref>
+]]></file>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Actions">
+        <folder name="Window">
+            <file name="self-lesfoster-cylindrical_alignment-legend-top_component-LegendTopComponent.instance">
+                <!--self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent"/>
+                <attr name="preferredID" stringvalue="LegendTopComponent"/>
+                <attr
+                    bundlevalue="self.lesfoster.cylindrical_alignment.legend.top_component.Bundle#CTL_LegendAction" name="displayName"/>
+            </file>
+        </folder>
+    </folder>
+</filesystem>

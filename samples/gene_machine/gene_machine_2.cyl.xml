@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cylinder anchor_name="Sequence_2_From_410_635" anchor_length="3597" version="1.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:noNamespaceSchemaLocation="file:///schema/cylinder.xsd">
+<entity>
+<subentity strand="1" send="3597" sstart="1" qend="3597" qstart="1">
+<p value="Anchor" name="subEntityType"/>
+<p value="lcl|Sequence_2_From_410_635" name="defline"/>
+</subentity>
+</entity>
+<entity>
+  <subentity qend="309" qstart="31" send="309" sstart="31" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity>
+  <subentity qend="2641" qstart="2453" send="2641" sstart="2453" strand="1"><p value="gene:Genscan" name="subEntityType"/><p value="Genscan" name="gene"/></subentity>
+</entity>
+<entity>
+  <subentity qend="322" qstart="31" send="322" sstart="31" strand="1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="2036" qstart="1897" send="2036" sstart="1897" strand="1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity><subentity qend="2541" qstart="2326" send="2541" sstart="2326" strand="1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity>
+  <subentity qend="1588" qstart="1501" send="1588" sstart="1501" strand="1"><p value="exon:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity>
+  <subentity qend="2381" qstart="2136" send="2381" sstart="2136" strand="-1"><p value="gene:HMMGene" name="subEntityType"/><p value="HMMGene" name="gene"/></subentity>
+</entity>
+<entity>
+  <subentity qend="357" qstart="263" send="357" sstart="263" strand="1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity>
+  <subentity qend="1472" qstart="1271" send="1472" sstart="1271" strand="1"><p value="gene:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity>
+  <subentity qend="1397" qstart="1271" send="1397" sstart="1271" strand="1"><p value="exon:Fgenes" name="subEntityType"/><p value="Fgenes" name="gene"/></subentity>
+</entity>
+<entity>
+  <subentity qend="579" qstart="299" send="579" sstart="299" strand="1"><p value="repeat_region:RepeatMasker: AluSx" name="subEntityType"/><p value="RepeatMasker: AluSx" name="note"/></subentity>
+  <subentity qend="882" qstart="641" send="882" sstart="641" strand="-1"><p value="repeat_region:RepeatMasker: MER7A" name="subEntityType"/><p value="RepeatMasker: MER7A" name="note"/></subentity>
+  <subentity qend="1244" qstart="1026" send="1244" sstart="1026" strand="1"><p value="repeat_region:RepeatMasker: AluSq" name="subEntityType"/><p value="RepeatMasker: AluSq" name="note"/></subentity>
+  <subentity qend="1933" qstart="1653" send="1933" sstart="1653" strand="1"><p value="repeat_region:RepeatMasker: AluSx" name="subEntityType"/><p value="RepeatMasker: AluSx" name="note"/></subentity>
+</entity>
+
+</cylinder>
