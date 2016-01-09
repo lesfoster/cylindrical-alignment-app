@@ -112,15 +112,8 @@ public class CylinderContainer extends JFXPanel {
 		cameraModel.getCamera().setNearClip(1.0);
 		cameraModel.getCamera().setFarClip(1000.0);
 		cameraModel.getCamera().setTranslateZ(-cameraDistance);
+		cameraModel.getCameraXform().ry.setAngle(-35.0);
 		
-//		cameraModel.getCameraXform().ry.setAngle(
-//				cameraModel.getCameraXform().ry.getAngle() +
-//				32.0
-//		);
-//		cameraModel.getCameraXform().rx.setAngle(
-//				cameraModel.getCameraXform().rx.getAngle() +
-//				23.0
-//		);
 	}
 
 	/**
