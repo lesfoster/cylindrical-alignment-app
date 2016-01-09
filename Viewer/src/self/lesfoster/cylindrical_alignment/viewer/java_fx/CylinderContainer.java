@@ -13,7 +13,6 @@ import javafx.scene.DepthTest;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.effect.BlendMode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.CullFace;
@@ -21,9 +20,7 @@ import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontSmoothingType;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextBoundsType;
 import javafx.scene.transform.Rotate;
 import self.lesfoster.cylindrical_alignment.constants.Constants;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
@@ -56,8 +53,8 @@ public class CylinderContainer extends JFXPanel {
 	private int endRange = 0;
 	private float factor = 0;
 
-	private Group root = new Group();
-	private TransformableGroup world = new TransformableGroup();
+	private Group world = new Group();
+	private TransformableGroup root = new TransformableGroup();
 	private TransformableGroup positionableObject = new TransformableGroup();
 	private TransformableGroup cylinder;
 	private TransformableGroup ruler;
@@ -84,13 +81,14 @@ public class CylinderContainer extends JFXPanel {
 
 	private void init(final DataSource dataSource) {
 		Platform.runLater(() -> {
-			createScene();
+			//root.ry.setAngle(180.0);
+			world.getChildren().add(root);
 			createCamera();
-			positionableObject = createPositionableObjectHierarchy(dataSource);
 			inSceneLabel = createLabel();
+			positionableObject = createPositionableObjectHierarchy(dataSource);
 			root.getChildren().add(positionableObject);
 			root.getChildren().add(inSceneLabel);
-			scene = new Scene(root, Color.LIGHTGRAY);
+			scene = new Scene(world, Color.LIGHTGRAY);
 			scene.setCamera(cameraModel.getCamera());
 			setScene(scene);
 
@@ -99,16 +97,12 @@ public class CylinderContainer extends JFXPanel {
 		});
 	}
 
-	private void createScene() {
-		root.getChildren().add(world);
-	}
-
 	private void createCamera() {
 		root.getChildren().add(cameraModel.getCameraXform());
 		cameraModel.getCameraXform().getChildren().add(cameraModel.getCameraXform2());
 		cameraModel.getCameraXform2().getChildren().add(cameraModel.getCameraXform3());
 		cameraModel.getCameraXform3().getChildren().add(cameraModel.getCamera());
-        //cameraXform3.setRotateZ(180.0);
+        //cameraModel.getCameraXform().setRotateY(180.0);
 
 		cameraModel.getCamera().setNearClip(1.0);
 		cameraModel.getCamera().setFarClip(1000.0);
@@ -126,7 +120,6 @@ public class CylinderContainer extends JFXPanel {
 		TransformableGroup rtnVal = new TransformableGroup();
 		rtnVal.getChildren().add(createCylinder(dataSource.getEntities()));
 		rtnVal.getChildren().add(createRuler(dataSource.getAnchorLength()));
-		rtnVal.getChildren().add(createAnchor(dataSource.getAnchorLength()));
 		return rtnVal;
 	}
 
@@ -163,13 +156,7 @@ public class CylinderContainer extends JFXPanel {
 							rotatePos += rotOffs;
 						} else {
 							// Have an anchor.  Place it separately.
-							subHitView.setRotationAxis(Rotate.X_AXIS);
-							subHitView.setRotate(4.0f / 7.0f * 360.0);
-							subHitView.setTranslateY(Constants.ANCHOR_OFFSET);
-							subHitView.setTranslateZ(-Constants.ANCHOR_OFFSET);
-
-							// Add a label to the main screen.
-							addAnchorLabel(entity, rtnVal);
+							createAnchor(subHitView, entity, rtnVal);
 						}
 					}
 				}
@@ -213,10 +200,7 @@ public class CylinderContainer extends JFXPanel {
 			name = "Unknown";
 		}
 		System.out.println("Creating Anchor Label: " + name);
-		Text text = new Text(-50, 50.0, name);
-		text.setFill(Color.WHITE);
-		text.setFont(Font.font("Verdana", FontPosture.REGULAR, 10));
-		parentGroup.getChildren().add(text);
+		inSceneLabel.setText(name);
 	}
 
 	/**
@@ -376,8 +360,8 @@ public class CylinderContainer extends JFXPanel {
 		// up to wherever the highest possible point would be.
 		float xl = -Constants.START_OF_CYLINDER;
 		float xr = Constants.LENGTH_OF_CYLINDER - Constants.START_OF_CYLINDER;
-		float yBottom = Constants.YT + 0.05f;
-		float ruleYTop = Constants.YT + 0.2f;
+		float yBottom = Constants.YB - 0.05f;
+		float ruleYTop = Constants.YB - 0.2f;
 		float zBack = -0.02f;
 		float[] coordinateData = new float[]{
 			// Front face
@@ -672,7 +656,14 @@ public class CylinderContainer extends JFXPanel {
 		return meshView;
 	}
 
-	private TransformableGroup createAnchor(long anchorLength) {
+	private TransformableGroup createAnchor(MeshView subHitView, Entity entity, TransformableGroup parentGroup) {
+		subHitView.setRotationAxis(Rotate.X_AXIS);
+		subHitView.setRotate(4.0f / 7.0f * 360.0);
+		subHitView.setTranslateY(Constants.ANCHOR_OFFSET);
+		subHitView.setTranslateZ(-Constants.ANCHOR_OFFSET);
+
+		// Add a label to the main screen.
+		addAnchorLabel(entity, parentGroup);
 		// Stubbed
 		return new TransformableGroup();
 	}
@@ -680,18 +671,10 @@ public class CylinderContainer extends JFXPanel {
 	private Label createLabel() {
 		// Seeing some problem whereby, text with negative X coordinate
 		// is being clipped on the left side.
-//		Text rtnVal = new Text(0/*-Constants.LENGTH_OF_CYLINDER*/, Constants.LENGTH_OF_CYLINDER / 2.0, "The Cylinder");
-//		rtnVal.setTranslateX(-(Constants.LENGTH_OF_CYLINDER));
-//		rtnVal.setTranslateY(+Constants.LENGTH_OF_CYLINDER / 1.5);
-//		rtnVal.setFont(Font.font("Times New Roman", 8.0));
-//		rtnVal.setBoundsType(TextBoundsType.LOGICAL);
-//		rtnVal.setFontSmoothingType(FontSmoothingType.GRAY);
-//		rtnVal.setDepthTest(DepthTest.ENABLE);
-		
 		Label label = new Label("The Cylinder");
-		label.setFont(new Font(10.0));
+		label.setFont(new Font(8.0));
 		//label.setTranslateX(-Constants.LENGTH_OF_CYLINDER/2.0);
-		label.setTranslateY(Constants.LENGTH_OF_CYLINDER / 2.0);
+		label.setTranslateY(Constants.LENGTH_OF_CYLINDER / 2.5);
 		
 		return label;
 	}

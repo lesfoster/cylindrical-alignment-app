@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="self.lesfoster.cylindrical_alignment.viewer">
-    <module_version install_time="1452317920616" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1452364577647" last="true" origin="installer" specification_version="1.0">
         <file crc="952281230" name="config/Modules/self-lesfoster-cylindrical_alignment-viewer.xml"/>
         <file crc="3527982497" name="modules/ext/data_source.jar"/>
         <file crc="2713155631" name="modules/ext/utilities.jar"/>
-        <file crc="4114027976" name="modules/self-lesfoster-cylindrical_alignment-viewer.jar"/>
+        <file crc="283885067" name="modules/self-lesfoster-cylindrical_alignment-viewer.jar"/>
     </module_version>
 </module>
