@@ -676,7 +676,7 @@ public class CylinderContainer extends JFXPanel {
 		// Stubbed.
 		Text rtnVal = new Text("The Cylinder");
 		rtnVal.setTranslateX(-Constants.LENGTH_OF_CYLINDER / 2.0);
-		rtnVal.setTranslateY(-Constants.LENGTH_OF_CYLINDER / 4.0);
+		rtnVal.setTranslateY(+Constants.LENGTH_OF_CYLINDER / 2.0);
 		return rtnVal;
 	}
 
