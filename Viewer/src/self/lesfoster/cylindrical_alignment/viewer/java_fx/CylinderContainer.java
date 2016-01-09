@@ -9,8 +9,11 @@ import java.util.List;
 import java.util.Map;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.scene.DepthTest;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.CullFace;
@@ -18,7 +21,9 @@ import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontSmoothingType;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextBoundsType;
 import javafx.scene.transform.Rotate;
 import self.lesfoster.cylindrical_alignment.constants.Constants;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
@@ -62,7 +67,7 @@ public class CylinderContainer extends JFXPanel {
 	private MouseLocationModel mouseLocationModel = new MouseLocationModel();
 	private SelectionModel selectionModel = new SelectionModel();
 	private CameraModel cameraModel = new CameraModel();
-	private Text inSceneLabel;
+	private Label inSceneLabel;
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
 
@@ -672,12 +677,23 @@ public class CylinderContainer extends JFXPanel {
 		return new TransformableGroup();
 	}
 
-	private Text createLabel() {
-		// Stubbed.
-		Text rtnVal = new Text("The Cylinder");
-		rtnVal.setTranslateX(-Constants.LENGTH_OF_CYLINDER / 2.0);
-		rtnVal.setTranslateY(+Constants.LENGTH_OF_CYLINDER / 2.0);
-		return rtnVal;
+	private Label createLabel() {
+		// Seeing some problem whereby, text with negative X coordinate
+		// is being clipped on the left side.
+//		Text rtnVal = new Text(0/*-Constants.LENGTH_OF_CYLINDER*/, Constants.LENGTH_OF_CYLINDER / 2.0, "The Cylinder");
+//		rtnVal.setTranslateX(-(Constants.LENGTH_OF_CYLINDER));
+//		rtnVal.setTranslateY(+Constants.LENGTH_OF_CYLINDER / 1.5);
+//		rtnVal.setFont(Font.font("Times New Roman", 8.0));
+//		rtnVal.setBoundsType(TextBoundsType.LOGICAL);
+//		rtnVal.setFontSmoothingType(FontSmoothingType.GRAY);
+//		rtnVal.setDepthTest(DepthTest.ENABLE);
+		
+		Label label = new Label("The Cylinder");
+		label.setFont(new Font(10.0));
+		//label.setTranslateX(-Constants.LENGTH_OF_CYLINDER/2.0);
+		label.setTranslateY(Constants.LENGTH_OF_CYLINDER / 2.0);
+		
+		return label;
 	}
 
 	//
