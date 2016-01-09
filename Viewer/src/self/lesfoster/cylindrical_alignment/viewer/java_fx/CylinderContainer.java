@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.scene.DepthTest;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -19,8 +18,6 @@ import javafx.scene.shape.CullFace;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import self.lesfoster.cylindrical_alignment.constants.Constants;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
@@ -97,18 +94,33 @@ public class CylinderContainer extends JFXPanel {
 		});
 	}
 
+	/**
+	 * Camera will establish the default orientation for Java FX: Y progresses
+	 * downward.  Much monkeying here, as convinced me it will be easier for
+	 * me to invert the geometry calculations, than to attempt to get the right
+	 * camera transform to make this scenegraph look like OpenGL or Java3D.
+	 */
 	private void createCamera() {
 		root.getChildren().add(cameraModel.getCameraXform());
-		cameraModel.getCameraXform().getChildren().add(cameraModel.getCameraXform2());
-		cameraModel.getCameraXform2().getChildren().add(cameraModel.getCameraXform3());
-		cameraModel.getCameraXform3().getChildren().add(cameraModel.getCamera());
-        //cameraModel.getCameraXform().setRotateY(180.0);
+		// Doing this gives correct mouse-move behavior, and to push things
+		// to upward when I use higher numbered y coords,
+		// but it also causes text to be reflected top/bottom.
+		//cameraModel.getCameraXform().ry.setAngle(180.0);
+		//cameraModel.getCameraXform().rz.setAngle(180.0);
+		cameraModel.getCameraXform().getChildren().add(cameraModel.getCamera());
 
 		cameraModel.getCamera().setNearClip(1.0);
 		cameraModel.getCamera().setFarClip(1000.0);
 		cameraModel.getCamera().setTranslateZ(-cameraDistance);
-		cameraModel.getCameraXform().ry.setAngle(32.0);
-		cameraModel.getCameraXform().rx.setAngle(23.0);
+		
+//		cameraModel.getCameraXform().ry.setAngle(
+//				cameraModel.getCameraXform().ry.getAngle() +
+//				32.0
+//		);
+//		cameraModel.getCameraXform().rx.setAngle(
+//				cameraModel.getCameraXform().rx.getAngle() +
+//				23.0
+//		);
 	}
 
 	/**
