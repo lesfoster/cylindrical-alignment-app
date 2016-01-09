@@ -38,8 +38,8 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 		mouseLocationModel.setMousePosX( me.getSceneX() );
 		mouseLocationModel.setMousePosY( me.getSceneY() );
 		
-		mouseLocationModel.setMouseDeltaX(mouseLocationModel.getMousePosX() - mouseLocationModel.getMouseOldX());
-		mouseLocationModel.setMouseDeltaY(mouseLocationModel.getMousePosY() - mouseLocationModel.getMouseOldY());
+		mouseLocationModel.setMouseDeltaX(mouseLocationModel.getMouseOldX() - mouseLocationModel.getMousePosX());
+		mouseLocationModel.setMouseDeltaY(mouseLocationModel.getMouseOldY() - mouseLocationModel.getMousePosY());
 
 		double modifier = 1.0;
 		double modifierFactor = 0.1;

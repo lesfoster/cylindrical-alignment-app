@@ -377,46 +377,46 @@ public class CylinderContainer extends JFXPanel {
 		float[] coordinateData = new float[]{
 			// Front face
 			xl, ruleYTop, 0.0f, //0
-			xr, ruleYTop, 0.0f, //1
 			xr, yBottom, 0.0f, //2
+			xr, ruleYTop, 0.0f, //1
 			xl, ruleYTop, 0.0f, //3
-			xr, yBottom, 0.0f, //4
 			xl, yBottom, 0.0f, //5
+			xr, yBottom, 0.0f, //4
 			// Left side
 			xl, ruleYTop, 0.0f, //6
-			xl, ruleYTop, zBack, //7
 			xl, yBottom, 0.0f, //8
+			xl, ruleYTop, zBack, //7
 			xl, yBottom, 0.0f, //9
-			xl, ruleYTop, zBack, //10
 			xl, yBottom, zBack, //11
+			xl, ruleYTop, zBack, //10
 			// Top
 			xl, ruleYTop, 0.0f, //12
-			xl, ruleYTop, zBack, //13
 			xr, ruleYTop, 0.0f, //14
+			xl, ruleYTop, zBack, //13
 			xl, ruleYTop, 0.0f, //15
-			xr, ruleYTop, zBack, //16
 			xr, ruleYTop, 0.0f, //17
+			xr, ruleYTop, zBack, //16
 			// Right side
 			xr, ruleYTop, zBack, //18
-			xr, ruleYTop, 0.0f, //19
 			xr, yBottom, zBack, //20
+			xr, ruleYTop, 0.0f, //19
 			xr, ruleYTop, zBack, //21
-			xr, yBottom, 0.0f, //22
 			xr, yBottom, zBack, //23
+			xr, yBottom, 0.0f, //22
 			// Back face
 			xr, ruleYTop, zBack, //24
-			xl, Constants.RULE_Y_BOTTOM, zBack, //25
 			xr, Constants.RULE_Y_BOTTOM, zBack, //26
+			xl, Constants.RULE_Y_BOTTOM, zBack, //25
 			xl, ruleYTop, zBack, //27
-			xr, ruleYTop, zBack, //28
 			xl, Constants.RULE_Y_BOTTOM, zBack, //29
+			xr, ruleYTop, zBack, //28
 			// Bottom
 			xl, Constants.RULE_Y_BOTTOM, zBack, //30
-			xl, Constants.RULE_Y_BOTTOM, 0.0f, //31
 			xr, Constants.RULE_Y_BOTTOM, 0.0f, //32
+			xl, Constants.RULE_Y_BOTTOM, 0.0f, //31
 			xl, Constants.RULE_Y_BOTTOM, zBack, //33
-			xr, Constants.RULE_Y_BOTTOM, 0.0f, //34
 			xr, Constants.RULE_Y_BOTTOM, zBack, //35
+			xr, Constants.RULE_Y_BOTTOM, 0.0f, //34
 		};
 		return coordinateData;
 	}
