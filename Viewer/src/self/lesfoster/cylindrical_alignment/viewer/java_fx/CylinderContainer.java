@@ -364,10 +364,10 @@ public class CylinderContainer extends JFXPanel {
         // Establish end points, as being wherever the cylinder's lowest possible point would be,
 		// up to wherever the highest possible point would be.
 		float xl = -Constants.START_OF_CYLINDER;
-		float xr = Constants.LENGTH_OF_CYLINDER - Constants.START_OF_CYLINDER;
-		float yBottom = Constants.YB - 0.05f;
-		float ruleYTop = Constants.YB - 0.2f;
-		float zBack = -0.02f;
+		float xr = Constants.LENGTH_OF_CYLINDER - Constants.START_OF_CYLINDER;		
+		float yBottom = -(Constants.YB + 4.0f);
+		float ruleYTop = -(Constants.YB + 8.0f);
+		float zBack = -0.5f;
 		float[] coordinateData = new float[]{
 			// Front face
 			xl, ruleYTop, 0.0f, //0
@@ -399,18 +399,18 @@ public class CylinderContainer extends JFXPanel {
 			xr, yBottom, 0.0f, //22
 			// Back face
 			xr, ruleYTop, zBack, //24
-			xr, Constants.RULE_Y_BOTTOM, zBack, //26
-			xl, Constants.RULE_Y_BOTTOM, zBack, //25
-			xl, ruleYTop, zBack, //27
-			xl, Constants.RULE_Y_BOTTOM, zBack, //29
-			xr, ruleYTop, zBack, //28
+			xr, yBottom, zBack, //26
+			xl, yBottom, zBack, //25
+			xr, ruleYTop, zBack, //27
+			xl, yBottom, zBack, //29
+			xl, ruleYTop, zBack, //28
 			// Bottom
-			xl, Constants.RULE_Y_BOTTOM, zBack, //30
-			xr, Constants.RULE_Y_BOTTOM, 0.0f, //32
-			xl, Constants.RULE_Y_BOTTOM, 0.0f, //31
-			xl, Constants.RULE_Y_BOTTOM, zBack, //33
-			xr, Constants.RULE_Y_BOTTOM, zBack, //35
-			xr, Constants.RULE_Y_BOTTOM, 0.0f, //34
+			xl, yBottom, zBack, //30
+			xr, yBottom, 0.0f, //32
+			xl, yBottom, 0.0f, //31
+			xl, yBottom, zBack, //33
+			xr, yBottom, zBack, //35
+			xr, yBottom, 0.0f, //34
 		};
 		return coordinateData;
 	}
