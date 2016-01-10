@@ -39,11 +39,6 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  * @author Leslie L Foster
  */
 public class CylinderContainer extends JFXPanel {
-//    final PerspectiveCamera camera = new PerspectiveCamera(true); //Omitted true argument for older Java FX
-//    final TransformableGroup cameraXform = new TransformableGroup();
-//    final TransformableGroup cameraXform2 = new TransformableGroup();
-//    final TransformableGroup cameraXform3 = new TransformableGroup();
-
 	final double cameraDistance = Constants.LENGTH_OF_CYLINDER * 3;
 	final TransformableGroup moleculeGroup = new TransformableGroup();
 
@@ -86,7 +81,6 @@ public class CylinderContainer extends JFXPanel {
 			positionableObject = createPositionableObjectHierarchy(dataSource);
 			root.getChildren().add(positionableObject);
 			root.getChildren().add(inSceneLabel);
-//			scene = new Scene(world, Color.LIGHTGRAY);
 			scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);
 			scene.setCamera(cameraModel.getCamera());
 			scene.setFill(Color.LIGHTGRAY);
