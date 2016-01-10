@@ -7,7 +7,7 @@
   <constraints>
     <path orientation="horizontal" number="60" weight="0.7"/>
     <path orientation="vertical" number="40" weight="0.7"/>
-    <path orientation="horizontal" number="80" weight="0.3"/>
+    <path orientation="horizontal" number="80" weight="0.12987012987012989"/>
     <path orientation="vertical" number="80" weight="0.5"/>
   </constraints>
   <bounds x="1440" y="585" width="288" height="334" />

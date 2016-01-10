@@ -5,6 +5,7 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model;
 
+import javafx.scene.DepthTest;
 import javafx.scene.PerspectiveCamera;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGroup;
 
@@ -13,11 +14,14 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGr
  * @author Leslie L Foster
  */
 public class CameraModel {
-	private PerspectiveCamera camera = new PerspectiveCamera(true); //Omitted true argument for older Java FX
+	private PerspectiveCamera camera = new PerspectiveCamera(true);	
 	private TransformableGroup cameraXform = new TransformableGroup();
 	private TransformableGroup cameraXform2 = new TransformableGroup();
 	private TransformableGroup cameraXform3 = new TransformableGroup();
 
+	public CameraModel() {
+	}
+	
 	/**
 	 * @return the camera
 	 */
@@ -47,6 +51,7 @@ public class CameraModel {
 	}
 
 	/**
+	 * Optional.  May be omitted. Please check for null.
 	 * @return the cameraXform2
 	 */
 	public TransformableGroup getCameraXform2() {
@@ -54,6 +59,7 @@ public class CameraModel {
 	}
 
 	/**
+	 * Optional.  May be omitted. Please check for null.
 	 * @param cameraXform2 the cameraXform2 to set
 	 */
 	public void setCameraXform2(TransformableGroup cameraXform2) {
@@ -61,6 +67,7 @@ public class CameraModel {
 	}
 
 	/**
+	 * Optional.  May be omitted. Please check for null.
 	 * @return the cameraXform3
 	 */
 	public TransformableGroup getCameraXform3() {
@@ -68,6 +75,7 @@ public class CameraModel {
 	}
 
 	/**
+	 * Optional.  May be omitted. Please check for null.
 	 * @param cameraXform3 the cameraXform3 to set
 	 */
 	public void setCameraXform3(TransformableGroup cameraXform3) {

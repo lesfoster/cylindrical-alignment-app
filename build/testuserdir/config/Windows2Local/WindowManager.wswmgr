@@ -35,7 +35,7 @@
   <constraints>
   <path orientation="horizontal" number="60" weight="0.7" />
   <path orientation="vertical" number="40" weight="0.7" />
-  <path orientation="horizontal" number="40" weight="0.7" />
+  <path orientation="horizontal" number="40" weight="1.0546350201522616" />
   <path orientation="vertical" number="40" weight="0.5" />
   </constraints>
   <bounds x="633" y="251" width="806" height="460" />

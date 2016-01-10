@@ -75,6 +75,7 @@ javafx.scene.shape.MeshView
 javafx.scene.Group
 javafx.scene.paint.Color
 javafx.scene.text.Font
+javafx.scene.SceneAntialiasing
 self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel
 javafx.scene.Scene
 javafx.scene.paint.PhongMaterial
@@ -84,8 +85,8 @@ self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel
 java.lang.Throwable
 self.lesfoster.cylindrical_alignment.data_source.SubEntity
 self.lesfoster.cylindrical_alignment.data_source.DataSource
-javafx.scene.PerspectiveCamera
 java.lang.System
+javafx.scene.PerspectiveCamera
 javafx.scene.transform.Rotate
 java.io.PrintStream
 javafx.scene.shape.TriangleMesh

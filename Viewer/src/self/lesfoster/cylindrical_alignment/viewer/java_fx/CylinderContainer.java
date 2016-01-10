@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -85,8 +86,10 @@ public class CylinderContainer extends JFXPanel {
 			positionableObject = createPositionableObjectHierarchy(dataSource);
 			root.getChildren().add(positionableObject);
 			root.getChildren().add(inSceneLabel);
-			scene = new Scene(world, Color.LIGHTGRAY);
+//			scene = new Scene(world, Color.LIGHTGRAY);
+			scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);
 			scene.setCamera(cameraModel.getCamera());
+			scene.setFill(Color.LIGHTGRAY);
 			setScene(scene);
 
 			handleMouse(scene);
@@ -652,6 +655,7 @@ public class CylinderContainer extends JFXPanel {
 	private MeshView createRuler(long anchorLength) {
 		float[] coordinateData = generateRuleGeometry();
 		MeshView meshView = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
+		meshView.setOpacity(1.0);
 		final PhongMaterial meshMaterial = new PhongMaterial();
 		meshMaterial.setDiffuseColor(Color.WHITE);
 		meshMaterial.setSpecularColor(Color.WHITE);

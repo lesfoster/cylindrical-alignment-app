@@ -8,6 +8,7 @@
         <group name="Java Security">
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/utilities/build.xml</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/utilities/src/self/lesfoster/cylindrical_alignment/viewer/statistics/RemotePingCounter.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/utilities/src/self/lesfoster/cylindrical_alignment/constants/Constants.java</file>
         </group>
     </open-files>
 </project-private>
