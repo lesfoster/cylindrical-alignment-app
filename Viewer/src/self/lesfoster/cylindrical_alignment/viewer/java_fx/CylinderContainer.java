@@ -484,9 +484,12 @@ public class CylinderContainer extends JFXPanel {
     /** Add shapes for any insertions in subject, relative to query. */
     private void generateSubjectInsertions(SubEntity subEntity, Group hitGroup, int[][] queryGaps) {
     	int startSH = subEntity.getStartOnQuery();
+		float extraYDisp = 1.3f;
+		float back = Constants.ZB + 0.5f;
+		float front = Constants.ZF - 0.5f;
     	for (int i = 0; i < queryGaps.length; i++) {
     		int[] nextGap = queryGaps[i];
-            MeshView insertion = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], 0.025f, Constants.ZB + 0.01f, Constants.ZF - 0.01f);
+            MeshView insertion = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], extraYDisp, back, front);
 			PhongMaterial meshMaterial = createAppearance();
 			insertion.setMaterial(meshMaterial);
 			hitGroup.getChildren().add(insertion);

@@ -94,6 +94,7 @@ javafx.application.Platform
 javafx.collections.ObservableList
 self.lesfoster.cylindrical_alignment.geometry.TexCoordGenerator
 self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MousePressedHandler
+[[I
 ||:self.lesfoster.cylindrical_alignment.affector.ConcreteHelpAffector$4
 java.lang.Object
 self.lesfoster.cylindrical_alignment.affector.ConcreteHelpAffector$4

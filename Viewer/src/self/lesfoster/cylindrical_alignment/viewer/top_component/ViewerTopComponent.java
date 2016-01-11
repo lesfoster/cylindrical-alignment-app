@@ -81,9 +81,10 @@ public final class ViewerTopComponent extends TopComponent {
 	public void componentOpened() {
 		String filePrefix = "C:\\current_projects\\gitfiles\\CylindricalAlignmentApp\\samples";
 		//String filePath = filePrefix + "\\pyrimidinergic_receptor\\gi66932905.BlastOutput.xml";
-		String filePath = filePrefix + "\\h4_muscle_histones\\h4_muscle.cyl.xml";
+		//String filePath = filePrefix + "\\h4_muscle_histones\\h4_muscle.cyl.xml";
 		//String filePath = filePrefix + "\\gene_machine\\gene_machine_2.cyl.xml";
 		//String filePath = filePrefix + "\\gff3\\chromosome_3F.gff";
+		String filePath = filePrefix + "\\zebra_mussel_byssal\\AF265353_1.cyl.xml";
 		if (! new File(filePath).exists()) {
 			throw new IllegalArgumentException(filePath + " does not exist.");
 		}
