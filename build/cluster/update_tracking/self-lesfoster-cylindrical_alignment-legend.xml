@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="self.lesfoster.cylindrical_alignment.legend">
-    <module_version install_time="1452391649990" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1452442322613" last="true" origin="installer" specification_version="1.0">
         <file crc="640569941" name="config/Modules/self-lesfoster-cylindrical_alignment-legend.xml"/>
         <file crc="293196547" name="modules/ext/data_source.jar"/>
         <file crc="2817502316" name="modules/self-lesfoster-cylindrical_alignment-legend.jar"/>

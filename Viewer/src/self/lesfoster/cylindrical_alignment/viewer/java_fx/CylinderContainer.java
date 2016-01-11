@@ -141,6 +141,7 @@ public class CylinderContainer extends JFXPanel {
 
                         // The overall glyph.
 						//System.out.println("Generating seq solid from " + startSH + " to " + endSH);
+						Group subHitGroup = new Group();
 						MeshView subHitView = null;
 						if (nextEntity.getPriority() == 0) {
 							subHitView = generateRectSolid(startSH, endSH + 1);
@@ -151,14 +152,22 @@ public class CylinderContainer extends JFXPanel {
 //                        if ( ! isAnchor( nextEntity ) ) {
 //                            part.setPreAnimator( rotationAnimator );
 //                        }
-						rtnVal.getChildren().add(subHitView);
+						rtnVal.getChildren().add(subHitGroup);
 						if (!isAnchor(nextEntity)) {
+							subHitGroup.getChildren().add(subHitView);
+							if (nextEntity.getGapsOnQuery().length > 0) {
+								generateSubjectInsertions(nextEntity, subHitGroup, nextEntity.getGapsOnQuery());
+							}
+							if (nextEntity.getGapsOnSubject().length > 0) {
+								generateSubjectGaps(nextEntity, subHitGroup, nextEntity.getGapsOnSubject());
+							}
 							// Do a rotation.
-							subHitView.getTransforms().add(new Rotate(rotatePos, 0, 0, 0, Rotate.X_AXIS));
+							subHitGroup.getTransforms().add(new Rotate(rotatePos, 0, 0, 0, Rotate.X_AXIS));
 							rotatePos += rotOffs;
 						} else {
 							// Have an anchor.  Place it separately.
 							createAnchor(subHitView, entity, rtnVal);
+							subHitGroup.getChildren().add(subHitView);
 						}
 					}
 				}
@@ -341,9 +350,7 @@ public class CylinderContainer extends JFXPanel {
 		MeshView meshView = new MeshView(tm);
 		meshView.setCullFace(CullFace.BACK);
 
-		final PhongMaterial meshMaterial = new PhongMaterial();
-		meshMaterial.setDiffuseColor(Color.DODGERBLUE);
-		meshMaterial.setSpecularColor(Color.ALICEBLUE);
+		PhongMaterial meshMaterial = createAppearance();
 		//meshMaterial.setSpecularPower(10000);
 		meshView.setMaterial(meshMaterial);
 
@@ -413,90 +420,109 @@ public class CylinderContainer extends JFXPanel {
 	}
 
 	//-----------------------------------HELPER METHODS
-//    /** Builds a rectangular solid geometry with a single hole. */
-//    private GeometryInfo generatePerforatedSolid(int startSH, int endSH, float extraYDisp) {
-//
-//        // The translations: the start and end need to be normalized for
-//        // a certain meter length.  They also need to be centered in that length.
-//        // Assume query IS coordinate system, and starts at zero.
-//        float xl = translateToJava3dCoords(startSH); //((float)startSH * factor) - START_OF_CYLINDER;
-//        float xr = translateToJava3dCoords(endSH);   //((float)endSH * factor) - START_OF_CYLINDER;
-//        GeometryInfo gi = new GeometryInfo(GeometryInfo.POLYGON_ARRAY);
-//        float[] coordinateData = new float[] {
-//                // ONE 'hole in the top' to simulate a gap in the subject sequence.
-//                xl, Constants.YT + extraYDisp, Constants.ZB + 0.01f,
-//                xr, Constants.YT + extraYDisp, Constants.ZB + 0.01f,
-//                xr, Constants.YT + extraYDisp, Constants.ZF - .01f,
-//                xl, Constants.YT + extraYDisp, Constants.ZF - .01f,         
-//                
-//                // The 'hole in the bottom'
-//                xl, Constants.YB + extraYDisp, Constants.ZB + 0.01f,
-//                xl, Constants.YB + extraYDisp, Constants.ZF - .01f,
-//                xr, Constants.YB + extraYDisp, Constants.ZF - .01f,
-//                xr, Constants.YB + extraYDisp, Constants.ZB + 0.01f,
-//
-//                // The 'left'
-//                xl, Constants.YT + extraYDisp - .01f, Constants.ZB + .01f,
-//                xl, Constants.YT + extraYDisp - .01f, Constants.ZF - .01f,
-//                xr, Constants.YB + extraYDisp - .01f, Constants.ZF - .01f,
-//                xr, Constants.YB + extraYDisp - .01f, Constants.ZB + .01f,
-//                // The 'right'
-//                xr, Constants.YT + extraYDisp - .01f, Constants.ZB + .01f,
-//                xr, Constants.YB + extraYDisp - .01f, Constants.ZB + .01f,
-//                xr, Constants.YB + extraYDisp - .01f, Constants.ZF - .01f,
-//                xr, Constants.YT + extraYDisp - .01f, Constants.ZF - .01f,
-//                // The 'front'
-//                xl, Constants.YT + extraYDisp - .01f, Constants.ZF - .01f,
-//                xl, Constants.YT + extraYDisp - .01f, Constants.ZF - .01f,
-//                xl, Constants.YB + extraYDisp - .01f, Constants.ZF - .01f,
-//                xl, Constants.YB + extraYDisp - .01f, Constants.ZF - .01f,
-//                // The 'back'   
-//                xr, Constants.YT + extraYDisp - .01f, Constants.ZB + .01f,
-//                xl, Constants.YT + extraYDisp - .01f, Constants.ZB + .01f,
-//                xl, Constants.YB + extraYDisp - .01f, Constants.ZB + .01f,
-//                xr, Constants.YB + extraYDisp - .01f, Constants.ZB + .01f,
-//        };
-//
-//        gi.setCoordinates(coordinateData);
-//        return gi;
-//    }
-//
-//    /** Add shapes for any insertions in subject, relative to query. */
-//    private void generateSubjectInsertions(SubEntity subEntity, BranchGroup hitGroup, int[][] queryGaps) {
-//    	int startSH = subEntity.getStartOnQuery();
-//    	for (int i = 0; i < queryGaps.length; i++) {
-//    		int[] nextGap = queryGaps[i];
-//            GeometryInfo gi = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], 0.025f, Constants.ZB + 0.01f, Constants.ZF - 0.01f);
-//            finalizeGeometry(gi);
-//            Shape3D part = new Shape3D();
-//            part.setCapability(Node.ENABLE_PICK_REPORTING);
-//            part.setPickable(true);
-//            part.setBoundsAutoCompute(true);
-//            part.setAppearance(appearanceSource.createSubEntityInsertionAppearance(subEntity));
-//            part.setGeometry(gi.getGeometryArray());
-//            part.getGeometry().setCapability(Geometry.ALLOW_INTERSECT);
-//            hitGroup.addChild(part);
-//    		
-//    	}
-//    }
-//
-//    /** Add shapes for any gaps in subject, relative to query. */
-//    private void generateSubjectGaps(SubEntity subEntity, BranchGroup hitGroup, int[][] subjectGaps) {
-//    	int startSH = subEntity.getStartOnQuery();
-//		for (int i = 0; i < subjectGaps.length; i++) {
-//    		int[] nextGap = subjectGaps[i];
-//            //  System.out.println("Generating perforation at " + (startSH + pos) + " through " + (startSH + endPos));
-//            GeometryInfo gi = generatePerforatedSolid(startSH + nextGap[0],
-//                    startSH + nextGap[1], 0.001f);
-//            finalizeGeometry(gi);
-//            Shape3D part = new Shape3D();
-//            part.setAppearance(appearanceSource.createPerforatedAppearance(subEntity));
-//            part.setGeometry(gi.getGeometryArray());
-//            part.getGeometry().setCapability(Geometry.ALLOW_INTERSECT);
-//            hitGroup.addChild(part);
-//    		
-//    	}
-//    }
+    /** Builds a rectangular solid geometry with a single hole. */
+    private float[] generatePerforatedSolid(int startSH, int endSH, float extraYDisp) {
+
+        // The translations: the start and end need to be normalized for
+        // a certain meter length.  They also need to be centered in that length.
+        // Assume query IS coordinate system, and starts at zero.
+        float xl = translateToJava3dCoords(startSH); //((float)startSH * factor) - START_OF_CYLINDER;
+        float xr = translateToJava3dCoords(endSH);   //((float)endSH * factor) - START_OF_CYLINDER;
+		final float yTop = (Constants.YT + extraYDisp);
+		final float zBack = (Constants.ZB + 1f);
+		final float zFront = (Constants.ZF - 1f);
+		final float yBottom = (Constants.YB + extraYDisp);
+        //GeometryInfo gi = new GeometryInfo(GeometryInfo.POLYGON_ARRAY);
+        float[] coordinateData = new float[] {
+			// ONE 'hole in the top' to simulate a gap in the subject sequence.
+			xl, yTop, zBack,
+			xr, yTop, zFront,
+			xl, yTop, zFront,
+			xl, yTop, zBack,
+			xr, yTop, zBack,
+			xr, yTop, zFront,
+			// The 'hole in the bottom'
+			xl, yBottom, zFront,
+			xr, yBottom, zFront,
+			xl, yBottom, zBack,
+			xr, yBottom, zFront,
+			xr, yBottom, zBack,
+			xl, yBottom, zBack,
+			// The 'left'
+			xl, yTop, zBack,
+			xl, yBottom, zFront,
+			xl, yTop, zFront,
+			xl, yTop, zBack,
+			xl, yBottom, zBack,
+			xl, yBottom, zFront,
+			// The 'right'
+			xr, yTop, zBack,
+			xr, yTop, zFront,
+			xr, yBottom, zFront,
+			xr, yTop, zBack,
+			xr, yBottom, zFront,
+			xr, yBottom, zBack,
+			// The 'front'
+			xl, yTop, zFront,
+			xr, yTop, zFront,
+			xr, yBottom, zFront,			
+			xr, yBottom, zFront,
+			xl, yBottom, zFront,
+			xl, yTop, zFront,
+			// The 'back'   
+			xl, yTop, zBack,
+			xr, yTop, zBack,
+			xr, yBottom, zBack,
+			xr, yBottom, zBack,
+			xl, yBottom, zBack,
+			xl, yTop, zBack
+		};
+
+        return coordinateData;
+    }
+	
+    /** Add shapes for any insertions in subject, relative to query. */
+    private void generateSubjectInsertions(SubEntity subEntity, Group hitGroup, int[][] queryGaps) {
+    	int startSH = subEntity.getStartOnQuery();
+    	for (int i = 0; i < queryGaps.length; i++) {
+    		int[] nextGap = queryGaps[i];
+            MeshView insertion = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], 0.025f, Constants.ZB + 0.01f, Constants.ZF - 0.01f);
+			PhongMaterial meshMaterial = createAppearance();
+			insertion.setMaterial(meshMaterial);
+			hitGroup.getChildren().add(insertion);
+    		
+    	}
+    }
+
+	public PhongMaterial createAppearance() {
+		final PhongMaterial meshMaterial = new PhongMaterial();
+		meshMaterial.setDiffuseColor(Color.DODGERBLUE);
+		meshMaterial.setSpecularColor(Color.ALICEBLUE);
+		return meshMaterial;
+	}
+
+	public PhongMaterial createGapAppearance() {
+		final PhongMaterial meshMaterial = new PhongMaterial();
+		meshMaterial.setDiffuseColor(Color.RED);
+		meshMaterial.setSpecularColor(Color.WHITE);
+		return meshMaterial;
+	}
+
+    /** Add shapes for any gaps in subject, relative to query. */
+    private void generateSubjectGaps(SubEntity subEntity, Group hitGroup, int[][] subjectGaps) {
+    	int startSH = subEntity.getStartOnQuery();
+		for (int i = 0; i < subjectGaps.length; i++) {
+    		int[] nextGap = subjectGaps[i];
+            //  System.out.println("Generating perforation at " + (startSH + pos) + " through " + (startSH + endPos));
+            float[] coordinateData = generatePerforatedSolid(startSH + nextGap[0],
+                    startSH + nextGap[1], 0.001f);
+		    MeshView gap = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
+			PhongMaterial meshMaterial = createGapAppearance();
+			gap.setMaterial(meshMaterial);
+			hitGroup.getChildren().add(gap);
+    		
+    	}
+    }
 //
 //    /**
 //     * Adds "dentils" to the subhit. Each represents a residue--either an amino acid or a base.
@@ -563,6 +589,8 @@ public class CylinderContainer extends JFXPanel {
 //        	}
 //    	}
 //    }
+	
+// MAY NOT NEED THIS. ELIMINATE AFTER ALL REQUIREMENTS FILLED.	
 //    /** Builds a rectangular solid geometry based on always-same Y,Z extents. */
 //    private GeometryInfo generateRectSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront) {
 //
