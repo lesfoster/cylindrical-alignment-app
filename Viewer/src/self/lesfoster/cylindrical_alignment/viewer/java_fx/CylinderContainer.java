@@ -25,6 +25,8 @@ import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.Entity;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
 import self.lesfoster.cylindrical_alignment.geometry.TexCoordGenerator;
+import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource;
+import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSourceFactory;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.KeyEventHandler;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseDraggedHandler;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MousePressedHandler;
@@ -56,7 +58,8 @@ public class CylinderContainer extends JFXPanel {
 
 	private MouseLocationModel mouseLocationModel = new MouseLocationModel();
 	private SelectionModel selectionModel = new SelectionModel();
-	private CameraModel cameraModel = new CameraModel();
+	private CameraModel cameraModel = new CameraModel();	
+	private AppearanceSource appearanceSource;
 	private Label inSceneLabel;
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
@@ -75,6 +78,7 @@ public class CylinderContainer extends JFXPanel {
 	private void init(final DataSource dataSource) {
 		Platform.runLater(() -> {
 			//root.ry.setAngle(180.0);
+			appearanceSource = AppearanceSourceFactory.getSourceForFile(null);
 			world.getChildren().add(root);
 			createCamera();
 			inSceneLabel = createLabel();
@@ -144,9 +148,9 @@ public class CylinderContainer extends JFXPanel {
 						Group subHitGroup = new Group();
 						MeshView subHitView = null;
 						if (nextEntity.getPriority() == 0) {
-							subHitView = generateRectSolid(startSH, endSH + 1);
+							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity);
 						} else {
-							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity.getPriority() * 0.001f);
+							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity.getPriority() * 0.001f, nextEntity);
 						}
 //                        part.setWorldPositioner( worldPositioner );
 //                        if ( ! isAnchor( nextEntity ) ) {
@@ -217,15 +221,15 @@ public class CylinderContainer extends JFXPanel {
 	/**
 	 * An override to support default offset.
 	 */
-	private MeshView generateRectSolid(int startSH, int endSH) {
-		return generateRectSolid(startSH, endSH, 0.0f);
+	private MeshView generateRectSolid(int startSH, int endSH, SubEntity subEntity) {
+		return generateRectSolid(startSH, endSH, 0.0f, subEntity);
 	}
 
 	/**
 	 * Builds a rectangular solid geometry based on always-same Y,Z extents.
 	 */
-	private MeshView generateRectSolid(int startSH, int endSH, float extraYDisp) {
-		return generateRectSolid(startSH, endSH, extraYDisp, Constants.ZB, Constants.ZF);
+	private MeshView generateRectSolid(int startSH, int endSH, float extraYDisp, SubEntity subEntity) {
+		return generateRectSolid(startSH, endSH, extraYDisp, Constants.ZB, Constants.ZF, subEntity);
 	}
 
 	/**
@@ -267,7 +271,7 @@ public class CylinderContainer extends JFXPanel {
 	/**
 	 * Builds a rectangular solid geometry based on always-same Y,Z extents.
 	 */
-	private MeshView generateRectSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront) {
+	private MeshView generateRectSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront, SubEntity subEntity) {
 
         // The translations: the start and end need to be normalized for
 		// a certain meter length.  They also need to be centered in that length.
@@ -319,7 +323,7 @@ public class CylinderContainer extends JFXPanel {
 			xl, Constants.YT + extraYDisp, zBack, //35
 		};
 
-		return createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
+		return createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), subEntity);
 	}
 
 	private float translateToJava3dCoords(int seqCoord) {
@@ -327,7 +331,7 @@ public class CylinderContainer extends JFXPanel {
 
 	}
 
-	private MeshView createMesh(float[] vertices, float[] texCoords) {
+	private MeshView createMesh(float[] vertices, float[] texCoords, SubEntity subEntity) {
 		TriangleMesh tm = new TriangleMesh();
 		tm.getPoints().addAll(vertices);
 		tm.getTexCoords().addAll(texCoords);
@@ -350,9 +354,11 @@ public class CylinderContainer extends JFXPanel {
 		MeshView meshView = new MeshView(tm);
 		meshView.setCullFace(CullFace.BACK);
 
-		PhongMaterial meshMaterial = createAppearance();
-		//meshMaterial.setSpecularPower(10000);
-		meshView.setMaterial(meshMaterial);
+		if (subEntity != null) {
+			PhongMaterial meshMaterial = createAppearance(subEntity);
+			//meshMaterial.setSpecularPower(10000);
+			meshView.setMaterial(meshMaterial);
+		}
 
 		meshView.setId("Homemade Shape");
 		return meshView;
@@ -489,26 +495,16 @@ public class CylinderContainer extends JFXPanel {
 		float front = Constants.ZF - 0.5f;
     	for (int i = 0; i < queryGaps.length; i++) {
     		int[] nextGap = queryGaps[i];
-            MeshView insertion = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], extraYDisp, back, front);
-			PhongMaterial meshMaterial = createAppearance();
+            MeshView insertion = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], extraYDisp, back, front, subEntity);
+			PhongMaterial meshMaterial = appearanceSource.createSubEntityInsertionAppearance(subEntity);
 			insertion.setMaterial(meshMaterial);
 			hitGroup.getChildren().add(insertion);
     		
     	}
     }
 
-	public PhongMaterial createAppearance() {
-		final PhongMaterial meshMaterial = new PhongMaterial();
-		meshMaterial.setDiffuseColor(Color.DODGERBLUE);
-		meshMaterial.setSpecularColor(Color.ALICEBLUE);
-		return meshMaterial;
-	}
-
-	public PhongMaterial createGapAppearance() {
-		final PhongMaterial meshMaterial = new PhongMaterial();
-		meshMaterial.setDiffuseColor(Color.RED);
-		meshMaterial.setSpecularColor(Color.WHITE);
-		return meshMaterial;
+	public PhongMaterial createAppearance(SubEntity subEntity) {
+		return appearanceSource.createSubEntityAppearance(subEntity);
 	}
 
     /** Add shapes for any gaps in subject, relative to query. */
@@ -519,8 +515,8 @@ public class CylinderContainer extends JFXPanel {
             //  System.out.println("Generating perforation at " + (startSH + pos) + " through " + (startSH + endPos));
             float[] coordinateData = generatePerforatedSolid(startSH + nextGap[0],
                     startSH + nextGap[1], 0.001f);
-		    MeshView gap = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
-			PhongMaterial meshMaterial = createGapAppearance();
+		    MeshView gap = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), null);
+			PhongMaterial meshMaterial = appearanceSource.createPerforatedAppearance(subEntity);
 			gap.setMaterial(meshMaterial);
 			hitGroup.getChildren().add(gap);
     		
@@ -679,7 +675,7 @@ public class CylinderContainer extends JFXPanel {
 
 	private MeshView createRuler(long anchorLength) {
 		float[] coordinateData = generateRuleGeometry();
-		MeshView meshView = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
+		MeshView meshView = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), null);
 		meshView.setOpacity(1.0);
 		final PhongMaterial meshMaterial = new PhongMaterial();
 		meshMaterial.setDiffuseColor(Color.WHITE);

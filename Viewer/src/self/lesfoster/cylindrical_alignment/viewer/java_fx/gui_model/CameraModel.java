@@ -5,7 +5,6 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model;
 
-import javafx.scene.DepthTest;
 import javafx.scene.PerspectiveCamera;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGroup;
 
