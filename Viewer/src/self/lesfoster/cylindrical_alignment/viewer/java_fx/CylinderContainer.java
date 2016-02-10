@@ -46,7 +46,7 @@ public class CylinderContainer extends JFXPanel {
 
 	private int startRange = 0;
 	private int endRange = 0;
-	private boolean prominentDentils = true;
+	private boolean prominentDentils;
 	private boolean diffResiduesOnly;
 	private boolean usingResidueDentils = true;
 	private float factor = 0;
@@ -371,6 +371,27 @@ public class CylinderContainer extends JFXPanel {
 		return meshView;
 	}
 
+	private MeshView createFacadeMesh(float[] vertices, float[] texCoords) {
+		TriangleMesh tm = new TriangleMesh();
+		tm.getPoints().addAll(vertices);
+		tm.getTexCoords().addAll(texCoords);
+		// Only one tex coord.
+		int[] faces = new int[]{
+			0, 0, 1, 0, 2, 0,
+			3, 0, 4, 0, 5, 0,
+			6, 0, 7, 0, 8, 0,
+			9, 0, 10, 0, 11, 0,
+			12, 0, 13, 0, 14, 0,
+			15, 0, 16, 0, 17, 0,
+		};
+		tm.getFaces().addAll(faces);
+		MeshView meshView = new MeshView(tm);
+		meshView.setCullFace(CullFace.BACK);
+
+		meshView.setId("Homemade Shape");
+		return meshView;
+	}
+
 	/**
 	 * Creates the ruler or scale to be shown, imobile (not spinning), but which
 	 * always remains hovering above the spinning cylinder.
@@ -551,14 +572,6 @@ public class CylinderContainer extends JFXPanel {
 	        boolean isBase = subEntity.getProperties().get(DataSource.SUB_ENTITY_TYPE_PROPERTY_NAME).equals(DataSource.ENTITY_TYPE_BLAST_N_SUB_HIT);
  
         	if (dentilResidues != null) {
-        		//int[] stripCount = null;
-        		//if (prominentDentils) {
-        		//	stripCount = new int[] {4,4,4,4,4,4};
-        		//}
-        		//else {
-        		//	stripCount = new int[] {4,4,4,};
-        		//}
-
         		// Make the glyphs--enough for all residues in the set.
         		for (int i = 0; i < dentilResidues.length(); i++) {
         			// When to do it and when not to do it.
@@ -573,7 +586,7 @@ public class CylinderContainer extends JFXPanel {
         			if (prominentDentils)
         			    gi = generateRectSolid(startPos + i, startPos + i + 1, 0.01f, Constants.ZF - 0.02f, Constants.ZF + 0.02f, null);
         			else
-        				gi = generateFacadeBox(startPos + i, startPos + i + 1, 0.001f, Constants.ZB-0.001f, Constants.ZB);
+        				gi = generateFacadeBox(startPos + i, startPos + i + 1, 0.01f, Constants.ZF, Constants.ZF + 0.01f);
  
         			//Shape3D part = new Shape3D();
         			PhongMaterial materialAppearance = appearanceSource.createSubEntityAppearance(dentilResidues.charAt(i), isBase);
@@ -581,17 +594,6 @@ public class CylinderContainer extends JFXPanel {
         				materialAppearance = appearanceSource.createSubEntityAppearance(residue, isBase);
 					gi.setMaterial(materialAppearance);
 
-        	        //gi.setStripCounts(stripCount);
-
-        	        //ng.generateNormals(gi);
-
-        	        //st.stripify(gi);
-        	        //gi.recomputeIndices();
-
-        			//part.setGeometry(gi.getGeometryArray());
-        			//part.getGeometry().setCapability(Geometry.ALLOW_INTERSECT);
-        			//part.setCapability(Node.ALLOW_AUTO_COMPUTE_BOUNDS_READ);
-        			//part.setBoundsAutoCompute(true);
         			hitGroup.getChildren().add(gi);
         		}
         	}
@@ -660,26 +662,26 @@ public class CylinderContainer extends JFXPanel {
 			// The 'lid'
 			xl, Constants.YT + extraYDisp, zBack, //0
 			xl, Constants.YT + extraYDisp, zFront, //1
-			xr, Constants.YT + extraYDisp, zBack, //3
-			xl, Constants.YT + extraYDisp, zBack, //0
 			xr, Constants.YT + extraYDisp, zFront, //2
-			xr, Constants.YT + extraYDisp, zBack, //3
+			xl, Constants.YT + extraYDisp, zBack, //3
+			xr, Constants.YT + extraYDisp, zFront, //4
+			xr, Constants.YT + extraYDisp, zBack, //5
 			// The 'front'
-			xl, Constants.YT + extraYDisp, zFront, //4
-			xl, yb, zFront, //5
-			xr, Constants.YT + extraYDisp, zFront, //7
-			xr, Constants.YT + extraYDisp, zFront, //7
-			xl, yb, zFront, //5
-			xr, yb, zFront, //6
+			xl, Constants.YT + extraYDisp, zFront, //18
+			xl, Constants.YB + extraYDisp, zFront, //19
+			xr, Constants.YT + extraYDisp, zFront, //20
+			xl, Constants.YB + extraYDisp, zFront, //21
+			xr, Constants.YB + extraYDisp, zFront, //22
+			xr, Constants.YT + extraYDisp, zFront, //23
 			// The 'back'
-			xr, Constants.YT + extraYDisp, zBack, //8
-			xr, yb, zBack, //9
-			xl, Constants.YT + extraYDisp, zBack, //11
-			xr, Constants.YT + extraYDisp, zBack, //8
-			xl, yb, zBack, //10
-			xl, Constants.YT + extraYDisp, zBack, //11
+			xr, Constants.YT + extraYDisp, zBack, //30
+			xr, Constants.YB + extraYDisp, zBack, //31
+			xl, Constants.YB + extraYDisp, zBack, //32
+			xr, Constants.YT + extraYDisp, zBack, //33
+			xl, Constants.YB + extraYDisp, zBack, //34
+			xl, Constants.YT + extraYDisp, zBack, //35
 		};
-		MeshView meshView = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), null);
+		MeshView meshView = createFacadeMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
 		return meshView;
 	}
 
