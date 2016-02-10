@@ -46,6 +46,9 @@ public class CylinderContainer extends JFXPanel {
 
 	private int startRange = 0;
 	private int endRange = 0;
+	private boolean prominentDentils = true;
+	private boolean diffResiduesOnly;
+	private boolean usingResidueDentils = true;
 	private float factor = 0;
 
 	private Group world = new Group();
@@ -167,6 +170,9 @@ public class CylinderContainer extends JFXPanel {
 							}
 							// Do a rotation.
 							subHitGroup.getTransforms().add(new Rotate(rotatePos, 0, 0, 0, Rotate.X_AXIS));
+							if (usingResidueDentils) {
+								generateResidueDentils(nextEntity, subHitGroup);
+							}
 							rotatePos += rotOffs;
 						} else {
 							// Have an anchor.  Place it separately.
@@ -522,72 +528,74 @@ public class CylinderContainer extends JFXPanel {
     		
     	}
     }
-//
-//    /**
-//     * Adds "dentils" to the subhit. Each represents a residue--either an amino acid or a base.
-//     * 
-//     * @param subEntity data model to drive the glyph-building
-//     * @param hitGroup where to attach the new hit glyph.
-//     */
-//    private void generateResidueDentils(SubEntity subEntity, BranchGroup hitGroup) {
-//        GeometryInfo gi = new GeometryInfo(GeometryInfo.POLYGON_ARRAY);
-//
-//    	Map props = subEntity.getProperties();
-//    	if (props != null) {
-//    		// NOTE: putting residues from subject, at position relative to query.
-//        	String subjectResidues = (String)props.get(DataSource.SUBJECT_ALIGNMENT);
-//        	String queryResidues = (String)props.get(DataSource.QUERY_ALIGNMENT);
-//        	int startPos = subEntity.getStartOnQuery();
-//	        NormalGenerator ng = new NormalGenerator();
-//	        Stripifier st = new Stripifier();
-//	        String dentilResidues = subjectResidues;
-//	        boolean isAnchor = isAnchor(subEntity);
-//	        boolean isBase = subEntity.getProperties().get(DataSource.SUB_ENTITY_TYPE_PROPERTY_NAME).equals(DataSource.ENTITY_TYPE_BLAST_N_SUB_HIT);
-// 
-//        	if (dentilResidues != null) {
-//        		int[] stripCount = null;
-//        		if (prominentDentils) {
-//        			stripCount = new int[] {4,4,4,4,4,4};
-//        		}
-//        		else {
-//        			stripCount = new int[] {4,4,4,};
-//        		}
-//
-//        		// Make the glyphs--enough for all residues in the set.
-//        		for (int i = 0; i < dentilResidues.length(); i++) {
-//        			// When to do it and when not to do it.
-//        			if ((!isAnchor) && diffResiduesOnly && (queryResidues != null) && (queryResidues.charAt(i) == subjectResidues.charAt(i)))
-//            			continue;  // Diffs only
-//        			if (dentilResidues.charAt(i) == '-')
-//        				continue;
-//
-//        			if (prominentDentils)
-//        			    gi = generateRectSolid(startPos + i, startPos + i + 1, 0.001f, Constants.ZB, Constants.ZB+0.01f);
-//        			else
-//        				gi = generateFacadeBox(startPos + i, startPos + i + 1, 0.001f, Constants.ZB-0.001f, Constants.ZB, gi);
-// 
-//        			Shape3D part = new Shape3D();
-//        			Appearance materialAppearance = appearanceSource.createSubEntityAppearance(dentilResidues.charAt(i), isBase);
-//        			if (materialAppearance == null)
-//        				materialAppearance = createMaterialAppearance();
-//        			part.setAppearance(materialAppearance);
-//
-//        	        gi.setStripCounts(stripCount);
-//
-//        	        ng.generateNormals(gi);
-//
-//        	        st.stripify(gi);
-//        	        gi.recomputeIndices();
-//
-//        			part.setGeometry(gi.getGeometryArray());
-//        			part.getGeometry().setCapability(Geometry.ALLOW_INTERSECT);
-//        			part.setCapability(Node.ALLOW_AUTO_COMPUTE_BOUNDS_READ);
-//        			part.setBoundsAutoCompute(true);
-//        			hitGroup.addChild(part);
-//        		}
-//        	}
-//    	}
-//    }
+
+    /**
+     * Adds "dentils" to the subhit. Each represents a residue--either an amino acid or a base.
+     * 
+     * @param subEntity data model to drive the glyph-building
+     * @param hitGroup where to attach the new hit glyph.
+     */
+    private void generateResidueDentils(SubEntity subEntity, Group hitGroup) {
+		MeshView gi; // Geometry Info
+    	Map props = subEntity.getProperties();
+    	if (props != null) {
+    		// NOTE: putting residues from subject, at position relative to query.
+        	String subjectResidues = (String)props.get(DataSource.SUBJECT_ALIGNMENT);
+        	String queryResidues = (String)props.get(DataSource.QUERY_ALIGNMENT);
+        	int startPos = subEntity.getStartOnQuery();
+	        //NormalGenerator ng = new NormalGenerator();
+	        //Stripifier st = new Stripifier();
+	        String dentilResidues = subjectResidues;
+	        boolean isAnchor = isAnchor(subEntity);
+	        boolean isBase = subEntity.getProperties().get(DataSource.SUB_ENTITY_TYPE_PROPERTY_NAME).equals(DataSource.ENTITY_TYPE_BLAST_N_SUB_HIT);
+ 
+        	if (dentilResidues != null) {
+        		//int[] stripCount = null;
+        		//if (prominentDentils) {
+        		//	stripCount = new int[] {4,4,4,4,4,4};
+        		//}
+        		//else {
+        		//	stripCount = new int[] {4,4,4,};
+        		//}
+
+        		// Make the glyphs--enough for all residues in the set.
+        		for (int i = 0; i < dentilResidues.length(); i++) {
+        			// When to do it and when not to do it.
+        			if ((!isAnchor) && diffResiduesOnly && (queryResidues != null) && (queryResidues.charAt(i) == subjectResidues.charAt(i)))
+            			continue;  // Diffs only
+        			if (dentilResidues.charAt(i) == '-')
+        				continue;
+					
+					char residue = dentilResidues.charAt(i);
+
+        			if (prominentDentils)
+						//generateRectSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront, SubEntity subEntity) {
+        			    gi = generateRectSolid(startPos + i, startPos + i + 1, 0.16f, Constants.ZF-0.3f, Constants.ZF, null);
+        			else
+        				gi = generateFacadeBox(startPos + i, startPos + i + 1, 0.001f, Constants.ZB-0.001f, Constants.ZB);
+ 
+        			//Shape3D part = new Shape3D();
+        			PhongMaterial materialAppearance = appearanceSource.createSubEntityAppearance(dentilResidues.charAt(i), isBase);
+        			if (materialAppearance == null)
+        				materialAppearance = appearanceSource.createSubEntityAppearance(residue, isBase);
+					gi.setMaterial(materialAppearance);
+
+        	        //gi.setStripCounts(stripCount);
+
+        	        //ng.generateNormals(gi);
+
+        	        //st.stripify(gi);
+        	        //gi.recomputeIndices();
+
+        			//part.setGeometry(gi.getGeometryArray());
+        			//part.getGeometry().setCapability(Geometry.ALLOW_INTERSECT);
+        			//part.setCapability(Node.ALLOW_AUTO_COMPUTE_BOUNDS_READ);
+        			//part.setBoundsAutoCompute(true);
+        			hitGroup.getChildren().add(gi);
+        		}
+        	}
+    	}
+    }
 	
 // MAY NOT NEED THIS. ELIMINATE AFTER ALL REQUIREMENTS FILLED.	
 //    /** Builds a rectangular solid geometry based on always-same Y,Z extents. */
@@ -639,7 +647,7 @@ public class CylinderContainer extends JFXPanel {
 	/**
 	 * Builds a rectangular solid geometry based on always-same Y,Z extents.
 	 */
-	private float[] generateFacadeBox(int startSH, int endSH, float extraYDisp, float zBack, float zFront) {
+	private MeshView generateFacadeBox(int startSH, int endSH, float extraYDisp, float zBack, float zFront) {
 
         // The translations: the start and end need to be normalized for
 		// a certain meter length.  They also need to be centered in that length.
@@ -670,7 +678,8 @@ public class CylinderContainer extends JFXPanel {
 			xl, yb, zBack, //10
 			xl, Constants.YT + extraYDisp, zBack, //11
 		};
-		return coordinateData;
+		MeshView meshView = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), null);
+		return meshView;
 	}
 
 	private MeshView createRuler(long anchorLength) {
