@@ -163,7 +163,7 @@ public class ResidueAppearanceHelper {
     private static PhongMaterial createMaterial(Color color) {
 
         PhongMaterial materialAppear = new PhongMaterial();
- 		materialAppear.setDiffuseColor(Color.DODGERBLUE);
+ 		materialAppear.setDiffuseColor(color);
 		materialAppear.setSpecularColor(Color.WHITE);
 		materialAppear.setSpecularPower( 1.75f );
 

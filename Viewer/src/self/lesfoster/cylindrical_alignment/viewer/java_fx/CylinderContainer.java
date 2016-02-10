@@ -141,6 +141,7 @@ public class CylinderContainer extends JFXPanel {
 				for (Object object : entity.getSubEntities()) {
 					if (object instanceof SubEntity) {
 						SubEntity nextEntity = (SubEntity) object;
+						final boolean anchorFlag = isAnchor(nextEntity);
 
 						// Use inner hit (HSP?) for chunk solids.
 						int startSH = nextEntity.getStartOnQuery();
@@ -150,17 +151,20 @@ public class CylinderContainer extends JFXPanel {
 						//System.out.println("Generating seq solid from " + startSH + " to " + endSH);
 						Group subHitGroup = new Group();
 						MeshView subHitView = null;
+						if (!anchorFlag  &&  usingResidueDentils) {
+							generateResidueDentils(nextEntity, subHitGroup);
+						}
 						if (nextEntity.getPriority() == 0) {
 							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity);
 						} else {
-							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity.getPriority() * 0.001f, nextEntity);
+							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity.getPriority() * 0.01f, nextEntity);
 						}
 //                        part.setWorldPositioner( worldPositioner );
 //                        if ( ! isAnchor( nextEntity ) ) {
 //                            part.setPreAnimator( rotationAnimator );
 //                        }
 						rtnVal.getChildren().add(subHitGroup);
-						if (!isAnchor(nextEntity)) {
+						if (!anchorFlag) {
 							subHitGroup.getChildren().add(subHitView);
 							if (nextEntity.getGapsOnQuery().length > 0) {
 								generateSubjectInsertions(nextEntity, subHitGroup, nextEntity.getGapsOnQuery());
@@ -170,9 +174,6 @@ public class CylinderContainer extends JFXPanel {
 							}
 							// Do a rotation.
 							subHitGroup.getTransforms().add(new Rotate(rotatePos, 0, 0, 0, Rotate.X_AXIS));
-							if (usingResidueDentils) {
-								generateResidueDentils(nextEntity, subHitGroup);
-							}
 							rotatePos += rotOffs;
 						} else {
 							// Have an anchor.  Place it separately.
@@ -568,9 +569,9 @@ public class CylinderContainer extends JFXPanel {
 					
 					char residue = dentilResidues.charAt(i);
 
+					//generateRectSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront, SubEntity subEntity)
         			if (prominentDentils)
-						//generateRectSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront, SubEntity subEntity) {
-        			    gi = generateRectSolid(startPos + i, startPos + i + 1, 0.16f, Constants.ZF-0.3f, Constants.ZF, null);
+        			    gi = generateRectSolid(startPos + i, startPos + i + 1, 0.01f, Constants.ZF - 0.02f, Constants.ZF + 0.02f, null);
         			else
         				gi = generateFacadeBox(startPos + i, startPos + i + 1, 0.001f, Constants.ZB-0.001f, Constants.ZB);
  
