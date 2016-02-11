@@ -5,7 +5,7 @@
             <url>src/self/lesfoster/cylindrical_alignment/viewer/java_fx/CylinderContainer.java</url>
             <bookmark id="2">
                 <name/>
-                <line>148</line>
+                <line>152</line>
                 <key/>
             </bookmark>
         </file>
@@ -28,8 +28,8 @@
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/XmlAppearanceSource.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/legend_model/LegendModelListener.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/AppearanceSourceFactory.java</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/AppearanceSource.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/legend_model/LegendModel.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/top_component/ViewerTopComponent.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/utils/ConfigUtils.java</file>
         </group>
     </open-files>

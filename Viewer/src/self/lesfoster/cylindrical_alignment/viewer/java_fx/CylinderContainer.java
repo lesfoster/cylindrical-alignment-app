@@ -34,6 +34,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGr
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionModel;
+import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
 
 /**
  * Contains all the domain-oriented objects, which are also created here.
@@ -129,6 +130,8 @@ public class CylinderContainer extends JFXPanel {
 		TransformableGroup rtnVal = new TransformableGroup();
 		rtnVal.getChildren().add(createCylinder(dataSource.getEntities()));
 		rtnVal.getChildren().add(createRuler(dataSource.getAnchorLength()));
+		rtnVal.getChildren().add(createCigarBand(true));
+		rtnVal.getChildren().add(createCigarBand(false));
 		return rtnVal;
 	}
 
@@ -343,6 +346,7 @@ public class CylinderContainer extends JFXPanel {
 		tm.getPoints().addAll(vertices);
 		tm.getTexCoords().addAll(texCoords);
 		// Only one tex coord.
+		// 36 coords represented.  12 faces.
 		int[] faces = new int[]{
 			0, 0, 1, 0, 2, 0,
 			3, 0, 4, 0, 5, 0,
@@ -368,6 +372,40 @@ public class CylinderContainer extends JFXPanel {
 		}
 
 		meshView.setId("Homemade Shape");
+		return meshView;
+	}
+
+	private MeshView createArbitrarySizedMesh(float[] vertices, float[] texCoords) {
+		TriangleMesh tm = new TriangleMesh();
+		tm.getPoints().addAll(vertices);
+		tm.getTexCoords().addAll(texCoords);
+		// Only one tex coord.
+		// 36 coords represented. 12 triangles (faces), to make 6 sides.
+//		int[] faces = new int[]{
+//			0, 0, 1, 0, 2, 0,
+//			3, 0, 4, 0, 5, 0,
+//			6, 0, 7, 0, 8, 0,
+//			9, 0, 10, 0, 11, 0,
+//			12, 0, 13, 0, 14, 0,
+//			15, 0, 16, 0, 17, 0,
+//			18, 0, 19, 0, 20, 0,
+//			21, 0, 22, 0, 23, 0,
+//			24, 0, 25, 0, 26, 0,
+//			27, 0, 28, 0, 29, 0,
+//			30, 0, 31, 0, 32, 0,
+//			33, 0, 34, 0, 35, 0
+//		};
+		
+		int[] faces = new int[ vertices.length * 2 ];
+		for (int i = 0; i < vertices.length * 2; i+=2) {
+			// Odd-numbered face-array members are all left at zero.
+			faces[i] = i/2;
+		}
+		
+		tm.getFaces().addAll(faces);
+		MeshView meshView = new MeshView(tm);
+
+		meshView.setId("Mesh");
 		return meshView;
 	}
 
@@ -401,8 +439,8 @@ public class CylinderContainer extends JFXPanel {
 	public float[] generateRuleGeometry() {
         // Establish end points, as being wherever the cylinder's lowest possible point would be,
 		// up to wherever the highest possible point would be.
-		float xl = -Constants.START_OF_CYLINDER;
-		float xr = Constants.LENGTH_OF_CYLINDER - Constants.START_OF_CYLINDER;		
+		float xl = getCylLeftX();
+		float xr = getCylRightX();		
 		float yBottom = -(Constants.YB + 4.0f);
 		float ruleYTop = -(Constants.YB + 8.0f);
 		float zBack = -0.5f;
@@ -451,6 +489,93 @@ public class CylinderContainer extends JFXPanel {
 			xr, yBottom, 0.0f, //34
 		};
 		return coordinateData;
+	}
+
+	private static float getCylRightX() {
+		return Constants.LENGTH_OF_CYLINDER - Constants.START_OF_CYLINDER;
+	}
+
+	private static float getCylLeftX() {
+		return -Constants.START_OF_CYLINDER;
+	}
+	
+	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
+	
+	private float[] generateBandGeometry(double x, float outerRadius, float innerRadius) {
+		// How many vertices will be in entire geometry?
+		//  100 points inner and outer lips of ring.  200
+		//  4 points will have 2 triangles between them.  Multiple by 6 points.
+		//    so far, 6 * 100 = 600.
+		//  3 coords for each point.
+		float[] coords = new float[3 * ((BAND_CIRCLE_VERTEX_COUNT) * 6)];
+		
+		// Now fill in the points.  Take circle to be 2*PI radians (Java Math).
+		double increment = //360.0 / BAND_CIRCLE_VERTEX_COUNT;
+				(Math.PI * 2.0) / (double)BAND_CIRCLE_VERTEX_COUNT;
+		double angle = 0.0;
+
+		Float prevOuterY = null;
+		Float prevInnerY = null;
+		Float prevOuterZ = null;
+		Float prevInnerZ = null;
+		float floatX = (float)x;
+		int coordsPerPoint = 3;
+		int coordsPerQuad = 6 * coordsPerPoint;
+		for (int i = 0; i < BAND_CIRCLE_VERTEX_COUNT + 1; i++) {	
+			final double cos = Math.cos(angle);
+			final double sin = Math.sin(angle);
+			
+			// X remains the same.
+			// Y for outer lip.
+			float outerY = (float)(cos * outerRadius);
+			// Y for inner lip.
+			float innerY = (float)(cos * innerRadius);
+			// Z for outer lip.
+			float outerZ = (float)(sin * outerRadius);
+			// Z for inner lip.
+			float innerZ = (float)(sin * innerRadius);
+
+			// Make next pair of triangles.
+			if (prevOuterY != null) {
+				final int quadCoordOffset = (i - 1) * coordsPerQuad;
+				// First Triangle
+				// X/Inner/Prev
+				coords[ quadCoordOffset ] = floatX;
+				coords[ quadCoordOffset + 1 ] = prevInnerY;
+				coords[ quadCoordOffset + 2 ] = prevInnerZ;
+				// X/Outer/Curr
+				coords[ quadCoordOffset + 3 ] = floatX;
+				coords[ quadCoordOffset + 4 ] = outerY;
+				coords[ quadCoordOffset + 5 ] = outerZ;
+				// X/Outer/Prev
+				coords[ quadCoordOffset + 6 ] = floatX;
+				coords[ quadCoordOffset + 7 ] = prevOuterY;
+				coords[ quadCoordOffset + 8 ] = prevOuterZ;
+				
+				// Second Triangle
+				// X/Inner/Prev
+				coords[ quadCoordOffset + 9 ] = floatX;
+				coords[ quadCoordOffset + 10 ] = prevInnerY;
+				coords[ quadCoordOffset + 11 ] = prevInnerZ;
+				// X/Inner/Curr
+				coords[ quadCoordOffset + 12 ] = floatX;
+				coords[ quadCoordOffset + 13 ] = innerY;
+				coords[ quadCoordOffset + 14 ] = innerZ;
+				// X/Outer/Curr
+				coords[ quadCoordOffset + 15 ] = floatX;
+				coords[ quadCoordOffset + 16 ] = outerY;
+				coords[ quadCoordOffset + 17 ] = outerZ;
+			}
+			
+			prevOuterY = outerY;
+			prevOuterZ = outerZ;
+			prevInnerY = innerY;
+			prevInnerZ = innerZ;
+			
+			angle += increment;
+		}
+		
+		return coords;
 	}
 
 	//-----------------------------------HELPER METHODS
@@ -600,53 +725,6 @@ public class CylinderContainer extends JFXPanel {
     	}
     }
 	
-// MAY NOT NEED THIS. ELIMINATE AFTER ALL REQUIREMENTS FILLED.	
-//    /** Builds a rectangular solid geometry based on always-same Y,Z extents. */
-//    private GeometryInfo generateRectSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront) {
-//
-//        // The translations: the start and end need to be normalized for
-//        // a certain meter length.  They also need to be centered in that length.
-//        // Assume query IS coordinate system, and starts at zero.
-//        float xl = translateToJava3dCoords(startSH); //((float)startSH * factor) - START_OF_CYLINDER;
-//        float xr = translateToJava3dCoords(endSH);   //((float)endSH * factor) - START_OF_CYLINDER;
-//        GeometryInfo gi = new GeometryInfo(GeometryInfo.POLYGON_ARRAY);
-//        float[] coordinateData = new float[] {
-//                // The 'lid'
-//                xl, Constants.YT + extraYDisp, zBack,
-//                xl, Constants.YT + extraYDisp, zFront,
-//                xr, Constants.YT + extraYDisp, zFront,
-//                xr, Constants.YT + extraYDisp, zBack,
-//                // The 'left'
-//                xl, Constants.YT + extraYDisp, zBack,
-//                xl, Constants.YB + extraYDisp, zBack,
-//                xl, Constants.YB + extraYDisp, zFront,
-//                xl, Constants.YT + extraYDisp, zFront,
-//                // The 'right'
-//                xr, Constants.YT + extraYDisp, zBack,
-//                xr, Constants.YT + extraYDisp, zFront,
-//                xr, Constants.YB + extraYDisp, zFront,
-//                xr, Constants.YB + extraYDisp, zBack,
-//                // The 'front'
-//                xl, Constants.YT + extraYDisp, zFront,
-//                xl, Constants.YB + extraYDisp, zFront,
-//                xr, Constants.YB + extraYDisp, zFront,
-//                xr, Constants.YT + extraYDisp, zFront,
-//                // The 'bottom'
-//                xl, Constants.YB + extraYDisp, zBack,
-//                xl, Constants.YB + extraYDisp, zFront,
-//                xr, Constants.YB + extraYDisp, zFront,
-//                xr, Constants.YB + extraYDisp, zBack,
-//                // The 'back'   
-//                xr, Constants.YT + extraYDisp, zBack,
-//                xr, Constants.YB + extraYDisp, zBack,
-//                xl, Constants.YB + extraYDisp, zBack,
-//                xl, Constants.YT + extraYDisp, zBack,
-//        };
-//
-//        gi.setCoordinates(coordinateData);
-//        return gi;
-//    }
-//
 	/**
 	 * Builds a rectangular solid geometry based on always-same Y,Z extents.
 	 */
@@ -682,13 +760,38 @@ public class CylinderContainer extends JFXPanel {
 			xl, Constants.YT + extraYDisp, zBack, //35
 		};
 		MeshView meshView = createFacadeMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
+		return meshView;	
+	}
+	
+	/**
+	 * Generates a cigar-band view.  It will have a tab pointing to the left
+	 * or to the right.
+	 * 
+	 * @param leftward tab points away to left?  false-> to the right.
+	 * @return a cigar band of appropriate tab-direction.
+	 */
+	private MeshView createCigarBand(boolean leftward) {
+		double xCoord = leftward ? getCylLeftX() : getCylRightX();
+
+		float outerRadius = Constants.YB + 0.8f;  // Outside will reach beyond the outer surface of all solids.
+		float innerRadius = Constants.YB - 0.8f;  // Inside will be just lower than the inner surface of all solids.
+		float[] coordinateData = generateBandGeometry(xCoord, outerRadius, innerRadius);
+		MeshView meshView = createArbitrarySizedMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
+		meshView.setOpacity(OPACITY);
+		meshView.setCullFace(CullFace.NONE);
+		
+		final PhongMaterial meshMaterial = new PhongMaterial();
+		meshMaterial.setDiffuseColor(Constants.CIGAR_BAND_COLOR);
+		meshMaterial.setSpecularColor(Constants.CIGAR_BAND_COLOR);
+		meshView.setMaterial(meshMaterial);
+
 		return meshView;
 	}
 
 	private MeshView createRuler(long anchorLength) {
 		float[] coordinateData = generateRuleGeometry();
 		MeshView meshView = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), null);
-		meshView.setOpacity(1.0);
+		meshView.setOpacity(OPACITY);
 		final PhongMaterial meshMaterial = new PhongMaterial();
 		meshMaterial.setDiffuseColor(Color.WHITE);
 		meshMaterial.setSpecularColor(Color.WHITE);

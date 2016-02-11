@@ -45,6 +45,9 @@ public class Constants {
 	public static final float YB = (-0.01f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER + Y_DISP;
     public static final float ZB = (-0.012f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
     public static final float ZF = (0.012f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
+	public static final float CENTER_X = 0.0f;
+	public static final float CENTER_Y = 0.0f;
+	public static final float CENTER_Z = 0.0f;
 	public static final float RULE_Y_BOTTOM = YT + (0.05f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
 	public static final int   MAX_UNDIVIDED_RULE_DIVISION = 1000;
 	public static final float YLABEL = (0.55f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
