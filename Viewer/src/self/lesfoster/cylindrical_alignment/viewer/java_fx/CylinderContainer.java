@@ -5,6 +5,7 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.java_fx;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javafx.application.Platform;
@@ -91,7 +92,8 @@ public class CylinderContainer extends JFXPanel {
 			root.getChildren().add(inSceneLabel);
 			scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);
 			scene.setCamera(cameraModel.getCamera());
-			scene.setFill(Color.LIGHTGRAY);
+			//scene.setFill(Color.LIGHTGRAY);
+			scene.setFill(Color.BLACK);
 			setScene(scene);
 
 			handleMouse(scene);
@@ -130,8 +132,10 @@ public class CylinderContainer extends JFXPanel {
 		TransformableGroup rtnVal = new TransformableGroup();
 		rtnVal.getChildren().add(createCylinder(dataSource.getEntities()));
 		rtnVal.getChildren().add(createRuler(dataSource.getAnchorLength()));
+		rtnVal.getChildren().addAll(createTickBands());
 		rtnVal.getChildren().add(createCigarBand(true));
 		rtnVal.getChildren().add(createCigarBand(false));
+		
 		return rtnVal;
 	}
 
@@ -787,6 +791,33 @@ public class CylinderContainer extends JFXPanel {
 
 		return meshView;
 	}
+	
+	private List<MeshView> createTickBands() {
+		List<MeshView> tickBands = new ArrayList<>();
+    	double stepSize = (this.endRange - this.startRange) / 10f;
+		float outerRadius = Constants.YB + 0.4f;  // Outside will reach into solids.
+		float innerRadius = Constants.YB - 0.4f;  // Inside will be just lower than the inner surface of all solids.
+		final PhongMaterial meshMaterial = new PhongMaterial();
+		meshMaterial.setDiffuseColor(Constants.TICK_BAND_COLOR);
+		meshMaterial.setSpecularColor(Constants.TICK_BAND_COLOR);
+
+		for (int i = this.startRange; i < this.endRange; i+=stepSize) {
+            int nextTickX = i - startRange;
+			double xCoord = getCylLeftX() + nextTickX * (Constants.LENGTH_OF_CYLINDER / (this.endRange - this.startRange));
+			float[] coordinateData = generateBandGeometry(xCoord, outerRadius, innerRadius);
+			MeshView meshView = createArbitrarySizedMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
+			meshView.setOpacity(OPACITY);
+			meshView.setCullFace(CullFace.NONE);
+			meshView.setMaterial(meshMaterial);
+			tickBands.add(meshView);
+        	//group.addChild(generateCigarBand(tickBandAppearance, -Constants.START_OF_CYLINDER + nextTickX * (Constants.LENGTH_OF_CYLINDER / (this.endRange - this.startRange)), innerRadius, outerRadius));
+        }
+		
+		return tickBands;
+	}
+	/*
+
+	*/
 
 	private MeshView createRuler(long anchorLength) {
 		float[] coordinateData = generateRuleGeometry();
