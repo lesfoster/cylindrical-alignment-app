@@ -5,6 +5,7 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model;
 
+import java.util.List;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Material;
 import javafx.scene.paint.PhongMaterial;
@@ -25,6 +26,7 @@ public class SelectionModel {
 	
 	private Shape3D selectedShape;
 	private Material unselectedMaterialOfSelectedShape;
+	private List<SelectionModelListener> selectionListeners;
 
 	/**
 	 * @return the selectedShape
@@ -38,6 +40,7 @@ public class SelectionModel {
 	 */
 	public void setSelectedShape(Shape3D selectedShape) {
 		this.selectedShape = selectedShape;
+		fireEvent();
 	}
 
 	/**
@@ -52,5 +55,22 @@ public class SelectionModel {
 	 */
 	public void setUnselectedMaterialOfSelectedShape(Material unselectedMaterialOfSelectedShape) {
 		this.unselectedMaterialOfSelectedShape = unselectedMaterialOfSelectedShape;
+	}
+	/**
+	 * Add a listener for cases where something in the model has been selected.
+	 *
+	 * @param listener what to tell when it happens.
+	 */
+	public synchronized void addListener(SelectionModelListener listener) {
+		selectionListeners.add(listener);
+	}
+
+	/**
+	 * Notify all listeners
+	 */
+	private synchronized void fireEvent() {
+		for (SelectionModelListener listener : selectionListeners) {
+			listener.selected(selectedShape.getId());
+		}
 	}
 }

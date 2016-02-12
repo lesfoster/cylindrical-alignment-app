@@ -6,6 +6,7 @@
 package self.lesfoster.cylindrical_alignment.viewer.java_fx;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.application.Platform;
@@ -36,6 +37,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionModel;
 import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
+import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionModelListener;
 
 /**
  * Contains all the domain-oriented objects, which are also created here.
@@ -56,10 +58,14 @@ public class CylinderContainer extends JFXPanel {
 	private Group world = new Group();
 	private TransformableGroup root = new TransformableGroup();
 	private TransformableGroup positionableObject = new TransformableGroup();
+	private TransformableGroup lowCigarBandSlide = new TransformableGroup();
+	private TransformableGroup highCigarBandSlide = new TransformableGroup();
 	private TransformableGroup cylinder;
 	private TransformableGroup ruler;
 	private TransformableGroup anchor;
 	private Scene scene;
+	private Map<String,SubEntity> idToSubEntity = new HashMap<>();
+	private int latestGraphId = 1;
 
 	private MouseLocationModel mouseLocationModel = new MouseLocationModel();
 	private SelectionModel selectionModel = new SelectionModel();
@@ -78,6 +84,13 @@ public class CylinderContainer extends JFXPanel {
 		this.endRange = endRange;
 		factor = Constants.LENGTH_OF_CYLINDER / (endRange - startRange);
 		init(dataSource);
+		SelectionModelListener selectionListener = new SelectionModelListener() {
+			@Override
+			public void selected(Object obj) {
+				SubEntity subEntit = idToSubEntity.get(obj.toString());
+				// TODO use this to calculate the positions of cigar bands.
+			}			
+		};
 	}
 
 	private void init(final DataSource dataSource) {
@@ -133,8 +146,10 @@ public class CylinderContainer extends JFXPanel {
 		rtnVal.getChildren().add(createCylinder(dataSource.getEntities()));
 		rtnVal.getChildren().add(createRuler(dataSource.getAnchorLength()));
 		rtnVal.getChildren().addAll(createTickBands());
-		rtnVal.getChildren().add(createCigarBand(true));
-		rtnVal.getChildren().add(createCigarBand(false));
+		lowCigarBandSlide.getChildren().add(createCigarBandGroup(true));
+		highCigarBandSlide.getChildren().add(createCigarBandGroup(false));
+		rtnVal.getChildren().add(lowCigarBandSlide);
+		rtnVal.getChildren().add(highCigarBandSlide);
 		
 		return rtnVal;
 	}
@@ -166,6 +181,11 @@ public class CylinderContainer extends JFXPanel {
 						} else {
 							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity.getPriority() * 0.01f, nextEntity);
 						}
+						final String lookupId = Integer.toString(latestGraphId);
+						subHitView.setId(lookupId);
+						idToSubEntity.put(lookupId, nextEntity);
+						latestGraphId ++;
+						
 //                        part.setWorldPositioner( worldPositioner );
 //                        if ( ! isAnchor( nextEntity ) ) {
 //                            part.setPreAnimator( rotationAnimator );
@@ -767,6 +787,13 @@ public class CylinderContainer extends JFXPanel {
 		return meshView;	
 	}
 	
+	private Group createCigarBandGroup(boolean low) {
+		Group rtnVal = new Group();
+		rtnVal.getChildren().add(createCigarBand(low));
+		// Also, add the label, and its text.
+		return rtnVal;
+	}
+			
 	/**
 	 * Generates a cigar-band view.  It will have a tab pointing to the left
 	 * or to the right.
