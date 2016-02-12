@@ -396,8 +396,8 @@ public class CylinderContainer extends JFXPanel {
 //			33, 0, 34, 0, 35, 0
 //		};
 		
-		int[] faces = new int[ vertices.length * 2 ];
-		for (int i = 0; i < vertices.length * 2; i+=2) {
+		int[] faces = new int[ (vertices.length / 3) * 4 ];
+		for (int i = 0; i < faces.length / 2; i+=2) {
 			// Odd-numbered face-array members are all left at zero.
 			faces[i] = i/2;
 		}
