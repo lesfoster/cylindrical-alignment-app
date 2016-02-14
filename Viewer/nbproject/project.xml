@@ -58,12 +58,15 @@
                 <package>self.lesfoster.cylindrical_alignment.geometry</package>
                 <package>self.lesfoster.cylindrical_alignment.settings</package>
                 <package>self.lesfoster.cylindrical_alignment.utils</package>
+                <package>self.lesfoster.cylindrical_alignment.viewer.appearance_source</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.java_fx</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.java_fx.events</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.java_fx.group</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model</package>
+                <package>self.lesfoster.cylindrical_alignment.viewer.legend_model</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.statistics</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.top_component</package>
+                <package>self.lesfoster.cylindrical_alignment.viewer.utils</package>
             </public-packages>
             <class-path-extension>
                 <runtime-relative-path>ext/utilities.jar</runtime-relative-path>

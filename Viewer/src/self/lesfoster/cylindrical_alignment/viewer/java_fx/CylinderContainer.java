@@ -466,7 +466,7 @@ public class CylinderContainer extends JFXPanel {
 		float xl = getCylLeftX();
 		float xr = getCylRightX();		
 		float yBottom = -(Constants.YB + 4.0f);
-		float ruleYTop = -(Constants.YB + 8.0f);
+		float ruleYTop = -(Constants.YB + 20.0f);
 		float zBack = -0.5f;
 		float[] coordinateData = new float[]{
 			// Front face
@@ -789,7 +789,7 @@ public class CylinderContainer extends JFXPanel {
 	
 	private Group createCigarBandGroup(boolean low) {
 		Group rtnVal = new Group();
-		rtnVal.getChildren().add(createCigarBand(low));
+		rtnVal.getChildren().addAll(createCigarBand(low));
 		// Also, add the label, and its text.
 		return rtnVal;
 	}
@@ -801,22 +801,55 @@ public class CylinderContainer extends JFXPanel {
 	 * @param leftward tab points away to left?  false-> to the right.
 	 * @return a cigar band of appropriate tab-direction.
 	 */
-	private MeshView createCigarBand(boolean leftward) {
+	private MeshView[] createCigarBand(boolean leftward) {
+		MeshView[] rtnVal = new MeshView[2];
+				
 		double xCoord = leftward ? getCylLeftX() : getCylRightX();
 
-		float outerRadius = Constants.YB + 1.4f;  // Outside will reach beyond the outer surface of all solids.
-		float innerRadius = Constants.YB - 0.8f;  // Inside will be just lower than the inner surface of all solids.
-		float[] coordinateData = generateBandGeometry(xCoord, outerRadius, innerRadius);
-		MeshView meshView = createArbitrarySizedMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
-		meshView.setOpacity(OPACITY);
-		meshView.setCullFace(CullFace.NONE);
-		
 		final PhongMaterial meshMaterial = new PhongMaterial();
 		meshMaterial.setDiffuseColor(Constants.CIGAR_BAND_COLOR);
 		meshMaterial.setSpecularColor(Constants.CIGAR_BAND_COLOR);
-		meshView.setMaterial(meshMaterial);
 
-		return meshView;
+		// Build up the band mesh.
+		float[] bandCoordinateData = generateBandGeometry(xCoord, Constants.CB_OUTER_RADIUS, Constants.CB_INNER_RADIUS);
+		MeshView bandMesh = createArbitrarySizedMesh(bandCoordinateData, texCoordGenerator.generateTexCoords(bandCoordinateData));
+		bandMesh.setOpacity(OPACITY);
+		bandMesh.setCullFace(CullFace.NONE);
+		
+		bandMesh.setMaterial(meshMaterial);
+		
+		// Build up the label mesh.
+		float lengthOfBandLabel = Constants.LENGTH_OF_CYLINDER / 10.0f;
+		float startXLabel = 0;
+		float endXLabel = 0;
+		if (leftward) {
+			endXLabel = getCylLeftX();
+			startXLabel = endXLabel - lengthOfBandLabel;
+		}
+		else {
+			startXLabel = getCylRightX();
+			endXLabel = startXLabel + lengthOfBandLabel;
+		}
+		
+		float bottomYLabel = Constants.YLABEL;
+		float topYLabel = Constants.YLABEL - Constants.CB_LABEL_HEIGHT;
+		float zPos = 0.03f;
+		float[] labelCoordinateData = new float[]{
+			// The 'front'
+			startXLabel, topYLabel, zPos,
+			startXLabel, Constants.YLABEL, zPos,
+			endXLabel, topYLabel, zPos,
+			startXLabel, Constants.YLABEL, zPos,
+			endXLabel, Constants.YLABEL, zPos,
+			endXLabel, topYLabel, zPos,
+		};
+		MeshView labelMesh = createArbitrarySizedMesh(labelCoordinateData, texCoordGenerator.generateTexCoords(bandCoordinateData));
+		labelMesh.setOpacity(OPACITY);
+		labelMesh.setCullFace(CullFace.NONE);
+		labelMesh.setMaterial(meshMaterial);
+		rtnVal[0] = bandMesh;
+		rtnVal[1] = labelMesh;
+		return rtnVal;
 	}
 	
 	private List<MeshView> createTickBands() {

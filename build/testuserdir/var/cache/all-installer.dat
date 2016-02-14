@@ -1,4 +1,4 @@
-#Sun Feb 14 11:35:15 EST 2016
+#Sun Feb 14 12:23:19 EST 2016
 org.netbeans.core.startup.OpenIDE-Module-Deprecated=\u0000
 self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.modules.settings.AutoUpdate-Show-In-Client=false
@@ -7,8 +7,8 @@ org.openide.nodes.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.openide.explorer.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.libs.osgi.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.core.nativeaccess.OpenIDE-Module-Install=\u0000
-org.openide.awt.OpenIDE-Module-Description=\u0000
 self.lesfoster.cylindrical_alignment.inspector.AutoUpdate-Show-In-Client=true
+org.openide.awt.OpenIDE-Module-Description=\u0000
 org.openide.modules.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.libs.felix.OpenIDE-Module-Install=\u0000
 org.netbeans.api.progress.OpenIDE-Module-Deprecated=\u0000
@@ -46,8 +46,8 @@ org.netbeans.modules.editor.mimelookup.OpenIDE-Module-Install=\u0000
 org.netbeans.modules.masterfs.windows.AutoUpdate-Show-In-Client=false
 org.netbeans.core.nativeaccess.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.masterfs.OpenIDE-Module-Install=\u0000
-org.netbeans.modules.print.AutoUpdate-Show-In-Client=false
 self.lesfoster.cylindrical_alignment.viewer.OpenIDE-Module-Description=\u0000
+org.netbeans.modules.print.AutoUpdate-Show-In-Client=false
 org.netbeans.swing.plaf.OpenIDE-Module-Description=\u0000
 self.lesfoster.cylindrical_alignment.inspector.OpenIDE-Module-Deprecated=\u0000
 org.openide.explorer.OpenIDE-Module-Hide-Classpath-Packages=\u0000
@@ -127,8 +127,8 @@ org.openide.dialogs.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.core.ui.OpenIDE-Module-Install=\u0000
 org.netbeans.modules.settings.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.modules.settings.OpenIDE-Module-Layer=org/netbeans/modules/settings/resources/mf-layer.xml
-org.openide.dialogs.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.lib.uihandler.AutoUpdate-Show-In-Client=false
+org.openide.dialogs.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.core.startup.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.openide.explorer.OpenIDE-Module-Description=\u0000
 org.netbeans.bootstrap.OpenIDE-Module-Hide-Classpath-Packages=\u0000
