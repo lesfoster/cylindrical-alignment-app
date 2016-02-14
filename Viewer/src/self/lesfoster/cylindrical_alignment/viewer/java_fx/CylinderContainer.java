@@ -55,16 +55,16 @@ public class CylinderContainer extends JFXPanel {
 	private boolean usingResidueDentils = true;
 	private float factor = 0;
 
-	private Group world = new Group();
-	private TransformableGroup root = new TransformableGroup();
-	private TransformableGroup positionableObject = new TransformableGroup();
-	private TransformableGroup lowCigarBandSlide = new TransformableGroup();
-	private TransformableGroup highCigarBandSlide = new TransformableGroup();
+	private final Group world = new Group();
+	private final TransformableGroup root = new TransformableGroup();
+	private final TransformableGroup positionableObject = new TransformableGroup();
+	private final TransformableGroup lowCigarBandSlide = new TransformableGroup();
+	private final TransformableGroup highCigarBandSlide = new TransformableGroup();
 	private TransformableGroup cylinder;
 	private TransformableGroup ruler;
 	private TransformableGroup anchor;
 	private Scene scene;
-	private Map<String,SubEntity> idToSubEntity = new HashMap<>();
+	private final Map<String,SubEntity> idToSubEntity = new HashMap<>();
 	private int latestGraphId = 1;
 
 	private MouseLocationModel mouseLocationModel = new MouseLocationModel();
@@ -101,7 +101,7 @@ public class CylinderContainer extends JFXPanel {
 			world.getChildren().add(root);
 			createCamera();
 			inSceneLabel = createLabel();
-			positionableObject = createPositionableObjectHierarchy(dataSource);
+			createPositionableObjectHierarchy(dataSource);
 			root.getChildren().add(positionableObject);
 			root.getChildren().add(inSceneLabel);
 			scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);
@@ -143,16 +143,15 @@ public class CylinderContainer extends JFXPanel {
 	 * may or may not move/animate with the larger whole.
 	 */
 	private TransformableGroup createPositionableObjectHierarchy(DataSource dataSource) {
-		TransformableGroup rtnVal = new TransformableGroup();
-		rtnVal.getChildren().add(createCylinder(dataSource.getEntities()));
-		rtnVal.getChildren().add(createRuler(dataSource.getAnchorLength()));
-		rtnVal.getChildren().addAll(createTickBands());
+		positionableObject.getChildren().add(createCylinder(dataSource.getEntities()));
+		positionableObject.getChildren().add(createRuler(dataSource.getAnchorLength()));
+		positionableObject.getChildren().addAll(createTickBands());
 		lowCigarBandSlide.getChildren().add(createCigarBandGroup(true));
 		highCigarBandSlide.getChildren().add(createCigarBandGroup(false));
-		rtnVal.getChildren().add(lowCigarBandSlide);
-		rtnVal.getChildren().add(highCigarBandSlide);
+		positionableObject.getChildren().add(lowCigarBandSlide);
+		positionableObject.getChildren().add(highCigarBandSlide);
 		
-		return rtnVal;
+		return positionableObject;
 	}
 
 	private TransformableGroup createCylinder(List<Entity> entities) {
