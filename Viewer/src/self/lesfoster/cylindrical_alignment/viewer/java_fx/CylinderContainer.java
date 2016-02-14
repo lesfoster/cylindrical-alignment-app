@@ -87,10 +87,11 @@ public class CylinderContainer extends JFXPanel {
 		SelectionModelListener selectionListener = new SelectionModelListener() {
 			@Override
 			public void selected(Object obj) {
-				SubEntity subEntit = idToSubEntity.get(obj.toString());
-				// TODO use this to calculate the positions of cigar bands.
+				positionCigarBands(obj);
 			}			
+
 		};
+		selectionModel.addListener(selectionListener);
 	}
 
 	private void init(final DataSource dataSource) {
@@ -804,7 +805,7 @@ public class CylinderContainer extends JFXPanel {
 	private MeshView createCigarBand(boolean leftward) {
 		double xCoord = leftward ? getCylLeftX() : getCylRightX();
 
-		float outerRadius = Constants.YB + 0.8f;  // Outside will reach beyond the outer surface of all solids.
+		float outerRadius = Constants.YB + 1.4f;  // Outside will reach beyond the outer surface of all solids.
 		float innerRadius = Constants.YB - 0.8f;  // Inside will be just lower than the inner surface of all solids.
 		float[] coordinateData = generateBandGeometry(xCoord, outerRadius, innerRadius);
 		MeshView meshView = createArbitrarySizedMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
@@ -880,6 +881,19 @@ public class CylinderContainer extends JFXPanel {
 		label.setTranslateY(Constants.LENGTH_OF_CYLINDER / 2.5);
 		
 		return label;
+	}
+
+	private void positionCigarBands(Object obj) {
+		// Reposition the cigar bands.
+		SubEntity subEntity = idToSubEntity.get(obj.toString());
+		if (subEntity != null) {
+			int startSH = subEntity.getStartOnQuery();
+			int endSH = subEntity.getEndOnQuery();
+			float xl = translateToJava3dCoords(startSH);
+			float xr = translateToJava3dCoords(endSH);
+			lowCigarBandSlide.setTranslate(xl - getCylLeftX(), 0, 0);
+			highCigarBandSlide.setTranslate(xr - getCylRightX(), 0, 0);
+		}
 	}
 
 	//

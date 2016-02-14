@@ -5,6 +5,7 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Material;
@@ -26,7 +27,7 @@ public class SelectionModel {
 	
 	private Shape3D selectedShape;
 	private Material unselectedMaterialOfSelectedShape;
-	private List<SelectionModelListener> selectionListeners;
+	private List<SelectionModelListener> selectionListeners = new ArrayList<>();
 
 	/**
 	 * @return the selectedShape
