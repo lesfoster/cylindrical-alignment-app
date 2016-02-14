@@ -830,22 +830,34 @@ public class CylinderContainer extends JFXPanel {
 			startXLabel = getCylRightX();
 			endXLabel = startXLabel + lengthOfBandLabel;
 		}
-		
-		float bottomYLabel = Constants.YLABEL;
-		float topYLabel = Constants.YLABEL - Constants.CB_LABEL_HEIGHT;
-		float zPos = 0.03f;
+
+		/*
+		float ruleYTop = -(Constants.YB + 20.0f);
+		*/
+		float yBottom = -(Constants.YB + 4.0f);
+		float yTop = yBottom - Constants.CB_LABEL_HEIGHT;
+		float zFront = -0.3f;
+		float zBack = 0.09f;
 		float[] labelCoordinateData = new float[]{
 			// The 'front'
-			startXLabel, topYLabel, zPos,
-			startXLabel, Constants.YLABEL, zPos,
-			endXLabel, topYLabel, zPos,
-			startXLabel, Constants.YLABEL, zPos,
-			endXLabel, Constants.YLABEL, zPos,
-			endXLabel, topYLabel, zPos,
+			startXLabel, yTop, zFront,
+			startXLabel, yBottom, zFront,
+			endXLabel, yTop, zFront,
+			startXLabel, yBottom, zFront,
+			endXLabel, yBottom, zFront,
+			endXLabel, yTop, zFront,
+
+			// The 'back'   
+			startXLabel, yTop, zBack,
+			endXLabel, yTop, zBack,
+			endXLabel, yBottom, zBack,
+			endXLabel, yBottom, zBack,
+			startXLabel, yBottom, zBack,
+			startXLabel, yTop, zBack
 		};
 		MeshView labelMesh = createArbitrarySizedMesh(labelCoordinateData, texCoordGenerator.generateTexCoords(bandCoordinateData));
 		labelMesh.setOpacity(OPACITY);
-		labelMesh.setCullFace(CullFace.NONE);
+		labelMesh.setCullFace(CullFace.BACK);
 		labelMesh.setMaterial(meshMaterial);
 		rtnVal[0] = bandMesh;
 		rtnVal[1] = labelMesh;
