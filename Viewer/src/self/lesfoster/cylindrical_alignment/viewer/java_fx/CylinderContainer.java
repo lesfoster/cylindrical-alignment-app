@@ -17,6 +17,7 @@ import javafx.scene.SceneAntialiasing;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.CullFace;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.text.Font;
@@ -786,7 +787,7 @@ public class CylinderContainer extends JFXPanel {
 		// Assume query IS coordinate system, and starts at zero.
 		float xl = translateToJava3dCoords(startSH);
 		float xr = translateToJava3dCoords(endSH);
-		float yb = Constants.YT + extraYDisp - 0.01f;
+		//float yb = Constants.YT + extraYDisp - 0.01f;
 		float[] coordinateData = new float[]{
 			// The 'lid'
 			xl, Constants.YT + extraYDisp, zBack, //0
@@ -933,31 +934,31 @@ public class CylinderContainer extends JFXPanel {
 	 * Adds tick marks to the ruler.
 	 *
 	 * @param rulerGroup what gets the lines?
-	 *
+	 */
 	private void addRuleTicks(Group rulerGroup, int anchorLength) {
 		int lengthOfQuery = anchorLength + 1;
 
 		// Make tick mark lines.
-		double tickYTop = Constants.YLABEL - 0.045;
-		double labelYBottom = tickYTop + 0.001;
+		double tickYBottom = getBottomOfCbLabel();
+		double tickYTop = tickYBottom - 4.7;
+		double labelYBottom = tickYTop - 0.5; //getBottomOfCbLabel() + 2.0; //tickYTop + 1.0;
 		double multiplier = factor;
 		double stepSize = (endRange - startRange) / 10f;
 		double innerStepSize = stepSize / 10f;
 		int labelDenominator = computeTensDenominator(lengthOfQuery);
+		float labelZOffset = -0.1f;
 
 		// Tell the world what the numbers mean!
 		if (lengthOfQuery >= Constants.MAX_UNDIVIDED_RULE_DIVISION) {
-			rulerGroup.addChild(generateLabel("x" + labelDenominator, 0.0f, Constants.YLABEL, 0.01f));
+			rulerGroup.getChildren().add(generateRulerLabel("x" + labelDenominator, 0.0f, Constants.YLABEL, labelZOffset));
 		}
 
 		for (int i = this.startRange; i <= (int) this.endRange; i += stepSize) {
-			LineArray tick = new LineArray(2, LineArray.COORDINATES | LineArray.COLOR_3);
 			double nextTickX = -Constants.START_OF_CYLINDER + ((i - startRange) * multiplier);
-			tick.setCoordinate(0, new Point3d(nextTickX, tickYTop, 0.01d));
-			tick.setCoordinate(1, new Point3d(nextTickX, Constants.RULE_Y_BOTTOM, 0.01d));
-			tick.setColor(0, Color.BLACK);
-			tick.setColor(1, Color.BLACK);
-			rulerGroup.addChild(new Shape3D(tick));
+			Line tick = new Line(nextTickX, tickYTop, nextTickX, tickYBottom);
+			tick.setTranslateZ(labelZOffset);
+			tick.setFill(Color.BLACK);
+			//rulerGroup.getChildren().add(tick);
 			float xPos = (float) (nextTickX - Constants.LABEL_CHAR_WIDTH);
 			if (i + stepSize > endRange) {
 				xPos -= (2 * Constants.LABEL_CHAR_WIDTH);
@@ -971,22 +972,34 @@ public class CylinderContainer extends JFXPanel {
 			} else {
 				labelStr = "" + i;
 			}
-			rulerGroup.addChild(generateLabel(labelStr, xPos, (float) labelYBottom, 0.01f));
-			rulerGroup.addChild(new Shape3D(tick));
+			rulerGroup.getChildren().add(generateRulerLabel(labelStr, xPos, (float) labelYBottom, labelZOffset));
+			rulerGroup.getChildren().add(tick);
+			//rulerGroup.getChildren().add(new Shape3D(tick));
             // DEBUG: System.out.println("Stepsize " + stepSize + ", next point is " + i);
 			// Shorter tick marks at ten points within outer ticks.
 			if (i + stepSize <= endRange && endRange >= 100) {
 				for (float j = i; j < i + stepSize; j += innerStepSize) {
 					double innerNextTickX = nextTickX + ((j - i) * multiplier);
-					LineArray innerTick = new LineArray(2, LineArray.COORDINATES | LineArray.COLOR_3);
-					innerTick.setCoordinate(0, new Point3d(innerNextTickX, tickYTop - 0.02f, 0.01d));
-					innerTick.setCoordinate(1, new Point3d(innerNextTickX, Constants.RULE_Y_BOTTOM, 0.01d));
-					rulerGroup.addChild(new Shape3D(innerTick));
+					Line innerTick = new Line(innerNextTickX, tickYTop + 2.0f, innerNextTickX, tickYBottom);
+					innerTick.setTranslateZ(-0.1d);
+					//LineArray innerTick = new LineArray(2, LineArray.COORDINATES | LineArray.COLOR_3);
+					//innerTick.setCoordinate(0, new Point3d(innerNextTickX, tickYTop - 0.02f, 0.01d));
+					//innerTick.setCoordinate(1, new Point3d(innerNextTickX, Constants.RULE_Y_BOTTOM, 0.01d));
+					rulerGroup.getChildren().add(innerTick);
 				}
 			}
 		}
 	}
-	*/
+	
+	private Text generateRulerLabel(String labelStr, float x, float y, float z) {
+		Text bandLabel = new Text(x, y, labelStr);
+		bandLabel.setFill(Color.BLACK);
+		bandLabel.setFont(new Font(7.0));
+		bandLabel.setCache(true);
+		bandLabel.setTranslateZ(z);
+		return bandLabel;
+	}
+	/* */
 
 	/**
 	 * Spacing for outer ticks, etc.
@@ -1018,7 +1031,8 @@ public class CylinderContainer extends JFXPanel {
 		return startStr.substring(0, pointPos + 2);
 	}
 
-	private MeshView createRuler(long anchorLength) {
+	private Group createRuler(int anchorLength) {
+		Group rulerGroup = new Group();
 		float[] coordinateData = generateRuleGeometry();
 		MeshView meshView = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), null);
 		meshView.setOpacity(OPACITY);
@@ -1028,7 +1042,9 @@ public class CylinderContainer extends JFXPanel {
 		//meshMaterial.setSpecularPower(10000);
 		meshView.setMaterial(meshMaterial);
 		meshView.setMouseTransparent(true);
-		return meshView;
+		rulerGroup.getChildren().add(meshView);
+		addRuleTicks(rulerGroup, anchorLength);
+		return rulerGroup;
 	}
 
 	private TransformableGroup createAnchor(MeshView subHitView, Entity entity, TransformableGroup parentGroup) {
