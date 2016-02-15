@@ -926,9 +926,97 @@ public class CylinderContainer extends JFXPanel {
 		
 		return tickBands;
 	}
-	/*
 
+	//http://stackoverflow.com/questions/14780228/javafx-drawing-lines-and-text
+	
+	/**
+	 * Adds tick marks to the ruler.
+	 *
+	 * @param rulerGroup what gets the lines?
+	 *
+	private void addRuleTicks(Group rulerGroup, int anchorLength) {
+		int lengthOfQuery = anchorLength + 1;
+
+		// Make tick mark lines.
+		double tickYTop = Constants.YLABEL - 0.045;
+		double labelYBottom = tickYTop + 0.001;
+		double multiplier = factor;
+		double stepSize = (endRange - startRange) / 10f;
+		double innerStepSize = stepSize / 10f;
+		int labelDenominator = computeTensDenominator(lengthOfQuery);
+
+		// Tell the world what the numbers mean!
+		if (lengthOfQuery >= Constants.MAX_UNDIVIDED_RULE_DIVISION) {
+			rulerGroup.addChild(generateLabel("x" + labelDenominator, 0.0f, Constants.YLABEL, 0.01f));
+		}
+
+		for (int i = this.startRange; i <= (int) this.endRange; i += stepSize) {
+			LineArray tick = new LineArray(2, LineArray.COORDINATES | LineArray.COLOR_3);
+			double nextTickX = -Constants.START_OF_CYLINDER + ((i - startRange) * multiplier);
+			tick.setCoordinate(0, new Point3d(nextTickX, tickYTop, 0.01d));
+			tick.setCoordinate(1, new Point3d(nextTickX, Constants.RULE_Y_BOTTOM, 0.01d));
+			tick.setColor(0, Color.BLACK);
+			tick.setColor(1, Color.BLACK);
+			rulerGroup.addChild(new Shape3D(tick));
+			float xPos = (float) (nextTickX - Constants.LABEL_CHAR_WIDTH);
+			if (i + stepSize > endRange) {
+				xPos -= (2 * Constants.LABEL_CHAR_WIDTH);
+			} else if (i > 0) {
+				xPos -= Constants.LABEL_CHAR_WIDTH;
+			}
+			String labelStr = null;
+			if (endRange >= Constants.MAX_UNDIVIDED_RULE_DIVISION) {
+				float labelNumber = ((float) i / (float) labelDenominator);
+				labelStr = formatLabelNumber(labelNumber);
+			} else {
+				labelStr = "" + i;
+			}
+			rulerGroup.addChild(generateLabel(labelStr, xPos, (float) labelYBottom, 0.01f));
+			rulerGroup.addChild(new Shape3D(tick));
+            // DEBUG: System.out.println("Stepsize " + stepSize + ", next point is " + i);
+			// Shorter tick marks at ten points within outer ticks.
+			if (i + stepSize <= endRange && endRange >= 100) {
+				for (float j = i; j < i + stepSize; j += innerStepSize) {
+					double innerNextTickX = nextTickX + ((j - i) * multiplier);
+					LineArray innerTick = new LineArray(2, LineArray.COORDINATES | LineArray.COLOR_3);
+					innerTick.setCoordinate(0, new Point3d(innerNextTickX, tickYTop - 0.02f, 0.01d));
+					innerTick.setCoordinate(1, new Point3d(innerNextTickX, Constants.RULE_Y_BOTTOM, 0.01d));
+					rulerGroup.addChild(new Shape3D(innerTick));
+				}
+			}
+		}
+	}
 	*/
+
+	/**
+	 * Spacing for outer ticks, etc.
+	 *
+	 * @return how far apart?
+	 */
+	private int computeTensDenominator(int lengthOfQuery) {
+		return (int) Math.pow(10, (int) (Math.log(lengthOfQuery) / Math.log(10)) - 1);
+	}
+
+	/**
+	 * Ensures that label string does not have too many trailing decimals.
+	 *
+	 * @param labelNumber number to appear on a ruler.
+	 * @return formatted to XXX.X
+	 */
+	private String formatLabelNumber(float labelNumber) {
+		String startStr = "" + labelNumber;
+		int pointPos = startStr.indexOf(".");
+		// No '.'
+		if (pointPos == -1) {
+			return startStr;
+		}
+		// '.' on end of string.
+		if (pointPos == startStr.length() - 1) {
+			return startStr;
+		}
+		// '.' has digits following it.
+		return startStr.substring(0, pointPos + 2);
+	}
 
 	private MeshView createRuler(long anchorLength) {
 		float[] coordinateData = generateRuleGeometry();
