@@ -76,5 +76,9 @@ public class Constants {
             "program startup, in a low priority thread, and in the background.";
 	public static final Color CIGAR_BAND_COLOR = Color.color(0.8f, 0.6f, 0.3f);
 	public static final Color TICK_BAND_COLOR = Color.color(0.6f, 0.6f, 0.6f);
+	public static final Color FILL_LIGHT_COLOR = Color.LIGHTGRAY;
+	public static final Color FILL_DARK_COLOR = Color.BLACK;
+	public static final Color INLABEL_LIGHT_TEXT_COLOR = Color.BLACK;
+	public static final Color INLABEL_DARK_TEXT_COLOR = Color.WHITE;
 
 }

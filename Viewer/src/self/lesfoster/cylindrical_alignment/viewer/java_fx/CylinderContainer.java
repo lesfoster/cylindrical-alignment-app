@@ -21,6 +21,7 @@ import javafx.scene.shape.CullFace;
 import javafx.scene.shape.MeshView;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import self.lesfoster.cylindrical_alignment.constants.Constants;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
@@ -74,7 +75,8 @@ public class CylinderContainer extends JFXPanel {
 	private final SelectionModel selectionModel = new SelectionModel();
 	private final CameraModel cameraModel = new CameraModel();	
 	private AppearanceSource appearanceSource;
-	private Label inSceneLabel;
+	private Text inSceneLabel;
+	private boolean dark = true;
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
 
@@ -100,6 +102,14 @@ public class CylinderContainer extends JFXPanel {
 	private void init(final DataSource dataSource) {
 		Platform.runLater(() -> {
 			//root.ry.setAngle(180.0);
+			scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);
+			scene.setCamera(cameraModel.getCamera());
+			if (dark) {
+				scene.setFill(Constants.FILL_DARK_COLOR);
+			} else {
+				scene.setFill(Constants.FILL_LIGHT_COLOR);
+			}
+			setScene(scene);
 			appearanceSource = AppearanceSourceFactory.getSourceForFile(null);
 			world.getChildren().add(root);
 			createCamera();
@@ -107,11 +117,6 @@ public class CylinderContainer extends JFXPanel {
 			createPositionableObjectHierarchy(dataSource);
 			root.getChildren().add(positionableObject);
 			root.getChildren().add(inSceneLabel);
-			scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);
-			scene.setCamera(cameraModel.getCamera());
-			//scene.setFill(Color.LIGHTGRAY);
-			scene.setFill(Color.BLACK);
-			setScene(scene);
 
 			handleMouse(scene);
 			handleKeyboard(scene);
@@ -137,6 +142,7 @@ public class CylinderContainer extends JFXPanel {
 		cameraModel.getCamera().setFarClip(1000.0);
 		cameraModel.getCamera().setTranslateZ(-cameraDistance);
 		cameraModel.getCameraXform().ry.setAngle(-35.0);
+		// Moves to left/centered at midpoint anyway. cameraModel.getCamera().setTranslateX(100.0);
 		
 	}
 
@@ -894,7 +900,7 @@ public class CylinderContainer extends JFXPanel {
 			meshView.setCullFace(CullFace.NONE);
 			meshView.setMaterial(meshMaterial);
 			tickBands.add(meshView);
-        	//group.addChild(generateCigarBand(tickBandAppearance, -Constants.START_OF_CYLINDER + nextTickX * (Constants.LENGTH_OF_CYLINDER / (this.endRange - this.startRange)), innerRadius, outerRadius));
+			meshView.setMouseTransparent(true);
         }
 		
 		return tickBands;
@@ -912,7 +918,7 @@ public class CylinderContainer extends JFXPanel {
 		meshMaterial.setSpecularColor(Color.WHITE);
 		//meshMaterial.setSpecularPower(10000);
 		meshView.setMaterial(meshMaterial);
-		
+		meshView.setMouseTransparent(true);
 		return meshView;
 	}
 
@@ -921,6 +927,7 @@ public class CylinderContainer extends JFXPanel {
 		subHitView.setRotate(4.0f / 7.0f * 360.0);
 		subHitView.setTranslateY(Constants.ANCHOR_OFFSET);
 		subHitView.setTranslateZ(-Constants.ANCHOR_OFFSET);
+		subHitView.setMouseTransparent(true);
 
 		// Add a label to the main screen.
 		addAnchorLabel(entity, parentGroup);
@@ -928,14 +935,19 @@ public class CylinderContainer extends JFXPanel {
 		return new TransformableGroup();
 	}
 
-	private Label createLabel() {
+	private Text createLabel() {
 		// Seeing some problem whereby, text with negative X coordinate
 		// is being clipped on the left side.
-		Label label = new Label("The Cylinder");
+		Text label = new Text(-Constants.LENGTH_OF_CYLINDER/2.0, Constants.LENGTH_OF_CYLINDER / 2.5, "The Cylinder");
+		label.setCache(true);
+		//label.setClip(world);
+		//label.setX(-Constants.LENGTH_OF_CYLINDER/2.0);
+		if (dark)
+			label.setFill(Constants.INLABEL_DARK_TEXT_COLOR);
+		else
+			label.setFill(Constants.INLABEL_LIGHT_TEXT_COLOR);
 		label.setFont(new Font(8.0));
-		//label.setTranslateX(-Constants.LENGTH_OF_CYLINDER/2.0);
-		label.setTranslateY(Constants.LENGTH_OF_CYLINDER / 2.5);
-		
+		label.setSmooth(false);
 		return label;
 	}
 

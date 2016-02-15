@@ -95,6 +95,7 @@ javafx.scene.shape.ObservableFaceArray
 java.util.ArrayList
 java.lang.String
 javafx.collections.ObservableFloatArray
+javafx.scene.text.Text
 javafx.embed.swing.JFXPanel
 javafx.scene.shape.CullFace
 java.lang.invoke.MethodHandles$Lookup
