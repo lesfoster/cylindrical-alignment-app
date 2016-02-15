@@ -14,7 +14,6 @@ import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.CullFace;
@@ -46,6 +45,9 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  * @author Leslie L Foster
  */
 public class CylinderContainer extends JFXPanel {
+	public static final float BANDLABEL_Z_BACK = 0.09f;
+	public static final float BANDLABEL_Z_FRONT = -0.3f;
+
 	final double cameraDistance = Constants.LENGTH_OF_CYLINDER * 3;
 	final TransformableGroup moleculeGroup = new TransformableGroup();
 
@@ -61,8 +63,8 @@ public class CylinderContainer extends JFXPanel {
 	private final TransformableGroup positionableObject = new TransformableGroup();
 	private final TransformableGroup lowCigarBandSlide = new TransformableGroup();
 	private final TransformableGroup highCigarBandSlide = new TransformableGroup();
-	private final Label lowCigarBandLabel = new Label();
-	private final Label highCigarBandLabel = new Label();
+	private Text lowCigarBandLabel;
+	private Text highCigarBandLabel;
 	
 	private TransformableGroup cylinder;
 	private TransformableGroup ruler;
@@ -76,9 +78,22 @@ public class CylinderContainer extends JFXPanel {
 	private final CameraModel cameraModel = new CameraModel();	
 	private AppearanceSource appearanceSource;
 	private Text inSceneLabel;
-	private boolean dark = true;
+	private boolean dark = false;
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
+
+	//TODO make more constants from these.
+	public static float getLengthOfBandLabel() {
+		return Constants.LENGTH_OF_CYLINDER / 10.0f;
+	}
+
+	public static float getBottomOfCbLabel() {
+		return -(Constants.YB + 4.0f);
+	}
+
+	public static float getTopOfCbLabel() {
+		return getBottomOfCbLabel() - Constants.CB_LABEL_HEIGHT;
+	}
 
 	public CylinderContainer(DataSource dataSource) {
 		this(dataSource, 0, dataSource.getAnchorLength());
@@ -158,8 +173,8 @@ public class CylinderContainer extends JFXPanel {
 		positionableObject.getChildren().addAll(createTickBands());
 		lowCigarBandSlide.getChildren().add(createCigarBandGroup(true));
 		highCigarBandSlide.getChildren().add(createCigarBandGroup(false));
-		lowCigarBandLabel.setText("0");
-		highCigarBandLabel.setText("" + anchorLength);
+		lowCigarBandLabel.setText("" + startRange);
+		highCigarBandLabel.setText("" + endRange);
 		positionableObject.getChildren().add(lowCigarBandSlide);
 		positionableObject.getChildren().add(highCigarBandSlide);
 		
@@ -477,7 +492,7 @@ public class CylinderContainer extends JFXPanel {
 		// up to wherever the highest possible point would be.
 		float xl = getCylLeftX();
 		float xr = getCylRightX();		
-		float yBottom = -(Constants.YB + 4.0f);
+		float yBottom = getBottomOfCbLabel();
 		float ruleYTop = -(Constants.YB + 20.0f);
 		float zBack = -0.5f;
 		float[] coordinateData = new float[]{
@@ -801,20 +816,26 @@ public class CylinderContainer extends JFXPanel {
 	
 	private Group createCigarBandGroup(boolean low) {
 		Group rtnVal = new Group();
-		Label bandLabel = null;
+		Text bandLabel = null;
 		if (low) {
+			lowCigarBandLabel = new Text(getCylLeftX() - getLengthOfBandLabel(), getBottomOfCbLabel(), "0");
 			bandLabel = lowCigarBandLabel;
 		}
 		else {
+			highCigarBandLabel = new Text(getCylRightX(), getBottomOfCbLabel(), "LARGE");
 			bandLabel = highCigarBandLabel;
 		}
+		bandLabel.setTranslateZ(BANDLABEL_Z_FRONT - 0.2);
+		bandLabel.setFill(Color.BLACK);
+		bandLabel.setFont(new Font(7.0));
+		//bandLabel.setSmooth(true);
+		bandLabel.setCache(true);
 
 		rtnVal.getChildren().addAll(createCigarBand(low));
 		rtnVal.getChildren().add(bandLabel);
-		// Also, add the label, and its text.
 		return rtnVal;
 	}
-			
+	
 	/**
 	 * Generates a cigar-band view.  It will have a tab pointing to the left
 	 * or to the right.
@@ -840,7 +861,7 @@ public class CylinderContainer extends JFXPanel {
 		bandMesh.setMaterial(meshMaterial);
 		
 		// Build up the label mesh.
-		float lengthOfBandLabel = Constants.LENGTH_OF_CYLINDER / 10.0f;
+		float lengthOfBandLabel = getLengthOfBandLabel();
 		float startXLabel = 0;
 		float endXLabel = 0;
 		if (leftward) {
@@ -852,10 +873,10 @@ public class CylinderContainer extends JFXPanel {
 			endXLabel = startXLabel + lengthOfBandLabel;
 		}
 
-		float yBottom = -(Constants.YB + 4.0f);
-		float yTop = yBottom - Constants.CB_LABEL_HEIGHT;
-		float zFront = -0.3f;
-		float zBack = 0.09f;
+		float yBottom = getBottomOfCbLabel();
+		float yTop = getTopOfCbLabel();
+		float zFront = BANDLABEL_Z_FRONT;
+		float zBack = BANDLABEL_Z_BACK;
 		float[] labelCoordinateData = new float[]{
 			// The 'front'
 			startXLabel, yTop, zFront,
@@ -881,7 +902,7 @@ public class CylinderContainer extends JFXPanel {
 		rtnVal[1] = labelMesh;
 		return rtnVal;
 	}
-	
+
 	private List<MeshView> createTickBands() {
 		List<MeshView> tickBands = new ArrayList<>();
     	double stepSize = (this.endRange - this.startRange) / 10f;
@@ -940,8 +961,6 @@ public class CylinderContainer extends JFXPanel {
 		// is being clipped on the left side.
 		Text label = new Text(-Constants.LENGTH_OF_CYLINDER/2.0, Constants.LENGTH_OF_CYLINDER / 2.5, "The Cylinder");
 		label.setCache(true);
-		//label.setClip(world);
-		//label.setX(-Constants.LENGTH_OF_CYLINDER/2.0);
 		if (dark)
 			label.setFill(Constants.INLABEL_DARK_TEXT_COLOR);
 		else
@@ -960,7 +979,10 @@ public class CylinderContainer extends JFXPanel {
 			float xl = translateToJava3dCoords(startSH);
 			float xr = translateToJava3dCoords(endSH);
 			lowCigarBandSlide.setTranslate(xl - getCylLeftX(), 0, 0);
+			lowCigarBandLabel.setText("" + startSH);
 			highCigarBandSlide.setTranslate(xr - getCylRightX(), 0, 0);
+			highCigarBandLabel.setText("" + endSH);
+			//System.out.println("Positioning for " + startSH + ", " + endSH);
 		}
 	}
 
