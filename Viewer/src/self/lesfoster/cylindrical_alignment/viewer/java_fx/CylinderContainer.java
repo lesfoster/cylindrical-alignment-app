@@ -60,6 +60,9 @@ public class CylinderContainer extends JFXPanel {
 	private final TransformableGroup positionableObject = new TransformableGroup();
 	private final TransformableGroup lowCigarBandSlide = new TransformableGroup();
 	private final TransformableGroup highCigarBandSlide = new TransformableGroup();
+	private final Label lowCigarBandLabel = new Label();
+	private final Label highCigarBandLabel = new Label();
+	
 	private TransformableGroup cylinder;
 	private TransformableGroup ruler;
 	private TransformableGroup anchor;
@@ -67,9 +70,9 @@ public class CylinderContainer extends JFXPanel {
 	private final Map<String,SubEntity> idToSubEntity = new HashMap<>();
 	private int latestGraphId = 1;
 
-	private MouseLocationModel mouseLocationModel = new MouseLocationModel();
-	private SelectionModel selectionModel = new SelectionModel();
-	private CameraModel cameraModel = new CameraModel();	
+	private final MouseLocationModel mouseLocationModel = new MouseLocationModel();
+	private final SelectionModel selectionModel = new SelectionModel();
+	private final CameraModel cameraModel = new CameraModel();	
 	private AppearanceSource appearanceSource;
 	private Label inSceneLabel;
 
@@ -144,10 +147,13 @@ public class CylinderContainer extends JFXPanel {
 	 */
 	private TransformableGroup createPositionableObjectHierarchy(DataSource dataSource) {
 		positionableObject.getChildren().add(createCylinder(dataSource.getEntities()));
-		positionableObject.getChildren().add(createRuler(dataSource.getAnchorLength()));
+		final int anchorLength = dataSource.getAnchorLength();
+		positionableObject.getChildren().add(createRuler(anchorLength));
 		positionableObject.getChildren().addAll(createTickBands());
 		lowCigarBandSlide.getChildren().add(createCigarBandGroup(true));
 		highCigarBandSlide.getChildren().add(createCigarBandGroup(false));
+		lowCigarBandLabel.setText("0");
+		highCigarBandLabel.setText("" + anchorLength);
 		positionableObject.getChildren().add(lowCigarBandSlide);
 		positionableObject.getChildren().add(highCigarBandSlide);
 		
@@ -789,7 +795,16 @@ public class CylinderContainer extends JFXPanel {
 	
 	private Group createCigarBandGroup(boolean low) {
 		Group rtnVal = new Group();
+		Label bandLabel = null;
+		if (low) {
+			bandLabel = lowCigarBandLabel;
+		}
+		else {
+			bandLabel = highCigarBandLabel;
+		}
+
 		rtnVal.getChildren().addAll(createCigarBand(low));
+		rtnVal.getChildren().add(bandLabel);
 		// Also, add the label, and its text.
 		return rtnVal;
 	}
@@ -831,9 +846,6 @@ public class CylinderContainer extends JFXPanel {
 			endXLabel = startXLabel + lengthOfBandLabel;
 		}
 
-		/*
-		float ruleYTop = -(Constants.YB + 20.0f);
-		*/
 		float yBottom = -(Constants.YB + 4.0f);
 		float yTop = yBottom - Constants.CB_LABEL_HEIGHT;
 		float zFront = -0.3f;
