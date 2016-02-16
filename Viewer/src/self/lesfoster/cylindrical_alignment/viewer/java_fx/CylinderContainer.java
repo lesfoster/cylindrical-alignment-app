@@ -46,8 +46,8 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  * @author Leslie L Foster
  */
 public class CylinderContainer extends JFXPanel {
-	final double cameraDistance = Constants.LENGTH_OF_CYLINDER * 3;
-	final TransformableGroup moleculeGroup = new TransformableGroup();
+	private static final double CAMERA_DISTANCE = Constants.LENGTH_OF_CYLINDER * 3;
+	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
 
 	private int startRange = 0;
 	private int endRange = 0;
@@ -64,6 +64,7 @@ public class CylinderContainer extends JFXPanel {
 	private Text lowCigarBandLabel;
 	private Text highCigarBandLabel;
 	
+	// TODO decide if these should be used or eliminated.
 	private TransformableGroup cylinder;
 	private TransformableGroup ruler;
 	private TransformableGroup anchor;
@@ -140,7 +141,7 @@ public class CylinderContainer extends JFXPanel {
 
 		cameraModel.getCamera().setNearClip(1.0);
 		cameraModel.getCamera().setFarClip(1000.0);
-		cameraModel.getCamera().setTranslateZ(-cameraDistance);
+		cameraModel.getCamera().setTranslateZ(-CAMERA_DISTANCE);
 		cameraModel.getCameraXform().ry.setAngle(-35.0);
 		// Moves to left/centered at midpoint anyway. cameraModel.getCamera().setTranslateX(100.0);
 		
@@ -534,8 +535,6 @@ public class CylinderContainer extends JFXPanel {
 	private static float getCylLeftX() {
 		return -Constants.START_OF_CYLINDER;
 	}
-	
-	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
 	
 	private float[] generateBandGeometry(double x, float outerRadius, float innerRadius) {
 		// How many vertices will be in entire geometry?
