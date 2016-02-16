@@ -80,5 +80,12 @@ public class Constants {
 	public static final Color FILL_DARK_COLOR = Color.BLACK;
 	public static final Color INLABEL_LIGHT_TEXT_COLOR = Color.BLACK;
 	public static final Color INLABEL_DARK_TEXT_COLOR = Color.WHITE;
+	
+	public static final float BANDLABEL_Z_BACK = 0.09f;
+	public static final float BANDLABEL_Z_FRONT = -0.3f;
+	
+	public static final float LENGTH_OF_BAND_LABEL = Constants.LENGTH_OF_CYLINDER / 10.0f;
+	public static final float BOTTOM_OF_CB_LABEL = -(Constants.YB + 4.0f);
+	public static final float TOP_OF_CB_LABEL = Constants.BOTTOM_OF_CB_LABEL - Constants.CB_LABEL_HEIGHT;
 
 }

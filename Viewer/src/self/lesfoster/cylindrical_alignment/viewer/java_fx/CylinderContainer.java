@@ -46,9 +46,6 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  * @author Leslie L Foster
  */
 public class CylinderContainer extends JFXPanel {
-	public static final float BANDLABEL_Z_BACK = 0.09f;
-	public static final float BANDLABEL_Z_FRONT = -0.3f;
-
 	final double cameraDistance = Constants.LENGTH_OF_CYLINDER * 3;
 	final TransformableGroup moleculeGroup = new TransformableGroup();
 
@@ -82,19 +79,6 @@ public class CylinderContainer extends JFXPanel {
 	private boolean dark = false;
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
-
-	//TODO make more constants from these.
-	public static float getLengthOfBandLabel() {
-		return Constants.LENGTH_OF_CYLINDER / 10.0f;
-	}
-
-	public static float getBottomOfCbLabel() {
-		return -(Constants.YB + 4.0f);
-	}
-
-	public static float getTopOfCbLabel() {
-		return getBottomOfCbLabel() - Constants.CB_LABEL_HEIGHT;
-	}
 
 	public CylinderContainer(DataSource dataSource) {
 		this(dataSource, 0, dataSource.getAnchorLength());
@@ -493,7 +477,7 @@ public class CylinderContainer extends JFXPanel {
 		// up to wherever the highest possible point would be.
 		float xl = getCylLeftX() - 10.0f; // Extend to make room for start-range
 		float xr = getCylRightX() + 10.0f; // Balance left.		
-		float yBottom = getBottomOfCbLabel();
+		float yBottom = Constants.BOTTOM_OF_CB_LABEL;
 		float ruleYTop = -(Constants.YB + 24.0f);
 		float zBack = -0.5f;
 		float[] coordinateData = new float[]{
@@ -819,14 +803,14 @@ public class CylinderContainer extends JFXPanel {
 		Group rtnVal = new Group();
 		Text bandLabel = null;
 		if (low) {
-			lowCigarBandLabel = new Text(getCylLeftX() - getLengthOfBandLabel(), getBottomOfCbLabel(), "0");
+			lowCigarBandLabel = new Text(getCylLeftX() - Constants.LENGTH_OF_BAND_LABEL, Constants.BOTTOM_OF_CB_LABEL, "0");
 			bandLabel = lowCigarBandLabel;
 		}
 		else {
-			highCigarBandLabel = new Text(getCylRightX(), getBottomOfCbLabel(), "LARGE");
+			highCigarBandLabel = new Text(getCylRightX(), Constants.BOTTOM_OF_CB_LABEL, "LARGE");
 			bandLabel = highCigarBandLabel;
 		}
-		bandLabel.setTranslateZ(BANDLABEL_Z_FRONT - 0.2);
+		bandLabel.setTranslateZ(Constants.BANDLABEL_Z_FRONT - 0.2);
 		bandLabel.setFill(Color.BLACK);
 		bandLabel.setFont(new Font(7.0));
 		//bandLabel.setSmooth(true);
@@ -862,7 +846,7 @@ public class CylinderContainer extends JFXPanel {
 		bandMesh.setMaterial(meshMaterial);
 		
 		// Build up the label mesh.
-		float lengthOfBandLabel = getLengthOfBandLabel();
+		float lengthOfBandLabel = Constants.LENGTH_OF_BAND_LABEL;
 		float startXLabel = 0;
 		float endXLabel = 0;
 		if (leftward) {
@@ -874,10 +858,10 @@ public class CylinderContainer extends JFXPanel {
 			endXLabel = startXLabel + lengthOfBandLabel;
 		}
 
-		float yBottom = getBottomOfCbLabel();
-		float yTop = getTopOfCbLabel();
-		float zFront = BANDLABEL_Z_FRONT;
-		float zBack = BANDLABEL_Z_BACK;
+		float yBottom = Constants.BOTTOM_OF_CB_LABEL;
+		float yTop = Constants.TOP_OF_CB_LABEL;
+		float zFront = Constants.BANDLABEL_Z_FRONT;
+		float zBack = Constants.BANDLABEL_Z_BACK;
 		float[] labelCoordinateData = new float[]{
 			// The 'front'
 			startXLabel, yTop, zFront,
@@ -939,7 +923,7 @@ public class CylinderContainer extends JFXPanel {
 		int lengthOfQuery = anchorLength + 1;
 
 		// Make tick mark lines.
-		double tickYBottom = getBottomOfCbLabel();
+		double tickYBottom = Constants.BOTTOM_OF_CB_LABEL;
 		double tickYTop = tickYBottom - 4.7;
 		double labelYBottom = tickYTop - 0.5; //getBottomOfCbLabel() + 2.0; //tickYTop + 1.0;
 		double multiplier = factor;
