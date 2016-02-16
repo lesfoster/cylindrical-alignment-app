@@ -77,7 +77,7 @@ public class CylinderContainer extends JFXPanel {
 	private final CameraModel cameraModel = new CameraModel();	
 	private AppearanceSource appearanceSource;
 	private Text inSceneLabel;
-	private boolean dark = false;
+	private boolean dark = true;
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
 
@@ -416,22 +416,6 @@ public class CylinderContainer extends JFXPanel {
 		TriangleMesh tm = new TriangleMesh();
 		tm.getPoints().addAll(vertices);
 		tm.getTexCoords().addAll(texCoords);
-		// Only one tex coord.
-		// 36 coords represented. 12 triangles (faces), to make 6 sides.
-//		int[] faces = new int[]{
-//			0, 0, 1, 0, 2, 0,
-//			3, 0, 4, 0, 5, 0,
-//			6, 0, 7, 0, 8, 0,
-//			9, 0, 10, 0, 11, 0,
-//			12, 0, 13, 0, 14, 0,
-//			15, 0, 16, 0, 17, 0,
-//			18, 0, 19, 0, 20, 0,
-//			21, 0, 22, 0, 23, 0,
-//			24, 0, 25, 0, 26, 0,
-//			27, 0, 28, 0, 29, 0,
-//			30, 0, 31, 0, 32, 0,
-//			33, 0, 34, 0, 35, 0
-//		};
 		
 		int[] faces = new int[ (vertices.length / 3) * 4 ];
 		for (int i = 0; i < faces.length / 2; i+=2) {
@@ -542,7 +526,9 @@ public class CylinderContainer extends JFXPanel {
 		//  4 points will have 2 triangles between them.  Multiple by 6 points.
 		//    so far, 6 * 100 = 600.
 		//  3 coords for each point.
-		float[] coords = new float[3 * ((BAND_CIRCLE_VERTEX_COUNT) * 6)];
+		// Finally: must repeat all coordinates in opposite direction, to
+		//  get both sides' normals populated.
+		float[] coords = new float[2 * 3 * ((BAND_CIRCLE_VERTEX_COUNT) * 6)];
 		
 		// Now fill in the points.  Take circle to be 2*PI radians (Java Math).
 		double increment = //360.0 / BAND_CIRCLE_VERTEX_COUNT;
@@ -556,6 +542,7 @@ public class CylinderContainer extends JFXPanel {
 		float floatX = (float)x;
 		int coordsPerPoint = 3;
 		int coordsPerQuad = 6 * coordsPerPoint;
+		int nextCoord = 0;
 		for (int i = 0; i < BAND_CIRCLE_VERTEX_COUNT + 1; i++) {	
 			final double cos = Math.cos(angle);
 			final double sin = Math.sin(angle);
@@ -608,8 +595,70 @@ public class CylinderContainer extends JFXPanel {
 			prevInnerZ = innerZ;
 			
 			angle += increment;
+			
+			nextCoord = i;
 		}
 		
+		angle = 0.0;
+		floatX += 0.1;
+		prevOuterY = null;
+		prevOuterZ = null;
+		prevInnerY = null;
+		prevInnerZ = null;
+		for (int i = nextCoord; i < 2*BAND_CIRCLE_VERTEX_COUNT + 1; i++) {
+			final double cos = Math.cos(angle);
+			final double sin = Math.sin(angle);
+
+			// X remains the same.
+			// Y for outer lip.
+			float outerY = (float) (cos * outerRadius);
+			// Y for inner lip.
+			float innerY = (float) (cos * innerRadius);
+			// Z for outer lip.
+			float outerZ = (float) (sin * outerRadius);
+			// Z for inner lip.
+			float innerZ = (float) (sin * innerRadius);
+
+			// Make next pair of triangles.
+			if (prevOuterY != null) {
+				final int quadCoordOffset = (i - 1) * coordsPerQuad;
+				// First Triangle
+				// X/Inner/Prev
+				coords[quadCoordOffset] = floatX;
+				coords[quadCoordOffset + 1] = prevInnerY;
+				coords[quadCoordOffset + 2] = prevInnerZ;
+				// X/Outer/Curr
+				coords[quadCoordOffset + 3] = floatX;
+				coords[quadCoordOffset + 4] = prevOuterY;
+				coords[quadCoordOffset + 5] = prevOuterZ;
+				// X/Outer/Prev
+				coords[quadCoordOffset + 6] = floatX;
+				coords[quadCoordOffset + 7] = outerY;
+				coords[quadCoordOffset + 8] = outerZ;
+
+				// Second Triangle
+				// X/Inner/Prev
+				coords[quadCoordOffset + 9] = floatX;
+				coords[quadCoordOffset + 10] = innerY;
+				coords[quadCoordOffset + 11] = innerZ;
+				// X/Inner/Curr
+				coords[quadCoordOffset + 12] = floatX;
+				coords[quadCoordOffset + 13] = prevInnerY;
+				coords[quadCoordOffset + 14] = prevInnerZ;
+				// X/Outer/Curr
+				coords[quadCoordOffset + 15] = floatX;
+				coords[quadCoordOffset + 16] = outerY;
+				coords[quadCoordOffset + 17] = outerZ;
+			}
+
+			prevOuterY = outerY;
+			prevOuterZ = outerZ;
+			prevInnerY = innerY;
+			prevInnerZ = innerZ;
+
+			angle += increment;
+		}
+
 		return coords;
 	}
 
