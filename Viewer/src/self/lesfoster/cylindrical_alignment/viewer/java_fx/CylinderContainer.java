@@ -491,10 +491,10 @@ public class CylinderContainer extends JFXPanel {
 	public float[] generateRuleGeometry() {
         // Establish end points, as being wherever the cylinder's lowest possible point would be,
 		// up to wherever the highest possible point would be.
-		float xl = getCylLeftX();
-		float xr = getCylRightX();		
+		float xl = getCylLeftX() - 10.0f; // Extend to make room for start-range
+		float xr = getCylRightX() + 10.0f; // Balance left.		
 		float yBottom = getBottomOfCbLabel();
-		float ruleYTop = -(Constants.YB + 20.0f);
+		float ruleYTop = -(Constants.YB + 24.0f);
 		float zBack = -0.5f;
 		float[] coordinateData = new float[]{
 			// Front face
