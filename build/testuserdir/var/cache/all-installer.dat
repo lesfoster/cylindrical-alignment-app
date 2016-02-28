@@ -1,4 +1,4 @@
-#Mon Feb 15 20:36:07 EST 2016
+#Sun Feb 28 00:09:18 EST 2016
 org.netbeans.core.startup.OpenIDE-Module-Deprecated=\u0000
 self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.modules.settings.AutoUpdate-Show-In-Client=false
@@ -103,8 +103,8 @@ org.netbeans.modules.editor.mimelookup.impl.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.bootstrap.OpenIDE-Module-Description=\u0000
 org.netbeans.spi.quicksearch.OpenIDE-Module-Install=\u0000
 org.netbeans.core.OpenIDE-Module-Description=\u0000
-org.netbeans.libs.jna.platform.AutoUpdate-Show-In-Client=false
 org.openide.nodes.OpenIDE-Module-Deprecated=\u0000
+org.netbeans.libs.jna.platform.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.uihandler.AutoUpdate-Show-In-Client=false
 org.netbeans.core.io.ui.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.settings.OpenIDE-Module-Description=\u0000

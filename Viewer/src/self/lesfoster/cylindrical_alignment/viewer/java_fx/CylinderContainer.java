@@ -9,9 +9,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javafx.animation.Animation;
+import javafx.animation.Interpolator;
+import javafx.animation.RotateTransition;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.geometry.Point3D;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.paint.Color;
@@ -23,6 +28,7 @@ import javafx.scene.shape.TriangleMesh;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
 import self.lesfoster.cylindrical_alignment.constants.Constants;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.Entity;
@@ -46,6 +52,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  * @author Leslie L Foster
  */
 public class CylinderContainer extends JFXPanel {
+	public static final String SPIN_GROUP_ID = "SPIN_GROUP";
 	private static final double CAMERA_DISTANCE = Constants.LENGTH_OF_CYLINDER * 3;
 	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
 
@@ -153,7 +160,23 @@ public class CylinderContainer extends JFXPanel {
 	 * may or may not move/animate with the larger whole.
 	 */
 	private TransformableGroup createPositionableObjectHierarchy(DataSource dataSource) {
-		positionableObject.getChildren().add(createCylinder(dataSource.getEntities()));
+		cylinder = createCylinder(dataSource.getEntities());
+		TransformableGroup spinGroup = null;
+		for (Node child: cylinder.getChildren()) {
+			String id = child.getId();
+			if (id != null  &&  id.equals(SPIN_GROUP_ID)) {
+				spinGroup = (TransformableGroup)child;
+			}
+		}
+		RotateTransition rt = new RotateTransition();
+		rt.setFromAngle(0.0);
+		rt.setToAngle(360.0);
+		rt.setDuration(Duration.millis(10000));
+		rt.setInterpolator(Interpolator.LINEAR); //Runs smoothly.
+		rt.setCycleCount(Animation.INDEFINITE);  //Runs forever.
+		rt.setByAngle(0.01);
+		rt.setAxis(new Point3D(1.0, 0.0, 0.0));
+		positionableObject.getChildren().add(cylinder);
 		final int anchorLength = dataSource.getAnchorLength();
 		positionableObject.getChildren().add(createRuler(anchorLength));
 		positionableObject.getChildren().addAll(createTickBands());
@@ -163,12 +186,17 @@ public class CylinderContainer extends JFXPanel {
 		highCigarBandLabel.setText("" + endRange);
 		positionableObject.getChildren().add(lowCigarBandSlide);
 		positionableObject.getChildren().add(highCigarBandSlide);
-		
+
+		rt.setNode(spinGroup);
+		rt.play();
 		return positionableObject;
 	}
 
 	private TransformableGroup createCylinder(List<Entity> entities) {
 		TransformableGroup rtnVal = new TransformableGroup();
+		TransformableGroup spinGroup = new TransformableGroup();
+		spinGroup.setId(SPIN_GROUP_ID);
+		rtnVal.getChildren().add(spinGroup);
 		try {
 			double rotOffs = 360.0 / entities.size();
 			double rotatePos = 0;
@@ -203,8 +231,8 @@ public class CylinderContainer extends JFXPanel {
 //                        if ( ! isAnchor( nextEntity ) ) {
 //                            part.setPreAnimator( rotationAnimator );
 //                        }
-						rtnVal.getChildren().add(subHitGroup);
 						if (!anchorFlag) {
+							spinGroup.getChildren().add(subHitGroup);
 							subHitGroup.getChildren().add(subHitView);
 							if (nextEntity.getGapsOnQuery().length > 0) {
 								generateSubjectInsertions(nextEntity, subHitGroup, nextEntity.getGapsOnQuery());
@@ -217,6 +245,7 @@ public class CylinderContainer extends JFXPanel {
 							rotatePos += rotOffs;
 						} else {
 							// Have an anchor.  Place it separately.
+							rtnVal.getChildren().add(subHitGroup);
 							createAnchor(subHitView, entity, rtnVal);
 							subHitGroup.getChildren().add(subHitView);
 						}
@@ -1079,7 +1108,7 @@ public class CylinderContainer extends JFXPanel {
 		return rulerGroup;
 	}
 
-	private TransformableGroup createAnchor(MeshView subHitView, Entity entity, TransformableGroup parentGroup) {
+	private void createAnchor(MeshView subHitView, Entity entity, TransformableGroup parentGroup) {
 		subHitView.setRotationAxis(Rotate.X_AXIS);
 		subHitView.setRotate(4.0f / 7.0f * 360.0);
 		subHitView.setTranslateY(Constants.ANCHOR_OFFSET);
@@ -1088,8 +1117,6 @@ public class CylinderContainer extends JFXPanel {
 
 		// Add a label to the main screen.
 		addAnchorLabel(entity, parentGroup);
-		// Stubbed
-		return new TransformableGroup();
 	}
 
 	private Text createLabel() {
