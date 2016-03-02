@@ -41,14 +41,14 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGr
  * 
  * Perhaps make this interface large enough to include more affectors. 
  */
-public class ConcreteCylinderPositioningAffector implements CylinderPositioningEffector {
-	private CylinderPositioningAffectorTarget positioningTarget;
+public class ConcreteCylinderPositioningEffector implements CylinderPositioningEffector {
+	private CylinderPositioningEffectorTarget positioningTarget;
 	private double mouseRotateFactor;
 	private boolean mouseRotateIsXOnly = false;
 	private boolean mouseRotateIsFrozen = false;
 	
-	public ConcreteCylinderPositioningAffector( 
-			CylinderPositioningAffectorTarget positioningTarget 
+	public ConcreteCylinderPositioningEffector( 
+			CylinderPositioningEffectorTarget positioningTarget 
 		) {
 		this.positioningTarget = positioningTarget;
 		this.mouseRotateFactor = DEFAULT_MOUSE_ROTATE_FACTOR;

@@ -34,7 +34,7 @@ import javafx.scene.Scene;
  * Implement this to provide a settings affector with the hooks it needs to perform its task. 
  * @author Leslie L Foster
  */
-public interface SettingsAffectorTarget {
+public interface SettingsEffectorTarget {
 	Scene getUniverse();
 	//DirectionalLight getDirectionLight();
     void setEnvelopeDistance(int envelopeDistance);

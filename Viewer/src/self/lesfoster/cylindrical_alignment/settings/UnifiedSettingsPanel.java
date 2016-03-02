@@ -25,9 +25,7 @@ package self.lesfoster.cylindrical_alignment.settings;
 
 import javax.swing.*;
 import java.awt.*;
-import org.openide.util.Lookup;
 import org.openide.util.Utilities;
-import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
 import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
@@ -52,54 +50,108 @@ public class UnifiedSettingsPanel extends JPanel {
 	}
 
     public UnifiedSettingsPanel(
-            SpeedEffector speedAffector,
-            SettingsEffector settingsAffector,
-            CylinderPositioningEffector cylinderPositioningAffector ) {
+            SpeedEffector speedEffector,
+            SettingsEffector settingsEffector,
+            CylinderPositioningEffector cylinderPositioningEffector ) {
         //super( "Adjust Settings" );
-        initGui( speedAffector, settingsAffector, cylinderPositioningAffector );
+        initGui( speedEffector, settingsEffector, cylinderPositioningEffector );
     }
 
 	private void initWhenReady() {
-		Runnable runnable = () -> {
-			CylinderContainer affected = null;
-			while (true) {
-				try {
-					affected = Utilities.actionsGlobalContext().lookup(CylinderContainer.class);
-					if (affected == null) {
-						//System.out.println("No lookup.");
-						Thread.sleep(300);
-						continue;
+		SwingWorker swingWorker = new SwingWorker() {
+			private CylinderContainer effected;
+			@Override
+			protected Object doInBackground() throws Exception {
+				while (true) {
+					try {
+						effected = Utilities.actionsGlobalContext().lookup(CylinderContainer.class);
+						if (effected == null) {
+							//System.out.println("No lookup.");
+							Thread.sleep(300);
+							continue;
+						} else {
+							break;
+						}
+					} catch (InterruptedException ie) {
+						// Eat this one.
+
 					}
-					break;
-				} catch (InterruptedException ie) {
-					// Eat this one.
-
 				}
+				return effected;
 			}
-
-			//System.out.println("Got the lookup");
-
-			Effector[] affectors = affected.getAffectors();
-			SpeedEffector speedAffector = null;
-			for (Effector affector : affectors) {
-				if (affector instanceof SpeedEffector) {
-					speedAffector = (SpeedEffector) affector;
+			
+			protected void done() {
+				final Effector[] effectors = effected.getEffectors();
+				SpeedEffector speedEffector = null;
+				SettingsEffector settingsEffector = null;
+				CylinderPositioningEffector cylPosEffector = null;
+				for (Effector effector : effectors) {
+					if (effector instanceof SpeedEffector) {
+						speedEffector = (SpeedEffector) effector;
+					} else if (effector instanceof SettingsEffector) {
+						settingsEffector = (SettingsEffector) effector;
+					} else if (effector instanceof CylinderPositioningEffector) {
+						cylPosEffector = (CylinderPositioningEffector) effector;
+					}
 				}
+				initGui(speedEffector, settingsEffector, cylPosEffector);
 			}
-			initGui(speedAffector, null, null);
+			
 		};
-		new Thread(runnable).start(); //Out of AWT thread.
+		swingWorker.execute();
+//		Runnable runnable = () -> {
+//			CylinderContainer effected = null;
+//			while (true) {
+//				try {
+//					effected = Utilities.actionsGlobalContext().lookup(CylinderContainer.class);
+//					if (effected == null) {
+//						//System.out.println("No lookup.");
+//						Thread.sleep(300);
+//						continue;
+//					}
+//					else {
+//						break;
+//					}
+//				} catch (InterruptedException ie) {
+//					// Eat this one.
+//
+//				}
+//			}
+//			final Effector[] effectors = effected.getEffectors();
+//
+//			//System.out.println("In the pipe: 5 by 5");
+//
+//			javax.swing.SwingUtilities.invokeLater(new Runnable() {
+//				@Override
+//				public void run() {
+//					SpeedEffector speedEffector = null;
+//					SettingsEffector settingsEffector = null;
+//					CylinderPositioningEffector cylPosEffector = null;
+//					for (Effector effector : effectors) {
+//						if (effector instanceof SpeedEffector) {
+//							speedEffector = (SpeedEffector) effector;
+//						} else if (effector instanceof SettingsEffector) {
+//							settingsEffector = (SettingsEffector) effector;
+//						} else if (effector instanceof CylinderPositioningEffector) {
+//							cylPosEffector = (CylinderPositioningEffector) effector;
+//						}
+//					}
+//					initGui(speedEffector, settingsEffector, cylPosEffector);
+//				}
+//			});
+//		};
+//		new Thread(runnable).start(); //Out of AWT thread.
 	}
 
-    /** Build out the GUI with all the affectors known here. */
+    /** Build out the GUI with all the effectors known here. */
     private void initGui(
-            SpeedEffector speedAffector,
-            SettingsEffector settingsAffector,
-            CylinderPositioningEffector cylinderPositioningAffector ) {
+            SpeedEffector speedEffector,
+            SettingsEffector settingsEffector,
+            CylinderPositioningEffector cylinderPositioningEffector ) {
 
-        SpinSliderPanel spinSliderPanel = new SpinSliderPanel( speedAffector );
-        SelectionEnvelopPanel selectionEnvelopPanel = new SelectionEnvelopPanel( settingsAffector );
-        DragFactorSliderPanel dragFactorSliderPanel = new DragFactorSliderPanel( cylinderPositioningAffector );
+        SpinSliderPanel spinSliderPanel = new SpinSliderPanel( speedEffector );
+        SelectionEnvelopPanel selectionEnvelopPanel = new SelectionEnvelopPanel( settingsEffector );
+        DragFactorSliderPanel dragFactorSliderPanel = new DragFactorSliderPanel( cylinderPositioningEffector );
 
         GridBagLayout gridBagLayout = new GridBagLayout();
         this.setLayout( gridBagLayout );
@@ -143,7 +195,7 @@ public class UnifiedSettingsPanel extends JPanel {
         add( dragFactorSliderPanel, dragFactorConstraints );
 
         JButton resetCylinderButton = new JButton( "Re-set Cylinder Position" );
-        resetCylinderButton.addActionListener(new ResetCylinderPositionActionListener(cylinderPositioningAffector));
+        resetCylinderButton.addActionListener(new ResetCylinderPositionActionListener(cylinderPositioningEffector));
         gridY++;
         GridBagConstraints resetCylinderConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, GridBagConstraints.NONE, insets, ipadx, ipady
@@ -151,7 +203,7 @@ public class UnifiedSettingsPanel extends JPanel {
         add( resetCylinderButton, resetCylinderConstraints );
 
         JCheckBox freezeCylinderCheckbox = new JCheckBox( "Freeze Cylinder Position" );
-        freezeCylinderCheckbox.addActionListener( new FreezeCylinderActionListener( cylinderPositioningAffector ) );
+        freezeCylinderCheckbox.addActionListener(new FreezeCylinderActionListener( cylinderPositioningEffector ) );
         gridY++;
         GridBagConstraints freezeCylinderConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
@@ -159,7 +211,7 @@ public class UnifiedSettingsPanel extends JPanel {
         add( freezeCylinderCheckbox, freezeCylinderConstraints );
 
         JCheckBox dragAroundYCheckbox = new JCheckBox( "Drag Cylinder around Y Axis Only" );
-        dragAroundYCheckbox.addActionListener( new DragAroundYActionListener( cylinderPositioningAffector ) );
+        dragAroundYCheckbox.addActionListener(new DragAroundYActionListener( cylinderPositioningEffector ) );
         gridY++;
         GridBagConstraints dragAroundYConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
@@ -167,7 +219,7 @@ public class UnifiedSettingsPanel extends JPanel {
         add( dragAroundYCheckbox, dragAroundYConstraints );
 
         JCheckBox antiAliasCheckbox = new JCheckBox( "Antialias" );
-        antiAliasCheckbox.addActionListener( new AntialiasActionListener( settingsAffector ) );
+        antiAliasCheckbox.addActionListener(new AntialiasActionListener( settingsEffector ) );
         gridY++;
         GridBagConstraints antiAliasConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
@@ -177,7 +229,7 @@ public class UnifiedSettingsPanel extends JPanel {
         //
         JCheckBox secDirLightCheckbox = new JCheckBox( "Second Directional Light" );
         secDirLightCheckbox.setSelected( true );  // On by default.
-        secDirLightCheckbox.addActionListener( new SecondDirectionalLightActionListener( settingsAffector ) );
+        secDirLightCheckbox.addActionListener(new SecondDirectionalLightActionListener( settingsEffector ) );
         gridY++;
         GridBagConstraints secDirConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady

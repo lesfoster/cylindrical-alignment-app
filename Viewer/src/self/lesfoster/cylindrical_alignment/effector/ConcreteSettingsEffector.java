@@ -30,12 +30,12 @@ package self.lesfoster.cylindrical_alignment.effector;
  *
  */
 public class ConcreteSettingsEffector implements SettingsEffector {
-	private SettingsAffectorTarget target;
+	private SettingsEffectorTarget target;
 	
 	/**
 	 * Construct with the target.
 	 */
-	public ConcreteSettingsEffector( SettingsAffectorTarget target ) {
+	public ConcreteSettingsEffector( SettingsEffectorTarget target ) {
 		this.target = target;
 	}
 

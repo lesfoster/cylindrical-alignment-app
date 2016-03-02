@@ -27,7 +27,7 @@ package self.lesfoster.cylindrical_alignment.effector;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGroup;
 
 /** Implement this to allow the positioning affector to get objects needed to carry out operations. */
-public interface CylinderPositioningAffectorTarget {
+public interface CylinderPositioningEffectorTarget {
 	//@TODO: once mouse rotation in JavaFX is better understood, change below.
 	//MouseRotate getMouseRotateBehavior();
 	TransformableGroup getTransformGroup();

@@ -11,5 +11,5 @@ package self.lesfoster.cylindrical_alignment.effector;
  * @author Leslie L Foster
  */
 public interface Effected {
-	Effector[] getAffectors();
+	Effector[] getEffectors();
 }

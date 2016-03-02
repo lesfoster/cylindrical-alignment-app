@@ -114,21 +114,22 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 		selectionModel.addListener(selectionListener);
 	}
 
+	//----------------------------------------IMPLEMENTS Effected
 	/**
 	 * Provides "the hookup" for interacting with aspects of this component.
 	 *
-	 * @return array of affectors which can be called in response to events.
+	 * @return array of effectors which can be called in response to events.
 	 */
-	public Effector[] getAffectors() {
+	public Effector[] getEffectors() {
 		return new Effector[]{
 			new ConcreteSpeedEffector(this),
-//			new ConcreteHelpAffector(this, this),
-//			new ConcreteSettingsAffector(this),
-//			new ConcreteCylinderPositioningAffector(this),
+//			new ConcreteHelpEffector(this, this),
+//			new ConcreteSettingsEffector(this),
+//			new ConcreteCylinderPositioningEffector(this),
 		};
 	}
 	
-	//----------------------------------------IMPLEMENTS SpeedAffectorTarget
+	//----------------------------------------IMPLEMENTS SpeedEffectorTarget
 	@Override
 	public int getDuration() {
 		return duration;
@@ -140,10 +141,23 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 			rt.setRate(0);
 		}
 		else {
+			rt.setDuration(Duration.millis(duration));			
 			rt.setRate(naturalSpinRate);
+			rt.play();
 		}
-		rt.setDuration(new Duration(duration));
 		this.duration = duration;
+	}
+
+	public void addAnchorLabel(Map<String, Object> props, TransformableGroup parentGroup) {
+		String name = (String) props.get(DataSource.NAME_PROPERTY);
+		if (name == null) {
+			name = (String) props.get(DataSource.ANCHOR_ID_PROPERTY);
+		}
+		if (name == null) {
+			name = "Unknown";
+		}
+		System.out.println("Creating Anchor Label: " + name);
+		inSceneLabel.setText(name);
 	}
 
 	private void init(final DataSource dataSource) {
@@ -320,18 +334,6 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 				addAnchorLabel( subEnt.getProperties(), parentGroup );
 			}
 		}
-	}
-
-	public void addAnchorLabel(Map<String,Object> props, TransformableGroup parentGroup) {
-		String name = (String) props.get(DataSource.NAME_PROPERTY);
-		if (name == null) {
-			name = (String) props.get(DataSource.ANCHOR_ID_PROPERTY);
-		}
-		if (name == null) {
-			name = "Unknown";
-		}
-		System.out.println("Creating Anchor Label: " + name);
-		inSceneLabel.setText(name);
 	}
 
 	/**
