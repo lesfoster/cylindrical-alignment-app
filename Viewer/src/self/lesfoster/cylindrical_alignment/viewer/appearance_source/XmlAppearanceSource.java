@@ -166,7 +166,7 @@ public class XmlAppearanceSource implements AppearanceSource {
         if (entityType == null)
         	entityType = DEFAULT_ENTITY_TYPE;
 
-        Color diffuseColor = (Color)entityTypeToColor.get(entityType);
+        Color diffuseColor = entityTypeToColor.get(entityType);
         if (diffuseColor == null) {
         	diffuseColor = generateDomainColor(entityType);
         	entityTypeToColor.put(entityType, diffuseColor);

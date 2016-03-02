@@ -11,6 +11,6 @@
         <attr name="WinSys-TCRef-Order" stringvalue="output"/>
     </fileobject>
     <fileobject name="properties">
-        <attr name="WinSys-TCRef-Order" stringvalue="PropertyInspectorTopComponent/properties"/>
+        <attr name="WinSys-TCRef-Order" stringvalue="ControlsTopComponent/PropertyInspectorTopComponent/properties"/>
     </fileobject>
 </attributes>

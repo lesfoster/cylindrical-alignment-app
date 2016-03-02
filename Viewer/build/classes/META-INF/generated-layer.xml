@@ -5,6 +5,10 @@
     <folder name="xml">
         <folder name="entities">
             <folder name="self_lesfoster_cylindrical_alignment_viewer_top_component">
+                <file name="Controls" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
+                    <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
+                    <attr name="hint.originalPublicID" stringvalue="-//self.lesfoster.cylindrical_alignment.viewer.top_component//Controls//EN"/>
+                </file>
                 <file name="Viewer" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
                     <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
                     <attr name="hint.originalPublicID" stringvalue="-//self.lesfoster.cylindrical_alignment.viewer.top_component//Viewer//EN"/>
@@ -17,6 +21,10 @@
                     <folder name="cylindrical_alignment">
                         <folder name="viewer">
                             <folder name="top_component">
+                                <file name="ControlsTopComponent">
+                                    <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
+                                    <attr name="settings.providerPath" stringvalue="xml/lookups//self_lesfoster_cylindrical_alignment_viewer_top_component/Controls.instance"/>
+                                </file>
                                 <file name="ViewerTopComponent">
                                     <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
                                     <attr name="settings.providerPath" stringvalue="xml/lookups//self_lesfoster_cylindrical_alignment_viewer_top_component/Viewer.instance"/>
@@ -29,6 +37,16 @@
         </folder>
         <folder name="lookups">
             <folder name="self_lesfoster_cylindrical_alignment_viewer_top_component">
+                <file name="Controls.instance">
+                    <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.create" name="instanceCreate"/>
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.properties" name="settings.convertor"/>
+                    <attr name="settings.instanceClass" stringvalue="self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent"/>
+                    <attr name="settings.instanceOf" stringvalue="self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent"/>
+                    <attr boolvalue="true" name="xmlproperties.preventStoring"/>
+                </file>
                 <file name="Viewer.instance">
                     <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
                     <attr
@@ -44,6 +62,10 @@
     </folder>
     <folder name="Menu">
         <folder name="Window">
+            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.shadow">
+                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
+                <attr name="originalFile" stringvalue="Actions/Window/self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.instance"/>
+            </file>
             <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.shadow">
                 <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
                 <attr name="originalFile" stringvalue="Actions/Window/self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.instance"/>
@@ -52,6 +74,13 @@
     </folder>
     <folder name="Windows2">
         <folder name="Components">
+            <file name="ControlsTopComponent.settings">
+                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
+<settings version="1.0">
+  <instance class="self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent"/>
+</settings>
+]]></file>
             <file name="ViewerTopComponent.settings">
                 <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
@@ -61,6 +90,16 @@
 ]]></file>
         </folder>
         <folder name="Modes">
+            <folder name="rightSlidingSide">
+                <file name="ControlsTopComponent.wstcref">
+                    <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tc-ref PUBLIC "-//NetBeans//DTD Top Component in Mode Properties 2.0//EN" "http://www.netbeans.org/dtds/tc-ref2_0.dtd">
+<tc-ref version="2.0">
+  <tc-id id="ControlsTopComponent"/>
+  <state opened="false"/>
+</tc-ref>
+]]></file>
+            </folder>
             <folder name="editor">
                 <file name="ViewerTopComponent.wstcref">
                     <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
@@ -75,6 +114,15 @@
     </folder>
     <folder name="Actions">
         <folder name="Window">
+            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.instance">
+                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent"/>
+                <attr name="preferredID" stringvalue="ControlsTopComponent"/>
+                <attr
+                    bundlevalue="self.lesfoster.cylindrical_alignment.viewer.top_component.Bundle#CTL_ControlsAction" name="displayName"/>
+            </file>
             <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.instance">
                 <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
                 <attr

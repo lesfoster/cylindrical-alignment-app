@@ -29,6 +29,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
+import self.lesfoster.cylindrical_alignment.affector.Affected;
+import self.lesfoster.cylindrical_alignment.affector.Affector;
+import self.lesfoster.cylindrical_alignment.affector.ConcreteSpeedAffector;
+import self.lesfoster.cylindrical_alignment.affector.SpeedAffectorTarget;
 import self.lesfoster.cylindrical_alignment.constants.Constants;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.Entity;
@@ -51,7 +55,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  *
  * @author Leslie L Foster
  */
-public class CylinderContainer extends JFXPanel {
+public class CylinderContainer extends JFXPanel implements SpeedAffectorTarget, Affected {
 	public static final String SPIN_GROUP_ID = "SPIN_GROUP";
 	private static final double CAMERA_DISTANCE = Constants.LENGTH_OF_CYLINDER * 3;
 	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
@@ -78,6 +82,9 @@ public class CylinderContainer extends JFXPanel {
 	private Scene scene;
 	private final Map<String,SubEntity> idToSubEntity = new HashMap<>();
 	private int latestGraphId = 1;
+	private int duration = 10000;
+	private double naturalSpinRate = 0;
+	private RotateTransition rt;
 
 	private final MouseLocationModel mouseLocationModel = new MouseLocationModel();
 	private final SelectionModel selectionModel = new SelectionModel();
@@ -105,6 +112,38 @@ public class CylinderContainer extends JFXPanel {
 
 		};
 		selectionModel.addListener(selectionListener);
+	}
+
+	/**
+	 * Provides "the hookup" for interacting with aspects of this component.
+	 *
+	 * @return array of affectors which can be called in response to events.
+	 */
+	public Affector[] getAffectors() {
+		return new Affector[]{
+			new ConcreteSpeedAffector(this),
+//			new ConcreteHelpAffector(this, this),
+//			new ConcreteSettingsAffector(this),
+//			new ConcreteCylinderPositioningAffector(this),
+		};
+	}
+	
+	//----------------------------------------IMPLEMENTS SpeedAffectorTarget
+	@Override
+	public int getDuration() {
+		return duration;
+	}
+
+	@Override
+	public void setDuration(int duration) {
+		if (duration == -1) {
+			rt.setRate(0);
+		}
+		else {
+			rt.setRate(naturalSpinRate);
+		}
+		rt.setDuration(new Duration(duration));
+		this.duration = duration;
 	}
 
 	private void init(final DataSource dataSource) {
@@ -168,10 +207,11 @@ public class CylinderContainer extends JFXPanel {
 				spinGroup = (TransformableGroup)child;
 			}
 		}
-		RotateTransition rt = new RotateTransition();
+		rt = new RotateTransition();
+		this.naturalSpinRate = rt.getRate();
 		rt.setFromAngle(0.0);
 		rt.setToAngle(360.0);
-		rt.setDuration(Duration.millis(10000));
+		rt.setDuration(Duration.millis(duration));
 		rt.setInterpolator(Interpolator.LINEAR); //Runs smoothly.
 		rt.setCycleCount(Animation.INDEFINITE);  //Runs forever.
 		rt.setByAngle(0.01);
@@ -1014,7 +1054,7 @@ public class CylinderContainer extends JFXPanel {
 			rulerGroup.getChildren().add(generateRulerLabel("x" + labelDenominator, 0.0f, Constants.YLABEL, labelZOffset));
 		}
 
-		for (int i = this.startRange; i <= (int) this.endRange; i += stepSize) {
+		for (int i = this.startRange; i <= this.endRange; i += stepSize) {
 			double nextTickX = -Constants.START_OF_CYLINDER + ((i - startRange) * multiplier);
 			Line tick = new Line(nextTickX, tickYTop, nextTickX, tickYBottom);
 			tick.setTranslateZ(labelZOffset);

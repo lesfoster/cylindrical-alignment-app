@@ -35,8 +35,9 @@ package self.lesfoster.cylindrical_alignment.affector;
  * @author Leslie L. Foster
  */
 public interface SpeedAffector extends Affector {
-    public static final int FAST_DURATION = 6000;
-    public static final int SLOW_DURATION = 50000;
+	public static final int HALTED_DURATION = -1;
+	public static final int FAST_SPEED_DURATION = 3000;
+    public static final int SLOW_SPEED_DURATION = 50000;
 
 	void setSlow();
 	void setFast();

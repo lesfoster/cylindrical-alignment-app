@@ -5,8 +5,9 @@
     <name unique="rightSlidingSide"  />
   <kind type="sliding" />
   <slidingSide side="right" />
+  <slide-in-size tc-id="ControlsTopComponent" size="651" />
   <state type="joined"  />
-  <bounds x="0" y="0" width="0" height="0" />
+  <bounds x="1059" y="3" width="651" height="825" />
   <frame state="0"/>
     <empty-behavior permanent="true"/>
 </mode>

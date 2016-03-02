@@ -23,21 +23,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 package self.lesfoster.cylindrical_alignment.affector;
 
-//import javax.media.j3d.Alpha;
-
-import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGroup;
-
-//import javax.media.j3d.Bounds;
-//import javax.media.j3d.RotationInterpolator;
-//import javax.media.j3d.TransformGroup;
-
 /**
  * Implement this to provide the speed affector a means of affecting its changes.
  * @author Leslie L Foster
  */
 public interface SpeedAffectorTarget {
-	int getSpeedAffectorAlpha();
-	RotationInterpolator getSpeedAffectorRotator();
-	TransformableGroup getSpeedAffectorTransformGroup();
-	double[] getSchedulingBounds();
+	int getDuration();
+	void setDuration(int duration);
 }

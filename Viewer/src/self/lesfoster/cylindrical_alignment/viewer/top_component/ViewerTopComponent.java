@@ -10,10 +10,14 @@ import java.io.File;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.util.Lookup;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.util.Utilities;
+import org.openide.util.lookup.Lookups;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.DataSourceFactory;
+import self.lesfoster.cylindrical_alignment.affector.Affected;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 
 /**
@@ -90,6 +94,7 @@ public final class ViewerTopComponent extends TopComponent {
 		}
 		DataSource dataSource = DataSourceFactory.getSourceForFile(filePath);
 		CylinderContainer container = new CylinderContainer(dataSource);
+		associateLookup(Lookups.singleton(container));
 		contentPanel.add(container, BorderLayout.CENTER);
 	}
 
@@ -108,5 +113,11 @@ public final class ViewerTopComponent extends TopComponent {
 	void readProperties(java.util.Properties p) {
 		String version = p.getProperty("version");
 		// TODO read your settings according to their version
+	}
+
+	private static class Affected {
+
+		public Affected() {
+		}
 	}
 }

@@ -65,7 +65,7 @@ public class SpinSliderPanel extends JPanel {
 	 */
 	public SpinSliderPanel(SpeedAffector affector) {
 		affectorInstance = affector;
-		slider = new JSlider(SpeedAffector.FAST_DURATION, SpeedAffector.SLOW_DURATION, SpeedAffector.FAST_DURATION);
+		slider = new JSlider(SpeedAffector.FAST_SPEED_DURATION, SpeedAffector.SLOW_SPEED_DURATION, SpeedAffector.FAST_SPEED_DURATION);
 		slider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 			    JSlider source = (JSlider)e.getSource();
@@ -79,8 +79,8 @@ public class SpinSliderPanel extends JPanel {
 
         // Create the label table
 		Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
-		labelTable.put( new Integer( SpeedAffector.SLOW_DURATION ), new JLabel("Slow") );
-		labelTable.put( new Integer( SpeedAffector.FAST_DURATION ), new JLabel("Fast") );
+		labelTable.put( new Integer( SpeedAffector.SLOW_SPEED_DURATION ), new JLabel("Slow") );
+		labelTable.put( new Integer( SpeedAffector.FAST_SPEED_DURATION ), new JLabel("Fast") );
 		slider.setPaintTicks(false);
 		slider.setPaintLabels(true);
 
