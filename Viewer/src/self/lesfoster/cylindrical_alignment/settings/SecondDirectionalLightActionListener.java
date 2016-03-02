@@ -3,7 +3,7 @@ package self.lesfoster.cylindrical_alignment.settings;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import self.lesfoster.cylindrical_alignment.affector.SettingsAffector;
+import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,8 +14,8 @@ import self.lesfoster.cylindrical_alignment.affector.SettingsAffector;
  * Controller class to link up affector with gesture to turn off 2ndary directional light source.
  */
 public class SecondDirectionalLightActionListener implements ActionListener {
-    private SettingsAffector settingsAffector;
-    public SecondDirectionalLightActionListener( SettingsAffector settingsAffector ) {
+    private SettingsEffector settingsAffector;
+    public SecondDirectionalLightActionListener( SettingsEffector settingsAffector ) {
         this.settingsAffector = settingsAffector;
     }
     public void actionPerformed(ActionEvent ae) {

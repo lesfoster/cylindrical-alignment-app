@@ -5,7 +5,7 @@ cylinder, such that the alignments are arranged like the staves
 of a barrel. The cylinder can spin, and if it spins, it can
 do so at two different speeds.  When stopped, properties can
 be seen for the aligned values.
-Copyright (C) 2005 Leslie L. Foster
+Copyright (C) 2011 Leslie L. Foster
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -21,27 +21,9 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
+package self.lesfoster.cylindrical_alignment.effector;
 
-/*
- * Speed Affector.
- * 
- * Created on Jan 30, 2005
- */
-package self.lesfoster.cylindrical_alignment.affector;
-
-/**
- * Interface to expose controls for speed of cylinder rotation.
- *  
- * @author Leslie L. Foster
- */
-public interface SpeedAffector extends Affector {
-	public static final int HALTED_DURATION = -1;
-	public static final int FAST_SPEED_DURATION = 3000;
-    public static final int SLOW_SPEED_DURATION = 50000;
-
-	void setSlow();
-	void setFast();
-	void setImmobile();
-	void setDuration(int duration);
+public interface HelpAffectorTarget {
+	/** Tells name of input file being shown. */
+	String getInputFile();
 }
-

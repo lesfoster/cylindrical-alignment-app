@@ -1,10 +1,10 @@
-package self.lesfoster.cylindrical_alignment.affector;
+package self.lesfoster.cylindrical_alignment.effector;
 
-public class ConcreteSpeedAffector implements SpeedAffector {
+public class ConcreteSpeedEffector implements SpeedEffector {
 	
-	private SpeedAffectorTarget target;
+	private SpeedEffectorTarget target;
 	
-	public ConcreteSpeedAffector( SpeedAffectorTarget target ) {
+	public ConcreteSpeedEffector( SpeedEffectorTarget target ) {
 		this.target = target;
 	}
 

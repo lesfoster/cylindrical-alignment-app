@@ -21,13 +21,15 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-package self.lesfoster.cylindrical_alignment.affector;
+package self.lesfoster.cylindrical_alignment.effector;
 
-/**
- * Implement this to provide the speed affector a means of affecting its changes.
- * @author Leslie L Foster
- */
-public interface SpeedAffectorTarget {
-	int getDuration();
-	void setDuration(int duration);
+//import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
+import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGroup;
+
+/** Implement this to allow the positioning affector to get objects needed to carry out operations. */
+public interface CylinderPositioningAffectorTarget {
+	//@TODO: once mouse rotation in JavaFX is better understood, change below.
+	//MouseRotate getMouseRotateBehavior();
+	TransformableGroup getTransformGroup();
+	TransformableGroup getTransform();
 }

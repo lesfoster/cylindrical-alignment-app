@@ -37,7 +37,7 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Hashtable;
-import self.lesfoster.cylindrical_alignment.affector.SpeedAffector;
+import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 
 /**
  * Let the user control the spin rate of the cylinder.
@@ -55,7 +55,7 @@ public class SpinSliderPanel extends JPanel {
 	private static SpinSliderPanel instance;
 
 	/** Keep the affector around. */
-	private SpeedAffector affectorInstance;
+	private SpeedEffector affectorInstance;
 	private JSlider slider;
 
 	/**
@@ -63,9 +63,9 @@ public class SpinSliderPanel extends JPanel {
      *
 	 * @param affector what to call to change the speed of spin.
 	 */
-	public SpinSliderPanel(SpeedAffector affector) {
+	public SpinSliderPanel(SpeedEffector affector) {
 		affectorInstance = affector;
-		slider = new JSlider(SpeedAffector.FAST_SPEED_DURATION, SpeedAffector.SLOW_SPEED_DURATION, SpeedAffector.FAST_SPEED_DURATION);
+		slider = new JSlider(SpeedEffector.FAST_SPEED_DURATION, SpeedEffector.SLOW_SPEED_DURATION, SpeedEffector.FAST_SPEED_DURATION);
 		slider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 			    JSlider source = (JSlider)e.getSource();
@@ -79,8 +79,8 @@ public class SpinSliderPanel extends JPanel {
 
         // Create the label table
 		Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
-		labelTable.put( new Integer( SpeedAffector.SLOW_SPEED_DURATION ), new JLabel("Slow") );
-		labelTable.put( new Integer( SpeedAffector.FAST_SPEED_DURATION ), new JLabel("Fast") );
+		labelTable.put(new Integer( SpeedEffector.SLOW_SPEED_DURATION ), new JLabel("Slow") );
+		labelTable.put(new Integer( SpeedEffector.FAST_SPEED_DURATION ), new JLabel("Fast") );
 		slider.setPaintTicks(false);
 		slider.setPaintLabels(true);
 

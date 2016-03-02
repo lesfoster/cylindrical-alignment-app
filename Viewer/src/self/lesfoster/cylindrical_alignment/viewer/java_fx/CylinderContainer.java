@@ -29,10 +29,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
-import self.lesfoster.cylindrical_alignment.affector.Affected;
-import self.lesfoster.cylindrical_alignment.affector.Affector;
-import self.lesfoster.cylindrical_alignment.affector.ConcreteSpeedAffector;
-import self.lesfoster.cylindrical_alignment.affector.SpeedAffectorTarget;
+import self.lesfoster.cylindrical_alignment.effector.Effected;
+import self.lesfoster.cylindrical_alignment.effector.Effector;
+import self.lesfoster.cylindrical_alignment.effector.ConcreteSpeedEffector;
+import self.lesfoster.cylindrical_alignment.effector.SpeedEffectorTarget;
 import self.lesfoster.cylindrical_alignment.constants.Constants;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.Entity;
@@ -55,7 +55,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  *
  * @author Leslie L Foster
  */
-public class CylinderContainer extends JFXPanel implements SpeedAffectorTarget, Affected {
+public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, Effected {
 	public static final String SPIN_GROUP_ID = "SPIN_GROUP";
 	private static final double CAMERA_DISTANCE = Constants.LENGTH_OF_CYLINDER * 3;
 	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
@@ -119,9 +119,9 @@ public class CylinderContainer extends JFXPanel implements SpeedAffectorTarget, 
 	 *
 	 * @return array of affectors which can be called in response to events.
 	 */
-	public Affector[] getAffectors() {
-		return new Affector[]{
-			new ConcreteSpeedAffector(this),
+	public Effector[] getAffectors() {
+		return new Effector[]{
+			new ConcreteSpeedEffector(this),
 //			new ConcreteHelpAffector(this, this),
 //			new ConcreteSettingsAffector(this),
 //			new ConcreteCylinderPositioningAffector(this),

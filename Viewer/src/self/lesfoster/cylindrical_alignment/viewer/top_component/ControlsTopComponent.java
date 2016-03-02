@@ -12,7 +12,7 @@ import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import org.openide.util.Utilities;
-import self.lesfoster.cylindrical_alignment.affector.Affected;
+import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.settings.UnifiedSettingsPanel;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 

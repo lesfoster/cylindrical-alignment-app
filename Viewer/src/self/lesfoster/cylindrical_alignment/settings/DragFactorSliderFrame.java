@@ -42,7 +42,7 @@ import javax.swing.border.LineBorder;
 import java.awt.BorderLayout;
 
 import java.util.Hashtable;
-import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector;
+import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
 import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
 
 /**
@@ -65,7 +65,7 @@ public class DragFactorSliderFrame extends JFrame {
 	 * 
 	 * @param affector what to call to change the speed of spin.
 	 */
-	private DragFactorSliderFrame(CylinderPositioningAffector affector) {
+	private DragFactorSliderFrame(CylinderPositioningEffector affector) {
         JPanel panel = new DragFactorSliderPanel( affector );
 		getContentPane().add( panel, BorderLayout.CENTER );
 
@@ -79,7 +79,7 @@ public class DragFactorSliderFrame extends JFrame {
 	 * @return the instance.  Create here if needed.
 	 * @param affector what to call to change the rate of cyl drag.
 	 */
-	public static DragFactorSliderFrame getInstance(CylinderPositioningAffector affector) {
+	public static DragFactorSliderFrame getInstance(CylinderPositioningEffector affector) {
 		if (affector == null)
 			throw new RuntimeException("Need instance of affector");
 

@@ -2,9 +2,9 @@ package self.lesfoster.cylindrical_alignment.settings;
 
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
-import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector;
-import self.lesfoster.cylindrical_alignment.affector.SettingsAffector;
-import self.lesfoster.cylindrical_alignment.affector.SpeedAffector;
+import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
+import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
+import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,9 +15,9 @@ import self.lesfoster.cylindrical_alignment.affector.SpeedAffector;
  * Dialog to unify the settings.
  */
 public class SettingsPanel extends JPanel {
-    private SpeedAffector speedAffector;
-    private SettingsAffector settingsAffector;
-    private CylinderPositioningAffector positioningAffector;
+    private SpeedEffector speedAffector;
+    private SettingsEffector settingsAffector;
+    private CylinderPositioningEffector positioningAffector;
 
     // These are the controls for the panel.
 
@@ -29,9 +29,9 @@ public class SettingsPanel extends JPanel {
      * @param positioningAffector how the rotation-by-mouse takes place, etc.
      */
     public SettingsPanel(
-            SpeedAffector speedAffector,
-            SettingsAffector settingsAffector,
-            CylinderPositioningAffector positioningAffector) {
+            SpeedEffector speedAffector,
+            SettingsEffector settingsAffector,
+            CylinderPositioningEffector positioningAffector) {
         this.speedAffector = speedAffector;
         this.settingsAffector = settingsAffector;
         this.positioningAffector = positioningAffector;

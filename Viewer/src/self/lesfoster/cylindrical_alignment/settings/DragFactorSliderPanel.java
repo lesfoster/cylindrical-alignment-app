@@ -39,7 +39,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.util.Hashtable;
-import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector;
+import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
 
 /**
  * Special control to popup and let the user control the spin rate of the cylinder.
@@ -56,7 +56,7 @@ import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector
 	private static final int HEIGHT = 100;
 
 	/** Keep the affector around. */
-	private CylinderPositioningAffector affectorInstance;
+	private CylinderPositioningEffector affectorInstance;
 	private JSlider slider;
 
 	/**
@@ -64,11 +64,11 @@ import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector
 	 *
 	 * @param affector what to call to change the speed of spin.
 	 */
-	public DragFactorSliderPanel(CylinderPositioningAffector affector) {
+	public DragFactorSliderPanel(CylinderPositioningEffector affector) {
 		affectorInstance = affector;
-		int defaultDragSetting = convertFromDragRate(CylinderPositioningAffector.DEFAULT_MOUSE_ROTATE_FACTOR);
+		int defaultDragSetting = convertFromDragRate(CylinderPositioningEffector.DEFAULT_MOUSE_ROTATE_FACTOR);
 		slider = new JSlider(
-				CylinderPositioningAffector.SLOW_DRAG, CylinderPositioningAffector.FAST_DRAG, defaultDragSetting);
+				CylinderPositioningEffector.SLOW_DRAG, CylinderPositioningEffector.FAST_DRAG, defaultDragSetting);
         slider.setInverted( true );
 		slider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
@@ -83,8 +83,8 @@ import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector
 
         // Create the label table
 		Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
-		labelTable.put( new Integer( CylinderPositioningAffector.SLOW_DRAG ), new JLabel("Slow") );
-        labelTable.put( new Integer( CylinderPositioningAffector.FAST_DRAG ), new JLabel("Fast") );
+		labelTable.put(new Integer( CylinderPositioningEffector.SLOW_DRAG ), new JLabel("Slow") );
+        labelTable.put(new Integer( CylinderPositioningEffector.FAST_DRAG ), new JLabel("Fast") );
 		slider.setPaintTicks(false);
 		slider.setPaintLabels(true);
 

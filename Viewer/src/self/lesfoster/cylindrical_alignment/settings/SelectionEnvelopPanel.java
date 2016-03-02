@@ -30,7 +30,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import self.lesfoster.cylindrical_alignment.affector.SettingsAffector;
+import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,8 +40,8 @@ import self.lesfoster.cylindrical_alignment.affector.SettingsAffector;
  * The controls on this panel will operate against an affector when the user enters a value.
  */
 public class SelectionEnvelopPanel extends JPanel {
-    private SettingsAffector settingsAffector;
-    public SelectionEnvelopPanel(SettingsAffector settingsAffector) {
+    private SettingsEffector settingsAffector;
+    public SelectionEnvelopPanel(SettingsEffector settingsAffector) {
         super();
         this.settingsAffector = settingsAffector;
         init();

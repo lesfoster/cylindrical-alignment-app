@@ -21,36 +21,27 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-package self.lesfoster.cylindrical_alignment.settings;
 
-import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
-
-import javax.swing.*;
-import java.awt.*;
-import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
+/*
+ * Speed Affector.
+ * 
+ * Created on Jan 30, 2005
+ */
+package self.lesfoster.cylindrical_alignment.effector;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Leslie L Foster
- * Date: 12/7/11
- * Time: 11:46 PM
- * This popup will operate against an affector when the user enters a value.
+ * Interface to expose controls for speed of cylinder rotation.
+ *  
+ * @author Leslie L. Foster
  */
-public class SelectionEnvelopDialog extends JDialog {
-    private SettingsEffector settingsAffector;
-    public SelectionEnvelopDialog( SettingsEffector settingsAffector ) {
-        super();
-        this.setTitle( "Selection Envelope" );
-        this.settingsAffector = settingsAffector;
-        init();
-    }
+public interface SpeedEffector extends Effector {
+	public static final int HALTED_DURATION = -1;
+	public static final int FAST_SPEED_DURATION = 3000;
+    public static final int SLOW_SPEED_DURATION = 50000;
 
-    private void init() {
-        GuiUtils.setupScreenRealestate(this, 200, 82);
-        setResizable( false );
-        getContentPane().setLayout( new BorderLayout() );
-        JPanel selectionEnvelopPanel = new SelectionEnvelopPanel( settingsAffector );
-        getContentPane().add( selectionEnvelopPanel, BorderLayout.CENTER );
-    }
-
+	void setSlow();
+	void setFast();
+	void setImmobile();
+	void setDuration(int duration);
 }
+

@@ -27,11 +27,11 @@ import javax.swing.*;
 import java.awt.*;
 import org.openide.util.Lookup;
 import org.openide.util.Utilities;
-import self.lesfoster.cylindrical_alignment.affector.Affected;
-import self.lesfoster.cylindrical_alignment.affector.Affector;
-import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector;
-import self.lesfoster.cylindrical_alignment.affector.SettingsAffector;
-import self.lesfoster.cylindrical_alignment.affector.SpeedAffector;
+import self.lesfoster.cylindrical_alignment.effector.Effected;
+import self.lesfoster.cylindrical_alignment.effector.Effector;
+import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
+import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
+import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 
 /**
@@ -52,9 +52,9 @@ public class UnifiedSettingsPanel extends JPanel {
 	}
 
     public UnifiedSettingsPanel(
-            SpeedAffector speedAffector,
-            SettingsAffector settingsAffector,
-            CylinderPositioningAffector cylinderPositioningAffector ) {
+            SpeedEffector speedAffector,
+            SettingsEffector settingsAffector,
+            CylinderPositioningEffector cylinderPositioningAffector ) {
         //super( "Adjust Settings" );
         initGui( speedAffector, settingsAffector, cylinderPositioningAffector );
     }
@@ -79,11 +79,11 @@ public class UnifiedSettingsPanel extends JPanel {
 
 			//System.out.println("Got the lookup");
 
-			Affector[] affectors = affected.getAffectors();
-			SpeedAffector speedAffector = null;
-			for (Affector affector : affectors) {
-				if (affector instanceof SpeedAffector) {
-					speedAffector = (SpeedAffector) affector;
+			Effector[] affectors = affected.getAffectors();
+			SpeedEffector speedAffector = null;
+			for (Effector affector : affectors) {
+				if (affector instanceof SpeedEffector) {
+					speedAffector = (SpeedEffector) affector;
 				}
 			}
 			initGui(speedAffector, null, null);
@@ -93,9 +93,9 @@ public class UnifiedSettingsPanel extends JPanel {
 
     /** Build out the GUI with all the affectors known here. */
     private void initGui(
-            SpeedAffector speedAffector,
-            SettingsAffector settingsAffector,
-            CylinderPositioningAffector cylinderPositioningAffector ) {
+            SpeedEffector speedAffector,
+            SettingsEffector settingsAffector,
+            CylinderPositioningEffector cylinderPositioningAffector ) {
 
         SpinSliderPanel spinSliderPanel = new SpinSliderPanel( speedAffector );
         SelectionEnvelopPanel selectionEnvelopPanel = new SelectionEnvelopPanel( settingsAffector );

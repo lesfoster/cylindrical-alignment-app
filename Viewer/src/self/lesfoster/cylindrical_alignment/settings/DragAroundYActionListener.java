@@ -3,7 +3,7 @@ package self.lesfoster.cylindrical_alignment.settings;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector;
+import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,9 +14,9 @@ import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector
  * This listener will hook a button to its affector, for fixing drag around the vertical axis only.
  */
 public class DragAroundYActionListener implements ActionListener {
-    private CylinderPositioningAffector cylinderPositioningAffector;
+    private CylinderPositioningEffector cylinderPositioningAffector;
 
-    public DragAroundYActionListener( CylinderPositioningAffector cylinderPositioningAffector ) {
+    public DragAroundYActionListener( CylinderPositioningEffector cylinderPositioningAffector ) {
         this.cylinderPositioningAffector = cylinderPositioningAffector;
     }
 

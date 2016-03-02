@@ -17,7 +17,7 @@ import org.openide.util.Utilities;
 import org.openide.util.lookup.Lookups;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.DataSourceFactory;
-import self.lesfoster.cylindrical_alignment.affector.Affected;
+import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 
 /**

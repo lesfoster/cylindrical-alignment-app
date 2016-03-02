@@ -34,7 +34,7 @@ import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
-import self.lesfoster.cylindrical_alignment.affector.SpeedAffector;
+import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 
 /**
  * Special control to popup and let the user control the spin rate of the cylinder.
@@ -53,7 +53,7 @@ public class SpinSliderFrame extends JFrame {
 	 * 
 	 * @param affector what to call to change the speed of spin.
 	 */
-	private SpinSliderFrame(SpeedAffector affector) {
+	private SpinSliderFrame(SpeedEffector affector) {
         SpinSliderPanel panel = new SpinSliderPanel( affector );
 		getContentPane().add(panel, BorderLayout.CENTER);
 
@@ -67,7 +67,7 @@ public class SpinSliderFrame extends JFrame {
 	 * @return the instance.  Create here if needed.
 	 * @param affector what to call to change the speed of spin.
 	 */
-	public static SpinSliderFrame getInstance(SpeedAffector affector) {
+	public static SpinSliderFrame getInstance(SpeedEffector affector) {
 		if (affector == null)
 			throw new RuntimeException("Need instance of affector");
 

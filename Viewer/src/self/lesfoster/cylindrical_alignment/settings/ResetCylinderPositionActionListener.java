@@ -3,7 +3,7 @@ package self.lesfoster.cylindrical_alignment.settings;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector;
+import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,8 +14,8 @@ import self.lesfoster.cylindrical_alignment.affector.CylinderPositioningAffector
  * This listener connects the button click to the position re-setting affector.
  */
 public class ResetCylinderPositionActionListener implements ActionListener {
-    private CylinderPositioningAffector cylinderPositioningAffector;
-    public ResetCylinderPositionActionListener(CylinderPositioningAffector cylinderPositioningAffector) {
+    private CylinderPositioningEffector cylinderPositioningAffector;
+    public ResetCylinderPositionActionListener(CylinderPositioningEffector cylinderPositioningAffector) {
         this.cylinderPositioningAffector = cylinderPositioningAffector;
     }
     public void actionPerformed(ActionEvent ae) {

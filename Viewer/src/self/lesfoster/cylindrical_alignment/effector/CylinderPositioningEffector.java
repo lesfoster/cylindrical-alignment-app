@@ -21,36 +21,19 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-package self.lesfoster.cylindrical_alignment.settings;
+package self.lesfoster.cylindrical_alignment.effector;
 
-import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
-
-import javax.swing.*;
-import java.awt.*;
-import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
-
-/**
- * Created by IntelliJ IDEA.
- * User: Leslie L Foster
- * Date: 12/7/11
- * Time: 11:46 PM
- * This popup will operate against an affector when the user enters a value.
+/*
+ * Define contract for a set of hooks to be implemented to change cylinder positioning
+ * characteristics.
  */
-public class SelectionEnvelopDialog extends JDialog {
-    private SettingsEffector settingsAffector;
-    public SelectionEnvelopDialog( SettingsEffector settingsAffector ) {
-        super();
-        this.setTitle( "Selection Envelope" );
-        this.settingsAffector = settingsAffector;
-        init();
-    }
-
-    private void init() {
-        GuiUtils.setupScreenRealestate(this, 200, 82);
-        setResizable( false );
-        getContentPane().setLayout( new BorderLayout() );
-        JPanel selectionEnvelopPanel = new SelectionEnvelopPanel( settingsAffector );
-        getContentPane().add( selectionEnvelopPanel, BorderLayout.CENTER );
-    }
-
+public interface CylinderPositioningEffector extends Effector {
+	public static final int FAST_DRAG = 20;
+	public static final int SLOW_DRAG = 1;
+	public static final double DEFAULT_MOUSE_ROTATE_FACTOR = 0.05;
+	
+	void setFrozenMouseRotator( boolean isFrozen );
+	void setMouseRotatorFactor( double factor );
+	void setXOnlyMouseRotator( boolean isXOnly );
+	void setDefaultCylinderPosition();
 }
