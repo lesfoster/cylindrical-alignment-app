@@ -55,7 +55,7 @@ public class SpinSliderPanel extends JPanel {
 	private static SpinSliderPanel instance;
 
 	/** Keep the affector around. */
-	private SpeedEffector affectorInstance;
+	private SpeedEffector effectorInstance;
 	private JSlider slider;
 
 	/**
@@ -64,14 +64,14 @@ public class SpinSliderPanel extends JPanel {
 	 * @param affector what to call to change the speed of spin.
 	 */
 	public SpinSliderPanel(SpeedEffector affector) {
-		affectorInstance = affector;
+		effectorInstance = affector;
 		slider = new JSlider(SpeedEffector.FAST_SPEED_DURATION, SpeedEffector.SLOW_SPEED_DURATION, SpeedEffector.FAST_SPEED_DURATION);
 		slider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 			    JSlider source = (JSlider)e.getSource();
 			    if (!source.getValueIsAdjusting()) {
 			        int spinDuration = (int)source.getValue();
-			        affectorInstance.setDuration(spinDuration);
+			        effectorInstance.setDuration(spinDuration);
 			    }
 			}
 		});
@@ -79,8 +79,8 @@ public class SpinSliderPanel extends JPanel {
 
         // Create the label table
 		Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
-		labelTable.put(new Integer( SpeedEffector.SLOW_SPEED_DURATION ), new JLabel("Slow") );
-		labelTable.put(new Integer( SpeedEffector.FAST_SPEED_DURATION ), new JLabel("Fast") );
+		labelTable.put(SpeedEffector.SLOW_SPEED_DURATION, new JLabel("Slow") );
+		labelTable.put(SpeedEffector.FAST_SPEED_DURATION, new JLabel("Fast") );
 		slider.setPaintTicks(false);
 		slider.setPaintLabels(true);
 
@@ -99,10 +99,10 @@ public class SpinSliderPanel extends JPanel {
 			public void itemStateChanged(ItemEvent ie) {
 				if (ie.getStateChange() == ItemEvent.DESELECTED) {
 					slider.setEnabled(true);
-				    affectorInstance.setDuration(slider.getValue());
+				    effectorInstance.setDuration(slider.getValue());
 				}
 				else if (ie.getStateChange() == ItemEvent.SELECTED) {
-					affectorInstance.setImmobile();
+					effectorInstance.setImmobile();
 					slider.setEnabled(false);
 				}
 			}

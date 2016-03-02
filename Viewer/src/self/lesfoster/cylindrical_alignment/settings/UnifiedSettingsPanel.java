@@ -80,6 +80,7 @@ public class UnifiedSettingsPanel extends JPanel {
 				return effected;
 			}
 			
+			@Override
 			protected void done() {
 				final Effector[] effectors = effected.getEffectors();
 				SpeedEffector speedEffector = null;
@@ -99,48 +100,6 @@ public class UnifiedSettingsPanel extends JPanel {
 			
 		};
 		swingWorker.execute();
-//		Runnable runnable = () -> {
-//			CylinderContainer effected = null;
-//			while (true) {
-//				try {
-//					effected = Utilities.actionsGlobalContext().lookup(CylinderContainer.class);
-//					if (effected == null) {
-//						//System.out.println("No lookup.");
-//						Thread.sleep(300);
-//						continue;
-//					}
-//					else {
-//						break;
-//					}
-//				} catch (InterruptedException ie) {
-//					// Eat this one.
-//
-//				}
-//			}
-//			final Effector[] effectors = effected.getEffectors();
-//
-//			//System.out.println("In the pipe: 5 by 5");
-//
-//			javax.swing.SwingUtilities.invokeLater(new Runnable() {
-//				@Override
-//				public void run() {
-//					SpeedEffector speedEffector = null;
-//					SettingsEffector settingsEffector = null;
-//					CylinderPositioningEffector cylPosEffector = null;
-//					for (Effector effector : effectors) {
-//						if (effector instanceof SpeedEffector) {
-//							speedEffector = (SpeedEffector) effector;
-//						} else if (effector instanceof SettingsEffector) {
-//							settingsEffector = (SettingsEffector) effector;
-//						} else if (effector instanceof CylinderPositioningEffector) {
-//							cylPosEffector = (CylinderPositioningEffector) effector;
-//						}
-//					}
-//					initGui(speedEffector, settingsEffector, cylPosEffector);
-//				}
-//			});
-//		};
-//		new Thread(runnable).start(); //Out of AWT thread.
 	}
 
     /** Build out the GUI with all the effectors known here. */

@@ -84,7 +84,7 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 	private int latestGraphId = 1;
 	private int duration = 10000;
 	private double naturalSpinRate = 0;
-	private RotateTransition rt;
+	private RotateTransition rotateTransform;
 
 	private final MouseLocationModel mouseLocationModel = new MouseLocationModel();
 	private final SelectionModel selectionModel = new SelectionModel();
@@ -138,12 +138,13 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 	@Override
 	public void setDuration(int duration) {
 		if (duration == -1) {
-			rt.setRate(0);
+			rotateTransform.setRate(0);
 		}
 		else {
-			rt.setDuration(Duration.millis(duration));			
-			rt.setRate(naturalSpinRate);
-			rt.play();
+			rotateTransform.setDuration(Duration.millis(duration));			
+			rotateTransform.setRate(naturalSpinRate);
+			rotateTransform.stop();
+			rotateTransform.play();
 		}
 		this.duration = duration;
 	}
@@ -221,15 +222,15 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 				spinGroup = (TransformableGroup)child;
 			}
 		}
-		rt = new RotateTransition();
-		this.naturalSpinRate = rt.getRate();
-		rt.setFromAngle(0.0);
-		rt.setToAngle(360.0);
-		rt.setDuration(Duration.millis(duration));
-		rt.setInterpolator(Interpolator.LINEAR); //Runs smoothly.
-		rt.setCycleCount(Animation.INDEFINITE);  //Runs forever.
-		rt.setByAngle(0.01);
-		rt.setAxis(new Point3D(1.0, 0.0, 0.0));
+		rotateTransform = new RotateTransition();
+		this.naturalSpinRate = rotateTransform.getRate();
+		rotateTransform.setFromAngle(0.0);
+		rotateTransform.setToAngle(360.0);
+		rotateTransform.setDuration(Duration.millis(duration));
+		rotateTransform.setInterpolator(Interpolator.LINEAR); //Runs smoothly.
+		rotateTransform.setCycleCount(Animation.INDEFINITE);  //Runs forever.
+		rotateTransform.setByAngle(0.01);
+		rotateTransform.setAxis(new Point3D(1.0, 0.0, 0.0));
 		positionableObject.getChildren().add(cylinder);
 		final int anchorLength = dataSource.getAnchorLength();
 		positionableObject.getChildren().add(createRuler(anchorLength));
@@ -241,8 +242,8 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 		positionableObject.getChildren().add(lowCigarBandSlide);
 		positionableObject.getChildren().add(highCigarBandSlide);
 
-		rt.setNode(spinGroup);
-		rt.play();
+		rotateTransform.setNode(spinGroup);
+		rotateTransform.play();
 		return positionableObject;
 	}
 
