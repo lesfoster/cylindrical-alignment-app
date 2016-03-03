@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="self.lesfoster.cylindrical_alignment.inspector">
-    <module_version install_time="1456890442223" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1456971758715" last="true" origin="installer" specification_version="1.0">
         <file crc="2144914682" name="config/Modules/self-lesfoster-cylindrical_alignment-inspector.xml"/>
         <file crc="4196972089" name="modules/self-lesfoster-cylindrical_alignment-inspector.jar"/>
     </module_version>

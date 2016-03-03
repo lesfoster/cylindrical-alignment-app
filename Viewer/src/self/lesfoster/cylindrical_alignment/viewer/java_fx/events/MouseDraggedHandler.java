@@ -22,6 +22,8 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 	private final MouseLocationModel mouseLocationModel;
 	private final SelectionModel selectionModel;
 	private final CameraModel cameraModel;
+	private double modifierFactor = 0.1;
+	private boolean useYAngle = true;
 	
 	public MouseDraggedHandler(MouseLocationModel mouseLocationModel, SelectionModel selectionModel, CameraModel cameraModel) {
 		this.mouseLocationModel = mouseLocationModel;
@@ -42,7 +44,6 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 		mouseLocationModel.setMouseDeltaY(mouseLocationModel.getMouseOldY() - mouseLocationModel.getMousePosY());
 
 		double modifier = 1.0;
-		double modifierFactor = 0.1;
 
 		if (me.isControlDown()) {
 			modifier = 0.1;
@@ -52,13 +53,15 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 		}
 		if (me.isPrimaryButtonDown()) {
 			cameraModel.getCameraXform().ry.setAngle(cameraModel.getCameraXform().ry.getAngle() - mouseLocationModel.getMouseDeltaX() * modifierFactor * modifier * 2.0);  // +
-			cameraModel.getCameraXform().rx.setAngle(cameraModel.getCameraXform().rx.getAngle() + mouseLocationModel.getMouseDeltaY() * modifierFactor * modifier * 2.0);  // -
+			if (useYAngle)
+				cameraModel.getCameraXform().rx.setAngle(cameraModel.getCameraXform().rx.getAngle() + mouseLocationModel.getMouseDeltaY() * modifierFactor * modifier * 2.0);  // -
 		} else if (me.isSecondaryButtonDown()) {
 			double z = cameraModel.getCamera().getTranslateZ();
 			double newZ = z + mouseLocationModel.getMouseDeltaX() * modifierFactor * modifier;
 			cameraModel.getCamera().setTranslateZ(newZ);
-		} else if (me.isMiddleButtonDown()) {
-			cameraModel.getCameraXform2().t.setX(cameraModel.getCameraXform2().t.getX() + mouseLocationModel.getMouseDeltaX() * modifierFactor * modifier * 0.3);  // -
+		} else if (me.isMiddleButtonDown()) {			
+			if (useYAngle)
+				cameraModel.getCameraXform2().t.setX(cameraModel.getCameraXform2().t.getX() + mouseLocationModel.getMouseDeltaX() * modifierFactor * modifier * 0.3);  // -
 			cameraModel.getCameraXform2().t.setY(cameraModel.getCameraXform2().t.getY() + mouseLocationModel.getMouseDeltaY() * modifierFactor * modifier * 0.3);  // -
 		}
 
@@ -79,4 +82,20 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 		}
 	}
 	
+	public double getModifierFactor() {
+		return modifierFactor;
+	}
+	
+	public void setModifierFactor(double modifierFactor) {
+		this.modifierFactor = modifierFactor;
+	}
+	
+	public void setDefaultPosition() {		
+		cameraModel.getCameraXform().ry.setAngle(MouseLocationModel.DEFAULT_Y_ANGLE);
+		cameraModel.getCameraXform().rx.setAngle(0.0);
+	}
+	
+	public void setUseYAngle(boolean useYAngle) {
+		this.useYAngle = useYAngle;
+	}
 }

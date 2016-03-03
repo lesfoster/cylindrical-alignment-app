@@ -23,6 +23,6 @@ public class DragAroundYActionListener implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         AbstractButton aButton = (AbstractButton) ae.getSource();
         boolean selected = aButton.getModel().isSelected();
-        cylinderPositioningAffector.setXOnlyMouseRotator(selected);
+        cylinderPositioningAffector.setYOnlyMouseRotator(selected);
     }
 }

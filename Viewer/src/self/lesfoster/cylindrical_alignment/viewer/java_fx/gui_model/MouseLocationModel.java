@@ -10,13 +10,15 @@ package self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model;
  * @author Leslie L Foster
  */
 public class MouseLocationModel {
+	public static final double DEFAULT_Y_ANGLE = -35.0;
+
     private double mousePosX;
     private double mousePosY;
     private double mouseOldX;
     private double mouseOldY;
     private double mouseDeltaX;
     private double mouseDeltaY;
-
+	
 	/**
 	 * @return the mousePosX
 	 */

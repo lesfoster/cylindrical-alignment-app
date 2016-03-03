@@ -3,8 +3,8 @@
 <windowmanager version="2.1">
     <main-window>
   <joined-properties
-   x="31"
-   y="33"
+   x="17"
+   y="26"
    width="1892"
    height="963"
    relative-x="0.0"
@@ -35,18 +35,18 @@
   <constraints>
   <path orientation="horizontal" number="60" weight="0.7" />
   <path orientation="vertical" number="40" weight="0.7" />
-  <path orientation="horizontal" number="40" weight="1.0993124522536288" />
+  <path orientation="horizontal" number="40" weight="0.9266615737203974" />
   <path orientation="vertical" number="40" weight="0.5" />
   </constraints>
   <bounds x="633" y="252" width="806" height="462" />
     </editor-area>
     <screen width="1920" height="1080"/>
-    <active-mode name="editor"/>
+    <active-mode name="properties"/>
     <toolbar configuration="Standard" preferred-icon-size="24"/>
     <tc-list>
+  <tc-id id="ControlsTopComponent"/>
   <tc-id id="ViewerTopComponent"/>
   <tc-id id="LegendTopComponent"/>
-  <tc-id id="ControlsTopComponent"/>
   <tc-id id="PropertyInspectorTopComponent"/>
   <tc-id id="output"/>
     </tc-list>

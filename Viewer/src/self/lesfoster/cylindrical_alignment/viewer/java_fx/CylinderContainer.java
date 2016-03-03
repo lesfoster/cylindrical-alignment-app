@@ -37,6 +37,8 @@ import self.lesfoster.cylindrical_alignment.constants.Constants;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.Entity;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
+import self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector;
+import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffectorTarget;
 import self.lesfoster.cylindrical_alignment.geometry.TexCoordGenerator;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSourceFactory;
@@ -55,7 +57,8 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  *
  * @author Leslie L Foster
  */
-public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, Effected {
+public class CylinderContainer extends JFXPanel 
+        implements SpeedEffectorTarget, CylinderPositioningEffectorTarget, Effected {
 	public static final String SPIN_GROUP_ID = "SPIN_GROUP";
 	private static final double CAMERA_DISTANCE = Constants.LENGTH_OF_CYLINDER * 3;
 	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
@@ -87,6 +90,7 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 	private RotateTransition rotateTransform;
 
 	private final MouseLocationModel mouseLocationModel = new MouseLocationModel();
+	private MouseDraggedHandler mouseDraggedHandler;
 	private final SelectionModel selectionModel = new SelectionModel();
 	private final CameraModel cameraModel = new CameraModel();	
 	private AppearanceSource appearanceSource;
@@ -125,7 +129,7 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 			new ConcreteSpeedEffector(this),
 //			new ConcreteHelpEffector(this, this),
 //			new ConcreteSettingsEffector(this),
-//			new ConcreteCylinderPositioningEffector(this),
+			new ConcreteCylinderPositioningEffector(this),
 		};
 	}
 	
@@ -149,6 +153,17 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 		this.duration = duration;
 	}
 
+	//----------------------------------------IMPLEMENTS CylinderPositioningEffectorTarget
+	@Override
+	public MouseLocationModel getMouseLocationModel() {
+		return mouseLocationModel;
+	}
+	
+	@Override
+	public MouseDraggedHandler getMouseDraggedHandler() {
+		return mouseDraggedHandler;
+	}
+	
 	public void addAnchorLabel(Map<String, Object> props, TransformableGroup parentGroup) {
 		String name = (String) props.get(DataSource.NAME_PROPERTY);
 		if (name == null) {
@@ -160,7 +175,7 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 		System.out.println("Creating Anchor Label: " + name);
 		inSceneLabel.setText(name);
 	}
-
+	
 	private void init(final DataSource dataSource) {
 		Platform.runLater(() -> {
 			//root.ry.setAngle(180.0);
@@ -203,7 +218,7 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 		cameraModel.getCamera().setNearClip(1.0);
 		cameraModel.getCamera().setFarClip(1000.0);
 		cameraModel.getCamera().setTranslateZ(-CAMERA_DISTANCE);
-		cameraModel.getCameraXform().ry.setAngle(-35.0);
+		cameraModel.getCameraXform().ry.setAngle(MouseLocationModel.DEFAULT_Y_ANGLE);
 		// Moves to left/centered at midpoint anyway. cameraModel.getCamera().setTranslateX(100.0);
 		
 	}
@@ -1200,7 +1215,8 @@ public class CylinderContainer extends JFXPanel implements SpeedEffectorTarget, 
 	//
 	private void handleMouse(Scene scene) {
 		scene.setOnMousePressed(new MousePressedHandler(mouseLocationModel));
-		scene.setOnMouseDragged(new MouseDraggedHandler(mouseLocationModel, selectionModel, cameraModel));
+		this.mouseDraggedHandler = new MouseDraggedHandler(mouseLocationModel, selectionModel, cameraModel);
+		scene.setOnMouseDragged(mouseDraggedHandler);
 	}
 
 	private void handleKeyboard(Scene scene) {

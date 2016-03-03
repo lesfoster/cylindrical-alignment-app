@@ -28,6 +28,7 @@ java.lang.NoSuchFieldError
 java.util.Map
 javafx.geometry.Point3D
 javafx.scene.shape.ObservableFaceArray
+self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffectorTarget
 java.util.ArrayList
 java.lang.String
 javafx.collections.ObservableFloatArray
@@ -81,6 +82,7 @@ java.util.HashMap
 java.lang.System
 javafx.scene.PerspectiveCamera
 javafx.scene.transform.Rotate
+self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector
 javafx.scene.shape.TriangleMesh
 java.io.PrintStream
 javafx.application.Platform
@@ -313,8 +315,8 @@ java.awt.BorderLayout
 javax.swing.border.LineBorder
 javax.swing.JCheckBox
 javax.swing.JLabel
-java.lang.Integer
 self.lesfoster.cylindrical_alignment.settings.SpinSliderPanel$2
+java.lang.Integer
 self.lesfoster.cylindrical_alignment.settings.SpinSliderPanel$1
 ||:self.lesfoster.cylindrical_alignment.affector.ConcreteSettingsAffector
 java.lang.Object
@@ -416,7 +418,9 @@ java.awt.event.ActionEvent
 java.awt.event.ActionListener
 ||:self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector$2
 java.lang.Object
+self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseDraggedHandler
 self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector
+self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffectorTarget
 self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector$2
 java.lang.Runnable
 ||:self.lesfoster.cylindrical_alignment.settings.SettingsPanel$1
@@ -426,8 +430,8 @@ self.lesfoster.cylindrical_alignment.settings.SettingsPanel$1
 java.lang.Runnable
 ||:self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector$1
 java.lang.Object
+self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseDraggedHandler
 self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector
-self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGroup
 self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffectorTarget
 self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector$1
 java.lang.Runnable
@@ -556,6 +560,9 @@ self.lesfoster.cylindrical_alignment.effector.SettingsEffectorTarget
 java.lang.Object
 self.lesfoster.cylindrical_alignment.affector.SettingsAffector
 self.lesfoster.cylindrical_alignment.affector.Affector
+||:self.lesfoster.cylindrical_alignment.viewer.legend_model.LegendModel
+java.lang.Object
+self.lesfoster.cylindrical_alignment.viewer.legend_model.LegendModel
 ||:self.lesfoster.cylindrical_alignment.affector.ConcreteHelpAffector$4
 java.lang.Object
 self.lesfoster.cylindrical_alignment.affector.ConcreteHelpAffector$4
@@ -563,9 +570,6 @@ self.lesfoster.cylindrical_alignment.constants.Constants
 javax.swing.JOptionPane
 java.lang.Runnable
 self.lesfoster.cylindrical_alignment.affector.ConcreteHelpAffector
-||:self.lesfoster.cylindrical_alignment.viewer.legend_model.LegendModel
-java.lang.Object
-self.lesfoster.cylindrical_alignment.viewer.legend_model.LegendModel
 ||:self.lesfoster.cylindrical_alignment.affector.ConcreteHelpAffector$3
 java.lang.Object
 self.lesfoster.cylindrical_alignment.affector.ConcreteHelpAffector$3
@@ -620,6 +624,14 @@ self.lesfoster.cylindrical_alignment.viewer.top_component.Bundle
 ||:self.lesfoster.cylindrical_alignment.affector.Affected
 java.lang.Object
 self.lesfoster.cylindrical_alignment.affector.Affected
+||:self.lesfoster.cylindrical_alignment.settings.DragFactorSliderFrame
+java.awt.Container
+self.lesfoster.cylindrical_alignment.settings.DragFactorSliderPanel
+java.awt.BorderLayout
+java.lang.RuntimeException
+javax.swing.JFrame
+self.lesfoster.cylindrical_alignment.utils.GuiUtils
+self.lesfoster.cylindrical_alignment.settings.DragFactorSliderFrame
 ||:self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionModel
 java.util.List
 self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionModelListener
@@ -630,14 +642,6 @@ self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionModel
 java.lang.Object
 javafx.scene.paint.PhongMaterial
 javafx.scene.paint.Color
-||:self.lesfoster.cylindrical_alignment.settings.DragFactorSliderFrame
-java.awt.Container
-self.lesfoster.cylindrical_alignment.settings.DragFactorSliderPanel
-java.awt.BorderLayout
-java.lang.RuntimeException
-javax.swing.JFrame
-self.lesfoster.cylindrical_alignment.utils.GuiUtils
-self.lesfoster.cylindrical_alignment.settings.DragFactorSliderFrame
 ||:self.lesfoster.cylindrical_alignment.settings.SpinSliderFrame
 java.awt.Container
 java.awt.BorderLayout

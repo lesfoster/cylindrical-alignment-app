@@ -34,6 +34,6 @@ public interface CylinderPositioningEffector extends Effector {
 	
 	void setFrozenMouseRotator( boolean isFrozen );
 	void setMouseRotatorFactor( double factor );
-	void setXOnlyMouseRotator( boolean isXOnly );
+	void setYOnlyMouseRotator( boolean isXOnly );
 	void setDefaultCylinderPosition();
 }

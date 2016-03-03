@@ -5,7 +5,7 @@ cylinder, such that the alignments are arranged like the staves
 of a barrel. The cylinder can spin, and if it spins, it can
 do so at two different speeds.  When stopped, properties can
 be seen for the aligned values.
-Copyright (C) 2011 Leslie L. Foster
+Copyright (C) 2011/2016 Leslie L. Foster
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -23,13 +23,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 package self.lesfoster.cylindrical_alignment.effector;
 
-//import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
-import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGroup;
+import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseDraggedHandler;
+import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
 
 /** Implement this to allow the positioning affector to get objects needed to carry out operations. */
 public interface CylinderPositioningEffectorTarget {
-	//@TODO: once mouse rotation in JavaFX is better understood, change below.
-	//MouseRotate getMouseRotateBehavior();
-	TransformableGroup getTransformGroup();
-	TransformableGroup getTransform();
+	MouseLocationModel getMouseLocationModel();
+	MouseDraggedHandler getMouseDraggedHandler();
 }
