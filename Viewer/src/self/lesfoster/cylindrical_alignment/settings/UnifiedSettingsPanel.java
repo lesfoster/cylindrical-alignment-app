@@ -28,6 +28,7 @@ import java.awt.*;
 import org.openide.util.Utilities;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
+import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
 import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
@@ -59,12 +60,12 @@ public class UnifiedSettingsPanel extends JPanel {
 
 	private void initWhenReady() {
 		SwingWorker swingWorker = new SwingWorker() {
-			private CylinderContainer effected;
+			private Effected effected;
 			@Override
 			protected Object doInBackground() throws Exception {
 				while (true) {
 					try {
-						effected = Utilities.actionsGlobalContext().lookup(CylinderContainer.class);
+						effected = Utilities.actionsGlobalContext().lookup(Effected.class);
 						if (effected == null) {
 							//System.out.println("No lookup.");
 							Thread.sleep(300);
@@ -82,27 +83,31 @@ public class UnifiedSettingsPanel extends JPanel {
 			
 			@Override
 			protected void done() {
-				final Effector[] effectors = effected.getEffectors();
-				SpeedEffector speedEffector = null;
-				SettingsEffector settingsEffector = null;
-				CylinderPositioningEffector cylPosEffector = null;
-				for (Effector effector : effectors) {
-					if (effector instanceof SpeedEffector) {
-						speedEffector = (SpeedEffector) effector;
-					} else if (effector instanceof SettingsEffector) {
-						settingsEffector = (SettingsEffector) effector;
-					} else if (effector instanceof CylinderPositioningEffector) {
-						cylPosEffector = (CylinderPositioningEffector) effector;
-					}
-				}
-				initGui(speedEffector, settingsEffector, cylPosEffector);
+				launchInit(effected);
 			}
 			
 		};
 		swingWorker.execute();
 	}
 
-    /** Build out the GUI with all the effectors known here. */
+	public void launchInit(Effected effected) {
+		final Effector[] effectors = effected.getEffectors();
+		SpeedEffector speedEffector = null;
+		SettingsEffector settingsEffector = null;
+		CylinderPositioningEffector cylPosEffector = null;
+		for (Effector effector : effectors) {
+			if (effector instanceof SpeedEffector) {
+				speedEffector = (SpeedEffector) effector;
+			} else if (effector instanceof SettingsEffector) {
+				settingsEffector = (SettingsEffector) effector;
+			} else if (effector instanceof CylinderPositioningEffector) {
+				cylPosEffector = (CylinderPositioningEffector) effector;
+			}
+		}
+		initGui(speedEffector, settingsEffector, cylPosEffector);
+	}
+
+	/** Build out the GUI with all the effectors known here. */
     private void initGui(
             SpeedEffector speedEffector,
             SettingsEffector settingsEffector,
