@@ -48,20 +48,24 @@ public class ConcreteCylinderPositioningEffector implements CylinderPositioningE
 	}
 	
 	/** These effectors take their inputs and apply changes to the mouse-rotate behavior. */
+	@Override
 	public void setFrozenMouseRotator( boolean isFrozen ) {
 		this.mouseRotateIsFrozen = isFrozen;
 		setBehaviorCharacteristics();
 	}
+	@Override
 	public void setMouseRotatorFactor( double factor ) {
 		this.mouseRotateFactor = factor;
 		setBehaviorCharacteristics();
 	}
+	@Override
 	public void setYOnlyMouseRotator( boolean isYOnly ) {
 		this.mouseRotateIsAboutYOnly = isYOnly;
 		setBehaviorCharacteristics();
 	}
 	
 	/** This affector sets the cylinder's position to whatever it was at the beginning. */
+	@Override
 	public void setDefaultCylinderPosition() {
 		
 		Platform.runLater(new Runnable() {
