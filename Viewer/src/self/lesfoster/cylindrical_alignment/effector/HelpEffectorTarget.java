@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 package self.lesfoster.cylindrical_alignment.effector;
 
-public interface HelpAffectorTarget {
+public interface HelpEffectorTarget {
 	/** Tells name of input file being shown. */
 	String getInputFile();
 }

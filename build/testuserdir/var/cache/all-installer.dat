@@ -1,4 +1,4 @@
-#Thu Mar 03 00:17:07 EST 2016
+#Thu Mar 03 00:46:02 EST 2016
 org.netbeans.core.startup.OpenIDE-Module-Deprecated=\u0000
 self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.modules.settings.AutoUpdate-Show-In-Client=false
@@ -46,8 +46,8 @@ org.netbeans.modules.editor.mimelookup.OpenIDE-Module-Install=\u0000
 org.netbeans.modules.masterfs.windows.AutoUpdate-Show-In-Client=false
 org.netbeans.core.nativeaccess.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.masterfs.OpenIDE-Module-Install=\u0000
-self.lesfoster.cylindrical_alignment.viewer.OpenIDE-Module-Description=\u0000
 org.netbeans.modules.print.AutoUpdate-Show-In-Client=false
+self.lesfoster.cylindrical_alignment.viewer.OpenIDE-Module-Description=\u0000
 org.netbeans.swing.plaf.OpenIDE-Module-Description=\u0000
 self.lesfoster.cylindrical_alignment.inspector.OpenIDE-Module-Deprecated=\u0000
 org.openide.explorer.OpenIDE-Module-Hide-Classpath-Packages=\u0000
@@ -109,8 +109,8 @@ org.netbeans.modules.uihandler.AutoUpdate-Show-In-Client=false
 org.netbeans.core.io.ui.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.settings.OpenIDE-Module-Description=\u0000
 org.openide.filesystems.OpenIDE-Module-Install=\u0000
-org.openide.windows.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.libs.junit4.AutoUpdate-Show-In-Client=false
+org.openide.windows.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.core.network.OpenIDE-Module-Description=\u0000
 org.openide.text.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.modules.sampler.OpenIDE-Module-Description=\u0000
@@ -295,8 +295,8 @@ org.netbeans.modules.options.keymap.OpenIDE-Module-Description=\u0000
 org.netbeans.modules.options.keymap.OpenIDE-Module-Layer=org/netbeans/modules/options/keymap/mf-layer.xml
 org.netbeans.core.startup.AutoUpdate-Show-In-Client=false
 org.netbeans.core.output2.AutoUpdate-Show-In-Client=false
-org.netbeans.core.netigso.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 self.lesfoster.cylindrical_alignment.legend.AutoUpdate-Show-In-Client=true
+org.netbeans.core.netigso.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.modules.progress.ui.OpenIDE-Module-Layer=\u0000
 org.openide.windows.OpenIDE-Module-Install=\u0000
 org.netbeans.libs.jna.OpenIDE-Module-Description=\u0000

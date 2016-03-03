@@ -7,6 +7,7 @@ package self.lesfoster.cylindrical_alignment.viewer.top_component;
 
 import java.awt.BorderLayout;
 import java.io.File;
+import java.util.List;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -15,6 +16,7 @@ import org.openide.util.NbBundle.Messages;
 import org.openide.util.lookup.Lookups;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.DataSourceFactory;
+import self.lesfoster.cylindrical_alignment.data_source.Entity;
 import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 
@@ -90,8 +92,26 @@ public final class ViewerTopComponent extends TopComponent {
 		if (! new File(filePath).exists()) {
 			throw new IllegalArgumentException(filePath + " does not exist.");
 		}
-		DataSource dataSource = DataSourceFactory.getSourceForFile(filePath);
-		CylinderContainer container = new CylinderContainer(dataSource);
+		final DataSource dataSource = DataSourceFactory.getSourceForFile(filePath);
+		DataSource descriptiveDataSourceWrapper = new DataSource() {
+
+			@Override
+			public List<Entity> getEntities() {
+				return dataSource.getEntities();
+			}
+
+			@Override
+			public int getAnchorLength() {
+				return dataSource.getAnchorLength();
+			}
+			
+			@Override
+			public String toString() {
+				return filePath;
+			}
+			
+		};
+		CylinderContainer container = new CylinderContainer(descriptiveDataSourceWrapper);
 		contentPanel.add(container, BorderLayout.CENTER);
 		associateLookup(Lookups.singleton((Effected)container));
 

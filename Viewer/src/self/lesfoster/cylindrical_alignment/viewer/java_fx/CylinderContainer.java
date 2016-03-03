@@ -38,7 +38,9 @@ import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.Entity;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
 import self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector;
+import self.lesfoster.cylindrical_alignment.effector.ConcreteHelpEffector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffectorTarget;
+import self.lesfoster.cylindrical_alignment.effector.HelpEffectorTarget;
 import self.lesfoster.cylindrical_alignment.geometry.TexCoordGenerator;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSourceFactory;
@@ -58,7 +60,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  * @author Leslie L Foster
  */
 public class CylinderContainer extends JFXPanel 
-        implements SpeedEffectorTarget, CylinderPositioningEffectorTarget, Effected {
+        implements SpeedEffectorTarget, CylinderPositioningEffectorTarget, HelpEffectorTarget, Effected {
 	public static final String SPIN_GROUP_ID = "SPIN_GROUP";
 	private static final double CAMERA_DISTANCE = Constants.LENGTH_OF_CYLINDER * 3;
 	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
@@ -96,6 +98,7 @@ public class CylinderContainer extends JFXPanel
 	private AppearanceSource appearanceSource;
 	private Text inSceneLabel;
 	private boolean dark = true;
+	private DataSource dataSource;
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
 
@@ -104,6 +107,7 @@ public class CylinderContainer extends JFXPanel
 	}
 
 	public CylinderContainer(DataSource dataSource, Integer startRange, Integer endRange) {
+		this.dataSource = dataSource;
 		this.startRange = startRange;
 		this.endRange = endRange;
 		factor = Constants.LENGTH_OF_CYLINDER / (endRange - startRange);
@@ -127,7 +131,7 @@ public class CylinderContainer extends JFXPanel
 	public Effector[] getEffectors() {
 		return new Effector[]{
 			new ConcreteSpeedEffector(this),
-//			new ConcreteHelpEffector(this, this),
+			new ConcreteHelpEffector(this, this),
 //			new ConcreteSettingsEffector(this),
 			new ConcreteCylinderPositioningEffector(this),
 		};
@@ -164,6 +168,12 @@ public class CylinderContainer extends JFXPanel
 		return mouseDraggedHandler;
 	}
 	
+	//----------------------------------------IMPLEMENTS HelpEffectorTarget
+	@Override
+	public String getInputFile() {
+		return dataSource.toString();
+	}
+
 	public void addAnchorLabel(Map<String, Object> props, TransformableGroup parentGroup) {
 		String name = (String) props.get(DataSource.NAME_PROPERTY);
 		if (name == null) {

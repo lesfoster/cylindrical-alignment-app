@@ -31,9 +31,9 @@ import self.lesfoster.cylindrical_alignment.constants.Constants;
 /** Provides a response for user help-clicks. */
 public class ConcreteHelpEffector implements HelpEffector {
 	private Component parentComponent;
-	private HelpAffectorTarget target;
+	private HelpEffectorTarget target;
 
-	public ConcreteHelpEffector( Component component, HelpAffectorTarget target ) {
+	public ConcreteHelpEffector( Component component, HelpEffectorTarget target ) {
 		this.parentComponent = component;
 		this.target = target;
 	}
