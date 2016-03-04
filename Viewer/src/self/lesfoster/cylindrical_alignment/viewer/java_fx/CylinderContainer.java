@@ -39,8 +39,10 @@ import self.lesfoster.cylindrical_alignment.data_source.Entity;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
 import self.lesfoster.cylindrical_alignment.effector.ConcreteCylinderPositioningEffector;
 import self.lesfoster.cylindrical_alignment.effector.ConcreteHelpEffector;
+import self.lesfoster.cylindrical_alignment.effector.ConcreteSettingsEffector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffectorTarget;
 import self.lesfoster.cylindrical_alignment.effector.HelpEffectorTarget;
+import self.lesfoster.cylindrical_alignment.effector.SettingsEffectorTarget;
 import self.lesfoster.cylindrical_alignment.geometry.TexCoordGenerator;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSourceFactory;
@@ -60,13 +62,15 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionMo
  * @author Leslie L Foster
  */
 public class CylinderContainer extends JFXPanel 
-        implements SpeedEffectorTarget, CylinderPositioningEffectorTarget, HelpEffectorTarget, Effected {
+        implements SpeedEffectorTarget, CylinderPositioningEffectorTarget, HelpEffectorTarget, SettingsEffectorTarget, Effected {
 	public static final String SPIN_GROUP_ID = "SPIN_GROUP";
 	private static final double CAMERA_DISTANCE = Constants.LENGTH_OF_CYLINDER * 3;
 	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
 
 	private int startRange = 0;
 	private int endRange = 0;
+	private int selectionEnvelope = 0;
+	
 	private boolean prominentDentils;
 	private boolean diffResiduesOnly;
 	private boolean usingResidueDentils = true;
@@ -132,7 +136,7 @@ public class CylinderContainer extends JFXPanel
 		return new Effector[]{
 			new ConcreteSpeedEffector(this),
 			new ConcreteHelpEffector(this, this),
-//			new ConcreteSettingsEffector(this),
+			new ConcreteSettingsEffector(this),
 			new ConcreteCylinderPositioningEffector(this),
 		};
 	}
@@ -172,6 +176,17 @@ public class CylinderContainer extends JFXPanel
 	@Override
 	public String getInputFile() {
 		return dataSource.toString();
+	}
+
+	//----------------------------------------IMPLEMENTS SettingsEffectorTarget
+	@Override
+	public Scene getUniverse() {
+		return scene;
+	}
+
+	@Override
+	public void setEnvelopeDistance(int envelopeDistance) {
+		this.selectionEnvelope = envelopeDistance;
 	}
 
 	public void addAnchorLabel(Map<String, Object> props, TransformableGroup parentGroup) {
@@ -1209,9 +1224,9 @@ public class CylinderContainer extends JFXPanel
 			int endSH = subEntity.getEndOnQuery();
 			float xl = translateToJava3dCoords(startSH);
 			float xr = translateToJava3dCoords(endSH);
-			lowCigarBandSlide.setTranslate(xl - getCylLeftX(), 0, 0);
+			lowCigarBandSlide.setTranslate(xl - getCylLeftX() - selectionEnvelope, 0, 0);
 			lowCigarBandLabel.setText("" + startSH);
-			highCigarBandSlide.setTranslate(xr - getCylRightX(), 0, 0);
+			highCigarBandSlide.setTranslate(xr - getCylRightX() + selectionEnvelope, 0, 0);
 			highCigarBandLabel.setText("" + endSH);
 			//System.out.println("Positioning for " + startSH + ", " + endSH);
 		}

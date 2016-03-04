@@ -45,8 +45,8 @@
     <toolbar configuration="Standard" preferred-icon-size="24"/>
     <tc-list>
   <tc-id id="ViewerTopComponent"/>
-  <tc-id id="LegendTopComponent"/>
   <tc-id id="ControlsTopComponent"/>
+  <tc-id id="LegendTopComponent"/>
   <tc-id id="output"/>
     </tc-list>
 </windowmanager>
