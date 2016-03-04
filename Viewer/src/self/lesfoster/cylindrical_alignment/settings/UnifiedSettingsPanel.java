@@ -31,7 +31,6 @@ import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector
 import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
 import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
-import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 
 /**
  * Created by IntelliJ IDEA.
