@@ -52,9 +52,9 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MousePressedHa
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.group.TransformableGroup;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
-import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionModel;
+import self.lesfoster.framework.integration.SelectionModel;
 import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
-import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionModelListener;
+import self.lesfoster.framework.integration.SelectionModelListener;
 
 /**
  * Contains all the domain-oriented objects, which are also created here.
@@ -97,7 +97,7 @@ public class CylinderContainer extends JFXPanel
 
 	private final MouseLocationModel mouseLocationModel = new MouseLocationModel();
 	private MouseDraggedHandler mouseDraggedHandler;
-	private final SelectionModel selectionModel = new SelectionModel();
+	private final SelectionModel selectionModel = SelectionModel.getSelectionModel();
 	private final CameraModel cameraModel = new CameraModel();	
 	private AppearanceSource appearanceSource;
 	private Text inSceneLabel;

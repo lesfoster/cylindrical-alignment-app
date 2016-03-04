@@ -12,7 +12,7 @@ import javafx.scene.input.PickResult;
 import javafx.scene.shape.Shape3D;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
-import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.SelectionModel;
+import self.lesfoster.framework.integration.SelectionModel;
 
 /**
  * Handle mouse drag by updating stored position and camera.

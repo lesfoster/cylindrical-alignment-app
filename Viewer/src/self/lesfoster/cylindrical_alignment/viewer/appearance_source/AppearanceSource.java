@@ -30,7 +30,7 @@ package self.lesfoster.cylindrical_alignment.viewer.appearance_source;
 
 import javafx.scene.paint.PhongMaterial;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
-import self.lesfoster.cylindrical_alignment.viewer.legend_model.LegendModel;
+import self.lesfoster.framework.integration.LegendModel;
 
 /**
  * A source for material appearances for the staves of the cylinder, shown in the Cylinder Viewer.

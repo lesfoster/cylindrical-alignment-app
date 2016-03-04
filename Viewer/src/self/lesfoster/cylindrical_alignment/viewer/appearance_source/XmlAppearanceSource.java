@@ -37,8 +37,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
-import self.lesfoster.cylindrical_alignment.viewer.legend_model.LegendModel;
 import self.lesfoster.cylindrical_alignment.viewer.utils.ConfigUtils;
+import self.lesfoster.framework.integration.LegendModel;
 
 /**
  * Source for appearances to entities generated via the XML Data Source.
@@ -137,7 +137,14 @@ public class XmlAppearanceSource implements AppearanceSource {
 		Map residueColorMap = ResidueAppearanceHelper.getColorings();
 		for (Iterator it = residueColorMap.keySet().iterator(); it.hasNext(); ) {
 			String nextKey = (String)it.next();
-			legendModel.addColorString(nextKey, null, (Color)residueColorMap.get(nextKey));
+			// Must translate between coloring schemes, to the legend model.
+			final Color residueColor = (Color) residueColorMap.get(nextKey);
+			java.awt.Color color2d = new java.awt.Color(
+					(int)(256.0 * residueColor.getRed()), 
+					(int)(256.0 * residueColor.getGreen()),
+					(int)(256.0 * residueColor.getBlue())
+			);
+			legendModel.addColorString(nextKey, null, color2d);
 		}
 		return legendModel;
 	}

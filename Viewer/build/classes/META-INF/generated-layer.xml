@@ -60,17 +60,49 @@
             </folder>
         </folder>
     </folder>
-    <folder name="Menu">
-        <folder name="Window">
-            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.shadow">
-                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
-                <attr name="originalFile" stringvalue="Actions/Window/self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.instance"/>
+    <folder name="Actions">
+        <folder name="Help">
+            <file name="self-lesfoster-cylindrical_alignment-action-HelpAboutApp.instance">
+                <!--self.lesfoster.cylindrical_alignment.action.HelpAboutApp-->
+                <attr
+                    bundlevalue="self.lesfoster.cylindrical_alignment.action.Bundle#CTL_HelpAboutApp" name="displayName"/>
+                <attr
+                    methodvalue="org.openide.awt.Actions.alwaysEnabled" name="instanceCreate"/>
+                <attr name="delegate" newvalue="self.lesfoster.cylindrical_alignment.action.HelpAboutApp"/>
+                <attr boolvalue="false" name="noIconInMenu"/>
             </file>
-            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.shadow">
-                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
-                <attr name="originalFile" stringvalue="Actions/Window/self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.instance"/>
+            <file name="self-lesfoster-cylindrical_alignment-action-HelpAction.instance">
+                <!--self.lesfoster.cylindrical_alignment.action.HelpAboutInputAction-->
+                <attr
+                    bundlevalue="self.lesfoster.cylindrical_alignment.action.Bundle#CTL_HelpAction" name="displayName"/>
+                <attr
+                    methodvalue="org.openide.awt.Actions.alwaysEnabled" name="instanceCreate"/>
+                <attr name="delegate" newvalue="self.lesfoster.cylindrical_alignment.action.HelpAboutInputAction"/>
+                <attr boolvalue="false" name="noIconInMenu"/>
             </file>
         </folder>
+        <folder name="Window">
+            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.instance">
+                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent"/>
+                <attr name="preferredID" stringvalue="ControlsTopComponent"/>
+                <attr
+                    bundlevalue="self.lesfoster.cylindrical_alignment.viewer.top_component.Bundle#CTL_ControlsAction" name="displayName"/>
+            </file>
+            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.instance">
+                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent"/>
+                <attr name="preferredID" stringvalue="ViewerTopComponent"/>
+                <attr
+                    bundlevalue="self.lesfoster.cylindrical_alignment.viewer.top_component.Bundle#CTL_ViewerAction" name="displayName"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Menu">
         <folder name="Help">
             <file name="self-lesfoster-cylindrical_alignment-action-HelpAboutApp.shadow">
                 <!--self.lesfoster.cylindrical_alignment.action.HelpAboutApp-->
@@ -86,6 +118,16 @@
                 <!--self.lesfoster.cylindrical_alignment.action.HelpAboutInputAction-->
                 <attr name="instanceCreate" newvalue="javax.swing.JSeparator"/>
                 <attr intvalue="1350" name="position"/>
+            </file>
+        </folder>
+        <folder name="Window">
+            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.shadow">
+                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
+                <attr name="originalFile" stringvalue="Actions/Window/self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.instance"/>
+            </file>
+            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.shadow">
+                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
+                <attr name="originalFile" stringvalue="Actions/Window/self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.instance"/>
             </file>
         </folder>
     </folder>
@@ -127,48 +169,6 @@
 </tc-ref>
 ]]></file>
             </folder>
-        </folder>
-    </folder>
-    <folder name="Actions">
-        <folder name="Window">
-            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.instance">
-                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
-                <attr
-                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
-                <attr name="component" newvalue="self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent"/>
-                <attr name="preferredID" stringvalue="ControlsTopComponent"/>
-                <attr
-                    bundlevalue="self.lesfoster.cylindrical_alignment.viewer.top_component.Bundle#CTL_ControlsAction" name="displayName"/>
-            </file>
-            <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.instance">
-                <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
-                <attr
-                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
-                <attr name="component" newvalue="self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent"/>
-                <attr name="preferredID" stringvalue="ViewerTopComponent"/>
-                <attr
-                    bundlevalue="self.lesfoster.cylindrical_alignment.viewer.top_component.Bundle#CTL_ViewerAction" name="displayName"/>
-            </file>
-        </folder>
-        <folder name="Help">
-            <file name="self-lesfoster-cylindrical_alignment-action-HelpAboutApp.instance">
-                <!--self.lesfoster.cylindrical_alignment.action.HelpAboutApp-->
-                <attr
-                    bundlevalue="self.lesfoster.cylindrical_alignment.action.Bundle#CTL_HelpAboutApp" name="displayName"/>
-                <attr
-                    methodvalue="org.openide.awt.Actions.alwaysEnabled" name="instanceCreate"/>
-                <attr name="delegate" newvalue="self.lesfoster.cylindrical_alignment.action.HelpAboutApp"/>
-                <attr boolvalue="false" name="noIconInMenu"/>
-            </file>
-            <file name="self-lesfoster-cylindrical_alignment-action-HelpAction.instance">
-                <!--self.lesfoster.cylindrical_alignment.action.HelpAboutInputAction-->
-                <attr
-                    bundlevalue="self.lesfoster.cylindrical_alignment.action.Bundle#CTL_HelpAction" name="displayName"/>
-                <attr
-                    methodvalue="org.openide.awt.Actions.alwaysEnabled" name="instanceCreate"/>
-                <attr name="delegate" newvalue="self.lesfoster.cylindrical_alignment.action.HelpAboutInputAction"/>
-                <attr boolvalue="false" name="noIconInMenu"/>
-            </file>
         </folder>
     </folder>
 </filesystem>

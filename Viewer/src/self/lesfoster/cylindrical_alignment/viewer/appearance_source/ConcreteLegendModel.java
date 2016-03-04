@@ -28,10 +28,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package self.lesfoster.cylindrical_alignment.viewer.appearance_source;
 import java.util.*;
-import javafx.scene.paint.Color;
+import java.awt.Color;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
-import self.lesfoster.cylindrical_alignment.viewer.legend_model.LegendModel;
-import self.lesfoster.cylindrical_alignment.viewer.legend_model.LegendModelListener;
+import self.lesfoster.framework.integration.LegendModel;
+import self.lesfoster.framework.integration.LegendModelListener;
 
 /**
  * Implementation of Legend Model that stores mappings of colors.
@@ -40,7 +40,7 @@ import self.lesfoster.cylindrical_alignment.viewer.legend_model.LegendModelListe
 public class ConcreteLegendModel implements LegendModel {
 
 	private List<String> legendStringList;
-	private List<SubEntity> subEntityList;
+	private List<Object> subEntityList;
 	private LegendModelListener legendModelListener;
     private Map<String, Color> legendMap;
     private Map<Color, String> colorMap;
@@ -90,7 +90,7 @@ public class ConcreteLegendModel implements LegendModel {
     	if (legendName != null) {
     		try {
     			//System.out.println("Adding color String: " + legendName);
-    	        Color legendColor = new Color(r, g, b, 1.0);
+    	        Color legendColor = new Color(r, g, b);
     	        addColorString(legendName, subEntity, legendColor);
     		} catch (RuntimeException rte) {
     			// Can happen if bad color range given.
@@ -102,13 +102,14 @@ public class ConcreteLegendModel implements LegendModel {
     /**
      * All sub entities.
      */
-    public List<SubEntity> getModels() {
+    public List<Object> getModels() {
     	return subEntityList;
     }
 
     /**
      * All colors.
      */
+	@Override
     public List<Color> getLegendColors() {
         return new ArrayList<>(legendMap.values());
     }
@@ -124,6 +125,7 @@ public class ConcreteLegendModel implements LegendModel {
      * Given a string, get its associated color.
      * @param s a user-visible string assoc with color.
      */
+	@Override
     public Color getColorForString(String s) {
         return (Color)legendMap.get(s);
     }
@@ -132,6 +134,7 @@ public class ConcreteLegendModel implements LegendModel {
      * Given a color tell its user-visible string.
      * @param c color to "tell about".
      */
+	@Override
     public String getStringForColor(Color c) {
         return (String)colorMap.get(c);
     }
@@ -144,4 +147,5 @@ public class ConcreteLegendModel implements LegendModel {
     	this.legendModelListener = lml;
     	legendModelListener.updateLegendModel();
     }
+
 }
