@@ -11,6 +11,6 @@
         <attr name="WinSys-TCRef-Order" stringvalue="LegendTopComponent"/>
     </fileobject>
     <fileobject name="properties">
-        <attr name="WinSys-TCRef-Order" stringvalue="ControlsTopComponent/PropertyInspectorTopComponent/properties"/>
+        <attr name="WinSys-TCRef-Order" stringvalue="PropertyInspectorTopComponent/ControlsTopComponent/properties"/>
     </fileobject>
 </attributes>

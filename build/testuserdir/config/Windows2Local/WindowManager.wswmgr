@@ -35,7 +35,7 @@
   <constraints>
   <path orientation="horizontal" number="60" weight="0.7" />
   <path orientation="vertical" number="40" weight="0.7" />
-  <path orientation="horizontal" number="40" weight="0.985485103132162" />
+  <path orientation="horizontal" number="40" weight="0.9213139801375095" />
   <path orientation="vertical" number="40" weight="0.5" />
   </constraints>
   <bounds x="633" y="252" width="806" height="462" />
@@ -46,6 +46,7 @@
     <tc-list>
   <tc-id id="ViewerTopComponent"/>
   <tc-id id="ControlsTopComponent"/>
+  <tc-id id="PropertyInspectorTopComponent"/>
   <tc-id id="LegendTopComponent"/>
   <tc-id id="output"/>
     </tc-list>

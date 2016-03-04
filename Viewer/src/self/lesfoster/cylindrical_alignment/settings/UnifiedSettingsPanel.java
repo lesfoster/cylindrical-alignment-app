@@ -181,6 +181,9 @@ public class UnifiedSettingsPanel extends JPanel {
         );
         add( dragAroundYCheckbox, dragAroundYConstraints );
 
+		/*
+		   Anti-Alias is always-on for JavaFX.  May drop this later. LLF
+		
         JCheckBox antiAliasCheckbox = new JCheckBox( "Antialias" );
         antiAliasCheckbox.addActionListener(new AntialiasActionListener( settingsEffector ) );
         gridY++;
@@ -188,8 +191,11 @@ public class UnifiedSettingsPanel extends JPanel {
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
         add( antiAliasCheckbox, antiAliasConstraints );
+		*/
 
-        //
+        /*
+			2nd light is not supported as yet.  Consider again later.
+		
         JCheckBox secDirLightCheckbox = new JCheckBox( "Second Directional Light" );
         secDirLightCheckbox.setSelected( true );  // On by default.
         secDirLightCheckbox.addActionListener(new SecondDirectionalLightActionListener( settingsEffector ) );
@@ -198,6 +204,7 @@ public class UnifiedSettingsPanel extends JPanel {
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
         add( secDirLightCheckbox, secDirConstraints );
+		*/
 		/*
         GuiUtils.upperLeftLocation(this, WIDTH, HEIGHT);
         GuiUtils.setIcon(this);

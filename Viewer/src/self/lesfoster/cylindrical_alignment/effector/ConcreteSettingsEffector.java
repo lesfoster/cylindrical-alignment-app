@@ -39,16 +39,19 @@ public class ConcreteSettingsEffector implements SettingsEffector {
 		this.target = target;
 	}
 
+	@Override
 	public void setAntialias(boolean isAntialias) {
 //		target.getUniverse().getViewer().getView().setSceneAntialiasingEnable(isAntialias);
 		System.out.println("setAntialias has no effect");
 	}
 
+	@Override
 	public void setSecondLightSource(boolean isSecondEnabled) {
 //		target.getDirectionLight().setEnable(isSecondEnabled);
 		System.out.println("setSecondLightSource has no effect.");
 	}
 
+	@Override
     public void setSelectionEnvelope(int envelopeDistance) {
         target.setEnvelopeDistance(envelopeDistance);
     }
