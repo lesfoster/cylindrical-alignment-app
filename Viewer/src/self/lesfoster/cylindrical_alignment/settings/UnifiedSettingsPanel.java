@@ -30,6 +30,7 @@ import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
 import org.openide.util.LookupListener;
 import org.openide.util.Utilities;
+import org.openide.util.lookup.Lookups;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
 import self.lesfoster.cylindrical_alignment.effector.Effected;
@@ -69,6 +70,7 @@ public class UnifiedSettingsPanel extends JPanel {
 			@Override
 			protected Object doInBackground() throws Exception {
 				final Lookup lookup = Utilities.actionsGlobalContext();
+				//final Lookup lookup = Lookups.forPath("Viewer/CylinderContainer");
 				//effected = (Effected)WindowManager.getDefault().findTopComponent("ViewerTopComponent").getLookup().lookupResult(Effected.class);
 				effectedLookupResult = lookup.lookupResult(Effected.class);				
 				effectedLookupListener = new LookupListener() {

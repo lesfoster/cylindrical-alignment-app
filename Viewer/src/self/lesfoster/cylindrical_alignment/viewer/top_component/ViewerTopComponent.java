@@ -131,6 +131,10 @@ public final class ViewerTopComponent extends TopComponent {
 	public void componentClosed() {
 		contentPanel.removeAll();
 	}
+	
+	public CylinderContainer getContainer() {
+		return container;
+	}
 
 	void writeProperties(java.util.Properties p) {
 		// better to version settings since initial version as advocated at

@@ -21,7 +21,7 @@ import self.lesfoster.cylindrical_alignment.settings.UnifiedSettingsPanel;
 		autostore = false
 )
 @TopComponent.Description(
-		preferredID = "ControlsTopComponent",
+		preferredID = ControlsTopComponent.CONTROLS_TOP_COMPONENT_PREFERRED_ID,
 		//iconBase="SET/PATH/TO/ICON/HERE", 
 		persistenceType = TopComponent.PERSISTENCE_ALWAYS
 )
@@ -38,6 +38,7 @@ import self.lesfoster.cylindrical_alignment.settings.UnifiedSettingsPanel;
 	"HINT_ControlsTopComponent=These controls effect what happens in cyl view."
 })
 public final class ControlsTopComponent extends TopComponent {
+	public static final String CONTROLS_TOP_COMPONENT_PREFERRED_ID = "ControlsTopComponent";
 
 	public ControlsTopComponent() {
 		initComponents();
