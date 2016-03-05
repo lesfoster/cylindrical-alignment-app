@@ -5,11 +5,13 @@
  */
 package self.lesfoster.cylindrical_alignment.effector;
 
+import java.io.Serializable;
+
 /**
  * Implement this to indicate that the class exposes affectors to its behavior.
  *
  * @author Leslie L Foster
  */
-public interface Effected {
+public interface Effected extends Serializable {
 	Effector[] getEffectors();
 }

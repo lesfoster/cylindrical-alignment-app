@@ -41,12 +41,14 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 )
 @Messages({
 	"CTL_ViewerAction=Viewer",
-	"CTL_ViewerTopComponent=Viewer Window",
-	"HINT_ViewerTopComponent=This is a Viewer window"
+	"CTL_ViewerTopComponent=Cylinder View",
+	"HINT_ViewerTopComponent=Alignments visible here"
 })
 public final class ViewerTopComponent extends TopComponent {
 	public static final String PREFERRED_ID = "ViewerTopComponent";
-
+	// Caching a reference to avoid dropping via weak reference.
+	private CylinderContainer container;
+	
 	public ViewerTopComponent() {
 		initComponents();
 		setName(Bundle.CTL_ViewerTopComponent());
@@ -88,7 +90,13 @@ public final class ViewerTopComponent extends TopComponent {
 		//String filePath = filePrefix + "\\h4_muscle_histones\\h4_muscle.cyl.xml";
 		//String filePath = filePrefix + "\\gene_machine\\gene_machine_2.cyl.xml";
 		//String filePath = filePrefix + "\\gff3\\chromosome_3F.gff";
-		String filePath = filePrefix + "\\zebra_mussel_byssal\\AF265353_1.cyl.xml";
+		String dosFilePath = filePrefix + "\\zebra_mussel_byssal\\AF265353_1.cyl.xml";
+		String unixFilePath = "~/zebra_mussel_byssal/AF265353_1.cyl.xml";
+		final String filePath = 
+				(System.getProperty("os.name").toLowerCase().contains("windows")) ?
+				dosFilePath : 
+				unixFilePath;
+
 		if (! new File(filePath).exists()) {
 			throw new IllegalArgumentException(filePath + " does not exist.");
 		}
@@ -111,11 +119,12 @@ public final class ViewerTopComponent extends TopComponent {
 			}
 			
 		};
-		CylinderContainer container = new CylinderContainer(descriptiveDataSourceWrapper);
+		container = new CylinderContainer(descriptiveDataSourceWrapper);
+		Effected effected = container;
 		contentPanel.add(container, BorderLayout.CENTER);
-		associateLookup(Lookups.singleton((Effected)container));
-
+		associateLookup(Lookups.singleton(effected));
 		System.out.println("***  Have associated lookup for container as Effected.");
+		this.requestFocusInWindow();
 	}
 
 	@Override

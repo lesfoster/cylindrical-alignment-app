@@ -24,7 +24,7 @@ class Bundle {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "CTL_ViewerAction");
     }
     /**
-     * @return <i>Viewer Window</i>
+     * @return <i>Cylinder View</i>
      * @see ViewerTopComponent
      */
     static String CTL_ViewerTopComponent() {
@@ -38,7 +38,7 @@ class Bundle {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "HINT_ControlsTopComponent");
     }
     /**
-     * @return <i>This is a Viewer window</i>
+     * @return <i>Alignments visible here</i>
      * @see ViewerTopComponent
      */
     static String HINT_ViewerTopComponent() {

@@ -25,6 +25,10 @@ package self.lesfoster.cylindrical_alignment.settings;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Collection;
+import org.openide.util.Lookup;
+import org.openide.util.LookupEvent;
+import org.openide.util.LookupListener;
 import org.openide.util.Utilities;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
@@ -43,9 +47,11 @@ import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 public class UnifiedSettingsPanel extends JPanel {
     private int WIDTH = 300;
     private int HEIGHT = 325;
+	
+	private Lookup.Result<Effected> effectedLookupResult;
+	public LookupListener effectedLookupListener;
 
-	public UnifiedSettingsPanel(
-	) {
+	public UnifiedSettingsPanel() {
 		initWhenReady();
 	}
 
@@ -62,27 +68,26 @@ public class UnifiedSettingsPanel extends JPanel {
 			private Effected effected;
 			@Override
 			protected Object doInBackground() throws Exception {
-				while (true) {
-					try {
-						effected = Utilities.actionsGlobalContext().lookup(Effected.class);
-						if (effected == null) {
-							//System.out.println("No lookup.");
-							Thread.sleep(300);
-							continue;
-						} else {
-							break;
+				final Lookup lookup = Utilities.actionsGlobalContext();
+				//effected = (Effected)WindowManager.getDefault().findTopComponent("ViewerTopComponent").getLookup().lookupResult(Effected.class);
+				effectedLookupResult = lookup.lookupResult(Effected.class);				
+				effectedLookupListener = new LookupListener() {
+					@Override
+					public void resultChanged(LookupEvent le) {
+						Collection<? extends Effected> effectedList = effectedLookupResult.allInstances();
+						if (effectedList.size() >= 1) {
+							effected = effectedList.iterator().next();
+							launchInit(effected);
 						}
-					} catch (InterruptedException ie) {
-						// Eat this one.
-
 					}
-				}
-				return effected;
+					
+				};
+				effectedLookupResult.addLookupListener(effectedLookupListener);
+				return effectedLookupResult;
 			}
 			
 			@Override
 			protected void done() {
-				launchInit(effected);
 			}
 			
 		};
@@ -90,6 +95,7 @@ public class UnifiedSettingsPanel extends JPanel {
 	}
 
 	public void launchInit(Effected effected) {
+		System.out.println("Launching settings panel...");
 		final Effector[] effectors = effected.getEffectors();
 		SpeedEffector speedEffector = null;
 		SettingsEffector settingsEffector = null;
@@ -210,6 +216,7 @@ public class UnifiedSettingsPanel extends JPanel {
         GuiUtils.setIcon(this);
         setResizable( false );
 	    */
+		validate();
 		invalidate();
 		repaint();
     }

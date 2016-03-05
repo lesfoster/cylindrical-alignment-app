@@ -11,10 +11,7 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
-import org.openide.util.Utilities;
-import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.settings.UnifiedSettingsPanel;
-import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 
 /**
  * Top component which displays something.
@@ -28,7 +25,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 		//iconBase="SET/PATH/TO/ICON/HERE", 
 		persistenceType = TopComponent.PERSISTENCE_ALWAYS
 )
-@TopComponent.Registration(mode = "rightSlidingSide", openAtStartup = false)
+@TopComponent.Registration(mode = "properties", openAtStartup = true)
 @ActionID(category = "Window", id = "self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent")
 @ActionReference(path = "Menu/Window" /*, position = 333 */)
 @TopComponent.OpenActionRegistration(

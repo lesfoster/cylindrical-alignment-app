@@ -5,6 +5,7 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.java_fx;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
