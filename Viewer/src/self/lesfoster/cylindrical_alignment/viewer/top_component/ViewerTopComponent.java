@@ -11,6 +11,7 @@ import java.util.List;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.util.Lookup;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import org.openide.util.lookup.Lookups;
@@ -122,7 +123,7 @@ public final class ViewerTopComponent extends TopComponent {
 		container = new CylinderContainer(descriptiveDataSourceWrapper);
 		Effected effected = container;
 		contentPanel.add(container, BorderLayout.CENTER);
-		associateLookup(Lookups.singleton(effected));
+		EffectedContainer.getInstance().setEffected(effected);
 		System.out.println("***  Have associated lookup for container as Effected.");
 		this.requestFocusInWindow();
 	}

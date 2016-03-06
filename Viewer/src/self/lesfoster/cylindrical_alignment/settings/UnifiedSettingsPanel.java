@@ -25,17 +25,12 @@ package self.lesfoster.cylindrical_alignment.settings;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Collection;
-import org.openide.util.Lookup;
-import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
-import org.openide.util.Utilities;
-import org.openide.util.lookup.Lookups;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
 import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
 import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
+import self.lesfoster.cylindrical_alignment.viewer.top_component.EffectedContainer;
 
 /**
  * Created by IntelliJ IDEA.
@@ -49,9 +44,6 @@ public class UnifiedSettingsPanel extends JPanel {
     private int WIDTH = 300;
     private int HEIGHT = 325;
 	
-	private Lookup.Result<Effected> effectedLookupResult;
-	public LookupListener effectedLookupListener;
-
 	public UnifiedSettingsPanel() {
 		initWhenReady();
 	}
@@ -65,35 +57,10 @@ public class UnifiedSettingsPanel extends JPanel {
     }
 
 	private void initWhenReady() {
-		SwingWorker swingWorker = new SwingWorker() {
-			private Effected effected;
-			@Override
-			protected Object doInBackground() throws Exception {
-				final Lookup lookup = Utilities.actionsGlobalContext();
-				//final Lookup lookup = Lookups.forPath("Viewer/CylinderContainer");
-				//effected = (Effected)WindowManager.getDefault().findTopComponent("ViewerTopComponent").getLookup().lookupResult(Effected.class);
-				effectedLookupResult = lookup.lookupResult(Effected.class);				
-				effectedLookupListener = new LookupListener() {
-					@Override
-					public void resultChanged(LookupEvent le) {
-						Collection<? extends Effected> effectedList = effectedLookupResult.allInstances();
-						if (effectedList.size() >= 1) {
-							effected = effectedList.iterator().next();
-							launchInit(effected);
-						}
-					}
-					
-				};
-				effectedLookupResult.addLookupListener(effectedLookupListener);
-				return effectedLookupResult;
-			}
-			
-			@Override
-			protected void done() {
-			}
-			
-		};
-		swingWorker.execute();
+		EffectedContainer ec = EffectedContainer.getInstance();
+		ec.addListener((Effected effected) -> {
+			launchInit(effected);
+		});
 	}
 
 	public void launchInit(Effected effected) {
