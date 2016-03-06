@@ -10,6 +10,8 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent;
+import self.lesfoster.framework.integration.LegendModel;
 
 /**
  * Top component which displays something.
@@ -83,7 +85,7 @@ public final class LegendTopComponent extends TopComponent {
     // End of variables declaration//GEN-END:variables
 	@Override
 	public void componentOpened() {
-		// TODO add custom code on component opening
+		//LegendComponent legend = new LegendComponent();
 	}
 
 	@Override
