@@ -15,6 +15,14 @@
                     </run-dependency>
                 </dependency>
                 <dependency>
+                    <code-name-base>org.openide.modules</code-name-base>
+                    <build-prerequisite/>
+                    <compile-dependency/>
+                    <run-dependency>
+                        <specification-version>7.43.1</specification-version>
+                    </run-dependency>
+                </dependency>
+                <dependency>
                     <code-name-base>org.openide.util</code-name-base>
                     <build-prerequisite/>
                     <compile-dependency/>
@@ -23,7 +31,23 @@
                     </run-dependency>
                 </dependency>
             </module-dependencies>
-            <public-packages/>
+            <public-packages>
+                <package>cyl.jaxb</package>
+                <package>self.lesfoster.cylindrical_alignment.constants</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source.converter</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source.gff3</package>
+                <package>self.lesfoster.cylindrical_alignment.geometry</package>
+                <package>self.lesfoster.cylindrical_alignment.model.action</package>
+                <package>self.lesfoster.cylindrical_alignment.model.data_source</package>
+                <package>self.lesfoster.cylindrical_alignment.model.lifecycle</package>
+                <package>self.lesfoster.cylindrical_alignment.utils</package>
+                <package>self.lesfoster.cylindrical_alignment.viewer.statistics</package>
+            </public-packages>
+            <class-path-extension>
+                <runtime-relative-path>ext/utilities.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/utilities.jar</binary-origin>
+            </class-path-extension>
             <class-path-extension>
                 <runtime-relative-path>ext/data_source.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/data_source.jar</binary-origin>

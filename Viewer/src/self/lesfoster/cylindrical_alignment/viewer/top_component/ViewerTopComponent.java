@@ -6,17 +6,14 @@
 package self.lesfoster.cylindrical_alignment.viewer.top_component;
 
 import java.awt.BorderLayout;
-import java.io.File;
-import java.util.List;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
-import self.lesfoster.cylindrical_alignment.data_source.DataSourceFactory;
-import self.lesfoster.cylindrical_alignment.data_source.Entity;
 import self.lesfoster.cylindrical_alignment.effector.Effected;
+import self.lesfoster.cylindrical_alignment.model.data_source.Model;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.CylinderContainer;
 
 /**
@@ -84,46 +81,13 @@ public final class ViewerTopComponent extends TopComponent {
     // End of variables declaration//GEN-END:variables
 	@Override
 	public void componentOpened() {
-		String filePrefix = "C:\\current_projects\\gitfiles\\CylindricalAlignmentApp\\samples";
-		//String filePath = filePrefix + "\\pyrimidinergic_receptor\\gi66932905.BlastOutput.xml";
-		//String filePath = filePrefix + "\\h4_muscle_histones\\h4_muscle.cyl.xml";
-		//String filePath = filePrefix + "\\gene_machine\\gene_machine_2.cyl.xml";
-		//String filePath = filePrefix + "\\gff3\\chromosome_3F.gff";
-		String dosFilePath = filePrefix + "\\zebra_mussel_byssal\\AF265353_1.cyl.xml";
-		String unixFilePath = "~/zebra_mussel_byssal/AF265353_1.cyl.xml";
-		final String filePath = 
-				(System.getProperty("os.name").toLowerCase().contains("windows")) ?
-				dosFilePath : 
-				unixFilePath;
-
-		if (! new File(filePath).exists()) {
-			throw new IllegalArgumentException(filePath + " does not exist.");
-		}
-		final DataSource dataSource = DataSourceFactory.getSourceForFile(filePath);
-		DataSource descriptiveDataSourceWrapper = new DataSource() {
-
-			@Override
-			public List<Entity> getEntities() {
-				return dataSource.getEntities();
-			}
-
-			@Override
-			public int getAnchorLength() {
-				return dataSource.getAnchorLength();
-			}
-			
-			@Override
-			public String toString() {
-				return filePath;
-			}
-			
-		};
-		container = new CylinderContainer(descriptiveDataSourceWrapper);
-		Effected effected = container;
-		contentPanel.add(container, BorderLayout.CENTER);
-		EffectedContainer.getInstance().setEffected(effected);
-		System.out.println("***  Have associated lookup for container as Effected.");
-		this.requestFocusInWindow();
+		Model.getInstance().addListener((DataSource dataSource) -> {
+			container = new CylinderContainer(dataSource);
+			Effected effected = container;
+			contentPanel.add(container, BorderLayout.CENTER);
+			EffectedContainer.getInstance().setEffected(effected);
+			ViewerTopComponent.this.requestFocusInWindow();			
+		});
 	}
 
 	@Override

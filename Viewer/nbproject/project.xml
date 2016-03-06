@@ -48,6 +48,14 @@
                     </run-dependency>
                 </dependency>
                 <dependency>
+                    <code-name-base>self.lesfoster.cylindrical_alignment.model</code-name-base>
+                    <build-prerequisite/>
+                    <compile-dependency/>
+                    <run-dependency>
+                        <specification-version>1.0</specification-version>
+                    </run-dependency>
+                </dependency>
+                <dependency>
                     <code-name-base>self.lesfoster.framework.integration</code-name-base>
                     <build-prerequisite/>
                     <compile-dependency/>
@@ -57,33 +65,15 @@
                 </dependency>
             </module-dependencies>
             <public-packages>
-                <package>cyl.jaxb</package>
-                <package>self.lesfoster.cylindrical_alignment.affector</package>
-                <package>self.lesfoster.cylindrical_alignment.constants</package>
-                <package>self.lesfoster.cylindrical_alignment.data_source</package>
-                <package>self.lesfoster.cylindrical_alignment.data_source.converter</package>
-                <package>self.lesfoster.cylindrical_alignment.data_source.gff3</package>
-                <package>self.lesfoster.cylindrical_alignment.geometry</package>
                 <package>self.lesfoster.cylindrical_alignment.settings</package>
-                <package>self.lesfoster.cylindrical_alignment.utils</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.appearance_source</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.java_fx</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.java_fx.events</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.java_fx.group</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model</package>
-                <package>self.lesfoster.cylindrical_alignment.viewer.legend_model</package>
-                <package>self.lesfoster.cylindrical_alignment.viewer.statistics</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.top_component</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.utils</package>
             </public-packages>
-            <class-path-extension>
-                <runtime-relative-path>ext/utilities.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/utilities.jar</binary-origin>
-            </class-path-extension>
-            <class-path-extension>
-                <runtime-relative-path>ext/data_source.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/data_source.jar</binary-origin>
-            </class-path-extension>
         </data>
     </configuration>
 </project>

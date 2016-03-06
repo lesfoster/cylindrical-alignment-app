@@ -1,4 +1,4 @@
-#Sat Mar 05 23:47:01 EST 2016
+#Sun Mar 06 16:27:00 EST 2016
 org.netbeans.core.startup.OpenIDE-Module-Deprecated=\u0000
 self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.modules.settings.AutoUpdate-Show-In-Client=false
@@ -7,8 +7,8 @@ org.openide.nodes.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.openide.explorer.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.libs.osgi.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.core.nativeaccess.OpenIDE-Module-Install=\u0000
-org.openide.awt.OpenIDE-Module-Description=\u0000
 self.lesfoster.cylindrical_alignment.inspector.AutoUpdate-Show-In-Client=true
+org.openide.awt.OpenIDE-Module-Description=\u0000
 org.openide.modules.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.libs.felix.OpenIDE-Module-Install=\u0000
 org.netbeans.api.progress.OpenIDE-Module-Deprecated=\u0000
@@ -259,15 +259,15 @@ org.netbeans.libs.felix.OpenIDE-Module-Description=\u0000
 org.openide.modules.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.modules.masterfs.nio2.OpenIDE-Module-Layer=\u0000
 self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Install=\u0000
-org.netbeans.modules.options.api.OpenIDE-Module-Layer=org/netbeans/modules/options/resources/mf-layer.xml
 org.netbeans.modules.editor.mimelookup.AutoUpdate-Show-In-Client=false
+org.netbeans.modules.options.api.OpenIDE-Module-Layer=org/netbeans/modules/options/resources/mf-layer.xml
 org.netbeans.modules.keyring.impl.OpenIDE-Module-Description=\u0000
 org.netbeans.modules.sampler.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.print.OpenIDE-Module-Layer=org/netbeans/modules/print/resources/layer.xml
 org.netbeans.modules.editor.mimelookup.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.modules.keyring.OpenIDE-Module-Description=\u0000
-org.netbeans.modules.sendopts.AutoUpdate-Show-In-Client=false
 self.lesfoster.cylindrical_alignment.model.AutoUpdate-Show-In-Client=true
+org.netbeans.modules.sendopts.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.keyring.fallback.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.options.api.AutoUpdate-Show-In-Client=false
 org.netbeans.core.netigso.OpenIDE-Module-Install=\u0000
