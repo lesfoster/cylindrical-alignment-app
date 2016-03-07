@@ -7,6 +7,7 @@ package self.lesfoster.cylindrical_alignment.viewer.top_component;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import self.lesfoster.cylindrical_alignment.effector.Effected;
 
 /**
@@ -26,14 +27,18 @@ public class EffectedContainer {
 		return instance;
 	}
 	
-	public void addListener(EffectorContainerListener ecl) {
+	public synchronized void addListener(EffectorContainerListener ecl) {
 		if (effected != null) {
 			ecl.setEffected(effected);
 		}
 		listeners.add(ecl);
 	}
 	
-	public void close() {
+	public synchronized void removeListener(EffectorContainerListener ecl) {
+		listeners.remove(ecl);
+	}
+	
+	public synchronized void close() {
 		listeners.clear();
 	}
 	
@@ -42,13 +47,17 @@ public class EffectedContainer {
 		fireEffectedEvent();
 	}
 
-	public static interface EffectorContainerListener {
-		void setEffected(Effected effected);
-	}
-
-	private void fireEffectedEvent() {
-		for (EffectorContainerListener listener : listeners) {
+	private synchronized void fireEffectedEvent() {
+		List<EffectorContainerListener> safeList = new ArrayList<>();
+		safeList.addAll(listeners);
+		for (EffectorContainerListener listener : safeList) {
 			listener.setEffected(effected);
 		}
 	}
+
+	public static interface EffectorContainerListener {
+
+		void setEffected(Effected effected);
+	}
+
 }

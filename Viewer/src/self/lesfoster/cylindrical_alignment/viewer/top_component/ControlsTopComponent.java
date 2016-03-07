@@ -69,12 +69,17 @@ public final class ControlsTopComponent extends TopComponent {
 	@Override
 	public void componentOpened() {
 		contentPanel.setLayout(new BorderLayout());
-		contentPanel.add(new UnifiedSettingsPanel(), BorderLayout.CENTER);
+		unifiedSettingsPanel = new UnifiedSettingsPanel();
+		contentPanel.add(unifiedSettingsPanel, BorderLayout.CENTER);
 	}
+	public UnifiedSettingsPanel unifiedSettingsPanel;
 
 	@Override
 	public void componentClosed() {
-		// TODO add custom code on component closing
+		if (unifiedSettingsPanel != null) {
+			unifiedSettingsPanel.close();
+			contentPanel.remove(unifiedSettingsPanel);
+		}
 	}
 
 	void writeProperties(java.util.Properties p) {

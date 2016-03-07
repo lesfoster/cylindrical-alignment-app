@@ -82,6 +82,9 @@ public final class ViewerTopComponent extends TopComponent {
 	@Override
 	public void componentOpened() {
 		Model.getInstance().addListener((DataSource dataSource) -> {
+			if (container != null) {
+				contentPanel.remove(container);
+			}
 			container = new CylinderContainer(dataSource);
 			Effected effected = container;
 			contentPanel.add(container, BorderLayout.CENTER);

@@ -5,7 +5,7 @@ cylinder, such that the alignments are arranged like the staves
 of a barrel. The cylinder can spin, and if it spins, it can
 do so at two different speeds.  When stopped, properties can
 be seen for the aligned values.
-Copyright (C) 2005 Leslie L. Foster
+Copyright (C) 2005/2016 Leslie L. Foster
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -23,14 +23,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 package self.lesfoster.cylindrical_alignment.settings;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
 import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
 import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 import self.lesfoster.cylindrical_alignment.viewer.top_component.EffectedContainer;
+import self.lesfoster.cylindrical_alignment.viewer.top_component.EffectedContainer.EffectorContainerListener;
 
 /**
  * Created by IntelliJ IDEA.
@@ -43,6 +51,8 @@ import self.lesfoster.cylindrical_alignment.viewer.top_component.EffectedContain
 public class UnifiedSettingsPanel extends JPanel {
     private int WIDTH = 300;
     private int HEIGHT = 325;
+	
+	private EffectorContainerListener ecl;
 	
 	public UnifiedSettingsPanel() {
 		initWhenReady();
@@ -58,13 +68,14 @@ public class UnifiedSettingsPanel extends JPanel {
 
 	private void initWhenReady() {
 		EffectedContainer ec = EffectedContainer.getInstance();
-		ec.addListener((Effected effected) -> {
+		ecl = (Effected effected) -> {
+			//close();
 			launchInit(effected);
-		});
+		};
+		ec.addListener(ecl);
 	}
 
 	public void launchInit(Effected effected) {
-		System.out.println("Launching settings panel...");
 		final Effector[] effectors = effected.getEffectors();
 		SpeedEffector speedEffector = null;
 		SettingsEffector settingsEffector = null;
@@ -87,6 +98,8 @@ public class UnifiedSettingsPanel extends JPanel {
             SettingsEffector settingsEffector,
             CylinderPositioningEffector cylinderPositioningEffector ) {
 
+		removeAll();
+		
         SpinSliderPanel spinSliderPanel = new SpinSliderPanel( speedEffector );
         SelectionEnvelopPanel selectionEnvelopPanel = new SelectionEnvelopPanel( settingsEffector );
         DragFactorSliderPanel dragFactorSliderPanel = new DragFactorSliderPanel( cylinderPositioningEffector );
@@ -189,4 +202,12 @@ public class UnifiedSettingsPanel extends JPanel {
 		invalidate();
 		repaint();
     }
+	
+	/** Close and init are opposite operations. */
+	public void close() {
+		EffectedContainer ec = EffectedContainer.getInstance();
+		if (ecl != null) {
+			ec.removeListener(ecl);
+		}
+	}
 }

@@ -27,14 +27,14 @@ public class Model {
 		return instance;
 	}
 
-	public void addListener(DataSourceListener ecl) {
+	public synchronized void addListener(DataSourceListener dsl) {
 		if (dataSource != null) {
-			ecl.setDataSource(dataSource);
+			dsl.setDataSource(dataSource);
 		}
-		listeners.add(ecl);
+		listeners.add(dsl);
 	}
 
-	public void close() {
+	public synchronized void close() {
 		listeners.clear();
 	}
 
@@ -48,7 +48,7 @@ public class Model {
 		void setDataSource(DataSource effected);
 	}
 
-	private void fireDataSourceEvent() {
+	private synchronized void fireDataSourceEvent() {
 		for (DataSourceListener listener : listeners) {
 			listener.setDataSource(dataSource);
 		}

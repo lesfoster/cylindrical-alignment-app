@@ -33,6 +33,7 @@ public final class FileOpener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JFileChooser chooser = new JFileChooser();
+		chooser.showOpenDialog(null);
 		final File infile = chooser.getSelectedFile();
 		if (infile != null) {
 			if (infile.canRead()) {
