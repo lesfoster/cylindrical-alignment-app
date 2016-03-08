@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package self.lesfoster.cylindrical_alignment.viewer.appearance_source;
 
+import java.awt.event.ContainerListener;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -39,6 +40,8 @@ import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
 import self.lesfoster.cylindrical_alignment.viewer.utils.ConfigUtils;
 import self.lesfoster.framework.integration.LegendModel;
+import self.lesfoster.framework.integration.LegendModelContainer;
+import self.lesfoster.framework.integration.SharedObjectContainer;
 
 /**
  * Source for appearances to entities generated via the XML Data Source.
@@ -57,6 +60,7 @@ public class XmlAppearanceSource implements AppearanceSource {
 	private static final String NON_SPECIFIC_DOMAIN_NAME = "NonSpecificDomain";
 	private Properties properties;
 	private Map<String, Color> entityTypeToColor;
+	private LegendModel legendModel;
 	private int nextUnassignedDomain = 0;
 	private int highestDomainNum = -1;
 
@@ -64,15 +68,13 @@ public class XmlAppearanceSource implements AppearanceSource {
 	private float scoreGreen;
 	private float scoreBlue;
 
-	private ConcreteLegendModel legendModel;
-	
 	/**
 	 * Constructor prepares coloring properties for use.
 	 */
 	public XmlAppearanceSource() {
 		//  Load the properties.
 		properties = ConfigUtils.getProperties(APPEARANCE_PROPS);
-		entityTypeToColor = new HashMap<String, Color>();
+		entityTypeToColor = new HashMap<>();
 
 		//  Read the properties for coloring data.
 		for (Iterator it = properties.keySet().iterator(); it.hasNext(); ) {
@@ -88,9 +90,27 @@ public class XmlAppearanceSource implements AppearanceSource {
 				}
 			}
 		}
+		
+		LegendModelContainer.getInstance().addListener(new SharedObjectContainer.ContainerListener<LegendModel>() {
+			@Override
+			public void setValue(LegendModel value) {
+				XmlAppearanceSource.this.legendModel = value;
+				Map residueColorMap = ResidueAppearanceHelper.getColorings();
+				for (Iterator it = residueColorMap.keySet().iterator(); it.hasNext();) {
+					String nextKey = (String) it.next();
+					// Must translate between coloring schemes, to the legend model.
+					final Color residueColor = (Color) residueColorMap.get(nextKey);
+					java.awt.Color color2d = new java.awt.Color(
+							(int) (256.0 * residueColor.getRed()),
+							(int) (256.0 * residueColor.getGreen()),
+							(int) (256.0 * residueColor.getBlue())
+					);
+					value.addColorString(nextKey, null, color2d);
+				}
+			}
+			
+		});
 
-		//  Setup the legend model.
-		legendModel = new ConcreteLegendModel();
 	}
 
 	/* (non-Javadoc)
@@ -131,9 +151,8 @@ public class XmlAppearanceSource implements AppearanceSource {
 	/**
 	 * Returns an implementation of the legend model to tell what colors were chosen by this
 	 * appearance source, and what they mean.
-	 */
-	@Override
-	public LegendModel getLegendModel() {
+	 *
+	private LegendModel getLegendModel() {
 		Map residueColorMap = ResidueAppearanceHelper.getColorings();
 		for (Iterator it = residueColorMap.keySet().iterator(); it.hasNext(); ) {
 			String nextKey = (String)it.next();
@@ -148,6 +167,7 @@ public class XmlAppearanceSource implements AppearanceSource {
 		}
 		return legendModel;
 	}
+	*/
 
 	/**
 	 * Tells if this entity is to have its color affected by its scoring position or not.

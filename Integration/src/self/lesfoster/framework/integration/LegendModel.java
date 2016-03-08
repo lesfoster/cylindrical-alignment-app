@@ -59,7 +59,27 @@ public interface LegendModel {
      * @param c color to "tell about".
      */
     String getStringForColor(Color c);
-
+	
+	/**
+	 * Assigns color to specific object of interest.
+	 * 
+	 * @param legendName how called
+	 * @param object what to label
+	 * @param r red component
+	 * @param g green component
+	 * @param b blue component
+	 */
+	void addColorString(String legendName, Object object, float r, float g, float b);
+	
+	/**
+	 * Add a color mapped to specific object of interest.
+	 * 
+	 * @param legendName how called 
+	 * @param object what to label
+	 * @param legendColor color given
+	 */
+	void addColorString(String legendName, Object object, Color legendColor);
+	
     /**
      * Adds a listener to changes on this model.
      * @param l

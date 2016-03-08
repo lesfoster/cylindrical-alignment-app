@@ -5,6 +5,9 @@
  */
 package self.lesfoster.cylindrical_alignment.legend.top_component;
 
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -12,6 +15,8 @@ import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent;
 import self.lesfoster.framework.integration.LegendModel;
+import self.lesfoster.framework.integration.LegendModelContainer;
+import self.lesfoster.framework.integration.SharedObjectContainer.ContainerListener;
 
 /**
  * Top component which displays something.
@@ -55,37 +60,34 @@ public final class LegendTopComponent extends TopComponent {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        legendBasePanel = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        legendBasePanel.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(legendBasePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(legendBasePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel legendBasePanel;
     // End of variables declaration//GEN-END:variables
 	@Override
 	public void componentOpened() {
-		//LegendComponent legend = new LegendComponent();
+		ContainerListener<LegendModel> containerListener = (LegendModel value) -> {
+			SwingUtilities.invokeLater(() -> {
+				LegendComponent legendComponent = new LegendComponent(value);
+				legendBasePanel.add(new JScrollPane(legendComponent), BorderLayout.CENTER);
+			});
+		};
+		LegendModelContainer.getInstance().addListener(containerListener);
 	}
 
 	@Override

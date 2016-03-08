@@ -30,7 +30,6 @@ package self.lesfoster.cylindrical_alignment.viewer.appearance_source;
 
 import javafx.scene.paint.PhongMaterial;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
-import self.lesfoster.framework.integration.LegendModel;
 
 /**
  * A source for material appearances for the staves of the cylinder, shown in the Cylinder Viewer.
@@ -68,9 +67,4 @@ public interface AppearanceSource {
      */
     PhongMaterial createPerforatedAppearance(SubEntity subEntity);
 
-    /**
-     * Supply a model for explanation to user of what all colors provided
-     * by this appearance source mean.
-     */
-    LegendModel getLegendModel();
 }
