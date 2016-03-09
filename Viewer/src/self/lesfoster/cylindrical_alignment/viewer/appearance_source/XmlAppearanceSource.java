@@ -231,7 +231,7 @@ public class XmlAppearanceSource implements AppearanceSource {
      * @return descriptive string.
      */
     private String buildLegendString(SubEntity subEntity) {
-    	Map properties = subEntity.getProperties();
+    	Map<String,Object> properties = subEntity.getProperties();
 		String entityType = (String)properties.get(DataSource.SUB_ENTITY_TYPE_PROPERTY_NAME);
 	    String acc = (String)properties.get(DataSource.ACCESSION_PROPERTY_NAME);
 	    if (acc == null) {
@@ -274,7 +274,7 @@ public class XmlAppearanceSource implements AppearanceSource {
     private String getEntityType(SubEntity subEntity) {
     	String entityType = null;
     	if (subEntity != null) {
-    		Map properties = subEntity.getProperties();
+    		Map<String,Object> properties = subEntity.getProperties();
     		if (properties != null) {
     			Object entityTypeObj = properties.get(DataSource.SUB_ENTITY_TYPE_PROPERTY_NAME);
     			if (entityTypeObj != null)

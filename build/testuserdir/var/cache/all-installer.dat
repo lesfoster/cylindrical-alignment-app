@@ -1,4 +1,4 @@
-#Mon Mar 07 23:18:47 EST 2016
+#Wed Mar 09 00:54:28 EST 2016
 org.netbeans.core.startup.OpenIDE-Module-Deprecated=\u0000
 self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.modules.settings.AutoUpdate-Show-In-Client=false
@@ -110,8 +110,8 @@ org.netbeans.core.io.ui.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.uihandler.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.settings.OpenIDE-Module-Description=\u0000
 org.openide.filesystems.OpenIDE-Module-Install=\u0000
-org.openide.windows.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.libs.junit4.AutoUpdate-Show-In-Client=false
+org.openide.windows.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.core.network.OpenIDE-Module-Description=\u0000
 org.openide.text.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.modules.sampler.OpenIDE-Module-Description=\u0000
@@ -280,8 +280,8 @@ self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Description=\u0000
 self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.core.ui.OpenIDE-Module-Layer=org/netbeans/core/ui/resources/layer.xml
 org.netbeans.libs.javafx.AutoUpdate-Show-In-Client=false
-self.lesfoster.cylindrical_alignment.viewer.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.libs.testng.AutoUpdate-Show-In-Client=true
+self.lesfoster.cylindrical_alignment.viewer.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.core.multitabs.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.sampler.OpenIDE-Module-Install=\u0000
 org.netbeans.modules.javahelp.AutoUpdate-Show-In-Client=false
@@ -296,8 +296,8 @@ org.netbeans.modules.keyring.impl.AutoUpdate-Show-In-Client=false
 org.netbeans.swing.tabcontrol.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.modules.options.keymap.OpenIDE-Module-Install=\u0000
 org.netbeans.modules.print.OpenIDE-Module-Description=\u0000
-org.netbeans.modules.masterfs.macosx.AutoUpdate-Show-In-Client=false
 org.netbeans.libs.felix.AutoUpdate-Show-In-Client=false
+org.netbeans.modules.masterfs.macosx.AutoUpdate-Show-In-Client=false
 org.netbeans.swing.plaf.OpenIDE-Module-Install=\u0000
 org.openide.util.lookup.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.options.keymap.OpenIDE-Module-Description=\u0000

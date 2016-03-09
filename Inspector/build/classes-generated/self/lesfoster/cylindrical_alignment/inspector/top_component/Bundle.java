@@ -10,14 +10,14 @@ class Bundle {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "CTL_PropertyInspectorAction");
     }
     /**
-     * @return <i>PropertyInspector Window</i>
+     * @return <i>Property Inspector</i>
      * @see PropertyInspectorTopComponent
      */
     static String CTL_PropertyInspectorTopComponent() {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "CTL_PropertyInspectorTopComponent");
     }
     /**
-     * @return <i>This is a PropertyInspector window</i>
+     * @return <i>All properties of the current selection</i>
      * @see PropertyInspectorTopComponent
      */
     static String HINT_PropertyInspectorTopComponent() {

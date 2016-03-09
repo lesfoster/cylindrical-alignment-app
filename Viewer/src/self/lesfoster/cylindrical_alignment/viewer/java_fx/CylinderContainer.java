@@ -5,7 +5,6 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.java_fx;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +29,16 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
+import javax.swing.SwingUtilities;
+
+import org.openide.util.Lookup;
+import org.openide.util.lookup.AbstractLookup;
+import org.openide.util.lookup.InstanceContent;
+import org.openide.util.lookup.Lookups;
+import org.openide.util.lookup.ServiceProvider;
+import org.openide.windows.TopComponent;
+import org.openide.windows.WindowManager;
+
 import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.ConcreteSpeedEffector;
@@ -55,6 +64,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
 import self.lesfoster.framework.integration.SelectionModel;
 import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
+import self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
 /**
@@ -62,8 +72,10 @@ import self.lesfoster.framework.integration.SelectionModelListener;
  *
  * @author Leslie L Foster
  */
-public class CylinderContainer extends JFXPanel 
-        implements SpeedEffectorTarget, CylinderPositioningEffectorTarget, HelpEffectorTarget, SettingsEffectorTarget, Effected {
+public class CylinderContainer extends JFXPanel  
+        implements SpeedEffectorTarget, CylinderPositioningEffectorTarget,
+		           HelpEffectorTarget, SettingsEffectorTarget, 
+				   Effected, Lookup.Provider {
 	public static final String SPIN_GROUP_ID = "SPIN_GROUP";
 	private static final double CAMERA_DISTANCE = Constants.LENGTH_OF_CYLINDER * 3;
 	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
@@ -104,6 +116,9 @@ public class CylinderContainer extends JFXPanel
 	private Text inSceneLabel;
 	private boolean dark = true;
 	private DataSource dataSource;
+	private InstanceContent instanceContent;
+	private Lookup propsLookup;
+	private Map<String, Object> propMap = new HashMap<>();
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
 
@@ -117,14 +132,44 @@ public class CylinderContainer extends JFXPanel
 		this.endRange = endRange;
 		factor = Constants.LENGTH_OF_CYLINDER / (endRange - startRange);
 		init(dataSource);
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				instanceContent = new InstanceContent();
+				instanceContent.add(propMap);
+				propsLookup = new AbstractLookup(instanceContent);
+				
+				TopComponent tc = WindowManager.getDefault().findTopComponent(ViewerTopComponent.PREFERRED_ID);
+				((ViewerTopComponent)tc).setLookup(propsLookup);
+			}
+		});
 		SelectionModelListener selectionListener = new SelectionModelListener() {
 			@Override
 			public void selected(Object obj) {
+				// TESTING: does this work as intended?
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						instanceContent.remove(propMap);
+						SubEntity se = idToSubEntity.get(obj.toString());
+						if (se != null) {
+							propMap = se.getProperties();
+							instanceContent.add(propMap);
+						}
+					}
+				});
+				
 				positionCigarBands(obj);
 			}			
 
 		};
 		selectionModel.addListener(selectionListener);
+	}
+
+	//----------------------------------------IMPLEMENTS Lookup.Provider
+	//@Override
+	public Lookup getLookup() {
+		return propsLookup;
 	}
 
 	//----------------------------------------IMPLEMENTS Effected
@@ -881,7 +926,7 @@ public class CylinderContainer extends JFXPanel
      */
     private void generateResidueDentils(SubEntity subEntity, Group hitGroup) {
 		MeshView gi; // Geometry Info
-    	Map props = subEntity.getProperties();
+    	Map<String,Object> props = subEntity.getProperties();
     	if (props != null) {
     		// NOTE: putting residues from subject, at position relative to query.
         	String subjectResidues = (String)props.get(DataSource.SUBJECT_ALIGNMENT);

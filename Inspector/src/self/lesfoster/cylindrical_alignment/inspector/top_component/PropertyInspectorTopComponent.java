@@ -5,11 +5,20 @@
  */
 package self.lesfoster.cylindrical_alignment.inspector.top_component;
 
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.util.Lookup;
+import org.openide.util.LookupEvent;
+import org.openide.util.LookupListener;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.util.Utilities;
+import self.lesfoster.cylindrical_alignment.inspector.table_model.SubHitTableModel;
 
 /**
  * Top component which displays something.
@@ -32,11 +41,14 @@ import org.openide.util.NbBundle.Messages;
 )
 @Messages({
 	"CTL_PropertyInspectorAction=PropertyInspector",
-	"CTL_PropertyInspectorTopComponent=PropertyInspector Window",
-	"HINT_PropertyInspectorTopComponent=This is a PropertyInspector window"
+	"CTL_PropertyInspectorTopComponent=Property Inspector",
+	"HINT_PropertyInspectorTopComponent=All properties of the current selection"
 })
 public final class PropertyInspectorTopComponent extends TopComponent {
 	public static final String PREFERRED_ID = "PropertyInspectorTopComponent";
+	
+	private Lookup.Result<Map> mapResult;
+	public LookupListener lookupListener;
 
 	public PropertyInspectorTopComponent() {
 		initComponents();
@@ -53,16 +65,16 @@ public final class PropertyInspectorTopComponent extends TopComponent {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        inspectorPanel = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout inspectorPanelLayout = new javax.swing.GroupLayout(inspectorPanel);
+        inspectorPanel.setLayout(inspectorPanelLayout);
+        inspectorPanelLayout.setHorizontalGroup(
+            inspectorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        inspectorPanelLayout.setVerticalGroup(
+            inspectorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -70,20 +82,38 @@ public final class PropertyInspectorTopComponent extends TopComponent {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(inspectorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(inspectorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel inspectorPanel;
     // End of variables declaration//GEN-END:variables
 	@Override
 	public void componentOpened() {
-		// TODO add custom code on component opening
+		final SubHitTableModel subHitTableModel = new SubHitTableModel(new HashMap<String,String>());
+		JTable table = new JTable(subHitTableModel);
+		inspectorPanel.add(new JScrollPane(table));
+		Lookup global = Utilities.actionsGlobalContext();
+		mapResult = global.lookupResult(Map.class);
+		if (mapResult != null) {
+			lookupListener = new LookupListener() {
+				@Override
+				public void resultChanged(LookupEvent le) {
+					if (mapResult.allInstances().size() > 0) {
+						System.out.println("Setting the table Model");
+						final Map modelInfo = mapResult.allInstances().iterator().next();
+						subHitTableModel.setModelInfo(modelInfo);
+						subHitTableModel.fireTableDataChanged();
+					}
+				}
+			};
+			mapResult.addLookupListener(lookupListener);
+		}
 	}
 
 	@Override

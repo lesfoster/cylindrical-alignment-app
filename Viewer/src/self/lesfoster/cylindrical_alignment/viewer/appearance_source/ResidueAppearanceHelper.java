@@ -87,7 +87,7 @@ public class ResidueAppearanceHelper {
 		for (Iterator it = sAcidPhongMaterial.keySet().iterator(); it.hasNext(); ) {
 			String nextAASet = it.next().toString();
 			if (nextAASet.indexOf(testResidue) > -1) {
-				return (PhongMaterial)sAcidPhongMaterial.get(nextAASet);
+				return sAcidPhongMaterial.get(nextAASet);
 			}
 		}
 		return null;

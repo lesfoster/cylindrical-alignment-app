@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
+import org.openide.util.Lookup;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
@@ -51,6 +52,8 @@ public final class ViewerTopComponent extends TopComponent {
 		setToolTipText(Bundle.HINT_ViewerTopComponent());
 
 	}
+	
+	public void setLookup(Lookup l) { associateLookup(l); }
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -101,7 +104,7 @@ public final class ViewerTopComponent extends TopComponent {
 	public CylinderContainer getContainer() {
 		return container;
 	}
-
+	
 	void writeProperties(java.util.Properties p) {
 		// better to version settings since initial version as advocated at
 		// http://wiki.apidesign.org/wiki/PropertyFiles

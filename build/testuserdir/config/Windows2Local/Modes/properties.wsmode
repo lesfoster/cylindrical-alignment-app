@@ -7,11 +7,11 @@
   <constraints>
     <path orientation="horizontal" number="60" weight="0.7"/>
     <path orientation="vertical" number="40" weight="0.7"/>
-    <path orientation="horizontal" number="80" weight="0.29978228102495397"/>
+    <path orientation="horizontal" number="80" weight="0.3"/>
     <path orientation="vertical" number="80" weight="0.5"/>
   </constraints>
   <bounds x="1440" y="588" width="288" height="336" />
   <frame state="0"/>
-    <active-tc  id="ControlsTopComponent" />
+    <active-tc  id="PropertyInspectorTopComponent" />
     <empty-behavior permanent="true"/>
 </mode>

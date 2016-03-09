@@ -70,7 +70,7 @@ public class SpinSliderPanel extends JPanel {
 			public void stateChanged(ChangeEvent e) {
 			    JSlider source = (JSlider)e.getSource();
 			    if (!source.getValueIsAdjusting()) {
-			        int spinDuration = (int)source.getValue();
+			        int spinDuration = source.getValue();
 			        effectorInstance.setDuration(spinDuration);
 			    }
 			}
