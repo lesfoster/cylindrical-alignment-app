@@ -106,8 +106,11 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 				public void resultChanged(LookupEvent le) {
 					if (mapResult.allInstances().size() > 0) {
 						System.out.println("Setting the table Model");
-						final Map modelInfo = mapResult.allInstances().iterator().next();
-						subHitTableModel.setModelInfo(modelInfo);
+						Map lastModelInfo = null;
+						for (Map modelInfo: mapResult.allInstances()) {
+							lastModelInfo = modelInfo;
+						}
+						subHitTableModel.setModelInfo(lastModelInfo);
 						subHitTableModel.fireTableDataChanged();
 					}
 				}

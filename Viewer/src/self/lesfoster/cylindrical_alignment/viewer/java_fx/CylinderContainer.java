@@ -119,6 +119,9 @@ public class CylinderContainer extends JFXPanel
 	private InstanceContent instanceContent;
 	private Lookup propsLookup;
 	private Map<String, Object> propMap = new HashMap<>();
+	{
+		propMap.put("Here's", "Johnnie");
+	}
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
 

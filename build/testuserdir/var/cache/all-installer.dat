@@ -1,4 +1,4 @@
-#Wed Mar 09 00:54:28 EST 2016
+#Wed Mar 09 01:01:05 EST 2016
 org.netbeans.core.startup.OpenIDE-Module-Deprecated=\u0000
 self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.modules.settings.AutoUpdate-Show-In-Client=false
@@ -129,8 +129,8 @@ org.openide.dialogs.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.core.ui.OpenIDE-Module-Install=\u0000
 org.netbeans.modules.settings.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.modules.settings.OpenIDE-Module-Layer=org/netbeans/modules/settings/resources/mf-layer.xml
-org.netbeans.lib.uihandler.AutoUpdate-Show-In-Client=false
 org.openide.dialogs.OpenIDE-Module-Hide-Classpath-Packages=\u0000
+org.netbeans.lib.uihandler.AutoUpdate-Show-In-Client=false
 org.netbeans.core.startup.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.openide.explorer.OpenIDE-Module-Description=\u0000
 org.netbeans.bootstrap.OpenIDE-Module-Hide-Classpath-Packages=\u0000
@@ -327,8 +327,8 @@ org.netbeans.modules.masterfs.windows.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.core.multitabs.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.core.nativeaccess.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.libs.osgi.AutoUpdate-Show-In-Client=false
-org.netbeans.core.netigso.AutoUpdate-Show-In-Client=false
 org.netbeans.libs.felix.OpenIDE-Module-Hide-Classpath-Packages=\u0000
+org.netbeans.core.netigso.AutoUpdate-Show-In-Client=false
 self.lesfoster.framework.integration.OpenIDE-Module-Description=\u0000
 org.netbeans.core.io.ui.OpenIDE-Module-Layer=org/netbeans/core/io/ui/layer.xml
 org.openide.util.OpenIDE-Module-Deprecated=\u0000
