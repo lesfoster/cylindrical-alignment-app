@@ -34,10 +34,6 @@ import javax.swing.SwingUtilities;
 import org.openide.util.Lookup;
 import org.openide.util.lookup.AbstractLookup;
 import org.openide.util.lookup.InstanceContent;
-import org.openide.util.lookup.Lookups;
-import org.openide.util.lookup.ServiceProvider;
-import org.openide.windows.TopComponent;
-import org.openide.windows.WindowManager;
 
 import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
@@ -135,17 +131,14 @@ public class CylinderContainer extends JFXPanel
 		this.endRange = endRange;
 		factor = Constants.LENGTH_OF_CYLINDER / (endRange - startRange);
 		init(dataSource);
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
+//		SwingUtilities.invokeLater(new Runnable() {
+//			@Override
+//			public void run() {
 				instanceContent = new InstanceContent();
 				instanceContent.add(propMap);
 				propsLookup = new AbstractLookup(instanceContent);
-				
-				TopComponent tc = WindowManager.getDefault().findTopComponent(ViewerTopComponent.PREFERRED_ID);
-				((ViewerTopComponent)tc).setLookup(propsLookup);
-			}
-		});
+//			}
+//		});
 		SelectionModelListener selectionListener = new SelectionModelListener() {
 			@Override
 			public void selected(Object obj) {

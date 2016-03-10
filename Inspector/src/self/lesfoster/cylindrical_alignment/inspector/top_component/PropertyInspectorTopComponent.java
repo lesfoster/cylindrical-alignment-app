@@ -5,6 +5,7 @@
  */
 package self.lesfoster.cylindrical_alignment.inspector.top_component;
 
+import java.awt.BorderLayout;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JScrollPane;
@@ -67,16 +68,7 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 
         inspectorPanel = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout inspectorPanelLayout = new javax.swing.GroupLayout(inspectorPanel);
-        inspectorPanel.setLayout(inspectorPanelLayout);
-        inspectorPanelLayout.setHorizontalGroup(
-            inspectorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        inspectorPanelLayout.setVerticalGroup(
-            inspectorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        inspectorPanel.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,7 +89,7 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 	public void componentOpened() {
 		final SubHitTableModel subHitTableModel = new SubHitTableModel(new HashMap<String,String>());
 		JTable table = new JTable(subHitTableModel);
-		inspectorPanel.add(new JScrollPane(table));
+		inspectorPanel.add(new JScrollPane(table), BorderLayout.CENTER);
 		Lookup global = Utilities.actionsGlobalContext();
 		mapResult = global.lookupResult(Map.class);
 		if (mapResult != null) {

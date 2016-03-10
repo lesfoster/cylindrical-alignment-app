@@ -53,8 +53,6 @@ public final class ViewerTopComponent extends TopComponent {
 
 	}
 	
-	public void setLookup(Lookup l) { associateLookup(l); }
-
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,6 +87,7 @@ public final class ViewerTopComponent extends TopComponent {
 				contentPanel.remove(container);
 			}
 			container = new CylinderContainer(dataSource);
+			associateLookup(container.getLookup());
 			Effected effected = container;
 			contentPanel.add(container, BorderLayout.CENTER);
 			EffectedContainer.getInstance().setEffected(effected);
