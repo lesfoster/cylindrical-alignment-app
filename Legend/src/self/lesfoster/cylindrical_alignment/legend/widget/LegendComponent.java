@@ -59,7 +59,8 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 
     private int height = -1;
 	private LegendModel legendModel;
-	private Object externallySelectedSubEntity;
+	private String externallySelectedId;
+	private Object externallySelectedObject;
 	private List<LegendSelectionListener> legendSelectionListeners =
 		new ArrayList<>();
 
@@ -104,9 +105,10 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 		
 		// Establish reaction to selection by other component.
 		SelectionModel selectionModel = SelectionModel.getSelectionModel();
-		selectionModel.addListener( new SelectionModelListener() {
+		selectionModel.addListener(new SelectionModelListener() {
 			public void selected( Object obj ) {
-				externallySelectedSubEntity = obj;
+				externallySelectedId = obj.toString();
+				externallySelectedObject = selectionModel.getObjectForId(externallySelectedId);
 				updateLegendModel();
 			}
 		});
@@ -174,7 +176,7 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 		if (legendModel == null || legendModel.getLegendStrings() == null)
 			return;
 		for (int i = 0; i < legendModel.getLegendStrings().size(); i++) {
-	    	Object subEntity = legendModel.getModels().get(i);
+	    	Object legendModelObj = legendModel.getModels().get(i);
 
 	    	vertOffset += heightOfFont;
 			String nextString = (String)legendModel.getLegendStrings().get(i);
@@ -183,7 +185,7 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 
             vertOffset += 1;
             Color idColor = null; 
-	    	if ( subEntity != null  &&  subEntity.equals( externallySelectedSubEntity ) ) {
+	    	if ( legendModelObj != null  &&  legendModelObj.equals( externallySelectedObject ) ) {
 	    		idColor = SelectionModel.SELECTION_COLOR_2D;
 	    	}
 	    	else {

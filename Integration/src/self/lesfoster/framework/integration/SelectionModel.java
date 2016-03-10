@@ -6,7 +6,9 @@
 package self.lesfoster.framework.integration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Material;
 import javafx.scene.paint.PhongMaterial;
@@ -29,6 +31,7 @@ public class SelectionModel {
 	
 	private Shape3D selectedShape;
 	private Material unselectedMaterialOfSelectedShape;
+	private Map<String,Object> idToObject = new HashMap<String,Object>();
 	private List<SelectionModelListener> selectionListeners = new ArrayList<>();
 
 	private static final SelectionModel selectionModel = new SelectionModel();
@@ -37,6 +40,18 @@ public class SelectionModel {
 	}
 	
 	private SelectionModel() {}
+	
+	public void setIdToObject(String id, Object obj) {
+		idToObject.put(id, obj);
+	}
+	
+	public Object getObjectForId(String id) {
+		return idToObject.get(id);
+	}
+	
+	public void clear() {
+		idToObject.clear();
+	}
 	
 	/**
 	 * @return the selectedShape
@@ -75,6 +90,10 @@ public class SelectionModel {
 		selectionListeners.add(listener);
 	}
 
+	public synchronized void removeListener(SelectionModelListener listener) {
+		selectionListeners.remove(listener);
+	}
+	
 	/**
 	 * Notify all listeners
 	 */

@@ -83,8 +83,9 @@ public final class ViewerTopComponent extends TopComponent {
 	@Override
 	public void componentOpened() {
 		Model.getInstance().addListener((DataSource dataSource) -> {
-			if (container != null) {
+			if (container != null) {				
 				contentPanel.remove(container);
+				container.dispose();
 			}
 			container = new CylinderContainer(dataSource);
 			associateLookup(container.getLookup());

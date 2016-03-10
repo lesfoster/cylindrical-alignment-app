@@ -60,7 +60,6 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
 import self.lesfoster.framework.integration.SelectionModel;
 import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
-import self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
 /**
@@ -115,9 +114,9 @@ public class CylinderContainer extends JFXPanel
 	private InstanceContent instanceContent;
 	private Lookup propsLookup;
 	private Map<String, Object> propMap = new HashMap<>();
-	{
-		propMap.put("Here's", "Johnnie");
-	}
+	private SelectionModelListener selectionListener;
+	
+	private Map<SubEntity, Integer> entityToId = new HashMap<>();
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
 
@@ -139,7 +138,7 @@ public class CylinderContainer extends JFXPanel
 				propsLookup = new AbstractLookup(instanceContent);
 //			}
 //		});
-		SelectionModelListener selectionListener = new SelectionModelListener() {
+		selectionListener = new SelectionModelListener() {
 			@Override
 			public void selected(Object obj) {
 				// TESTING: does this work as intended?
@@ -243,6 +242,11 @@ public class CylinderContainer extends JFXPanel
 		inSceneLabel.setText(name);
 	}
 	
+	public void dispose() {
+		SelectionModel.getSelectionModel().removeListener(selectionListener);
+		SelectionModel.getSelectionModel().clear();
+	}
+	
 	private void init(final DataSource dataSource) {
 		Platform.runLater(() -> {
 			//root.ry.setAngle(180.0);
@@ -337,6 +341,7 @@ public class CylinderContainer extends JFXPanel
 		try {
 			double rotOffs = 360.0 / entities.size();
 			double rotatePos = 0;
+			SelectionModel selectionModel = SelectionModel.getSelectionModel();
 			for (Entity entity : entities) {
 				for (Object object : entity.getSubEntities()) {
 					if (object instanceof SubEntity) {
@@ -351,6 +356,7 @@ public class CylinderContainer extends JFXPanel
 						//System.out.println("Generating seq solid from " + startSH + " to " + endSH);
 						Group subHitGroup = new Group();
 						MeshView subHitView = null;
+						final String lookupId = Integer.toString(latestGraphId);
 						if (!anchorFlag  &&  usingResidueDentils) {
 							generateResidueDentils(nextEntity, subHitGroup);
 						}
@@ -359,15 +365,11 @@ public class CylinderContainer extends JFXPanel
 						} else {
 							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity.getPriority() * 0.01f, nextEntity);
 						}
-						final String lookupId = Integer.toString(latestGraphId);
 						subHitView.setId(lookupId);
 						idToSubEntity.put(lookupId, nextEntity);
+						selectionModel.setIdToObject(lookupId, nextEntity);
 						latestGraphId ++;
-						
-//                        part.setWorldPositioner( worldPositioner );
-//                        if ( ! isAnchor( nextEntity ) ) {
-//                            part.setPreAnimator( rotationAnimator );
-//                        }
+
 						if (!anchorFlag) {
 							spinGroup.getChildren().add(subHitGroup);
 							subHitGroup.getChildren().add(subHitView);

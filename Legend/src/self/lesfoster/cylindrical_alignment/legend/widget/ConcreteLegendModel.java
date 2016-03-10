@@ -43,6 +43,8 @@ public class ConcreteLegendModel implements LegendModel {
 	private LegendModelListener legendModelListener;
     private Map<String, Color> legendMap;
     private Map<Color, String> colorMap;
+	
+	private Map<Integer,Object> idToEntity = new HashMap<>();
 
     /**
      * Constructor builds collections.
@@ -79,6 +81,8 @@ public class ConcreteLegendModel implements LegendModel {
         	legendModelListener.updateLegendModel();
     }
 
+	private int colorOffset = 0;
+	
     /**
      * This is how to put new values.
      * @param legendName visible to user.
@@ -93,6 +97,7 @@ public class ConcreteLegendModel implements LegendModel {
     			//System.out.println("Adding color String: " + legendName);
     	        Color legendColor = new Color(r, g, b);
     	        addColorString(legendName, subEntity, legendColor);
+				idToEntity.put(colorOffset++, subEntity);
     		} catch (RuntimeException rte) {
     			// Can happen if bad color range given.
     			rte.printStackTrace();
@@ -151,4 +156,7 @@ public class ConcreteLegendModel implements LegendModel {
     	legendModelListener.updateLegendModel();
     }
 
+	public Object getSubEntity(Integer id) {
+		return idToEntity.get(id);
+	}
 }

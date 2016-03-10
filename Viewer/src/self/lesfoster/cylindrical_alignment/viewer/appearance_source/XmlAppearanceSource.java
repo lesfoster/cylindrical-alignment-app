@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package self.lesfoster.cylindrical_alignment.viewer.appearance_source;
 
-import java.awt.event.ContainerListener;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -147,27 +146,6 @@ public class XmlAppearanceSource implements AppearanceSource {
 	    else
 		    return ResidueAppearanceHelper.getAAAppearance(residue);
 	}
-
-	/**
-	 * Returns an implementation of the legend model to tell what colors were chosen by this
-	 * appearance source, and what they mean.
-	 *
-	private LegendModel getLegendModel() {
-		Map residueColorMap = ResidueAppearanceHelper.getColorings();
-		for (Iterator it = residueColorMap.keySet().iterator(); it.hasNext(); ) {
-			String nextKey = (String)it.next();
-			// Must translate between coloring schemes, to the legend model.
-			final Color residueColor = (Color) residueColorMap.get(nextKey);
-			java.awt.Color color2d = new java.awt.Color(
-					(int)(256.0 * residueColor.getRed()), 
-					(int)(256.0 * residueColor.getGreen()),
-					(int)(256.0 * residueColor.getBlue())
-			);
-			legendModel.addColorString(nextKey, null, color2d);
-		}
-		return legendModel;
-	}
-	*/
 
 	/**
 	 * Tells if this entity is to have its color affected by its scoring position or not.
