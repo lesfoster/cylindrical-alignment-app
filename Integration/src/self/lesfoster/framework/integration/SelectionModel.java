@@ -29,7 +29,7 @@ public class SelectionModel {
 		SELECTED_MATERIAL = mat;
 	}
 	
-	private Shape3D selectedShape;
+	private String selectedId;
 	private Material unselectedMaterialOfSelectedShape;
 	private Map<String,Object> idToObject = new HashMap<String,Object>();
 	private List<SelectionModelListener> selectionListeners = new ArrayList<>();
@@ -56,15 +56,15 @@ public class SelectionModel {
 	/**
 	 * @return the selectedShape
 	 */
-	public Shape3D getSelectedShape() {
-		return selectedShape;
+	public String getSelectedId() {
+		return selectedId;
 	}
 
 	/**
 	 * @param selectedShape the selectedShape to set
 	 */
 	public void setSelectedShape(Shape3D selectedShape) {
-		this.selectedShape = selectedShape;
+		this.selectedId = selectedShape.getId();
 		fireEvent();
 	}
 
@@ -99,7 +99,7 @@ public class SelectionModel {
 	 */
 	private synchronized void fireEvent() {
 		for (SelectionModelListener listener : selectionListeners) {
-			listener.selected(selectedShape.getId());
+			listener.selected(selectedId);
 		}
 	}
 }

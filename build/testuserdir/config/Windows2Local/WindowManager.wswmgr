@@ -41,12 +41,12 @@
   <bounds x="633" y="252" width="806" height="462" />
     </editor-area>
     <screen width="1920" height="1080"/>
-    <active-mode name="explorer"/>
+    <active-mode name="properties"/>
     <toolbar configuration="Standard" preferred-icon-size="24"/>
     <tc-list>
-  <tc-id id="LegendTopComponent"/>
-  <tc-id id="ViewerTopComponent"/>
   <tc-id id="PropertyInspectorTopComponent"/>
   <tc-id id="ControlsTopComponent"/>
+  <tc-id id="LegendTopComponent"/>
+  <tc-id id="ViewerTopComponent"/>
     </tc-list>
 </windowmanager>

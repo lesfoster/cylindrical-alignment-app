@@ -98,6 +98,7 @@ public class CylinderContainer extends JFXPanel
 	private TransformableGroup anchor;
 	private Scene scene;
 	private final Map<String,SubEntity> idToSubEntity = new HashMap<>();
+	private final Map<String,Node> idToShape = new HashMap<>();
 	private int latestGraphId = 1;
 	private int duration = 10000;
 	private double naturalSpinRate = 0;
@@ -130,14 +131,9 @@ public class CylinderContainer extends JFXPanel
 		this.endRange = endRange;
 		factor = Constants.LENGTH_OF_CYLINDER / (endRange - startRange);
 		init(dataSource);
-//		SwingUtilities.invokeLater(new Runnable() {
-//			@Override
-//			public void run() {
-				instanceContent = new InstanceContent();
-				instanceContent.add(propMap);
-				propsLookup = new AbstractLookup(instanceContent);
-//			}
-//		});
+		instanceContent = new InstanceContent();
+		instanceContent.add(propMap);
+		propsLookup = new AbstractLookup(instanceContent);
 		selectionListener = new SelectionModelListener() {
 			@Override
 			public void selected(Object obj) {
@@ -367,6 +363,7 @@ public class CylinderContainer extends JFXPanel
 						}
 						subHitView.setId(lookupId);
 						idToSubEntity.put(lookupId, nextEntity);
+						idToShape.put(lookupId, subHitView);
 						selectionModel.setIdToObject(lookupId, nextEntity);
 						latestGraphId ++;
 
@@ -1284,7 +1281,7 @@ public class CylinderContainer extends JFXPanel
 	//
 	private void handleMouse(Scene scene) {
 		scene.setOnMousePressed(new MousePressedHandler(mouseLocationModel));
-		this.mouseDraggedHandler = new MouseDraggedHandler(mouseLocationModel, selectionModel, cameraModel);
+		this.mouseDraggedHandler = new MouseDraggedHandler(mouseLocationModel, selectionModel, cameraModel, idToShape);
 		scene.setOnMouseDragged(mouseDraggedHandler);
 	}
 

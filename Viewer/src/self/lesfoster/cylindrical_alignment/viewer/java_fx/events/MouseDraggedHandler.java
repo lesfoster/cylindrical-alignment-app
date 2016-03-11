@@ -5,6 +5,7 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.java_fx.events;
 
+import java.util.Map;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
@@ -24,11 +25,13 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 	private final CameraModel cameraModel;
 	private double modifierFactor = 0.1;
 	private boolean useYAngle = true;
-	
-	public MouseDraggedHandler(MouseLocationModel mouseLocationModel, SelectionModel selectionModel, CameraModel cameraModel) {
+	private Map<String, Node> idToShape;
+			
+	public MouseDraggedHandler(MouseLocationModel mouseLocationModel, SelectionModel selectionModel, CameraModel cameraModel, Map<String,Node> idToShape) {
 		this.mouseLocationModel = mouseLocationModel;
 		this.selectionModel = selectionModel;
 		this.cameraModel = cameraModel;
+		this.idToShape = idToShape;
 	}
 	
 	@Override
@@ -70,13 +73,17 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 		if (pr != null) {
 			Node node = pr.getIntersectedNode();
 			if (node != null && node instanceof Shape3D) {
-				if (selectionModel.getSelectedShape() != null) {
-					selectionModel.getSelectedShape().setMaterial(selectionModel.getUnselectedMaterialOfSelectedShape());
+				if (selectionModel.getSelectedId() != null) {
+					Shape3D selectedShape = (Shape3D)idToShape.get(selectionModel.getSelectedId());
+					if (selectedShape != null) {
+						selectedShape.setMaterial(selectionModel.getUnselectedMaterialOfSelectedShape());
+					}
 				}
 				Shape3D shape = (Shape3D) node;
 				selectionModel.setUnselectedMaterialOfSelectedShape(shape.getMaterial());
 				selectionModel.setSelectedShape(shape);
-				selectionModel.getSelectedShape().setMaterial(SelectionModel.SELECTED_MATERIAL);
+				shape.setMaterial(SelectionModel.SELECTED_MATERIAL);
+				//((Shape3D)idToShape.get(selectionModel.getSelectedId())).setMaterial(SelectionModel.SELECTED_MATERIAL);
 				System.out.println("Selected: " + node.getId());
 			}
 		}
