@@ -82,8 +82,19 @@ public interface LegendModel {
 	
     /**
      * Adds a listener to changes on this model.
-     * @param l
+     * @param l whole model is changed.
      */
     void addListener(LegendModelListener l);
     
+	/**
+	 * Register for selections within legend model.
+	 * @param l listener to hear about selections.
+	 */
+	void addLegendSelectionListener(LegendSelectionListener l);
+	
+	/**
+	 * Trigger the selection event: select something here.
+	 * @param model got selected
+	 */
+	void selectModel(Object model);
 }
