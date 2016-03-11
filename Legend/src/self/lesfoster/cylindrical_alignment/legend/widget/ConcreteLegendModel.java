@@ -31,6 +31,7 @@ import java.util.*;
 import java.awt.Color;
 import self.lesfoster.framework.integration.LegendModel;
 import self.lesfoster.framework.integration.LegendModelListener;
+import self.lesfoster.framework.integration.LegendSelectionListener;
 
 /**
  * Implementation of Legend Model that stores mappings of colors.
@@ -45,6 +46,7 @@ public class ConcreteLegendModel implements LegendModel {
     private Map<Color, String> colorMap;
 	
 	private Map<Integer,Object> idToEntity = new HashMap<>();
+	private List<LegendSelectionListener> legendSelectionListeners = new ArrayList<>();
 
     /**
      * Constructor builds collections.
@@ -147,6 +149,16 @@ public class ConcreteLegendModel implements LegendModel {
         return (String)colorMap.get(c);
     }
 
+	/**
+	 * Add a listener for cases where something in the model has been selected.
+	 *
+	 * @param listener what to tell when it happens.
+	 */
+	@Override
+	public synchronized void addLegendSelectionListener(LegendSelectionListener listener) {
+		legendSelectionListeners.add(listener);
+	}
+
     /**
      * Allows addition of the (one) listener, to changes.
      * @param lml external object interested in hearing about changes.
@@ -158,5 +170,15 @@ public class ConcreteLegendModel implements LegendModel {
 
 	public Object getSubEntity(Integer id) {
 		return idToEntity.get(id);
+	}
+
+	@Override
+	public void selectModel(Object model) {
+		if (model != null) {
+			for (int i = 0; i < legendSelectionListeners.size(); i++) {
+				LegendSelectionListener nextListener = legendSelectionListeners.get(i);
+				nextListener.selected(model);
+			}
+		}
 	}
 }
