@@ -36,11 +36,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.JComponent;
-import java.util.List;
-import java.util.ArrayList;
 import self.lesfoster.framework.integration.LegendModel;
 import self.lesfoster.framework.integration.LegendModelListener;
-import self.lesfoster.framework.integration.LegendSelectionListener;
 import self.lesfoster.framework.integration.SelectionModel;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
@@ -61,8 +58,6 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 	private LegendModel legendModel;
 	private String externallySelectedId;
 	private Object externallySelectedObject;
-	private List<LegendSelectionListener> legendSelectionListeners =
-		new ArrayList<>();
 
 	/**
 	 * Construct with a model that contains mappings between colors and strings.
@@ -73,6 +68,7 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 		model.addListener(this);
 		setBackground(Color.BLACK);   // Color background like java3D default.
 		addMouseListener(new MouseAdapter() {
+			@Override
 			public void mousePressed(MouseEvent me) {
 				// Must figure out what was pressed.
 				LegendComponent component = (LegendComponent)me.getSource();
@@ -87,17 +83,13 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 				    int legendNumber = offsetPoint / divisor;
 
 				    // Check: within extent of collection on screen (not
-				    // within dead space below strings).
+				    // within dead space below strings).  Note that the
+					// 'selection model' referenced elsewhere is selecting
+					// a different class of object than the one seen here.
 				    if (legendModel.getLegendStrings().size() > legendNumber) {
 				        // Find the selected entity.
-				    	Object subEntity = legendModel.getModels().get(legendNumber);
-				    	synchronized (this) {
-				    		for (int i = 0; i < legendSelectionListeners.size(); i++) {
-				    			LegendSelectionListener nextListener = legendSelectionListeners.get(i);
-				    			if (subEntity != null)
-				    			    nextListener.selected(subEntity);
-				    		}
-				    	}
+						Object subEntity = legendModel.getModels().get(legendNumber);
+						legendModel.selectModel(subEntity);
 				    }
 				}
 			}
@@ -112,15 +104,6 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 				updateLegendModel();
 			}
 		});
-	}
-
-	/**
-	 * Add a listener for cases where something in the model has been selected.
-	 * 
-	 * @param listener what to tell when it happens.
-	 */
-	public synchronized void addListener(LegendSelectionListener listener) {
-		legendSelectionListeners.add(listener);
 	}
 
 	/**
@@ -212,7 +195,7 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 	 * Can be called to release resources.
 	 */
 	public void destroy() {
-		legendSelectionListeners.clear();
+		legendModel = null;
 	}
 
 	/**
