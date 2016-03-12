@@ -32,6 +32,9 @@ import javafx.util.Duration;
 import javax.swing.SwingUtilities;
 
 import org.openide.util.Lookup;
+import org.openide.util.LookupEvent;
+import org.openide.util.LookupListener;
+import org.openide.util.Utilities;
 import org.openide.util.lookup.AbstractLookup;
 import org.openide.util.lookup.InstanceContent;
 
@@ -60,6 +63,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
 import self.lesfoster.framework.integration.SelectionModel;
 import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
+import self.lesfoster.framework.integration.SelectedObjectWrapper;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
 /**
@@ -116,6 +120,8 @@ public class CylinderContainer extends JFXPanel
 	private Lookup propsLookup;
 	private Map<String, Object> propMap = new HashMap<>();
 	private SelectionModelListener selectionListener;
+	private LookupListener selectedObjLookupListener;
+	private Lookup.Result<SelectedObjectWrapper> selectionWrapperResult;
 	
 	private Map<SubEntity, Integer> entityToId = new HashMap<>();
 
@@ -137,7 +143,6 @@ public class CylinderContainer extends JFXPanel
 		selectionListener = new SelectionModelListener() {
 			@Override
 			public void selected(Object obj) {
-				// TESTING: does this work as intended?
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 					public void run() {
@@ -155,6 +160,12 @@ public class CylinderContainer extends JFXPanel
 
 		};
 		selectionModel.addListener(selectionListener);
+		Lookup global = Utilities.actionsGlobalContext();
+		selectionWrapperResult = global.lookupResult(SelectedObjectWrapper.class);
+		if (selectionWrapperResult != null) {
+			selectedObjLookupListener = new ModelSelectionWrapperLookupListener();
+			selectionWrapperResult.addLookupListener(selectedObjLookupListener);
+		}
 	}
 
 	//----------------------------------------IMPLEMENTS Lookup.Provider
@@ -1260,6 +1271,10 @@ public class CylinderContainer extends JFXPanel
 	private void positionCigarBands(Object obj) {
 		// Reposition the cigar bands.
 		SubEntity subEntity = idToSubEntity.get(obj.toString());
+		positionCigarBands(subEntity);
+	}
+
+	private void positionCigarBands(SubEntity subEntity) {
 		if (subEntity != null) {
 			int startSH = subEntity.getStartOnQuery();
 			int endSH = subEntity.getEndOnQuery();
@@ -1275,14 +1290,12 @@ public class CylinderContainer extends JFXPanel
 			};
 			if (Platform.isFxApplicationThread()) {
 				runnable.run();
-			}
-			else {
+			} else {
 				Platform.runLater(runnable);
 			}
-			//System.out.println("Positioning for " + startSH + ", " + endSH);
 		}
 	}
-
+	
 	//
 	// The handleCameraViews file contains the handleMouse() and handleKeyboard() 
 	// methods that are used in the MoleculeSampleApp application to handle the 
@@ -1299,4 +1312,24 @@ public class CylinderContainer extends JFXPanel
 		scene.setOnKeyPressed(new KeyEventHandler(cameraModel));
 	}
 
+	private class ModelSelectionWrapperLookupListener implements LookupListener {
+
+		@Override
+		public void resultChanged(LookupEvent le) {
+			if (selectionWrapperResult.allInstances().size() > 0) {
+				SelectedObjectWrapper lastWrapper = null;
+				for (SelectedObjectWrapper wrapper : selectionWrapperResult.allInstances()) {
+					lastWrapper = wrapper;
+				}
+				if (lastWrapper != null) {
+					Object obj = lastWrapper.getSelectedObject();
+					if (obj instanceof SubEntity) {
+						SubEntity se = (SubEntity) obj;
+						positionCigarBands(se);
+					}
+				}
+			}
+		}
+	}
+	
 }

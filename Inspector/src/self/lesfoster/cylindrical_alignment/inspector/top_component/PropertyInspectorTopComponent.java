@@ -52,8 +52,8 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 	
 	private Lookup.Result<Map> mapResult;
 	private Lookup.Result<SelectedObjectWrapper> selectionWrapperResult;
-	public LookupListener mapLookupListener;
-	public LookupListener selectedObjLookupListener;
+	private LookupListener mapLookupListener;
+	private LookupListener selectedObjLookupListener;
 
 	public PropertyInspectorTopComponent() {
 		initComponents();

@@ -10,14 +10,14 @@ class Bundle {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "CTL_LegendAction");
     }
     /**
-     * @return <i>Legend Window</i>
+     * @return <i>Legend</i>
      * @see LegendTopComponent
      */
     static String CTL_LegendTopComponent() {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "CTL_LegendTopComponent");
     }
     /**
-     * @return <i>This is a Legend window</i>
+     * @return <i>Clickable name/color combinations to select in other views.</i>
      * @see LegendTopComponent
      */
     static String HINT_LegendTopComponent() {

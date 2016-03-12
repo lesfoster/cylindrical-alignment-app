@@ -39,8 +39,8 @@ import self.lesfoster.framework.integration.SharedObjectContainer.ContainerListe
 )
 @Messages({
 	"CTL_LegendAction=Legend",
-	"CTL_LegendTopComponent=Legend Window",
-	"HINT_LegendTopComponent=This is a Legend window"
+	"CTL_LegendTopComponent=Legend",
+	"HINT_LegendTopComponent=Clickable name/color combinations to select in other views."
 })
 public final class LegendTopComponent extends TopComponent {
 	public static final String PREFERRED_ID = "LegendTopComponent";
