@@ -97,44 +97,12 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 		Lookup global = Utilities.actionsGlobalContext();
 		mapResult = global.lookupResult(Map.class);
 		if (mapResult != null) {
-			mapLookupListener = new LookupListener() {
-				@Override
-				public void resultChanged(LookupEvent le) {
-					if (mapResult.allInstances().size() > 0) {
-						System.out.println("Setting the table Model");
-						Map lastModelInfo = null;
-						for (Map modelInfo: mapResult.allInstances()) {
-							lastModelInfo = modelInfo;
-						}
-						subHitTableModel.setModelInfo(lastModelInfo);
-						subHitTableModel.fireTableDataChanged();
-					}
-				}
-			};
+			mapLookupListener = new MapLookupListener(subHitTableModel);
 			mapResult.addLookupListener(mapLookupListener);
 		}
 		selectionWrapperResult = global.lookupResult(SelectedObjectWrapper.class);
 		if (selectionWrapperResult != null) {
-			selectedObjLookupListener = new LookupListener() {
-				public void resultChanged(LookupEvent le) {
-					System.out.println("Results changed");
-					if (selectionWrapperResult.allInstances().size() > 0) {
-						SelectedObjectWrapper lastWrapper = null;
-						for (SelectedObjectWrapper wrapper: selectionWrapperResult.allInstances()) {
-							lastWrapper = wrapper;
-						}
-						Object obj = lastWrapper.getSelectedObject();
-						if (obj instanceof SubEntity) {
-							SubEntity se = (SubEntity)obj;
-							subHitTableModel.setModelInfo(se.getProperties());
-							subHitTableModel.fireTableDataChanged();
-						}
-						else {
-							System.out.println(obj.getClass() + " unexpected type.");
-						}
-					}
-				}
-			};
+			selectedObjLookupListener = new ModelSelectionWrapperLookupListener(subHitTableModel);
 			selectionWrapperResult.addLookupListener(selectedObjLookupListener);
 		}
 	}
@@ -154,5 +122,55 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 	void readProperties(java.util.Properties p) {
 		String version = p.getProperty("version");
 		// TODO read your settings according to their version
+	}
+	
+	private class ModelSelectionWrapperLookupListener implements LookupListener {
+
+		private SubHitTableModel subHitTableModel;
+
+		public ModelSelectionWrapperLookupListener(SubHitTableModel subHitTableModel) {
+			this.subHitTableModel = subHitTableModel;
+		}
+
+		@Override
+		public void resultChanged(LookupEvent le) {
+			if (selectionWrapperResult.allInstances().size() > 0) {
+				SelectedObjectWrapper lastWrapper = null;
+				for (SelectedObjectWrapper wrapper : selectionWrapperResult.allInstances()) {
+					lastWrapper = wrapper;
+				}
+				if (lastWrapper != null) {
+					Object obj = lastWrapper.getSelectedObject();
+					if (obj instanceof SubEntity) {
+						SubEntity se = (SubEntity) obj;
+						subHitTableModel.setModelInfo(se.getProperties());
+						subHitTableModel.fireTableDataChanged();
+					}
+				}
+			}
+		}
+	}
+	
+	private class MapLookupListener implements LookupListener {
+
+		private SubHitTableModel subHitTableModel;
+
+		public MapLookupListener(SubHitTableModel subHitTableModel) {
+			this.subHitTableModel = subHitTableModel;
+		}
+
+		@Override
+		public void resultChanged(LookupEvent le) {
+			if (mapResult.allInstances().size() > 0) {
+				Map lastModelInfo = null;
+				for (Map modelInfo : mapResult.allInstances()) {
+					lastModelInfo = modelInfo;
+				}
+				if (lastModelInfo != null) {
+					subHitTableModel.setModelInfo(lastModelInfo);
+					subHitTableModel.fireTableDataChanged();
+				}
+			}
+		}
 	}
 }
