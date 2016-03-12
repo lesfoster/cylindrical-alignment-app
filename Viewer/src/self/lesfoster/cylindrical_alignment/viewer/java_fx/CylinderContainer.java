@@ -100,8 +100,8 @@ public class CylinderContainer extends JFXPanel
 	
 	// TODO decide if these should be used or eliminated.
 	private TransformableGroup cylinder;
-	private TransformableGroup ruler;
-	private TransformableGroup anchor;
+	//private TransformableGroup ruler;
+	//private TransformableGroup anchor;
 	private Scene scene;
 	private final Map<String,SubEntity> idToSubEntity = new HashMap<>();
 	private final Map<String,Node> idToShape = new HashMap<>();
