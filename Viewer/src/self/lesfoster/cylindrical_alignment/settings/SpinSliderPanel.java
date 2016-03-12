@@ -32,10 +32,8 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.Hashtable;
 import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 
@@ -51,34 +49,30 @@ public class SpinSliderPanel extends JPanel {
 
 	private static final long serialVersionUID = -1;
 
-	/** Will keep the instance hidden here */
-	private static SpinSliderPanel instance;
-
-	/** Keep the affector around. */
+	/** Keep the effector around. */
 	private SpeedEffector effectorInstance;
 	private JSlider slider;
 
 	/**
-	 * Construct with an affector.  User's choices are messaged to the affector.
+	 * Construct with an effector.  User's choices are messaged to the effector.
      *
 	 * @param affector what to call to change the speed of spin.
 	 */
 	public SpinSliderPanel(SpeedEffector affector) {
 		effectorInstance = affector;
-		slider = new JSlider(SpeedEffector.FAST_SPEED_DURATION, SpeedEffector.SLOW_SPEED_DURATION, SpeedEffector.FAST_SPEED_DURATION);
-		slider.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-			    JSlider source = (JSlider)e.getSource();
-			    if (!source.getValueIsAdjusting()) {
-			        int spinDuration = source.getValue();
-			        effectorInstance.setDuration(spinDuration);
-			    }
+		slider = new JSlider(SpeedEffector.FAST_SPEED_DURATION, SpeedEffector.SLOW_SPEED_DURATION, SpeedEffector.INITIAL_SPEED_DURATION);
+		slider.addChangeListener((ChangeEvent e) -> {
+			JSlider source = (JSlider)e.getSource();
+			if (!source.getValueIsAdjusting()) {				
+				int spinDuration = source.getValue();
+				System.out.println("Setting spin duration to " + spinDuration);
+				effectorInstance.setDuration(spinDuration);
 			}
 		});
 		setLayout(new BorderLayout());
 
         // Create the label table
-		Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
+		Hashtable<Integer, JLabel> labelTable = new Hashtable<>();
 		labelTable.put(SpeedEffector.SLOW_SPEED_DURATION, new JLabel("Slow") );
 		labelTable.put(SpeedEffector.FAST_SPEED_DURATION, new JLabel("Fast") );
 		slider.setPaintTicks(false);
@@ -95,16 +89,14 @@ public class SpinSliderPanel extends JPanel {
 		//  will be back under the control of the slider.
 		JCheckBox stopRotation = new JCheckBox("Stop Rotation");
 		controlsPanel.add(stopRotation, BorderLayout.NORTH);
-		stopRotation.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent ie) {
-				if (ie.getStateChange() == ItemEvent.DESELECTED) {
-					slider.setEnabled(true);
-				    effectorInstance.setDuration(slider.getValue());
-				}
-				else if (ie.getStateChange() == ItemEvent.SELECTED) {
-					effectorInstance.setImmobile();
-					slider.setEnabled(false);
-				}
+		stopRotation.addItemListener((ItemEvent ie) -> {
+			if (ie.getStateChange() == ItemEvent.DESELECTED) {
+				slider.setEnabled(true);
+				effectorInstance.setDuration(slider.getValue());
+			}
+			else if (ie.getStateChange() == ItemEvent.SELECTED) {
+				effectorInstance.setImmobile();
+				slider.setEnabled(false);
 			}
 		});
 		

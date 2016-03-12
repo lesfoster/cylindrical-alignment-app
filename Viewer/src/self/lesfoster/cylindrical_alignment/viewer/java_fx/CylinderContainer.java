@@ -52,6 +52,7 @@ import self.lesfoster.cylindrical_alignment.effector.ConcreteSettingsEffector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffectorTarget;
 import self.lesfoster.cylindrical_alignment.effector.HelpEffectorTarget;
 import self.lesfoster.cylindrical_alignment.effector.SettingsEffectorTarget;
+import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 import self.lesfoster.cylindrical_alignment.geometry.TexCoordGenerator;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSourceFactory;
@@ -106,7 +107,7 @@ public class CylinderContainer extends JFXPanel
 	private final Map<String,Node> idToShape = new HashMap<>();
 	private GlyphSelector subEntitySelector;
 	private int latestGraphId = 1;
-	private int duration = 10000;
+	private int duration = SpeedEffector.INITIAL_SPEED_DURATION;
 	private double naturalSpinRate = 0;
 	private RotateTransition rotateTransform;
 
@@ -445,23 +446,6 @@ public class CylinderContainer extends JFXPanel
 	 */
 	private MeshView generateRectSolid(int startSH, int endSH, float extraYDisp, SubEntity subEntity) {
 		return generateRectSolid(startSH, endSH, extraYDisp, Constants.ZB, Constants.ZF, subEntity);
-	}
-
-	/**
-	 * Check: is this entity an anchor? TODO consider adding this behavior to
-	 * all entities.
-	 *
-	 * @param entity what to check
-	 * @return true if it is
-	 */
-	private boolean isAnchor(Entity entity) {
-		for (Object nextObj : entity.getSubEntities()) {
-			SubEntity nextSubEnt = (SubEntity) nextObj;
-			if (isAnchor(nextSubEnt)) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	/**

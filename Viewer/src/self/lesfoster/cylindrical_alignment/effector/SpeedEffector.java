@@ -38,6 +38,7 @@ public interface SpeedEffector extends Effector {
 	public static final int HALTED_DURATION = -1;
 	public static final int FAST_SPEED_DURATION = 3000;
     public static final int SLOW_SPEED_DURATION = 50000;
+	public static final int INITIAL_SPEED_DURATION = (FAST_SPEED_DURATION + SLOW_SPEED_DURATION) / 2; // TEMP
 
 	void setSlow();
 	void setFast();
