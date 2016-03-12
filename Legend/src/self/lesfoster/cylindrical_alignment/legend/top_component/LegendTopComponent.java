@@ -84,6 +84,7 @@ public final class LegendTopComponent extends TopComponent {
 		ContainerListener<LegendModel> containerListener = (LegendModel value) -> {
 			SwingUtilities.invokeLater(() -> {
 				LegendComponent legendComponent = new LegendComponent(value);
+				LegendTopComponent.this.associateLookup(legendComponent.getLookup());
 				legendBasePanel.add(new JScrollPane(legendComponent), BorderLayout.CENTER);
 			});
 		};

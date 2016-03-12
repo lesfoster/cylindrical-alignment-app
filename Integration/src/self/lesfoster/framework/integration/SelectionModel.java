@@ -54,6 +54,15 @@ public class SelectionModel {
 	}
 	
 	/**
+	 * Direct selection of id.
+	 * @param id will be selected.
+	 */
+	public void setSelectedId(String id) {
+		this.selectedId = id;
+		fireEvent();
+	}
+	
+	/**
 	 * @return the selectedShape
 	 */
 	public String getSelectedId() {
@@ -66,6 +75,12 @@ public class SelectionModel {
 	public void setSelectedShape(Shape3D selectedShape) {
 		this.selectedId = selectedShape.getId();
 		fireEvent();
+	}
+	
+	public void setSelectedObject(Object selectedObject) {
+		if (selectedObject instanceof Shape3D) {
+			setSelectedShape((Shape3D) selectedObject);
+		}
 	}
 
 	/**

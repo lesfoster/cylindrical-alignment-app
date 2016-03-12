@@ -19,7 +19,9 @@ import org.openide.util.LookupListener;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import org.openide.util.Utilities;
+import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
 import self.lesfoster.cylindrical_alignment.inspector.table_model.SubHitTableModel;
+import self.lesfoster.framework.integration.SelectedObjectWrapper;
 
 /**
  * Top component which displays something.
@@ -49,7 +51,9 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 	public static final String PREFERRED_ID = "PropertyInspectorTopComponent";
 	
 	private Lookup.Result<Map> mapResult;
-	public LookupListener lookupListener;
+	private Lookup.Result<SelectedObjectWrapper> selectionWrapperResult;
+	public LookupListener mapLookupListener;
+	public LookupListener selectedObjLookupListener;
 
 	public PropertyInspectorTopComponent() {
 		initComponents();
@@ -93,7 +97,7 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 		Lookup global = Utilities.actionsGlobalContext();
 		mapResult = global.lookupResult(Map.class);
 		if (mapResult != null) {
-			lookupListener = new LookupListener() {
+			mapLookupListener = new LookupListener() {
 				@Override
 				public void resultChanged(LookupEvent le) {
 					if (mapResult.allInstances().size() > 0) {
@@ -107,7 +111,31 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 					}
 				}
 			};
-			mapResult.addLookupListener(lookupListener);
+			mapResult.addLookupListener(mapLookupListener);
+		}
+		selectionWrapperResult = global.lookupResult(SelectedObjectWrapper.class);
+		if (selectionWrapperResult != null) {
+			selectedObjLookupListener = new LookupListener() {
+				public void resultChanged(LookupEvent le) {
+					System.out.println("Results changed");
+					if (selectionWrapperResult.allInstances().size() > 0) {
+						SelectedObjectWrapper lastWrapper = null;
+						for (SelectedObjectWrapper wrapper: selectionWrapperResult.allInstances()) {
+							lastWrapper = wrapper;
+						}
+						Object obj = lastWrapper.getSelectedObject();
+						if (obj instanceof SubEntity) {
+							SubEntity se = (SubEntity)obj;
+							subHitTableModel.setModelInfo(se.getProperties());
+							subHitTableModel.fireTableDataChanged();
+						}
+						else {
+							System.out.println(obj.getClass() + " unexpected type.");
+						}
+					}
+				}
+			};
+			selectionWrapperResult.addLookupListener(selectedObjLookupListener);
 		}
 	}
 

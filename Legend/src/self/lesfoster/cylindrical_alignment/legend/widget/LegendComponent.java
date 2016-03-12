@@ -34,10 +34,17 @@ import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.JComponent;
+import org.openide.util.Lookup;
+import org.openide.util.lookup.AbstractLookup;
+import org.openide.util.lookup.InstanceContent;
+import org.openide.util.lookup.Lookups;
 import self.lesfoster.framework.integration.LegendModel;
 import self.lesfoster.framework.integration.LegendModelListener;
+import self.lesfoster.framework.integration.SelectedObjectWrapper;
 import self.lesfoster.framework.integration.SelectionModel;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
@@ -46,7 +53,7 @@ import self.lesfoster.framework.integration.SelectionModelListener;
  * the colors mean.
  * @author Leslie L Foster
  */
-public class LegendComponent extends JPanel implements LegendModelListener {
+public class LegendComponent extends JPanel implements LegendModelListener, Lookup.Provider {
 	private static final long serialVersionUID = -1L;
 	
 	public static final int MINIMUM_WIDTH = 150;
@@ -56,14 +63,25 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 
     private int height = -1;
 	private LegendModel legendModel;
+	private InstanceContent instanceContent;
+
 	private String externallySelectedId;
 	private Object externallySelectedObject;
+	private final Lookup objectLookup;
+	private SelectedObjectWrapper wrapper;
+	
+	private Map<Integer,Object> legendNumberToModel = new HashMap<>();
 
 	/**
 	 * Construct with a model that contains mappings between colors and strings.
 	 * @param model to read color/explanation from.
 	 */
 	public LegendComponent(LegendModel model) {
+		wrapper = new SelectedObjectWrapper();
+		instanceContent = new InstanceContent();
+		instanceContent.add(wrapper);
+		objectLookup = new AbstractLookup(instanceContent);
+
 		legendModel = model;
 		model.addListener(this);
 		setBackground(Color.BLACK);   // Color background like java3D default.
@@ -81,15 +99,19 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 				// Check: within visible range.
 				if (offsetPoint >= 0) {
 				    int legendNumber = offsetPoint / divisor;
+					System.out.println("Legend Number: " + legendNumber);
 
 				    // Check: within extent of collection on screen (not
-				    // within dead space below strings).  Note that the
-					// 'selection model' referenced elsewhere is selecting
-					// a different class of object than the one seen here.
+				    // within dead space below strings).
 				    if (legendModel.getLegendStrings().size() > legendNumber) {
 				        // Find the selected entity.
-						Object subEntity = legendModel.getModels().get(legendNumber);
-						legendModel.selectModel(subEntity);
+						Object selectedObject = legendNumberToModel.get(legendNumber);
+						if (selectedObject != null) {
+							legendModel.selectModel(selectedObject);
+							// Push this to the lookup.
+							instanceContent.remove(wrapper);
+							instanceContent.add(wrapper.setSelectedObject(selectedObject));
+						}
 				    }
 				}
 			}
@@ -98,12 +120,19 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 		// Establish reaction to selection by other component.
 		SelectionModel selectionModel = SelectionModel.getSelectionModel();
 		selectionModel.addListener(new SelectionModelListener() {
+			@Override
 			public void selected( Object obj ) {
 				externallySelectedId = obj.toString();
 				externallySelectedObject = selectionModel.getObjectForId(externallySelectedId);
 				updateLegendModel();
 			}
 		});
+		
+	}
+
+	//==============================IMPLEMENTS Lookup.Provider
+	public Lookup getLookup() {
+		return objectLookup;
 	}
 
 	/**
@@ -158,8 +187,11 @@ public class LegendComponent extends JPanel implements LegendModelListener {
 		int vertOffset = VERT_OFFSET;
 		if (legendModel == null || legendModel.getLegendStrings() == null)
 			return;
+		legendNumberToModel.clear();
 		for (int i = 0; i < legendModel.getLegendStrings().size(); i++) {
 	    	Object legendModelObj = legendModel.getModels().get(i);
+			legendNumberToModel.put(i, legendModelObj);
+			//System.out.println(i + " maps to " + legendModelObj);
 
 	    	vertOffset += heightOfFont;
 			String nextString = (String)legendModel.getLegendStrings().get(i);

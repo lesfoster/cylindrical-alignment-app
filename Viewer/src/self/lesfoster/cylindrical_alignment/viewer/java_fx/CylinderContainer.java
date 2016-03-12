@@ -1265,10 +1265,20 @@ public class CylinderContainer extends JFXPanel
 			int endSH = subEntity.getEndOnQuery();
 			float xl = translateToJava3dCoords(startSH);
 			float xr = translateToJava3dCoords(endSH);
-			lowCigarBandSlide.setTranslate(xl - getCylLeftX() - selectionEnvelope, 0, 0);
-			lowCigarBandLabel.setText("" + startSH);
-			highCigarBandSlide.setTranslate(xr - getCylRightX() + selectionEnvelope, 0, 0);
-			highCigarBandLabel.setText("" + endSH);
+			Runnable runnable = new Runnable() {
+				public void run() {
+					lowCigarBandSlide.setTranslate(xl - getCylLeftX() - selectionEnvelope, 0, 0);
+					lowCigarBandLabel.setText("" + startSH);
+					highCigarBandSlide.setTranslate(xr - getCylRightX() + selectionEnvelope, 0, 0);
+					highCigarBandLabel.setText("" + endSH);
+				}
+			};
+			if (Platform.isFxApplicationThread()) {
+				runnable.run();
+			}
+			else {
+				Platform.runLater(runnable);
+			}
 			//System.out.println("Positioning for " + startSH + ", " + endSH);
 		}
 	}
