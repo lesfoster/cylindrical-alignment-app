@@ -5,7 +5,7 @@
             <url>src/self/lesfoster/cylindrical_alignment/viewer/java_fx/CylinderContainer.java</url>
             <bookmark id="2">
                 <name/>
-                <line>407</line>
+                <line>418</line>
                 <key/>
             </bookmark>
         </file>
@@ -21,6 +21,8 @@
         </group>
         <group name="Java Security">
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/java_fx/CylinderContainer.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/java_fx/events/MousePressedHandler.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/java_fx/gui_model/MouseLocationModel.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/top_component/ViewerTopComponent.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/java_fx/events/MouseDraggedHandler.java</file>
         </group>

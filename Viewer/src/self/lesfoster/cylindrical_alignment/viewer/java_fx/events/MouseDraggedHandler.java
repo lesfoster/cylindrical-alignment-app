@@ -13,7 +13,6 @@ import javafx.scene.input.PickResult;
 import javafx.scene.shape.Shape3D;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
-import self.lesfoster.framework.integration.SelectionModel;
 
 /**
  * Handle mouse drag by updating stored position and camera.
@@ -21,17 +20,21 @@ import self.lesfoster.framework.integration.SelectionModel;
  */
 public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 	private final MouseLocationModel mouseLocationModel;
-	private final SelectionModel selectionModel;
 	private final CameraModel cameraModel;
 	private double modifierFactor = 0.1;
 	private boolean useYAngle = true;
-	private Map<String, Node> idToShape;
+	private Map<String, Node> idToShape;	
+	private final GlyphSelector shapeSelector;
 			
-	public MouseDraggedHandler(MouseLocationModel mouseLocationModel, SelectionModel selectionModel, CameraModel cameraModel, Map<String,Node> idToShape) {
+	public MouseDraggedHandler(
+			MouseLocationModel mouseLocationModel, 
+			CameraModel cameraModel, 
+			Map<String,Node> idToShape, 
+			GlyphSelector glyphSelector) {
 		this.mouseLocationModel = mouseLocationModel;
-		this.selectionModel = selectionModel;
 		this.cameraModel = cameraModel;
 		this.idToShape = idToShape;
+		this.shapeSelector = glyphSelector;
 	}
 	
 	@Override
@@ -73,18 +76,7 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 		if (pr != null) {
 			Node node = pr.getIntersectedNode();
 			if (node != null && node instanceof Shape3D) {
-				if (selectionModel.getSelectedId() != null) {
-					Shape3D selectedShape = (Shape3D)idToShape.get(selectionModel.getSelectedId());
-					if (selectedShape != null) {
-						selectedShape.setMaterial(selectionModel.getUnselectedMaterialOfSelectedShape());
-					}
-				}
-				Shape3D shape = (Shape3D) node;
-				selectionModel.setUnselectedMaterialOfSelectedShape(shape.getMaterial());
-				selectionModel.setSelectedShape(shape);
-				shape.setMaterial(SelectionModel.SELECTED_MATERIAL);
-				//((Shape3D)idToShape.get(selectionModel.getSelectedId())).setMaterial(SelectionModel.SELECTED_MATERIAL);
-				System.out.println("Selected: " + node.getId());
+				shapeSelector.select(node);
 			}
 		}
 	}

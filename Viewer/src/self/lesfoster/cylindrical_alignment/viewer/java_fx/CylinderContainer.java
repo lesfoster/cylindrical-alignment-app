@@ -63,6 +63,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
 import self.lesfoster.framework.integration.SelectionModel;
 import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
+import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.GlyphSelector;
 import self.lesfoster.framework.integration.SelectedObjectWrapper;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
@@ -103,6 +104,7 @@ public class CylinderContainer extends JFXPanel
 	private Scene scene;
 	private final Map<String,SubEntity> idToSubEntity = new HashMap<>();
 	private final Map<String,Node> idToShape = new HashMap<>();
+	private GlyphSelector subEntitySelector;
 	private int latestGraphId = 1;
 	private int duration = 10000;
 	private double naturalSpinRate = 0;
@@ -273,6 +275,8 @@ public class CylinderContainer extends JFXPanel
 			root.getChildren().add(positionableObject);
 			root.getChildren().add(inSceneLabel);
 
+			// This must be populated after entities all created.
+			subEntitySelector = new GlyphSelector(selectionModel, idToShape, idToSubEntity);
 			handleMouse(scene);
 			handleKeyboard(scene);
 		});
@@ -1304,7 +1308,7 @@ public class CylinderContainer extends JFXPanel
 	//
 	private void handleMouse(Scene scene) {
 		scene.setOnMousePressed(new MousePressedHandler(mouseLocationModel));
-		this.mouseDraggedHandler = new MouseDraggedHandler(mouseLocationModel, selectionModel, cameraModel, idToShape);
+		this.mouseDraggedHandler = new MouseDraggedHandler(mouseLocationModel, cameraModel, idToShape, subEntitySelector);
 		scene.setOnMouseDragged(mouseDraggedHandler);
 	}
 
@@ -1326,6 +1330,7 @@ public class CylinderContainer extends JFXPanel
 					if (obj instanceof SubEntity) {
 						SubEntity se = (SubEntity) obj;
 						positionCigarBands(se);
+						subEntitySelector.select(se);
 					}
 				}
 			}
