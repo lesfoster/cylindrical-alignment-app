@@ -3,9 +3,9 @@
 <windowmanager version="2.1">
     <main-window>
   <joined-properties
-   x="96"
-   y="67"
-   width="1728"
+   x="23"
+   y="6"
+   width="1877"
    height="945"
    relative-x="0.0"
    relative-y="0.0"
@@ -15,7 +15,7 @@
    centered-vertically="false"
    maximize-if-width-below="0"
    maximize-if-height-below="0"
-   frame-state="0"
+   frame-state="6"
 />
   <separated-properties
    x="192"
@@ -35,7 +35,7 @@
   <constraints>
   <path orientation="horizontal" number="60" weight="0.7" />
   <path orientation="vertical" number="40" weight="0.7" />
-  <path orientation="horizontal" number="40" weight="0.7" />
+  <path orientation="horizontal" number="40" weight="1.0822510822510822" />
   <path orientation="vertical" number="40" weight="0.5" />
   </constraints>
   <bounds x="633" y="252" width="806" height="462" />
@@ -45,8 +45,8 @@
     <toolbar configuration="Standard" preferred-icon-size="24"/>
     <tc-list>
   <tc-id id="ViewerTopComponent"/>
+  <tc-id id="ControlsTopComponent"/>
   <tc-id id="LegendTopComponent"/>
   <tc-id id="PropertyInspectorTopComponent"/>
-  <tc-id id="ControlsTopComponent"/>
     </tc-list>
 </windowmanager>

@@ -817,7 +817,6 @@ public class CylinderContainer extends JFXPanel
 	//-----------------------------------HELPER METHODS
     /** Builds a rectangular solid geometry with a single hole. */
     private float[] generatePerforatedSolid(int startSH, int endSH, float extraYDisp) {
-
         // The translations: the start and end need to be normalized for
         // a certain meter length.  They also need to be centered in that length.
         // Assume query IS coordinate system, and starts at zero.
@@ -903,7 +902,7 @@ public class CylinderContainer extends JFXPanel
     		int[] nextGap = subjectGaps[i];
             //  System.out.println("Generating perforation at " + (startSH + pos) + " through " + (startSH + endPos));
             float[] coordinateData = generatePerforatedSolid(startSH + nextGap[0],
-                    startSH + nextGap[1], 0.001f);
+                    startSH + nextGap[1], 0.4f);
 		    MeshView gap = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), null);
 			PhongMaterial meshMaterial = appearanceSource.createPerforatedAppearance(subEntity);
 			gap.setMaterial(meshMaterial);
