@@ -143,24 +143,17 @@ public class CylinderContainer extends JFXPanel
 		instanceContent = new InstanceContent();
 		instanceContent.add(propMap);
 		propsLookup = new AbstractLookup(instanceContent);
-		selectionListener = new SelectionModelListener() {
-			@Override
-			public void selected(Object obj) {
-				SwingUtilities.invokeLater(new Runnable() {
-					@Override
-					public void run() {
-						instanceContent.remove(propMap);
-						SubEntity se = idToSubEntity.get(obj.toString());
-						if (se != null) {
-							propMap = se.getProperties();
-							instanceContent.add(propMap);
-						}
-					}
-				});
-				
-				positionCigarBands(obj);
-			}			
-
+		selectionListener = (Object obj) -> {
+			SwingUtilities.invokeLater(() -> {
+				instanceContent.remove(propMap);
+				SubEntity se = idToSubEntity.get(obj.toString());
+				if (se != null) {
+					propMap = se.getProperties();
+					instanceContent.add(propMap);
+				}
+			});
+			
+			positionCigarBands(obj);
 		};
 		selectionModel.addListener(selectionListener);
 		Lookup global = Utilities.actionsGlobalContext();
@@ -365,7 +358,7 @@ public class CylinderContainer extends JFXPanel
 						int endSH = nextEntity.getEndOnQuery();
 
                         // The overall glyph.
-						//System.out.println("Generating seq solid from " + startSH + " to " + endSH);
+						System.out.println("Generating seq solid from " + startSH + " to " + endSH);
 						Group subHitGroup = new Group();
 						MeshView subHitView = null;
 						final String lookupId = Integer.toString(latestGraphId);
@@ -887,7 +880,6 @@ public class CylinderContainer extends JFXPanel
 			PhongMaterial meshMaterial = appearanceSource.createSubEntityInsertionAppearance(subEntity);
 			insertion.setMaterial(meshMaterial);
 			hitGroup.getChildren().add(insertion);
-    		
     	}
     }
 
