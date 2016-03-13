@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import self.lesfoster.cylindrical_alignment.inspector.table.TextAreaRenderer;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -20,6 +21,7 @@ import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import org.openide.util.Utilities;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
+import self.lesfoster.cylindrical_alignment.inspector.table.PopupMouseListener;
 import self.lesfoster.cylindrical_alignment.inspector.table_model.SubHitTableModel;
 import self.lesfoster.framework.integration.SelectedObjectWrapper;
 
@@ -92,8 +94,10 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 	@Override
 	public void componentOpened() {
 		final SubHitTableModel subHitTableModel = new SubHitTableModel(new HashMap<String,String>());
-		JTable table = new JTable(subHitTableModel);
-		inspectorPanel.add(new JScrollPane(table), BorderLayout.CENTER);
+		JTable propsTable = new JTable(subHitTableModel);
+		propsTable.addMouseListener(new PopupMouseListener());
+		propsTable.setDefaultRenderer(Object.class, new TextAreaRenderer());
+		inspectorPanel.add(new JScrollPane(propsTable), BorderLayout.CENTER);
 		Lookup global = Utilities.actionsGlobalContext();
 		mapResult = global.lookupResult(Map.class);
 		if (mapResult != null) {
@@ -123,7 +127,7 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 		String version = p.getProperty("version");
 		// TODO read your settings according to their version
 	}
-	
+
 	private class ModelSelectionWrapperLookupListener implements LookupListener {
 
 		private SubHitTableModel subHitTableModel;
