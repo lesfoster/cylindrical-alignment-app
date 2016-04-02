@@ -66,5 +66,9 @@ public interface AppearanceSource {
      * @return an appropriate Java3D appearance object.
      */
     PhongMaterial createPerforatedAppearance(SubEntity subEntity);
-
+	
+	/**
+	 * Disposal method.
+	 */
+	void clear();
 }

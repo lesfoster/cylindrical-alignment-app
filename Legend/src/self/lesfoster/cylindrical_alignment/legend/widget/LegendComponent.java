@@ -41,7 +41,6 @@ import javax.swing.JComponent;
 import org.openide.util.Lookup;
 import org.openide.util.lookup.AbstractLookup;
 import org.openide.util.lookup.InstanceContent;
-import org.openide.util.lookup.Lookups;
 import self.lesfoster.framework.integration.LegendModel;
 import self.lesfoster.framework.integration.LegendModelListener;
 import self.lesfoster.framework.integration.SelectedObjectWrapper;
@@ -134,6 +133,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	}
 
 	//==============================IMPLEMENTS Lookup.Provider
+	@Override
 	public Lookup getLookup() {
 		return objectLookup;
 	}
@@ -141,6 +141,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	/**
 	 * Tells just how big we'd like to be ;-)
 	 */
+	@Override
 	public Dimension getPreferredSize() {
 		if (height == -1) {
 		    height = calcHeight();
@@ -148,10 +149,12 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 		return new Dimension(calculateMaxFontWidth(), height);
 	}
 
+	@Override
 	public Dimension getMinimumSize() {
 		return getPreferredSize();
 	}
 
+	@Override
 	public Dimension getMaximumSize() {
 		return getPreferredSize();
 	}
@@ -159,6 +162,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	/**
 	 * Hears events on the legend model, so it can repaint.
 	 */
+	@Override
 	public void updateLegendModel() {
 		validate();
 		repaint();
@@ -181,6 +185,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	 * This override to JComponent, will allow this component to paint itself as it likes.
 	 * Here is where the work of presenting the mappings to the user will be done.
 	 */
+	@Override
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.BLACK);
 		super.paintComponent(g);

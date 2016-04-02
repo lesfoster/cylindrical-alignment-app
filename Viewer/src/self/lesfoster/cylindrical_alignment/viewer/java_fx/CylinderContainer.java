@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
@@ -35,7 +36,6 @@ import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
 import org.openide.util.LookupListener;
 import org.openide.util.Utilities;
-import org.openide.util.lookup.AbstractLookup;
 import org.openide.util.lookup.InstanceContent;
 
 import self.lesfoster.cylindrical_alignment.effector.Effected;
@@ -65,6 +65,7 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocati
 import self.lesfoster.framework.integration.SelectionModel;
 import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.GlyphSelector;
+import self.lesfoster.framework.integration.LegendModelContainer;
 import self.lesfoster.framework.integration.SelectedObjectWrapper;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
@@ -76,7 +77,7 @@ import self.lesfoster.framework.integration.SelectionModelListener;
 public class CylinderContainer extends JFXPanel  
         implements SpeedEffectorTarget, CylinderPositioningEffectorTarget,
 		           HelpEffectorTarget, SettingsEffectorTarget, 
-				   Effected, Lookup.Provider {
+				   Effected {
 	public static final String SPIN_GROUP_ID = "SPIN_GROUP";
 	private static final double CAMERA_DISTANCE = Constants.LENGTH_OF_CYLINDER * 3;
 	private static final int BAND_CIRCLE_VERTEX_COUNT = 100;
@@ -119,9 +120,8 @@ public class CylinderContainer extends JFXPanel
 	private Text inSceneLabel;
 	private boolean dark = true;
 	private DataSource dataSource;
-	private InstanceContent instanceContent;
-	private Lookup propsLookup;
 	private Map<String, Object> propMap = new HashMap<>();
+	private InstanceContent instanceContent;
 	private SelectionModelListener selectionListener;
 	private LookupListener selectedObjLookupListener;
 	private Lookup.Result<SelectedObjectWrapper> selectionWrapperResult;
@@ -129,20 +129,20 @@ public class CylinderContainer extends JFXPanel
 	private Map<SubEntity, Integer> entityToId = new HashMap<>();
 
 	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
+	private Logger log = Logger.getLogger(CylinderContainer.class.getName());
 
-	public CylinderContainer(DataSource dataSource) {
-		this(dataSource, 0, dataSource.getAnchorLength());
+	public CylinderContainer(DataSource dataSource, InstanceContent instanceContent) {
+		this(dataSource, 0, dataSource.getAnchorLength(), instanceContent);
 	}
 
-	public CylinderContainer(DataSource dataSource, Integer startRange, Integer endRange) {
+	public CylinderContainer(DataSource dataSource, Integer startRange, Integer endRange, InstanceContent instanceContent) {
 		this.dataSource = dataSource;
 		this.startRange = startRange;
 		this.endRange = endRange;
+		this.instanceContent = instanceContent;
 		factor = Constants.LENGTH_OF_CYLINDER / (endRange - startRange);
 		init(dataSource);
-		instanceContent = new InstanceContent();
 		instanceContent.add(propMap);
-		propsLookup = new AbstractLookup(instanceContent);
 		selectionListener = (Object obj) -> {
 			SwingUtilities.invokeLater(() -> {
 				instanceContent.remove(propMap);
@@ -164,18 +164,13 @@ public class CylinderContainer extends JFXPanel
 		}
 	}
 
-	//----------------------------------------IMPLEMENTS Lookup.Provider
-	//@Override
-	public Lookup getLookup() {
-		return propsLookup;
-	}
-
 	//----------------------------------------IMPLEMENTS Effected
 	/**
 	 * Provides "the hookup" for interacting with aspects of this component.
 	 *
 	 * @return array of effectors which can be called in response to events.
 	 */
+	@Override
 	public Effector[] getEffectors() {
 		return new Effector[]{
 			new ConcreteSpeedEffector(this),
@@ -248,6 +243,9 @@ public class CylinderContainer extends JFXPanel
 	public void dispose() {
 		SelectionModel.getSelectionModel().removeListener(selectionListener);
 		SelectionModel.getSelectionModel().clear();
+		// Must clear the legend model.
+		appearanceSource.clear();
+		instanceContent.remove(propMap);
 	}
 	
 	private void init(final DataSource dataSource) {
@@ -358,7 +356,7 @@ public class CylinderContainer extends JFXPanel
 						int endSH = nextEntity.getEndOnQuery();
 
                         // The overall glyph.
-						System.out.println("Generating seq solid from " + startSH + " to " + endSH);
+						//log.debug("Generating seq solid from " + startSH + " to " + endSH);
 						Group subHitGroup = new Group();
 						MeshView subHitView = null;
 						final String lookupId = Integer.toString(latestGraphId);
@@ -1305,7 +1303,12 @@ public class CylinderContainer extends JFXPanel
 					if (obj instanceof SubEntity) {
 						SubEntity se = (SubEntity) obj;
 						positionCigarBands(se);
-						subEntitySelector.select(se);
+						if (subEntitySelector != null) {
+							subEntitySelector.select(se);
+						}
+						else {
+							log.warning("No sub entity selector available.");
+						}
 					}
 				}
 			}

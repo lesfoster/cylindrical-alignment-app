@@ -97,4 +97,9 @@ public interface LegendModel {
 	 * @param model got selected
 	 */
 	void selectModel(Object model);
+	
+	/**
+	 * Call this if the old context becomes meaningless, or at dispose.
+	 */
+	void clear();
 }

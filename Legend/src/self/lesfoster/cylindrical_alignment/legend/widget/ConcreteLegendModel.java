@@ -171,6 +171,14 @@ public class ConcreteLegendModel implements LegendModel {
 	public Object getSubEntity(Integer id) {
 		return idToEntity.get(id);
 	}
+	
+	@Override
+	public void clear() {
+		colorMap.clear();
+		legendMap.clear();
+		legendStringList.clear();
+		labeledObjects.clear();
+	}
 
 	@Override
 	public void selectModel(Object model) {

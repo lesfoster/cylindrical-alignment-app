@@ -188,7 +188,7 @@ public class ResidueAppearanceHelper {
      */
     private static void addToColorMap(String residue, Color color) {
     	if (sStringToColor == null)
-    		sStringToColor = new HashMap<String, Color>();
+    		sStringToColor = new HashMap<>();
     	sStringToColor.put(residue, new Color(color.getRed(), color.getGreen(), color.getBlue(), OPACITY));
     }
 }

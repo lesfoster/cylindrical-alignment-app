@@ -100,9 +100,9 @@ public class XmlAppearanceSource implements AppearanceSource {
 					// Must translate between coloring schemes, to the legend model.
 					final Color residueColor = (Color) residueColorMap.get(nextKey);
 					java.awt.Color color2d = new java.awt.Color(
-							(int) (256.0 * residueColor.getRed()),
-							(int) (256.0 * residueColor.getGreen()),
-							(int) (256.0 * residueColor.getBlue())
+							(int) (255.0 * residueColor.getRed()),
+							(int) (255.0 * residueColor.getGreen()),
+							(int) (255.0 * residueColor.getBlue())
 					);
 					value.addColorString(nextKey, null, color2d);
 				}
@@ -145,6 +145,14 @@ public class XmlAppearanceSource implements AppearanceSource {
 		    return ResidueAppearanceHelper.getNtAppearance(residue);
 	    else
 		    return ResidueAppearanceHelper.getAAAppearance(residue);
+	}
+	
+	/**
+	 * Since this object knows legend model, it will be tasked with clearing it.
+	 */
+	@Override
+	public void clear() {
+		legendModel.clear();
 	}
 
 	/**

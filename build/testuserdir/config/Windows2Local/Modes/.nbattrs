@@ -8,12 +8,12 @@
         <attr name="WinSys-TCRef-Order" stringvalue="PropertyInspectorTopComponent"/>
     </fileobject>
     <fileobject name="explorer">
-        <attr name="WinSys-TCRef-Order" stringvalue="LegendTopComponent"/>
+        <attr name="WinSys-TCRef-Order" stringvalue="LegendTopComponent/ControlsTopComponent"/>
     </fileobject>
     <fileobject name="output">
         <attr name="WinSys-TCRef-Order" stringvalue="output"/>
     </fileobject>
     <fileobject name="properties">
-        <attr name="WinSys-TCRef-Order" stringvalue="ControlsTopComponent/properties"/>
+        <attr name="WinSys-TCRef-Order" stringvalue="properties"/>
     </fileobject>
 </attributes>

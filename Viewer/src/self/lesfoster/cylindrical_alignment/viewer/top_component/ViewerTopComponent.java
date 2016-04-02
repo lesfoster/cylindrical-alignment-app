@@ -12,6 +12,8 @@ import org.openide.awt.ActionReference;
 import org.openide.util.Lookup;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.util.lookup.AbstractLookup;
+import org.openide.util.lookup.InstanceContent;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.model.data_source.Model;
@@ -45,11 +47,15 @@ public final class ViewerTopComponent extends TopComponent {
 	public static final String PREFERRED_ID = "ViewerTopComponent";
 	// Caching a reference to avoid dropping via weak reference.
 	private CylinderContainer container;
+	private final InstanceContent instanceContent;
 	
 	public ViewerTopComponent() {
 		initComponents();
 		setName(Bundle.CTL_ViewerTopComponent());
 		setToolTipText(Bundle.HINT_ViewerTopComponent());
+		instanceContent = new InstanceContent();
+		Lookup propsLookup = new AbstractLookup(instanceContent);
+		associateLookup(propsLookup);
 
 	}
 	
@@ -87,8 +93,7 @@ public final class ViewerTopComponent extends TopComponent {
 				contentPanel.remove(container);
 				container.dispose();
 			}
-			container = new CylinderContainer(dataSource);
-			associateLookup(container.getLookup());
+			container = new CylinderContainer(dataSource, instanceContent);
 			Effected effected = container;
 			contentPanel.add(container, BorderLayout.CENTER);
 			EffectedContainer.getInstance().setEffected(effected);
