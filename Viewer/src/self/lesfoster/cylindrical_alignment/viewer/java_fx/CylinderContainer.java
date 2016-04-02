@@ -65,7 +65,6 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocati
 import self.lesfoster.framework.integration.SelectionModel;
 import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.GlyphSelector;
-import self.lesfoster.framework.integration.LegendModelContainer;
 import self.lesfoster.framework.integration.SelectedObjectWrapper;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
@@ -126,10 +125,8 @@ public class CylinderContainer extends JFXPanel
 	private LookupListener selectedObjLookupListener;
 	private Lookup.Result<SelectedObjectWrapper> selectionWrapperResult;
 	
-	private Map<SubEntity, Integer> entityToId = new HashMap<>();
-
-	private TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
-	private Logger log = Logger.getLogger(CylinderContainer.class.getName());
+	private final TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
+	private final Logger log = Logger.getLogger(CylinderContainer.class.getName());
 
 	public CylinderContainer(DataSource dataSource, InstanceContent instanceContent) {
 		this(dataSource, 0, dataSource.getAnchorLength(), instanceContent);

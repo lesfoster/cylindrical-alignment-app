@@ -97,7 +97,8 @@ public final class ViewerTopComponent extends TopComponent {
 			Effected effected = container;
 			contentPanel.add(container, BorderLayout.CENTER);
 			EffectedContainer.getInstance().setEffected(effected);
-			ViewerTopComponent.this.requestFocusInWindow();			
+			ViewerTopComponent.this.validate();
+			ViewerTopComponent.this.repaint();
 		});
 	}
 
