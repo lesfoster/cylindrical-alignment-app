@@ -64,7 +64,16 @@
                     </run-dependency>
                 </dependency>
             </module-dependencies>
-            <public-packages/>
+            <public-packages>
+                <package>cyl.jaxb</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source.converter</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source.gff3</package>
+                <package>self.lesfoster.cylindrical_alignment.geometry</package>
+                <package>self.lesfoster.cylindrical_alignment.legend.lifecycle</package>
+                <package>self.lesfoster.cylindrical_alignment.legend.top_component</package>
+                <package>self.lesfoster.cylindrical_alignment.legend.widget</package>
+            </public-packages>
             <class-path-extension>
                 <runtime-relative-path>ext/data_source.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/data_source.jar</binary-origin>

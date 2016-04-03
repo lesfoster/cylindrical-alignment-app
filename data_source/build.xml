@@ -65,4 +65,13 @@
     nbproject/build-impl.xml file. 
 
     -->
+	<target name="-pre-compile">
+		<copy todir="build/classes/xsl">
+			<fileset dir="src/xsl"/>
+		</copy>
+	</target>
+	
+	<target name="-post-dist">
+		<echo message="!!!  Please remember to re-copy the dist jar to all dependent modules.  !!!"/>
+	</target>
 </project>

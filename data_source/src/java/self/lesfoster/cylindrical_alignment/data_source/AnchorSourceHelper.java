@@ -43,7 +43,7 @@ public class AnchorSourceHelper {
 	/**
 	 * Creates an anchor entity, out of information given in the params.
 	 * @param filename name of input file
-	 * @param axisLength length of axis.
+	 * @param anchorLength length of axis.
 	 * @param axisEntityName name of axis.
 	 * @param entityList where to add.
 	 */

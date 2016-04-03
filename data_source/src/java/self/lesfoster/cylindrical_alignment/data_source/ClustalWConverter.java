@@ -62,7 +62,6 @@ public class ClustalWConverter implements Converter {
 	/**
 	 * Turns the input file of clustal alignment text, and into an input stream
 	 * of XML.
-	 * @param file the file to parse.
 	 * @return stream containing converted data.
 	 */
 	public InputStream parseClustal() {

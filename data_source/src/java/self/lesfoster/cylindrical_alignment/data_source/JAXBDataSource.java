@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 package self.lesfoster.cylindrical_alignment.data_source;
 
+import java.util.logging.Logger;
 import java.util.*;
 import java.io.*;
 import javax.xml.bind.*;
@@ -42,6 +43,7 @@ import cyl.jaxb.*;
 public class JAXBDataSource implements DataSource {
 
 	private static final int CUTOFF_NUMBER = 100;  // over 100 entities kills the cylinder.
+	private static final Logger log = Logger.getLogger(JAXBDataSource.class.getName());
 
     private List<Entity> entities = new ArrayList<Entity>();
     private int anchorLength = -1;
@@ -55,10 +57,14 @@ public class JAXBDataSource implements DataSource {
 		try {
 			// NOTE: if the classloader ref is omitted, the ObjectFactory
 			// is never discovered, and the newInstance will fail.
+			log.finest("Getting jaxb context.");
 			JAXBContext context = JAXBContext.newInstance("cyl.jaxb", Cylinder.class.getClassLoader());
+			log.finest("Got jaxb context of " + context);
 			Unmarshaller unmarshaller = context.createUnmarshaller();
-
+			
+			log.finest("About to unmarshal with " + unmarshaller);
 			Cylinder cylinder = (Cylinder)unmarshaller.unmarshal(inputStream);
+			log.finest("Completed unmarshaling.");
 
 			anchorLength = cylinder.getAnchorLength();
 
@@ -132,8 +138,8 @@ public class JAXBDataSource implements DataSource {
 			}
 
 		} catch (JAXBException jex) {
-			System.out.println("Input Source failed to unmarshal.");
-			System.out.println(jex.getMessage());
+			log.severe("Input Source failed to unmarshal.");
+			log.severe(jex.getMessage());
 			jex.printStackTrace();
 		}
     	
@@ -141,7 +147,7 @@ public class JAXBDataSource implements DataSource {
 
     /**
      * Parses an XML file to use as a cylinder viewer input source.
-     * @param inputFileName XML file in the <cylinder format.
+     * @param inputFileName XML file in the cylinder format.
      */
 	public JAXBDataSource(String inputFileName) throws IOException {
         this(new FileInputStream(inputFileName));

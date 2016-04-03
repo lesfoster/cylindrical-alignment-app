@@ -15,7 +15,7 @@ import javax.xml.parsers.*;
 
 /**
  * Post processor to take up where XSLT left off, on Microsoft Project (tm) files.
- * @TODO replace with XSLT extensions if possible.
+ * 
  * @author Leslie L Foster
  */
 public class ProjectPostProcessor implements Converter {

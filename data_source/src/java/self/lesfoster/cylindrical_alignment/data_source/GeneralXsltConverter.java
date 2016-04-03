@@ -40,6 +40,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+import javax.xml.XMLConstants;
 
 /**
  * This converter will run an XSLT style sheet, to convert between
@@ -49,8 +50,8 @@ import javax.xml.transform.stream.StreamSource;
  */
 public class GeneralXsltConverter implements Converter {
 	//  These are all the different choices of XSLT sheets.
-	private static final String XSLT_MAP_PROPS = "self/lesfoster/cylindrical_viewer/data_source/xslt_map.properties";
-	private static final String XSLT_EXTENSION_MAP_PROPS = "xslt_extension_map.properties";
+	private static final String XSLT_MAP_PROPS = "self/lesfoster/cylindrical_alignment/data_source/xslt_map.properties";
+	private static final String XSLT_EXTENSION_MAP_PROPS = "xslt_map.properties";
 	private static final String XSLT_STRIP_PREFIX = "TYPE";
 	private static final Properties TYPE_PROPS = ConfigUtils.getProperties(XSLT_MAP_PROPS);
 	private static final Properties EXTENDED_TYPE_PROPS;
@@ -114,6 +115,8 @@ public class GeneralXsltConverter implements Converter {
 	public InputStream getStream() {
 		Transformer transformer;
 		TransformerFactory factory = TransformerFactory.newInstance();
+		factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "all");
+		//factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "all");
         InputStream inStream = getClass().getClassLoader().getResourceAsStream(getXslFile());
 		StreamSource stylesheet = new StreamSource(inStream);
 		ByteArrayInputStream inputStream = null;

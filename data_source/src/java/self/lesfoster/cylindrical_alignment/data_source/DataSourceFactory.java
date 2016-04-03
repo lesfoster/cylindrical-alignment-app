@@ -31,12 +31,14 @@ package self.lesfoster.cylindrical_alignment.data_source;
 import self.lesfoster.cylindrical_alignment.viewer.statistics.RemotePingCounter;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 /**
  * Creates data sources based on hints gathered from the file name.
  * @author FosterLL
  */
 public class DataSourceFactory {
+	private static final Logger log = Logger.getLogger(DataSourceFactory.class.getName());
     public static DataSource getSourceForFile(String filename) {
 		if (filename.endsWith(".Project.xml")) {
             new RemotePingCounter().registerUsage( "ProjectXMLOpen" );
@@ -58,8 +60,8 @@ public class DataSourceFactory {
                     new RemotePingCounter().registerUsage( "JAXB2Open" );
     		        return new JAXBDataSource(filename);
     		    } catch (IOException ioe) {
-    		    	System.out.println(filename + " Failed to unmarshal");
-    		    	System.out.println(ioe.getMessage());
+    		    	log.severe(filename + " Failed to unmarshal");
+    		    	log.severe(ioe.getMessage());
     		    	return null;
     		    }
     		}
