@@ -154,8 +154,14 @@ public class JAXBDataSource implements DataSource {
 	}
 
 	/** Expose anchor length found in input file. */
+	@Override
 	public int getAnchorLength() {
 		return anchorLength;
+	}
+
+	@Override
+	public List<Entity> getEntities() {
+		return entities;
 	}
 
 	/**
@@ -189,10 +195,6 @@ public class JAXBDataSource implements DataSource {
         	returnArray[i][1] = nextEntry[1];
         }
         return returnArray;
-	}
-
-	public List<Entity> getEntities() {
-		return entities;
 	}
 
 	/**

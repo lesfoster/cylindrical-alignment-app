@@ -5,6 +5,8 @@
         <group name="Cyl App JavaFX">
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/doc/PROGRESS.txt</file>
         </group>
-        <group name="Java Security"/>
+        <group name="Java Security">
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/nbproject/project.properties</file>
+        </group>
     </open-files>
 </project-private>

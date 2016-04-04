@@ -5,7 +5,7 @@ cylinder, such that the alignments are arranged like the staves
 of a barrel. The cylinder can spin, and if it spins, it can
 do so at two different speeds.  When stopped, properties can
 be seen for the aligned values.
-Copyright (C) 2005 Leslie L. Foster
+Copyright (C) 2005, 2016 Leslie L. Foster
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -32,9 +32,10 @@ import self.lesfoster.cylindrical_alignment.viewer.statistics.RemotePingCounter;
 
 import java.io.IOException;
 import java.util.logging.Logger;
+import self.lesfoster.cylindrical_alignment.data_source.web_client.HostBean;
 
 /**
- * Creates data sources based on hints gathered from the file name.
+ * Creates data sources appropriate to filename or URL.
  * @author FosterLL
  */
 public class DataSourceFactory {
@@ -80,4 +81,18 @@ public class DataSourceFactory {
     		return null;
     	}
     }
+	
+	/**
+	 * Returns a data source that can 
+	 * 
+	 * @param id identifier from server, that is unique.
+	 * @param hostBean info for finding host and filling out URL.
+	 * @return a Data Source that can deliver the goods on the ID.
+	 */
+	public static DataSource getSourceForServerId(String id, HostBean hostBean) {
+		PrecomputedBlastXmlDataSource dataSource = new PrecomputedBlastXmlDataSource();
+		dataSource.setId(id);
+		dataSource.setHostBean(hostBean);
+		return dataSource;
+	}
 }
