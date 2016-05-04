@@ -67,9 +67,12 @@
             <public-packages>
                 <package>cyl.jaxb</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source.blast_xml</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source.converter</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source.gff3</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source.web_client</package>
                 <package>self.lesfoster.cylindrical_alignment.geometry</package>
+                <package>self.lesfoster.cylindrical_alignment.input_stream_source</package>
                 <package>self.lesfoster.cylindrical_alignment.legend.lifecycle</package>
                 <package>self.lesfoster.cylindrical_alignment.legend.top_component</package>
                 <package>self.lesfoster.cylindrical_alignment.legend.widget</package>

@@ -35,9 +35,12 @@
                 <package>cyl.jaxb</package>
                 <package>self.lesfoster.cylindrical_alignment.constants</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source.blast_xml</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source.converter</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source.gff3</package>
+                <package>self.lesfoster.cylindrical_alignment.data_source.web_client</package>
                 <package>self.lesfoster.cylindrical_alignment.geometry</package>
+                <package>self.lesfoster.cylindrical_alignment.input_stream_source</package>
                 <package>self.lesfoster.cylindrical_alignment.model.action</package>
                 <package>self.lesfoster.cylindrical_alignment.model.data_source</package>
                 <package>self.lesfoster.cylindrical_alignment.model.lifecycle</package>
@@ -49,8 +52,20 @@
                 <binary-origin>release/modules/ext/utilities.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
+                <runtime-relative-path>ext/httpclient-4.5.2.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/httpclient-4.5.2.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
                 <runtime-relative-path>ext/data_source.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/data_source.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/httpcore-4.4.4.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/httpcore-4.4.4.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/xmlpull_1_0_5.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/xmlpull_1_0_5.jar</binary-origin>
             </class-path-extension>
         </data>
     </configuration>

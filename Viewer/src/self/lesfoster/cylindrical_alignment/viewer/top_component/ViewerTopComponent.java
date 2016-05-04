@@ -6,6 +6,9 @@
 package self.lesfoster.cylindrical_alignment.viewer.top_component;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;

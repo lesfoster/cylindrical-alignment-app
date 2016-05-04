@@ -11,13 +11,10 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 
 import java.util.ArrayList;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 /**
  * Use this to communicate with the server for login purposes.
@@ -47,7 +44,7 @@ public class LoginCookieFetcher {
         String rtnVal = null;
 
         // Post a request.
-        HttpClient httpclient = new DefaultHttpClient(getHttpParams());
+		HttpClient httpclient = HttpClientBuilder.create().build();
         String url = loginUrl;
         HttpPost httpPost = new HttpPost(url);
         ArrayList<NameValuePair> nvps = new ArrayList<NameValuePair>();
@@ -78,13 +75,6 @@ public class LoginCookieFetcher {
         }
 
         return rtnVal;
-    }
-
-    private HttpParams getHttpParams() {
-        HttpParams connectionParameters = new BasicHttpParams();
-        HttpConnectionParams.setConnectionTimeout(connectionParameters, 10000);
-        HttpConnectionParams.setSoTimeout(connectionParameters, 5000);
-        return connectionParameters;
     }
 
 }
