@@ -45,6 +45,7 @@
         <group name="Cyl App JavaFX">
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/JAXBDataSource.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/build.xml</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/LoginCookieFetcher.java</file>
         </group>
     </open-files>
 </project-private>

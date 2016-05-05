@@ -10,6 +10,8 @@
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Legend/src/self/lesfoster/cylindrical_alignment/legend/widget/LegendComponent.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Legend/src/self/lesfoster/cylindrical_alignment/legend/widget/ConcreteLegendModel.java</file>
         </group>
-        <group name="Cyl App JavaFX"/>
+        <group name="Cyl App JavaFX">
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Legend/src/self/lesfoster/cylindrical_alignment/legend/lifecycle/LegendStartup.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -268,8 +268,9 @@ public class BlastServiceClient {
     private Properties getServiceProperties() throws Exception {
         Properties props;
         props = new Properties();
+		//System.out.println(System.getProperty("java.class.path"));
         InputStream propStream =
-                this.getClass().getResourceAsStream("/service.properties");
+                this.getClass().getResourceAsStream("service.properties");
         props.load(propStream);
 
         return props;

@@ -18,7 +18,6 @@ import  org.openide.util.NbPreferences;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.DataSourceFactory;
 import self.lesfoster.cylindrical_alignment.data_source.Entity;
-import self.lesfoster.cylindrical_alignment.data_source.web_client.HostBean;
 import self.lesfoster.cylindrical_alignment.model.data_source.Model;
 
 @ActionID(
@@ -48,14 +47,7 @@ public final class FileOpener implements ActionListener {
 			// Save preferred starting directory.
 			NbPreferences.forModule(FileOpener.class).put(DEFAULT_LOC_KEY, directoryStr);
 			if (infile.canRead()) {
-//				final DataSource dataSource = DataSourceFactory.getSourceForFile(infile.getAbsolutePath());
-				HostBean hostBean = new HostBean();
-				hostBean.setCurrentProtocol("http");
-				hostBean.setCurrentPort(443);
-				hostBean.setCurrentHost("jbosswildfly-cylalignvwr.rhcloud.com");
-				hostBean.setCurrentUser("lesfoster");
-				hostBean.setCurrentPass("lesfoster");
-				final DataSource dataSource = DataSourceFactory.getSourceForServerId("2", hostBean);
+				final DataSource dataSource = DataSourceFactory.getSourceForFile(infile.getAbsolutePath());
 				DataSource model = new DataSource() {
 
 					@Override
