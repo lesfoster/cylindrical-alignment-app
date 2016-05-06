@@ -32,6 +32,7 @@ package self.lesfoster.cylindrical_alignment.legend.widget;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Dimension;
+import java.awt.FontMetrics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
@@ -244,9 +245,14 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	 */
 	private int calculateMaxFontWidth() {
 		int maxWidth = 0;
+		final FontMetrics fontMetrics = this.getFontMetrics(this.getFont());
+		if (fontMetrics == null) {
+			java.util.logging.Logger.getLogger("FontMetricsError").warning("Unable to obtain font metrics to calculate max font width.");
+			return maxWidth;
+		}
 		for (int i = 0; i < legendModel.getLegendStrings().size(); i++) {
 			String nextLegend = (String)legendModel.getLegendStrings().get(i);
-			int width = this.getFontMetrics(this.getFont()).charsWidth(nextLegend.toCharArray(), 0, nextLegend.length());
+			int width = fontMetrics.charsWidth(nextLegend.toCharArray(), 0, nextLegend.length());
 			if (width > maxWidth)
 				maxWidth = width;
 		}

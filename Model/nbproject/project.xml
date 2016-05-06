@@ -92,6 +92,10 @@
                 <package>self.lesfoster.cylindrical_alignment.viewer.statistics</package>
             </public-packages>
             <class-path-extension>
+                <runtime-relative-path>ext/kxml2-2.3.0.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/kxml2-2.3.0.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
                 <runtime-relative-path>ext/utilities.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/utilities.jar</binary-origin>
             </class-path-extension>

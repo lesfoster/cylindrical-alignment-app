@@ -258,17 +258,19 @@ public class BlastXmlParser {
                 while ( parser.next() != XmlPullParser.START_TAG ); // Read to next tag
                 // Get all the HSP tags below.
                 String tagName = parser.getName();
-                while ( tagName.equals( "Hsp" ) ) {
+                while (tagName != null  &&  tagName.equals( "Hsp" ) ) {
                     readHsp( parser, subEntityList );
                     // Eat the end tag.
 					parser.nextToken();
 					//		.nextTag();  // Available on Android.
                     tagName = parser.getName();
 
-//                    if ( parser.getEventType() == XmlPullParser.END_TAG ) {
-//                        // Eat the Hit_hsps end tag.
-//                        parser.nextTag();
-//                    }
+					// This block of skip-code is needed on desktop, but
+					// not on Android.
+                    if ( parser.getEventType() == XmlPullParser.END_TAG ) {
+                        // Eat the Hit_hsps end tag.
+                        parser.nextTag();
+                    }
                 }
                 foundTag = true;
 

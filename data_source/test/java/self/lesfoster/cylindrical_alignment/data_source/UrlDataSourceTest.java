@@ -5,6 +5,7 @@
  */
 package self.lesfoster.cylindrical_alignment.data_source;
 
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -41,13 +42,15 @@ public class UrlDataSourceTest {
 	@Test
 	public void invokeServerDataSource() {
 		HostBean hostBean = new HostBean();
-		hostBean.setCurrentProtocol("http");
+		hostBean.setCurrentProtocol("https");
 		hostBean.setCurrentPort(443);
 		hostBean.setCurrentHost("jbosswildfly-cylalignvwr.rhcloud.com");
 		hostBean.setCurrentUser("lesfoster");
 		hostBean.setCurrentPass("lesfoster");
-		final DataSource dataSource = DataSourceFactory.getSourceForServerId("6", hostBean);
+		final DataSource dataSource = DataSourceFactory.getSourceForServerId("1", hostBean);
 		assertNotNull("No data source found from server.", dataSource);
-		System.out.println(dataSource.getAnchorLength());
+		System.out.println(dataSource.getAnchorLength() + " is length of anchor.");
+		List<Entity> entities = dataSource.getEntities();
+		System.out.println(entities.size() + " entities found.");
 	}
 }
