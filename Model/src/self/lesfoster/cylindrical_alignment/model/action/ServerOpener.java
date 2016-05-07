@@ -8,6 +8,7 @@ package self.lesfoster.cylindrical_alignment.model.action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.SwingWorker;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
@@ -58,7 +59,20 @@ public final class ServerOpener implements ActionListener {
 
 		};
 		Model model = Model.getInstance();
-		descriptiveDataSource.getAnchorLength(); // Eager initialization.
-		model.setDataSource(descriptiveDataSource);
+		SwingWorker swingWorker = new SwingWorker() {
+
+			@Override
+			protected Object doInBackground() throws Exception {
+				descriptiveDataSource.getAnchorLength(); // Eager initialization.
+				return Boolean.TRUE;
+			}
+			
+			@Override
+			protected void done() {
+				model.setDataSource(descriptiveDataSource);
+			}
+			
+		};
+		swingWorker.execute();
 	}
 }
