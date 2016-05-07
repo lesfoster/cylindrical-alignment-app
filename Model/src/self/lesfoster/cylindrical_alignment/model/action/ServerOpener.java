@@ -39,7 +39,7 @@ public final class ServerOpener implements ActionListener {
 		hostBean.setCurrentPass("lesfoster");
 		final String id = "2";
 		final DataSource dataSource = DataSourceFactory.getSourceForServerId(id, hostBean);
-		DataSource model = new DataSource() {
+		DataSource descriptiveDataSource = new DataSource() {
 
 			@Override
 			public List<Entity> getEntities() {
@@ -57,7 +57,8 @@ public final class ServerOpener implements ActionListener {
 			}
 
 		};
-		Model container = Model.getInstance();
-		container.setDataSource(model);
+		Model model = Model.getInstance();
+		descriptiveDataSource.getAnchorLength(); // Eager initialization.
+		model.setDataSource(descriptiveDataSource);
 	}
 }
