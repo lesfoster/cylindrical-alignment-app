@@ -13,7 +13,9 @@ import self.lesfoster.cylindrical_alignment.input_stream_source.InputStreamSourc
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Logger;
 import self.lesfoster.cylindrical_alignment.data_source.web_client.HostBean;
@@ -23,9 +25,14 @@ import self.lesfoster.cylindrical_alignment.data_source.web_client.HostBean;
  * Created by Leslie L Foster on 11/23/2015.
  */
 public class PrecomputedBlastXmlDataSource implements DataSource, Serializable {
-    private final Logger logger = Logger.getLogger(PrecomputedBlastXmlDataSource.class.getName());
+    public enum StringSearchType{ SPECIES, PROGRAM }
+
+	private final Logger logger = Logger.getLogger(PrecomputedBlastXmlDataSource.class.getName());
 
     private final static String FETCH_BY_ID_URL_FMT = "%s://%s:%d/CAV/results/getResultById?id=%s";
+    private final static String FETCH_BY_SPECIES_URL_FMT = "%s://%s:%d/CAV/results/getResultBySpecies?species=%s";
+    private final static String FETCH_BY_PROGRAM_URL_FMT = "%s://%s:%d/CAV/results/getResultByProgram?program=%s";
+    private final static String FETCH_BY_DATE_URL_FMT = "%s://%s:%d/CAV/results/getResultByDate?date=%d";
 
     private String id;
     private int anchorLength = -1;
@@ -59,7 +66,81 @@ public class PrecomputedBlastXmlDataSource implements DataSource, Serializable {
         return anchorLength;
     }
 
-    /**
+	public List<SearchResult> getDateSearchResults(int year, int month, int day) {
+		List<SearchResult> rtnVal = null;
+		try {
+			final String user = hostBean.getCurrentUser();
+			final String pass = hostBean.getCurrentPass();
+			final String currentHost = hostBean.getCurrentHost();
+			final int currentPort = hostBean.getCurrentPort();
+			final String currentProtocol = hostBean.getCurrentProtocol();
+
+			String cookie = getCookie(user, pass, currentHost, currentPort, currentProtocol);
+			Calendar cal = GregorianCalendar.getInstance();
+			cal.set(Calendar.YEAR, year);
+			cal.set(Calendar.MONTH, month);  // NOTE: expect 0-based 0..11 months number on input.
+			cal.set(Calendar.DAY_OF_MONTH, day);
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+			cal.set(Calendar.MINUTE, 0);
+			cal.set(Calendar.SECOND, 0);
+			cal.set(Calendar.MILLISECOND, 0);
+			Long dateTime = cal.getTime().getTime();
+
+			final ApacheWebClient webClient = new ApacheWebClient();
+			BlastServiceClient client = new BlastServiceClient(
+					webClient, logger
+			);
+			String targetUrl = String.format(FETCH_BY_DATE_URL_FMT, currentProtocol, currentHost, currentPort, dateTime);
+			logger.info(targetUrl);
+			String resultsAsString = client.fetchContents(targetUrl, LoginCookieFetcher.FORM_SESSION_COOKIE, cookie);
+			if (resultsAsString != null) {
+				// Time to pull the results list.
+				ResultsParser parser = new ResultsParser();
+				rtnVal = parser.parseHits(resultsAsString);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+		}
+		return rtnVal;
+	}
+
+	public List<SearchResult> getBySingleStringSearchResults(StringSearchType type, String value) {
+		List<SearchResult> rtnVal = null;
+		try {
+			final String user = hostBean.getCurrentUser();
+			final String pass = hostBean.getCurrentPass();
+			final String currentHost = hostBean.getCurrentHost();
+			final int currentPort = hostBean.getCurrentPort();
+			final String currentProtocol = hostBean.getCurrentProtocol();
+
+			String cookie = getCookie(user, pass, currentHost, currentPort, currentProtocol);
+
+			final ApacheWebClient webClient = new ApacheWebClient();
+			BlastServiceClient client = new BlastServiceClient(
+					webClient, logger
+			);
+			String singleStringSearchFormat = (type == StringSearchType.SPECIES)
+					? FETCH_BY_SPECIES_URL_FMT
+					: FETCH_BY_PROGRAM_URL_FMT;
+			String targetUrl
+					= String.format(singleStringSearchFormat, currentProtocol, currentHost, currentPort, value)
+					.replace(' ', '+');
+			logger.info(targetUrl);
+			String resultsAsString = client.fetchContents(targetUrl, LoginCookieFetcher.FORM_SESSION_COOKIE, cookie);
+			if (resultsAsString != null) {
+				// Time to pull the results list.
+				ResultsParser parser = new ResultsParser();
+				rtnVal = parser.parseHits(resultsAsString);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+		}
+		return rtnVal;
+	}
+
+	/**
      * Pull entities into memory; can throw runtime exceptions.
      */
     private void fetchEntities() {

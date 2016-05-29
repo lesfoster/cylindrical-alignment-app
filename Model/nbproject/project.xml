@@ -76,6 +76,13 @@
                 <package>org.apache.http.protocol</package>
                 <package>org.apache.http.ssl</package>
                 <package>org.apache.http.util</package>
+                <package>org.json</package>
+                <package>org.kxml2.io</package>
+                <package>org.kxml2.kdom</package>
+                <package>org.kxml2.wap</package>
+                <package>org.kxml2.wap.syncml</package>
+                <package>org.kxml2.wap.wml</package>
+                <package>org.kxml2.wap.wv</package>
                 <package>org.xmlpull.v1</package>
                 <package>self.lesfoster.cylindrical_alignment.constants</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source</package>
@@ -86,8 +93,10 @@
                 <package>self.lesfoster.cylindrical_alignment.geometry</package>
                 <package>self.lesfoster.cylindrical_alignment.input_stream_source</package>
                 <package>self.lesfoster.cylindrical_alignment.model.action</package>
+                <package>self.lesfoster.cylindrical_alignment.model.components</package>
                 <package>self.lesfoster.cylindrical_alignment.model.data_source</package>
                 <package>self.lesfoster.cylindrical_alignment.model.lifecycle</package>
+                <package>self.lesfoster.cylindrical_alignment.model.server_interaction</package>
                 <package>self.lesfoster.cylindrical_alignment.utils</package>
                 <package>self.lesfoster.cylindrical_alignment.viewer.statistics</package>
             </public-packages>
@@ -106,6 +115,10 @@
             <class-path-extension>
                 <runtime-relative-path>ext/commons-logging-1.2.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/commons-logging-1.2.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/JSON-java.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/JSON-java.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
                 <runtime-relative-path>ext/httpcore-4.4.4.jar</runtime-relative-path>

@@ -807,6 +807,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.httpcore-4.4.4.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${file.reference.commons-logging-1.2.jar}" todir="${build.classes.dir}"/>
         <copyfiles files="${file.reference.kxml2-2.3.0.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.JSON-java.jar}" todir="${build.classes.dir}"/>
     </target>
     <target if="is.server.weblogic" name="-library-inclusion-in-archive-weblogic">
         <basename file="${reference.utilities.jar}" property="manifest.reference.utilities.jar"/>
@@ -814,13 +815,15 @@ exists or setup the property manually. For example like this:
         <basename file="${file.reference.httpcore-4.4.4.jar}" property="manifest.file.reference.httpcore-4.4.4.jar"/>
         <basename file="${file.reference.commons-logging-1.2.jar}" property="manifest.file.reference.commons-logging-1.2.jar"/>
         <basename file="${file.reference.kxml2-2.3.0.jar}" property="manifest.file.reference.kxml2-2.3.0.jar"/>
+        <basename file="${file.reference.JSON-java.jar}" property="manifest.file.reference.JSON-java.jar"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 jar-4 jar-5 "/>
+            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 jar-4 jar-5 jar-6 "/>
             <attribute name="jar-1-Extension-Name" value="${manifest.reference.utilities.jar}"/>
             <attribute name="jar-2-Extension-Name" value="${manifest.file.reference.httpclient-4.5.2.jar}"/>
             <attribute name="jar-3-Extension-Name" value="${manifest.file.reference.httpcore-4.4.4.jar}"/>
             <attribute name="jar-4-Extension-Name" value="${manifest.file.reference.commons-logging-1.2.jar}"/>
             <attribute name="jar-5-Extension-Name" value="${manifest.file.reference.kxml2-2.3.0.jar}"/>
+            <attribute name="jar-6-Extension-Name" value="${manifest.file.reference.JSON-java.jar}"/>
         </manifest>
     </target>
     <target depends="compile" name="library-inclusion-in-manifest">
@@ -829,6 +832,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${file.reference.httpcore-4.4.4.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.commons-logging-1.2.jar}" todir="${dist.ear.dir}/lib"/>
         <copyfiles files="${file.reference.kxml2-2.3.0.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.JSON-java.jar}" todir="${dist.ear.dir}/lib"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
     <target name="-copy-meta-inf">

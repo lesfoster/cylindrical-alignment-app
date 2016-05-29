@@ -13,11 +13,7 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
 import org.openide.util.NbBundle.Messages;
-import self.lesfoster.cylindrical_alignment.data_source.DataSource;
-import self.lesfoster.cylindrical_alignment.data_source.DataSourceFactory;
-import self.lesfoster.cylindrical_alignment.data_source.Entity;
-import self.lesfoster.cylindrical_alignment.data_source.web_client.HostBean;
-import self.lesfoster.cylindrical_alignment.model.data_source.Model;
+import self.lesfoster.cylindrical_alignment.model.server_interaction.ServerInteractor;
 
 @ActionID(
 		category = "File",
@@ -29,50 +25,12 @@ import self.lesfoster.cylindrical_alignment.model.data_source.Model;
 @ActionReference(path = "Menu/File", position = 1550)
 @Messages("CTL_ServerOpener=Fetch from Server")
 public final class ServerOpener implements ActionListener {
+	private ServerInteractor interactor = new ServerInteractor();
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		HostBean hostBean = new HostBean();
-		hostBean.setCurrentProtocol("https");
-		hostBean.setCurrentPort(443);
-		hostBean.setCurrentHost("jbosswildfly-cylalignvwr.rhcloud.com");
-		hostBean.setCurrentUser("lesfoster");
-		hostBean.setCurrentPass("lesfoster");
 		final String id = "2";
-		final DataSource dataSource = DataSourceFactory.getSourceForServerId(id, hostBean);
-		DataSource descriptiveDataSource = new DataSource() {
-
-			@Override
-			public List<Entity> getEntities() {
-				return dataSource.getEntities();
-			}
-
-			@Override
-			public int getAnchorLength() {
-				return dataSource.getAnchorLength();
-			}
-
-			@Override
-			public String toString() {
-				return "Remote Document " + id;
-			}
-
-		};
-		Model model = Model.getInstance();
-		SwingWorker swingWorker = new SwingWorker() {
-
-			@Override
-			protected Object doInBackground() throws Exception {
-				descriptiveDataSource.getAnchorLength(); // Eager initialization.
-				return Boolean.TRUE;
-			}
-			
-			@Override
-			protected void done() {
-				model.setDataSource(descriptiveDataSource);
-			}
-			
-		};
-		swingWorker.execute();
+		interactor.fetch(id);
 	}
+
 }
