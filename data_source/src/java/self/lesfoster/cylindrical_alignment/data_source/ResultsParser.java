@@ -35,9 +35,10 @@ public class ResultsParser {
                 //  {"content-type":"text/plain","id":7,"created-by":"lesfoster","date":1443844800000,"species":"Sus scrofa"}
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 // For now: not interpreting the content type.
-                String idStr = jsonObject.getString("id");
+                String idStr = Integer.toString(jsonObject.getInt("id"));
                 String creator = jsonObject.getString("created-by");
-                String dateTimeStr = jsonObject.getString("date");
+				long dateTimeLong = jsonObject.getLong("date");
+				String dateTimeStr = Long.toString(dateTimeLong);
                 String speciesName = jsonObject.getString("species");
 
                 SearchResult searchResult = new SearchResult();
