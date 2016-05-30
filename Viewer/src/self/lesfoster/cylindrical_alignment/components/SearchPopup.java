@@ -3,13 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package self.lesfoster.cylindrical_alignment.model.components;
+package self.lesfoster.cylindrical_alignment.components;
 
+import java.awt.BorderLayout;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.JFXPanel;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
@@ -17,7 +24,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Popup;
+import javafx.scene.layout.VBox;
+import javax.swing.JFrame;
+import org.openide.windows.WindowManager;
 import self.lesfoster.cylindrical_alignment.model.server_interaction.ServerInteractor;
 import self.lesfoster.cylindrical_alignment.data_source.SearchResult;
 
@@ -28,7 +37,7 @@ import self.lesfoster.cylindrical_alignment.data_source.SearchResult;
  *
  * @author Leslie L Foster
  */
-public class SearchPopup extends Popup {
+public class SearchPopup extends JFrame {
 	public static final String ID_COLNAME = "ID";
 	public static final String DESCRIPTION_COLNAME = "Description";
 
@@ -102,21 +111,39 @@ public class SearchPopup extends Popup {
 					// got the ID.
 					String selectedId = ((SearchResult) selectedItemObj).getFetchId();
 					serverInteractor.fetch(selectedId);
+				} else if (selectedItemObj == null) {
+					// Do nothing.
 				} else {
 					throw new IllegalStateException("Unexpected table content.  Expected search results.  Found " + selectedItemObj.getClass());
 				}
 			}
 		});		
-//		for (Object columnObj: resultsTable.getColumns()) {
-//			if (columnObj instanceof TableColumn) {
-//				TableColumn tc = (TableColumn)columnObj;
-//				tc.
-//			}
-//		}
 
-		// todo add the things properly.
-		this.getContent().add(datePicker);
-		this.getContent().add(speciesDropdown);
+		// Need to make a new stage and do things the Java FX way.
+		Platform.runLater( () -> {
+			JFXPanel panel = new JFXPanel();
+			final Group world = new Group();
+			// Add things to the scene.
+/*
+			 
+        final VBox vbox = new VBox();
+        vbox.setSpacing(5);
+        vbox.setPadding(new Insets(10, 0, 0, 10));
+        vbox.getChildren().addAll(label, table, hb);
+ 
+        ((Group) scene.getRoot()).getChildren().addAll(vbox);
+ 
+			*/			
+			final VBox vbox = new VBox();
+			vbox.setSpacing(5);
+			vbox.setPadding(new Insets(10,0,0,10));
+			vbox.getChildren().addAll(datePicker, speciesDropdown, resultsTable);
+			SearchPopup.this.setLayout(new BorderLayout());
+			world.getChildren().add(vbox);
+			SearchPopup.this.add(panel, BorderLayout.CENTER);
+			Scene scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);
+			panel.setScene(scene);
+		});
 	}
 
 	private void populateResultsTable(List<SearchResult> searchResults) {
@@ -124,6 +151,11 @@ public class SearchPopup extends Popup {
 		// as used by all search results.
 		ObservableList<SearchResult> resultList = FXCollections.observableArrayList(searchResults);
 		resultsTable.setItems(resultList);
+	}
+
+	private JFrame getMainWin() {
+		JFrame mainFrame = (JFrame) WindowManager.getDefault().getMainWindow();
+		return mainFrame;
 	}
 
 	public void showFailAlert(Exception ex) {

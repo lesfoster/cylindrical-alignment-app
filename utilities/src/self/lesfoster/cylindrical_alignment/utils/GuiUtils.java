@@ -119,5 +119,5 @@ public class GuiUtils {
         c.setSize(new Dimension(width, height));
         c.setLocation((int) ((screenSize.width - width) / 2.0), (int) ((screenSize.height - height) / 2.0));
     }
-
+	
 }
