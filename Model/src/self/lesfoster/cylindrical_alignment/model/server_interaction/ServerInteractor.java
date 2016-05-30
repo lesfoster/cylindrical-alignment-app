@@ -7,6 +7,7 @@ package self.lesfoster.cylindrical_alignment.model.server_interaction;
 
 import java.util.logging.Logger;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 import javax.swing.SwingWorker;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
@@ -38,8 +39,11 @@ public class ServerInteractor {
 		PrecomputedBlastXmlDataSource dataSource = new PrecomputedBlastXmlDataSource();
 		dataSource.setHostBean(hostBean);
 		// Call the finder for the stuff.
+		// NOTE: must roll back month by one day to compensate for
+		//   more sensible "Local Date" versus old "Calendar Date".
+		//   LocalDate month is 1-based, Calendar is 0-based month.
 		List<SearchResult> rtnVal = dataSource.getDateSearchResults(
-				localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth()
+				localDate.getYear(), localDate.getMonthValue() - 1, localDate.getDayOfMonth()
 		);
 		return rtnVal;
 	}

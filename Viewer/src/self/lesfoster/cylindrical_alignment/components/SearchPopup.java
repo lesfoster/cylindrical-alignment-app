@@ -38,7 +38,8 @@ import self.lesfoster.cylindrical_alignment.data_source.SearchResult;
  * @author Leslie L Foster
  */
 public class SearchPopup extends JFrame {
-	public static final String ID_COLNAME = "ID";
+	public static final String ID_COLNAME = "FetchId";
+	public static final String ID_COLNAME_PRESENTABLE = "Id";
 	public static final String DESCRIPTION_COLNAME = "Description";
 
 	private final ServerInteractor serverInteractor = new ServerInteractor();
@@ -53,14 +54,14 @@ public class SearchPopup extends JFrame {
 		resultsTable = new TableView();
 		resultsTable.setEditable(false);
         TableColumn descriptionCol = new TableColumn(DESCRIPTION_COLNAME);
-        TableColumn idCol = new TableColumn(ID_COLNAME);
-		resultsTable.getColumns().addAll(descriptionCol, idCol);
+        TableColumn idCol = new TableColumn(ID_COLNAME_PRESENTABLE);
 		descriptionCol.setCellValueFactory(
 				new PropertyValueFactory<>(DESCRIPTION_COLNAME)
 		);
 		idCol.setCellValueFactory(
 				new PropertyValueFactory<>(ID_COLNAME)
 		);
+		resultsTable.getColumns().addAll(descriptionCol, idCol);
 		
 		// Add the date-search
 		DatePicker datePicker = new DatePicker();
@@ -124,16 +125,6 @@ public class SearchPopup extends JFrame {
 			JFXPanel panel = new JFXPanel();
 			final Group world = new Group();
 			// Add things to the scene.
-/*
-			 
-        final VBox vbox = new VBox();
-        vbox.setSpacing(5);
-        vbox.setPadding(new Insets(10, 0, 0, 10));
-        vbox.getChildren().addAll(label, table, hb);
- 
-        ((Group) scene.getRoot()).getChildren().addAll(vbox);
- 
-			*/			
 			final VBox vbox = new VBox();
 			vbox.setSpacing(5);
 			vbox.setPadding(new Insets(10,0,0,10));
