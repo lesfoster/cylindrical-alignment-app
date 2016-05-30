@@ -18,7 +18,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Popup;
-import javax.swing.event.HyperlinkEvent;
 import self.lesfoster.cylindrical_alignment.model.server_interaction.ServerInteractor;
 import self.lesfoster.cylindrical_alignment.data_source.SearchResult;
 
@@ -33,17 +32,17 @@ public class SearchPopup extends Popup {
 	public static final String ID_COLNAME = "ID";
 	public static final String DESCRIPTION_COLNAME = "Description";
 
-	private ServerInteractor serverInteractor;
+	private final ServerInteractor serverInteractor = new ServerInteractor();
 	private TableView resultsTable;
 	
 	public SearchPopup() {
-		serverInteractor = new ServerInteractor();
 		addComponents();
 	}
 		
 	private void addComponents() {
 		// Add a results table.
 		resultsTable = new TableView();
+		resultsTable.setEditable(false);
         TableColumn descriptionCol = new TableColumn(DESCRIPTION_COLNAME);
         TableColumn idCol = new TableColumn(ID_COLNAME);
 		resultsTable.getColumns().addAll(descriptionCol, idCol);
@@ -96,6 +95,24 @@ public class SearchPopup extends Popup {
 		// Now that we've seen how the table gets populated, let's tell how
 		// the table's search results can trigger actions.
 		//todo resultsTable.addEventHandler(EventType.ACTIVATED, null);
+		resultsTable.setOnMousePressed( event -> {
+			if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+				Object selectedItemObj = resultsTable.getSelectionModel().getSelectedItem();
+				if (selectedItemObj instanceof SearchResult) {
+					// got the ID.
+					String selectedId = ((SearchResult) selectedItemObj).getFetchId();
+					serverInteractor.fetch(selectedId);
+				} else {
+					throw new IllegalStateException("Unexpected table content.  Expected search results.  Found " + selectedItemObj.getClass());
+				}
+			}
+		});		
+//		for (Object columnObj: resultsTable.getColumns()) {
+//			if (columnObj instanceof TableColumn) {
+//				TableColumn tc = (TableColumn)columnObj;
+//				tc.
+//			}
+//		}
 
 		// todo add the things properly.
 		this.getContent().add(datePicker);
