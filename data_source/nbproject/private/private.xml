@@ -48,5 +48,10 @@
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/blast_xml/BlastServiceClient.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/blast_xml/BlastXmlParser.java</file>
         </group>
+        <group name="Cylindrical Alignment App">
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/PrecomputedBlastXmlDataSource.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/ResultsParser.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/SearchResult.java</file>
+        </group>
     </open-files>
 </project-private>

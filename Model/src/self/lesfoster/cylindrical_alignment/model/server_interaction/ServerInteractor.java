@@ -35,10 +35,22 @@ public class ServerInteractor {
 	}
 	
 	public List<SearchResult> find(LocalDate localDate) throws Exception {
-		List<SearchResult> rtnVal = null;
 		PrecomputedBlastXmlDataSource dataSource = new PrecomputedBlastXmlDataSource();
 		dataSource.setHostBean(hostBean);
 		// Call the finder for the stuff.
+		List<SearchResult> rtnVal = dataSource.getDateSearchResults(
+				localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth()
+		);
+		return rtnVal;
+	}
+	
+	public List<SearchResult> findBySpecies(String species) throws Exception {
+		PrecomputedBlastXmlDataSource dataSource = new PrecomputedBlastXmlDataSource();
+		dataSource.setHostBean(hostBean);
+		// Call the finder for the stuff.
+		List<SearchResult> rtnVal = dataSource.getBySingleStringSearchResults(
+				PrecomputedBlastXmlDataSource.StringSearchType.SPECIES, species
+		);
 		return rtnVal;
 	}
 	
