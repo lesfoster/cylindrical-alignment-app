@@ -23,6 +23,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
@@ -39,9 +40,9 @@ import self.lesfoster.cylindrical_alignment.data_source.SearchResult;
  * @author Leslie L Foster
  */
 public class SearchPopup extends JFrame {
-	public static final String TABLE_STYLE = "SearchPopup_searchResults";
-	public static final String DATE_PICKER_STYLE = "SearchPopup_searchDate";
-	public static final String TAXONOMY_SELECTION_STYLE = "SearchPopup_searchTaxon";
+	public static final String TABLE_STYLE = "foreground-color: #ffffff; background-color: #000000;";
+	public static final String DATE_PICKER_STYLE = "foreground-color: #ffffff; background-color: #000000;";
+	public static final String TAXONOMY_SELECTION_STYLE = "foreground-color: #ffffff; background-color: #000000;";
 	
 	public static final String ID_COLNAME = "FetchId";
 	public static final String ID_COLNAME_PRESENTABLE = "Id";
@@ -114,23 +115,25 @@ public class SearchPopup extends JFrame {
 		
 		// Now that we've seen how the table gets populated, let's tell how
 		// the table's search results can trigger actions.
-		//todo resultsTable.addEventHandler(EventType.ACTIVATED, null);
-		resultsTable.setOnMousePressed( event -> {
-			if (event.isPrimaryButtonDown() && event.getClickCount() >= 1) {
-				System.out.println("Selected index=" + resultsTable.getSelectionModel().getSelectedIndex());
-				Object selectedItemObj = resultsTable.getSelectionModel().getSelectedItem();
-				if (selectedItemObj instanceof SearchResult) {
-					// got the ID.
-					String selectedId = ((SearchResult) selectedItemObj).getFetchId();
-					serverInteractor.fetch(selectedId);
-				} else if (selectedItemObj == null) {
-					// Do nothing.
-					System.out.println("Somehow selected a null.");
-				} else {
-					throw new IllegalStateException("Unexpected table content.  Expected search results.  Found " + selectedItemObj.getClass());
+		resultsTable.setRowFactory(tv -> {
+			TableRow<SearchResult> row = new TableRow<>();
+			row.setOnMouseClicked(event -> {
+				if (event.getClickCount() == 2 && (!row.isEmpty())) {
+					SearchResult selectedItemObj = row.getItem();
+					if (selectedItemObj instanceof SearchResult) {
+						// got the ID.
+						String selectedId = ((SearchResult) selectedItemObj).getFetchId();
+						serverInteractor.fetch(selectedId);
+					} else if (selectedItemObj == null) {
+						// Do nothing.
+						System.out.println("Somehow selected a null.");
+					} else {
+						throw new IllegalStateException("Unexpected table content.  Expected search results.  Found " + selectedItemObj.getClass());
+					}
 				}
-			}
-		});		
+			});
+			return row;
+		});
 
 		// Need to make a new stage and do things the Java FX way.
 		Platform.runLater( () -> {
@@ -154,6 +157,7 @@ public class SearchPopup extends JFrame {
 		// as used by all search results.
 		ObservableList<SearchResult> resultList = FXCollections.observableArrayList(searchResults);
 		resultsTable.setItems(resultList);
+		resultsTable.getSelectionModel().setCellSelectionEnabled(true);
 	}
 
 	private JFrame getMainWin() {
