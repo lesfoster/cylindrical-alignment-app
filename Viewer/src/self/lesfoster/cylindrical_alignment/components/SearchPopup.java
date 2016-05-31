@@ -21,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,6 +39,10 @@ import self.lesfoster.cylindrical_alignment.data_source.SearchResult;
  * @author Leslie L Foster
  */
 public class SearchPopup extends JFrame {
+	public static final String TABLE_STYLE = "SearchPopup_searchResults";
+	public static final String DATE_PICKER_STYLE = "SearchPopup_searchDate";
+	public static final String TAXONOMY_SELECTION_STYLE = "SearchPopup_searchTaxon";
+	
 	public static final String ID_COLNAME = "FetchId";
 	public static final String ID_COLNAME_PRESENTABLE = "Id";
 	public static final String DESCRIPTION_COLNAME = "Description";
@@ -52,8 +57,11 @@ public class SearchPopup extends JFrame {
 	private void addComponents() {
 		// Add a results table.
 		resultsTable = new TableView();
+		resultsTable.setStyle(TABLE_STYLE);
 		resultsTable.setEditable(false);
-        TableColumn descriptionCol = new TableColumn(DESCRIPTION_COLNAME);
+		resultsTable.getSelectionModel().setCellSelectionEnabled(true);
+		resultsTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+		TableColumn descriptionCol = new TableColumn(DESCRIPTION_COLNAME);
         TableColumn idCol = new TableColumn(ID_COLNAME_PRESENTABLE);
 		descriptionCol.setCellValueFactory(
 				new PropertyValueFactory<>(DESCRIPTION_COLNAME)
@@ -65,6 +73,7 @@ public class SearchPopup extends JFrame {
 		
 		// Add the date-search
 		DatePicker datePicker = new DatePicker();
+		datePicker.setStyle(DATE_PICKER_STYLE);
 		datePicker.setOnAction(event ->{
 			try {
 				LocalDate date = datePicker.getValue();
@@ -75,6 +84,7 @@ public class SearchPopup extends JFrame {
 			}
 		});
 		ComboBox speciesDropdown = new ComboBox();
+		speciesDropdown.setStyle(TAXONOMY_SELECTION_STYLE);
 		// Todo: fetch this list off the server.
 		ObservableList<String> speciesList = FXCollections.observableArrayList(
 				Arrays.asList(
@@ -106,7 +116,8 @@ public class SearchPopup extends JFrame {
 		// the table's search results can trigger actions.
 		//todo resultsTable.addEventHandler(EventType.ACTIVATED, null);
 		resultsTable.setOnMousePressed( event -> {
-			if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+			if (event.isPrimaryButtonDown() && event.getClickCount() >= 1) {
+				System.out.println("Selected index=" + resultsTable.getSelectionModel().getSelectedIndex());
 				Object selectedItemObj = resultsTable.getSelectionModel().getSelectedItem();
 				if (selectedItemObj instanceof SearchResult) {
 					// got the ID.
@@ -114,6 +125,7 @@ public class SearchPopup extends JFrame {
 					serverInteractor.fetch(selectedId);
 				} else if (selectedItemObj == null) {
 					// Do nothing.
+					System.out.println("Somehow selected a null.");
 				} else {
 					throw new IllegalStateException("Unexpected table content.  Expected search results.  Found " + selectedItemObj.getClass());
 				}
