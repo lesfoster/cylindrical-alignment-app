@@ -43,6 +43,13 @@ public class SearchPopup extends JFrame {
 	public static final String TABLE_STYLE = "foreground-color: #ffffff; background-color: #000000;";
 	public static final String DATE_PICKER_STYLE = "foreground-color: #ffffff; background-color: #000000;";
 	public static final String TAXONOMY_SELECTION_STYLE = "foreground-color: #ffffff; background-color: #000000;";
+	public static final String EXTRA_STYLE = "-fx-fill: "
+			+ "linear-gradient(#ffd65b, #e68400),"
+			+ "linear-gradient(#ffef84, #f2ba44),"
+			+ "linear-gradient(#ffea6a, #3faa22),"
+			+ "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),"
+			+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
+			;
 	
 	public static final String ID_COLNAME = "FetchId";
 	public static final String ID_COLNAME_PRESENTABLE = "Id";
@@ -145,6 +152,8 @@ public class SearchPopup extends JFrame {
 			vbox.setPadding(new Insets(10,0,0,10));
 			vbox.getChildren().addAll(datePicker, speciesDropdown, resultsTable);
 			SearchPopup.this.setLayout(new BorderLayout());
+			vbox.setStyle(EXTRA_STYLE);
+
 			world.getChildren().add(vbox);
 			SearchPopup.this.add(panel, BorderLayout.CENTER);
 			Scene scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);

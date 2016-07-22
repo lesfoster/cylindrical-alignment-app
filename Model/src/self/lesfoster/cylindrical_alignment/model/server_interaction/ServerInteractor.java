@@ -8,6 +8,7 @@ package self.lesfoster.cylindrical_alignment.model.server_interaction;
 import java.util.logging.Logger;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.SwingWorker;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
@@ -36,6 +37,9 @@ public class ServerInteractor {
 	}
 	
 	public List<SearchResult> find(LocalDate localDate) throws Exception {
+		if (localDate == null) {
+			return Collections.EMPTY_LIST;
+		}
 		PrecomputedBlastXmlDataSource dataSource = new PrecomputedBlastXmlDataSource();
 		dataSource.setHostBean(hostBean);
 		// Call the finder for the stuff.

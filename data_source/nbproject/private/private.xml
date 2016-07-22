@@ -52,6 +52,9 @@
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/PrecomputedBlastXmlDataSource.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/ResultsParser.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/SearchResult.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/test/java/self/lesfoster/cylindrical_alignment/data_source/UrlDataSourceTest.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/test/java/self/lesfoster/cylindrical_alignment/data_source/PrecomputedBlastDSTest.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/data_source/src/java/self/lesfoster/cylindrical_alignment/data_source/LoginCookieFetcher.java</file>
         </group>
     </open-files>
 </project-private>
