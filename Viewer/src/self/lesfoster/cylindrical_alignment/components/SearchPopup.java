@@ -40,16 +40,12 @@ import self.lesfoster.cylindrical_alignment.data_source.SearchResult;
  * @author Leslie L Foster
  */
 public class SearchPopup extends JFrame {
-	public static final String TABLE_STYLE = "foreground-color: #ffffff; background-color: #000000;";
-	public static final String DATE_PICKER_STYLE = "foreground-color: #ffffff; background-color: #000000;";
+	//public static final String TABLE_STYLE = "* {-fx-foreground-color: #ffffff; -fx-background-color: #000000;}\n"
+    //  + ".table-row-cell:* {\n" +
+	//	"    -fx-background-color: green ;\n" +
+	//	"}";
+	public static final String DATE_PICKER_STYLE = "-fx-foreground-color: #ffffff; -fx-background-color: #000000;";
 	public static final String TAXONOMY_SELECTION_STYLE = "foreground-color: #ffffff; background-color: #000000;";
-	public static final String EXTRA_STYLE = "-fx-fill: "
-			+ "linear-gradient(#ffd65b, #e68400),"
-			+ "linear-gradient(#ffef84, #f2ba44),"
-			+ "linear-gradient(#ffea6a, #3faa22),"
-			+ "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%),"
-			+ "linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));"
-			;
 	
 	public static final String ID_COLNAME = "FetchId";
 	public static final String ID_COLNAME_PRESENTABLE = "Id";
@@ -58,25 +54,29 @@ public class SearchPopup extends JFrame {
 	private final ServerInteractor serverInteractor = new ServerInteractor();
 	private TableView resultsTable;
 	
-	public SearchPopup() {
+	public SearchPopup(int width, int height) {
+		this.setSize(width, height);
 		addComponents();
 	}
 		
 	private void addComponents() {
 		// Add a results table.
 		resultsTable = new TableView();
-		resultsTable.setStyle(TABLE_STYLE);
 		resultsTable.setEditable(false);
 		resultsTable.getSelectionModel().setCellSelectionEnabled(true);
 		resultsTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		TableColumn descriptionCol = new TableColumn(DESCRIPTION_COLNAME);
         TableColumn idCol = new TableColumn(ID_COLNAME_PRESENTABLE);
+		int totalWidth = this.getWidth();
+		int totalHeight = this.getHeight();
 		descriptionCol.setCellValueFactory(
 				new PropertyValueFactory<>(DESCRIPTION_COLNAME)
 		);
 		idCol.setCellValueFactory(
 				new PropertyValueFactory<>(ID_COLNAME)
 		);
+		descriptionCol.setMinWidth(totalWidth * 0.58);
+		idCol.setMinWidth(totalWidth * 0.38);
 		resultsTable.getColumns().addAll(descriptionCol, idCol);
 		
 		// Add the date-search
@@ -123,7 +123,7 @@ public class SearchPopup extends JFrame {
 		// Now that we've seen how the table gets populated, let's tell how
 		// the table's search results can trigger actions.
 		resultsTable.setRowFactory(tv -> {
-			TableRow<SearchResult> row = new TableRow<>();
+			TableRow<SearchResult> row = new TableRow<>();			
 			row.setOnMouseClicked(event -> {
 				if (event.getClickCount() == 2 && (!row.isEmpty())) {
 					SearchResult selectedItemObj = row.getItem();
@@ -152,7 +152,6 @@ public class SearchPopup extends JFrame {
 			vbox.setPadding(new Insets(10,0,0,10));
 			vbox.getChildren().addAll(datePicker, speciesDropdown, resultsTable);
 			SearchPopup.this.setLayout(new BorderLayout());
-			vbox.setStyle(EXTRA_STYLE);
 
 			world.getChildren().add(vbox);
 			SearchPopup.this.add(panel, BorderLayout.CENTER);

@@ -24,10 +24,13 @@ import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
 @ActionReference(path = "Menu/File", position = 1550)
 @Messages("CTL_ServerOpener=Fetch from Server")
 public final class ServerOpener implements ActionListener {
+	public static final int POPUP_HEIGHT = 600;
+	public static final int POPUP_WID = 800;
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		SearchPopup searchPopup = new SearchPopup();
-		GuiUtils.centerLocation(searchPopup, 800, 500);
+		SearchPopup searchPopup = new SearchPopup(POPUP_WID, POPUP_HEIGHT);		
+		GuiUtils.centerLocation(searchPopup, POPUP_WID, POPUP_HEIGHT);
 		searchPopup.setVisible(true);
 	}
 
