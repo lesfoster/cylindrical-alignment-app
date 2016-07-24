@@ -35,5 +35,25 @@ public class SearchResult implements Serializable {
     public String toString() {
         return getDescription();
     }
+	
+	@Override
+	public boolean equals(Object o) {
+		boolean rtnVal = false;
+		if (fetchId != null  &&  description != null  &&  o instanceof SearchResult) {
+			SearchResult other = (SearchResult)o;
+			rtnVal = fetchId.equals(other.getFetchId())  &&  description.equals(other.getDescription());
+		}
+		return rtnVal;
+	}
+	
+	@Override
+	public int hashCode() {
+		if (fetchId == null) {
+			return Integer.MAX_VALUE;
+		}
+		else {
+			return fetchId.hashCode();
+		}
+	}
 }
 
