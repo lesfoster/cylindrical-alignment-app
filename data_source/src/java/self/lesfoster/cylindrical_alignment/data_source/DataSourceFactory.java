@@ -31,6 +31,7 @@ package self.lesfoster.cylindrical_alignment.data_source;
 import self.lesfoster.cylindrical_alignment.viewer.statistics.RemotePingCounter;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.logging.Logger;
 import self.lesfoster.cylindrical_alignment.data_source.web_client.HostBean;
 
@@ -40,6 +41,7 @@ import self.lesfoster.cylindrical_alignment.data_source.web_client.HostBean;
  */
 public class DataSourceFactory {
 	private static final Logger log = Logger.getLogger(DataSourceFactory.class.getName());
+	
     public static DataSource getSourceForFile(String filename) {
 		if (filename.endsWith(".Project.xml")) {
             new RemotePingCounter().registerUsage( "ProjectXMLOpen" );
@@ -83,7 +85,7 @@ public class DataSourceFactory {
     }
 	
 	/**
-	 * Returns a data source that can 
+	 * Returns a data source that can pull data from remote server.
 	 * 
 	 * @param id identifier from server, that is unique.
 	 * @param hostBean info for finding host and filling out URL.

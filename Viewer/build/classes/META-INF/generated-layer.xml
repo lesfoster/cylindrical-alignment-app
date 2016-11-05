@@ -81,6 +81,17 @@
                 <attr boolvalue="false" name="noIconInMenu"/>
             </file>
         </folder>
+        <folder name="File">
+            <file name="self-lesfoster-cylindrical_alignment-model-action-ServerOpener.instance">
+                <!--self.lesfoster.cylindrical_alignment.action.ServerOpener-->
+                <attr
+                    bundlevalue="self.lesfoster.cylindrical_alignment.action.Bundle#CTL_ServerOpener" name="displayName"/>
+                <attr
+                    methodvalue="org.openide.awt.Actions.alwaysEnabled" name="instanceCreate"/>
+                <attr name="delegate" newvalue="self.lesfoster.cylindrical_alignment.action.ServerOpener"/>
+                <attr boolvalue="false" name="noIconInMenu"/>
+            </file>
+        </folder>
         <folder name="Window">
             <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.instance">
                 <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
@@ -99,17 +110,6 @@
                 <attr name="preferredID" stringvalue="ViewerTopComponent"/>
                 <attr
                     bundlevalue="self.lesfoster.cylindrical_alignment.viewer.top_component.Bundle#CTL_ViewerAction" name="displayName"/>
-            </file>
-        </folder>
-        <folder name="File">
-            <file name="self-lesfoster-cylindrical_alignment-model-action-ServerOpener.instance">
-                <!--self.lesfoster.cylindrical_alignment.action.ServerOpener-->
-                <attr
-                    bundlevalue="self.lesfoster.cylindrical_alignment.action.Bundle#CTL_ServerOpener" name="displayName"/>
-                <attr
-                    methodvalue="org.openide.awt.Actions.alwaysEnabled" name="instanceCreate"/>
-                <attr name="delegate" newvalue="self.lesfoster.cylindrical_alignment.action.ServerOpener"/>
-                <attr boolvalue="false" name="noIconInMenu"/>
             </file>
         </folder>
     </folder>
@@ -131,6 +131,13 @@
                 <attr intvalue="1350" name="position"/>
             </file>
         </folder>
+        <folder name="File">
+            <file name="self-lesfoster-cylindrical_alignment-model-action-ServerOpener.shadow">
+                <!--self.lesfoster.cylindrical_alignment.action.ServerOpener-->
+                <attr name="originalFile" stringvalue="Actions/File/self-lesfoster-cylindrical_alignment-model-action-ServerOpener.instance"/>
+                <attr intvalue="1550" name="position"/>
+            </file>
+        </folder>
         <folder name="Window">
             <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.shadow">
                 <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
@@ -139,13 +146,6 @@
             <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.shadow">
                 <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->
                 <attr name="originalFile" stringvalue="Actions/Window/self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.instance"/>
-            </file>
-        </folder>
-        <folder name="File">
-            <file name="self-lesfoster-cylindrical_alignment-model-action-ServerOpener.shadow">
-                <!--self.lesfoster.cylindrical_alignment.action.ServerOpener-->
-                <attr name="originalFile" stringvalue="Actions/File/self-lesfoster-cylindrical_alignment-model-action-ServerOpener.instance"/>
-                <attr intvalue="1550" name="position"/>
             </file>
         </folder>
     </folder>
