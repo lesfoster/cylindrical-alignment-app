@@ -32,8 +32,8 @@ public class StartupHook implements Runnable {
 	private static final Logger logger = Logger.getLogger(StartupHook.class.getName());
 	
 	public void run() {
-		//if (0==0) return; // *** TEMP *** 
 		try {
+			System.setProperty("netbeans.buildnumber", "0.1");
 			DataSource ds = getInitialDataSource();
 			Model.getInstance().setDataSource(ds);
 		} catch (Exception ex) {
