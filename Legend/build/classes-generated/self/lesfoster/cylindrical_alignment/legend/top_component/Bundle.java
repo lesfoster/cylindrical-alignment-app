@@ -23,5 +23,5 @@ class Bundle {
     static String HINT_LegendTopComponent() {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "HINT_LegendTopComponent");
     }
-    private void Bundle() {}
+    private Bundle() {}
 }

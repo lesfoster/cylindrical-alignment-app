@@ -44,5 +44,5 @@ class Bundle {
     static String HINT_ViewerTopComponent() {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "HINT_ViewerTopComponent");
     }
-    private void Bundle() {}
+    private Bundle() {}
 }

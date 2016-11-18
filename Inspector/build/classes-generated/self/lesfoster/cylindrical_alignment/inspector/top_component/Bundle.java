@@ -23,5 +23,5 @@ class Bundle {
     static String HINT_PropertyInspectorTopComponent() {
         return org.openide.util.NbBundle.getMessage(Bundle.class, "HINT_PropertyInspectorTopComponent");
     }
-    private void Bundle() {}
+    private Bundle() {}
 }
