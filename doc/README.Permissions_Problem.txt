@@ -147,3 +147,7 @@ C:\current_projects\hgfiles\NetBeans>\tools\cygwin\bin\find . -name \*.java -exe
 
                 .setPermissionsPreserved(preservePermissionsCheckBox.isSelected())
 ./php.project/src/org/netbeans/modules/php/project/ui/customizer/RunAsRemoteWeb.java
+
+Problem found:
+  The NBI code uses "ls" to figure out the permissions to establish at installer
+build-time, but that ls on my box is from cygwin, and it gives 0 perms to all.
