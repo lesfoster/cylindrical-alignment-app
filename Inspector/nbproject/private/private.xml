@@ -5,6 +5,8 @@
         <group name="Java Security"/>
         <group name="simplistic REST"/>
         <group name="Cyl App JavaFX"/>
-        <group name="Cylindrical Alignment App"/>
+        <group name="Cylindrical Alignment App">
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Inspector/src/self/lesfoster/cylindrical_alignment/inspector/top_component/PropertyInspectorTopComponent.java</file>
+        </group>
     </open-files>
 </project-private>

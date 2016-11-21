@@ -7,6 +7,8 @@ package self.lesfoster.cylindrical_alignment.legend.top_component;
 
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED;
+import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
 import javax.swing.SwingUtilities;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
@@ -44,8 +46,12 @@ import self.lesfoster.framework.integration.SharedObjectContainer.ContainerListe
 })
 public final class LegendTopComponent extends TopComponent {
 	public static final String PREFERRED_ID = "LegendTopComponent";
+	private ContainerListener<LegendModel> containerListener;
+	private final LegendComponent legendComponent;
 
 	public LegendTopComponent() {
+		legendComponent = new LegendComponent();
+		LegendTopComponent.this.associateLookup(legendComponent.getLookup());
 		initComponents();
 		setName(Bundle.CTL_LegendTopComponent());
 		setToolTipText(Bundle.HINT_LegendTopComponent());
@@ -81,13 +87,14 @@ public final class LegendTopComponent extends TopComponent {
     // End of variables declaration//GEN-END:variables
 	@Override
 	public void componentOpened() {
-		ContainerListener<LegendModel> containerListener = (value) -> {
+		containerListener = (value) -> {
 			SwingUtilities.invokeLater(() -> {
-				LegendComponent legendComponent = new LegendComponent(value);
-				LegendTopComponent.this.associateLookup(legendComponent.getLookup());
-				legendBasePanel.add(new JScrollPane(legendComponent), BorderLayout.CENTER);
+				legendComponent.setModel(value);
+				legendBasePanel.add(new JScrollPane(legendComponent, VERTICAL_SCROLLBAR_ALWAYS, HORIZONTAL_SCROLLBAR_AS_NEEDED), BorderLayout.CENTER);
+				legendComponent.repaint();
 			});
 		};
+
 		LegendModelContainer.getInstance().addListener(containerListener);
 	}
 

@@ -66,20 +66,28 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 
 	private String externallySelectedId;
 	private Object externallySelectedObject;
-	private final Lookup objectLookup;
+	private Lookup objectLookup;
 	private SelectedObjectWrapper wrapper;
 	
 	private Map<Integer,Object> legendNumberToModel = new HashMap<>();
 
+	public LegendComponent() {		
+		wrapper = new SelectedObjectWrapper();
+		instanceContent = new InstanceContent();
+		instanceContent.add(wrapper);
+		objectLookup = new AbstractLookup(instanceContent);
+	}
+	
 	/**
 	 * Construct with a model that contains mappings between colors and strings.
 	 * @param model to read color/explanation from.
 	 */
 	public LegendComponent(LegendModel model) {
-		wrapper = new SelectedObjectWrapper();
-		instanceContent = new InstanceContent();
-		instanceContent.add(wrapper);
-		objectLookup = new AbstractLookup(instanceContent);
+		this();
+		setModel(model);
+	}
+	
+	public final void setModel(LegendModel model) {
 
 		legendModel = model;
 		model.addListener(this);
@@ -140,9 +148,9 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	 */
 	@Override
 	public Dimension getPreferredSize() {
-		if (height == -1) {
+//		if (height == -1) {
 		    height = calcHeight();
-		}
+//		}
 		return new Dimension(calculateMaxFontWidth(), height);
 	}
 
@@ -183,7 +191,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	 * Here is where the work of presenting the mappings to the user will be done.
 	 */
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g) {		
 		g.setColor(Color.BLACK);
 		super.paintComponent(g);
 		Dimension preferredSize = getPreferredSize();
@@ -241,6 +249,9 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	 */
 	private int calculateMaxFontWidth() {
 		int maxWidth = 0;
+		if (legendModel == null) {
+			return maxWidth;
+		}
 		final FontMetrics fontMetrics = this.getFontMetrics(this.getFont());
 		if (fontMetrics == null) {
 			java.util.logging.Logger.getLogger("FontMetricsError").warning("Unable to obtain font metrics to calculate max font width.");
