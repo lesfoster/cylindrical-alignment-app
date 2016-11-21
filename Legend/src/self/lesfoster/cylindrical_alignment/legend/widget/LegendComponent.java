@@ -134,7 +134,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 			externallySelectedObject = selectionModel.getObjectForId(externallySelectedId);
 			updateLegendModel();
 		});
-		
+
 	}
 
 	//==============================IMPLEMENTS Lookup.Provider
@@ -169,6 +169,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	 */
 	@Override
 	public void updateLegendModel() {
+		invalidate();
 		validate();
 		repaint();
 	}
@@ -200,7 +201,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 		int vertOffset = VERT_OFFSET;
 		if (legendModel == null || legendModel.getLegendStrings() == null)
 			return;
-		legendNumberToModel.clear();
+		legendNumberToModel.clear();		
 		for (int i = 0; i < legendModel.getLegendStrings().size(); i++) {
 	    	Object legendModelObj = legendModel.getModels().get(i);
 			legendNumberToModel.put(i, legendModelObj);

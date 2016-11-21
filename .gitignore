@@ -3,3 +3,7 @@
 /dist/
 /Model/nbproject/private/
 /Model/build/
+/build/
+/Legend/build/
+/Inspector/build/
+/Viewer/build/

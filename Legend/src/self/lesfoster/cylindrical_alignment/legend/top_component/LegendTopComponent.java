@@ -7,8 +7,6 @@ package self.lesfoster.cylindrical_alignment.legend.top_component;
 
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
-import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED;
-import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
 import javax.swing.SwingUtilities;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
@@ -90,7 +88,7 @@ public final class LegendTopComponent extends TopComponent {
 		containerListener = (value) -> {
 			SwingUtilities.invokeLater(() -> {
 				legendComponent.setModel(value);
-				legendBasePanel.add(new JScrollPane(legendComponent, VERTICAL_SCROLLBAR_ALWAYS, HORIZONTAL_SCROLLBAR_AS_NEEDED), BorderLayout.CENTER);
+				legendBasePanel.add(new JScrollPane(legendComponent), BorderLayout.CENTER);
 				legendComponent.repaint();
 			});
 		};
