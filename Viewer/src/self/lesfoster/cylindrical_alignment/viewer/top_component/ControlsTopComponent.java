@@ -14,7 +14,7 @@ import org.openide.util.NbBundle.Messages;
 import self.lesfoster.cylindrical_alignment.settings.UnifiedSettingsPanel;
 
 /**
- * Top component which displays something.
+ * Platform-managed controls for the main view.
  */
 @ConvertAsProperties(
 		dtd = "-//self.lesfoster.cylindrical_alignment.viewer.top_component//Controls//EN",
@@ -25,9 +25,9 @@ import self.lesfoster.cylindrical_alignment.settings.UnifiedSettingsPanel;
 		//iconBase="SET/PATH/TO/ICON/HERE", 
 		persistenceType = TopComponent.PERSISTENCE_ALWAYS
 )
-@TopComponent.Registration(mode = "properties", openAtStartup = true)
+@TopComponent.Registration(mode = "properties", position = 200, openAtStartup = true)
 @ActionID(category = "Window", id = "self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window", position = 335)
 @TopComponent.OpenActionRegistration(
 		displayName = "#CTL_ControlsAction",
 		preferredID = "ControlsTopComponent"

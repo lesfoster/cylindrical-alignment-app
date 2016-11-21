@@ -81,7 +81,7 @@ public final class LegendTopComponent extends TopComponent {
     // End of variables declaration//GEN-END:variables
 	@Override
 	public void componentOpened() {
-		ContainerListener<LegendModel> containerListener = (LegendModel value) -> {
+		ContainerListener<LegendModel> containerListener = (value) -> {
 			SwingUtilities.invokeLater(() -> {
 				LegendComponent legendComponent = new LegendComponent(value);
 				LegendTopComponent.this.associateLookup(legendComponent.getLookup());

@@ -22,7 +22,8 @@
         <folder name="Modes">
             <folder name="properties">
                 <file name="ControlsTopComponent.wstcref">
-                    <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+                    <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
+                    <attr intvalue="200" name="position"/><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tc-ref PUBLIC "-//NetBeans//DTD Top Component in Mode Properties 2.0//EN" "http://www.netbeans.org/dtds/tc-ref2_0.dtd">
 <tc-ref version="2.0">
   <tc-id id="ControlsTopComponent"/>
@@ -124,6 +125,7 @@
             <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.shadow">
                 <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ControlsTopComponent-->
                 <attr name="originalFile" stringvalue="Actions/Window/self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.instance"/>
+                <attr intvalue="335" name="position"/>
             </file>
             <file name="self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.shadow">
                 <!--self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopComponent-->

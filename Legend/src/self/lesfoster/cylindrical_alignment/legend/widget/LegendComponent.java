@@ -46,7 +46,6 @@ import self.lesfoster.framework.integration.LegendModel;
 import self.lesfoster.framework.integration.LegendModelListener;
 import self.lesfoster.framework.integration.SelectedObjectWrapper;
 import self.lesfoster.framework.integration.SelectionModel;
-import self.lesfoster.framework.integration.SelectionModelListener;
 
 /**
  * Panel to show the legend of string to color, to aid the user in understanding what
@@ -122,13 +121,10 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 		
 		// Establish reaction to selection by other component.
 		SelectionModel selectionModel = SelectionModel.getSelectionModel();
-		selectionModel.addListener(new SelectionModelListener() {
-			@Override
-			public void selected( Object obj ) {
-				externallySelectedId = obj.toString();
-				externallySelectedObject = selectionModel.getObjectForId(externallySelectedId);
-				updateLegendModel();
-			}
+		selectionModel.addListener((obj) -> {
+			externallySelectedId = obj.toString();
+			externallySelectedObject = selectionModel.getObjectForId(externallySelectedId);
+			updateLegendModel();
 		});
 		
 	}

@@ -12,15 +12,6 @@
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/doc/PROGRESS.txt</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/nbproject/project.properties</file>
         </group>
-        <group name="Cylindrical Alignment App">
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/nbproject/project.xml</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/build.xml</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/nbproject/project.properties</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/nbproject/CylindricalAlignmentApp.conf</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/branding/modules/org-netbeans-core-windows.jar/org/netbeans/core/windows/view/ui/Bundle.properties</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/nbproject/genfiles.properties</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/nbproject/private/platform-private.properties</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/nbproject/platform.properties</file>
-        </group>
+        <group name="Cylindrical Alignment App"/>
     </open-files>
 </project-private>

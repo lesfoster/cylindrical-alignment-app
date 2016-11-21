@@ -37,9 +37,9 @@ import self.lesfoster.framework.integration.SelectedObjectWrapper;
 		//iconBase="SET/PATH/TO/ICON/HERE", 
 		persistenceType = TopComponent.PERSISTENCE_ALWAYS
 )
-@TopComponent.Registration(mode = "properties", openAtStartup = true)
+@TopComponent.Registration(mode = "properties", position = 100, openAtStartup = true)
 @ActionID(category = "Window", id = "self.lesfoster.cylindrical_alignment.inspector.top_component.PropertyInspectorTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window", position = 330)
 @TopComponent.OpenActionRegistration(
 		displayName = "#CTL_PropertyInspectorAction",
 		preferredID = PropertyInspectorTopComponent.PREFERRED_ID
