@@ -7,11 +7,13 @@ package self.lesfoster.cylindrical_alignment.action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
+import org.openide.util.Lookup;
 import org.openide.util.NbBundle.Messages;
-import org.openide.util.Utilities;
+//import org.openide.util.Utilities;
 import self.lesfoster.cylindrical_alignment.effector.Effected;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.HelpEffector;
@@ -29,14 +31,20 @@ public final class HelpAboutInputAction implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		//final Lookup actionsGlobalContext = Utilities.actionsGlobalContext();
+		//Effected effected = actionsGlobalContext.lookup(Effected.class);
 		// Get the effected, and get its help effector.
-		Effected effected = Utilities.actionsGlobalContext().lookup(Effected.class);
-		for (Effector effector: effected.getEffectors()) {
-			if (effector instanceof HelpEffector) {
-				HelpEffector he = (HelpEffector)effector;
-				he.showInputData();
+		Effected effected = Lookup.getDefault().lookup(Effected.class);
+		if (effected != null) {
+			for (Effector effector: effected.getEffectors()) {
+				if (effector instanceof HelpEffector) {
+					HelpEffector he = (HelpEffector)effector;
+					he.showInputData();
+				}
 			}
 		}
-		
+		else {
+			JOptionPane.showMessageDialog(null, "Sorry, no information is available");
+		}
 	}
 }
