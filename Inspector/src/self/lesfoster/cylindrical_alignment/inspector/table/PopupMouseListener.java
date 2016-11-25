@@ -32,11 +32,6 @@ public class PopupMouseListener extends MouseAdapter {
 		handleEvent(me);
 	}
 	
-	@Override
-	public void mouseClicked(MouseEvent me) {
-		handleEvent(me);
-	}
-
 	public void handleEvent(MouseEvent me) {
 		if (me.isPopupTrigger() || isLinux()  ||  isMac()) {
 			JTable table = (JTable) me.getComponent();
