@@ -33,6 +33,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
@@ -99,7 +100,10 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 				LegendComponent component = (LegendComponent)me.getSource();
 				if (component == null)
 					return;
-	            int pointY = component.getMousePosition().y;
+                                Point mousePoint = component.getMousePosition();
+                                if (mousePoint == null)
+                                    return;
+                                int pointY = mousePoint.y;
 				int heightOfFont = LegendComponent.this.getFont().getSize();
 				int divisor = calcHeightOfOneLegendEntry(heightOfFont);
 				int offsetPoint = pointY - VERT_OFFSET;
