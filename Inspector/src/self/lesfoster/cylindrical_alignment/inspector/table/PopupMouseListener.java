@@ -23,8 +23,22 @@ public class PopupMouseListener extends MouseAdapter {
 		return (System.getProperty("os.name").equalsIgnoreCase("Linux"));
 	}
 
+	private boolean isMac() {
+		return (System.getProperty("os.name").toLowerCase().contains("mac"));
+	}
+
+	@Override
 	public void mouseReleased(MouseEvent me) {
-		if (me.isPopupTrigger() || isLinux()) {
+		handleEvent(me);
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent me) {
+		handleEvent(me);
+	}
+
+	public void handleEvent(MouseEvent me) {
+		if (me.isPopupTrigger() || isLinux()  ||  isMac()) {
 			JTable table = (JTable) me.getComponent();
 			String[] values = getValueUnderClick(table, me.getX(), me.getY());
 			JPopupMenu menu = null;
