@@ -97,13 +97,15 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 			@Override
 			public void mousePressed(MouseEvent me) {
 				// Must figure out what was pressed.
-				LegendComponent component = (LegendComponent)me.getSource();
-				if (component == null)
+				LegendComponent component = (LegendComponent) me.getSource();
+				if (component == null) {
 					return;
-                                Point mousePoint = component.getMousePosition();
-                                if (mousePoint == null)
-                                    return;
-                                int pointY = mousePoint.y;
+				}
+				Point mousePoint = component.getMousePosition();
+				if (mousePoint == null) {
+					return;
+				}
+				int pointY = mousePoint.y;
 				int heightOfFont = LegendComponent.this.getFont().getSize();
 				int divisor = calcHeightOfOneLegendEntry(heightOfFont);
 				int offsetPoint = pointY - VERT_OFFSET;
