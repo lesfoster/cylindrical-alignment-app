@@ -96,39 +96,43 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent me) {
-				// Must figure out what was pressed.
-				LegendComponent component = (LegendComponent) me.getSource();
-				if (component == null) {
-					return;
-				}
-				Point mousePoint = component.getMousePosition();
-				if (mousePoint == null) {
-					return;
-				}
-				int pointY = mousePoint.y;
-				int heightOfFont = LegendComponent.this.getFont().getSize();
-				int divisor = calcHeightOfOneLegendEntry(heightOfFont);
-				int offsetPoint = pointY - VERT_OFFSET;
-				// Check: within visible range.
-				if (offsetPoint >= 0) {
-				    int legendNumber = offsetPoint / divisor;
-					System.out.println("Legend Number: " + legendNumber);
+				try {
+					// Must figure out what was pressed.
+					LegendComponent component = (LegendComponent) me.getSource();
+					if (component == null) {
+						return;
+					}
+					Point mousePoint = component.getMousePosition();
+					if (mousePoint == null) {
+						return;
+					}
+					int pointY = mousePoint.y;
+					int heightOfFont = LegendComponent.this.getFont().getSize();
+					int divisor = calcHeightOfOneLegendEntry(heightOfFont);
+					int offsetPoint = pointY - VERT_OFFSET;
+					// Check: within visible range.
+					if (offsetPoint >= 0) {
+						int legendNumber = offsetPoint / divisor;
+						System.out.println("Legend Number: " + legendNumber);
 
-				    // Check: within extent of collection on screen (not
-				    // within dead space below strings).
-				    if (legendModel.getLegendStrings().size() > legendNumber) {
-				        // Find the selected entity.
-						Object selectedObject = legendNumberToModel.get(legendNumber);
-						if (selectedObject != null) {
-							legendModel.selectModel(selectedObject);
-							// Push this to the lookup.
-							instanceContent.remove(wrapper);
-							instanceContent.add(wrapper.setSelectedObject(selectedObject));
-							externallySelectedObject = selectedObject;
-							LegendComponent.this.validate();
-							LegendComponent.this.repaint();
+						// Check: within extent of collection on screen (not
+						// within dead space below strings).
+						if (legendModel.getLegendStrings().size() > legendNumber) {
+							// Find the selected entity.
+							Object selectedObject = legendNumberToModel.get(legendNumber);
+							if (selectedObject != null) {
+								legendModel.selectModel(selectedObject);
+								// Push this to the lookup.
+								instanceContent.remove(wrapper);
+								instanceContent.add(wrapper.setSelectedObject(selectedObject));
+								externallySelectedObject = selectedObject;
+								LegendComponent.this.validate();
+								LegendComponent.this.repaint();
+							}
 						}
-				    }
+					}
+				} catch (Throwable th) {
+					th.printStackTrace();
 				}
 			}
 		});
