@@ -96,6 +96,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent me) {
+				System.out.println("Mouse was clicked " + me);
 				try {
 					// Must figure out what was pressed.
 					LegendComponent component = (LegendComponent) me.getSource();
