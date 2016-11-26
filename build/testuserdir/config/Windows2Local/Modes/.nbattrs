@@ -5,12 +5,12 @@
         <attr name="WinSys-TCRef-Order" stringvalue="ViewerTopComponent"/>
     </fileobject>
     <fileobject name="explorer">
-        <attr name="WinSys-TCRef-Order" stringvalue="LegendTopComponent"/>
+        <attr name="WinSys-TCRef-Order" stringvalue="LegendTopComponent/favorites"/>
     </fileobject>
     <fileobject name="output">
         <attr name="WinSys-TCRef-Order" stringvalue="output"/>
     </fileobject>
     <fileobject name="properties">
-        <attr name="WinSys-TCRef-Order" stringvalue="ControlsTopComponent/PropertyInspectorTopComponent/properties"/>
+        <attr name="WinSys-TCRef-Order" stringvalue="PropertyInspectorTopComponent/ControlsTopComponent/properties"/>
     </fileobject>
 </attributes>

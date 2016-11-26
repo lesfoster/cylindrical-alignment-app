@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><module codename="self.lesfoster.cylindrical_alignment.viewer">
-    <module_version install_time="1459627706996" last="true" origin="installer" specification_version="1.0">
-        <file crc="952281230" name="config/Modules/self-lesfoster-cylindrical_alignment-viewer.xml"/>
-        <file crc="3527982497" name="modules/ext/data_source.jar"/>
+    <module_version install_time="1480123846204" last="true" origin="installer" specification_version="1.0">
+        <file crc="4189698053" name="config/Modules/self-lesfoster-cylindrical_alignment-viewer.xml"/>
+        <file crc="908197187" name="modules/ext/commons-logging-1.2.jar"/>
+        <file crc="3196542781" name="modules/ext/httpclient-4.5.2.jar"/>
+        <file crc="1180701065" name="modules/ext/httpcore-4.4.4.jar"/>
+        <file crc="1312060552" name="modules/ext/kxml2-2.3.0.jar"/>
         <file crc="3483817966" name="modules/ext/utilities.jar"/>
-        <file crc="2770361438" name="modules/self-lesfoster-cylindrical_alignment-viewer.jar"/>
+        <file crc="4241589532" name="modules/ext/xmlpull_1_0_5.jar"/>
+        <file crc="38153328" name="modules/self-lesfoster-cylindrical_alignment-viewer.jar"/>
     </module_version>
 </module>

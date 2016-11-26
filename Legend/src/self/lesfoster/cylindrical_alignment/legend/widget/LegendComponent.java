@@ -128,8 +128,8 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 								legendModel.selectModel(selectedObject);
 								// Push this to the lookup.
 								wrapper.setSelectedObject(selectedObject);
-//								instanceContent.remove(wrapper);
-//								instanceContent.add(wrapper.setSelectedObject(selectedObject));
+								instanceContent.remove(wrapper);
+								instanceContent.add(wrapper.setSelectedObject(selectedObject));
 								externallySelectedObject = selectedObject;
 								LegendComponent.this.validate();
 								LegendComponent.this.repaint();
