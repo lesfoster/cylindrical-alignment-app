@@ -38,6 +38,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JComponent;
 import org.openide.util.Lookup;
@@ -70,6 +71,8 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	private Lookup objectLookup;
 	private SelectedObjectWrapper wrapper;
 	
+	private Logger log = Logger.getLogger(LegendComponent.class.getName());
+	
 	private Map<Integer,Object> legendNumberToModel = new HashMap<>();
 
 	public LegendComponent() {		
@@ -96,7 +99,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent me) {
-				System.out.println("Mouse was clicked " + me);
+				log.info("Mouse was clicked " + me);
 				try {
 					// Must figure out what was pressed.
 					LegendComponent component = (LegendComponent) me.getSource();
@@ -114,7 +117,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 					// Check: within visible range.
 					if (offsetPoint >= 0) {
 						int legendNumber = offsetPoint / divisor;
-						System.out.println("Legend Number: " + legendNumber);
+						log.info("Legend Number: " + legendNumber);
 
 						// Check: within extent of collection on screen (not
 						// within dead space below strings).
@@ -124,8 +127,9 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 							if (selectedObject != null) {
 								legendModel.selectModel(selectedObject);
 								// Push this to the lookup.
-								instanceContent.remove(wrapper);
-								instanceContent.add(wrapper.setSelectedObject(selectedObject));
+								wrapper.setSelectedObject(selectedObject);
+//								instanceContent.remove(wrapper);
+//								instanceContent.add(wrapper.setSelectedObject(selectedObject));
 								externallySelectedObject = selectedObject;
 								LegendComponent.this.validate();
 								LegendComponent.this.repaint();
