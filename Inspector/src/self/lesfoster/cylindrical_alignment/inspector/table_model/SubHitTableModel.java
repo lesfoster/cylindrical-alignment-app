@@ -32,6 +32,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
+import javafx.application.Platform;
 import javax.swing.SwingUtilities;
 
 import javax.swing.table.AbstractTableModel;
@@ -69,14 +70,9 @@ public class SubHitTableModel extends AbstractTableModel {
     		names.add(nextKey.toString());
     		values.add(properties.get(nextKey).toString());
     	}
-		if (SwingUtilities.isEventDispatchThread()) {
+		Platform.runLater(() -> {
 	        fireTableDataChanged();
-		}
-		else {
-			SwingUtilities.invokeLater(() -> {
-				fireTableDataChanged();
-			});
-		}
+		});
 	}
 
 	/** Return a header name for the column. */

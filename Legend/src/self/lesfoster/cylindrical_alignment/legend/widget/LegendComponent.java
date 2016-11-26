@@ -41,6 +41,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
 import org.openide.util.Lookup;
 import org.openide.util.lookup.AbstractLookup;
 import org.openide.util.lookup.InstanceContent;
@@ -184,9 +185,11 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	 */
 	@Override
 	public void updateLegendModel() {
-		invalidate();
-		validate();
-		repaint();
+		SwingUtilities.invokeLater(() -> {
+			invalidate();
+			validate();
+			repaint();
+		});
 	}
 
 	private int calcHeight() {
