@@ -148,7 +148,6 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 					if (obj instanceof SubEntity) {
 						SubEntity se = (SubEntity) obj;
 						subHitTableModel.setModelInfo(se.getProperties());
-						subHitTableModel.fireTableDataChanged();
 					}
 				}
 			}
@@ -172,7 +171,6 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 				}
 				if (lastModelInfo != null) {
 					subHitTableModel.setModelInfo(lastModelInfo);
-					subHitTableModel.fireTableDataChanged();
 				}
 			}
 		}
