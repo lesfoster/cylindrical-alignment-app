@@ -32,6 +32,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.SwingUtilities;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -43,15 +44,15 @@ public class SubHitTableModel extends AbstractTableModel {
 	
 	private static final long serialVersionUID = -1;
 
-    private List<String> names = new ArrayList<String>();
-    private List<String> values = new ArrayList<String>();
+    private List<String> names = new ArrayList<>();
+    private List<String> values = new ArrayList<>();
 
 	/** Can see the model data on initialization-- or not. */
 	public SubHitTableModel(Map<String, String> properties) {
 		setModelInfo(properties);
 	}
 
-	/** Repopulate model info.  Empty model if null map. */
+	/** Re-populate model info.  Empty model if null map. */
 	public synchronized void setModelInfo(Map properties) {
         // Don't adjust model unless some table (at least) wants to know.
         if (this.getTableModelListeners().length == 0)
@@ -68,7 +69,14 @@ public class SubHitTableModel extends AbstractTableModel {
     		names.add(nextKey.toString());
     		values.add(properties.get(nextKey).toString());
     	}
-        fireTableDataChanged();
+		if (SwingUtilities.isEventDispatchThread()) {
+	        fireTableDataChanged();
+		}
+		else {
+			SwingUtilities.invokeLater(() -> {
+				fireTableDataChanged();
+			});
+		}
 	}
 
 	/** Return a header name for the column. */
