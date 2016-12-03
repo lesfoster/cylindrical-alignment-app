@@ -812,8 +812,8 @@ System.out.println("Got selected sub-entity " + se.toString());
         float xl = translateToJava3dCoords(startSH); //((float)startSH * factor) - START_OF_CYLINDER;
         float xr = translateToJava3dCoords(endSH);   //((float)endSH * factor) - START_OF_CYLINDER;
 		final float yTop = (Constants.YT + extraYDisp);
-		final float zBack = (Constants.ZB + 1f);
-		final float zFront = (Constants.ZF - 1f);
+		final float zBack = (Constants.ZB + PERFORATION_HALF_WIDTH);
+		final float zFront = (Constants.ZF - PERFORATION_HALF_WIDTH);
 		final float yBottom = (Constants.YB + extraYDisp);
         //GeometryInfo gi = new GeometryInfo(GeometryInfo.POLYGON_ARRAY);
         float[] coordinateData = new float[] {
@@ -863,6 +863,7 @@ System.out.println("Got selected sub-entity " + se.toString());
 
         return coordinateData;
     }
+	public static final float PERFORATION_HALF_WIDTH = 2f;
 	
     /** Add shapes for any insertions in subject, relative to query. */
     private void generateSubjectInsertions(SubEntity subEntity, Group hitGroup, int[][] queryGaps) {

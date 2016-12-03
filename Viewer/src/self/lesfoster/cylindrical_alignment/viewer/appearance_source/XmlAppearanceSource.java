@@ -47,7 +47,7 @@ import self.lesfoster.framework.integration.SharedObjectContainer;
  * @author Leslie L. Foster
  */
 public class XmlAppearanceSource implements AppearanceSource {
-	private static final Color PERFORATION_COLOR = Color.RED;
+	private static final Color PERFORATION_COLOR = Color.BLACK;
 	private static final Color SPECULAR_WHITE_COLOR = new Color( 0.5f, 0.5f, 0.5f, OPACITY );
 	private static final Color DEFAULT_COLOR = new Color(0.3f, 0.3f, 1.0f, OPACITY);
 	
