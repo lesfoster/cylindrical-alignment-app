@@ -311,8 +311,8 @@ System.out.println("Got selected sub-entity " + se.toString());
 		}
 		rotateTransform = new RotateTransition();
 		this.naturalSpinRate = rotateTransform.getRate();
-		rotateTransform.setFromAngle(0.0);
-		rotateTransform.setToAngle(360.0);
+		rotateTransform.setFromAngle(360.0);
+		rotateTransform.setToAngle(0.0);
 		rotateTransform.setDuration(Duration.millis(duration));
 		rotateTransform.setInterpolator(Interpolator.LINEAR); //Runs smoothly.
 		rotateTransform.setCycleCount(Animation.INDEFINITE);  //Runs forever.

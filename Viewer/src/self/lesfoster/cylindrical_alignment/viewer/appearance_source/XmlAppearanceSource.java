@@ -52,8 +52,9 @@ public class XmlAppearanceSource implements AppearanceSource {
 	private static final Color DEFAULT_COLOR = new Color(0.3f, 0.3f, 1.0f, OPACITY);
 	
 	private static final String DEFAULT_ENTITY_TYPE = "Unknown Entity Type";
-	private static final double SCORE_RESOLUTION = 0.005;
-
+	private static final double SCORE_RESOLUTION = 0.0025;
+	private static final double MIN_SCORE = SCORE_RESOLUTION * 5;
+	
 	private static final String APPEARANCE_PROPS = "self/lesfoster/cylindrical_alignment/viewer/appearance_source/XmlAppearanceSource.properties";
 	private static final String NUM_COLORS_UNASSIGNED = "NumNonSpecificColors";
 	private static final String NON_SPECIFIC_DOMAIN_NAME = "NonSpecificDomain";
@@ -191,13 +192,13 @@ public class XmlAppearanceSource implements AppearanceSource {
         	diffuseColor = newColor.brighter().brighter();
         }
         else if (isScoreColored(entityType) && !lightenColor) {
-        	if (scoreBlue >= SCORE_RESOLUTION) {
+        	if (scoreBlue >= MIN_SCORE) {
         		scoreBlue -= SCORE_RESOLUTION;
         	}
-        	else if (scoreRed >= SCORE_RESOLUTION) {
+        	else if (scoreRed >= MIN_SCORE) {
         		scoreRed -= SCORE_RESOLUTION;
         	}
-        	else if (scoreGreen >= SCORE_RESOLUTION) {
+        	else if (scoreGreen >= MIN_SCORE) {
         		scoreGreen -= SCORE_RESOLUTION;
         	}
 
@@ -247,7 +248,7 @@ public class XmlAppearanceSource implements AppearanceSource {
     	PhongMaterial material = new PhongMaterial();
         Color white = SPECULAR_WHITE_COLOR;
         material.setSpecularColor( white );
-        material.setSpecularPower( 1.75f );
+        material.setSpecularPower( 64.0 ); //1.75
 
         return material;    	
     }
