@@ -145,7 +145,7 @@ public class CylinderContainer extends JFXPanel
 				instanceContent.remove(propMap);
 				SubEntity se = idToSubEntity.get(obj.toString());
 				if (se != null) {
-System.out.println("Got selected sub-entity " + se.toString());                    
+					//System.out.println("Got selected sub-entity " + se.toString());                    
 					propMap = se.getProperties();
 					instanceContent.add(propMap);
 				}
