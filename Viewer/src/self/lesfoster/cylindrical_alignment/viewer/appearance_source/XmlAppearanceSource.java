@@ -37,6 +37,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
+import self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.*;
 import self.lesfoster.cylindrical_alignment.viewer.utils.ConfigUtils;
 import self.lesfoster.framework.integration.LegendModel;
 import self.lesfoster.framework.integration.LegendModelContainer;
@@ -48,7 +49,7 @@ import self.lesfoster.framework.integration.SharedObjectContainer;
  */
 public class XmlAppearanceSource implements AppearanceSource {
 	private static final Color PERFORATION_COLOR = Color.BLACK;
-	private static final Color SPECULAR_WHITE_COLOR = new Color( 0.5f, 0.5f, 0.5f, OPACITY );
+	private static final Color SPECULAR_WHITE_COLOR = new Color( 0.95f, 0.95f, 0.95f, OPACITY );
 	private static final Color DEFAULT_COLOR = new Color(0.3f, 0.3f, 1.0f, OPACITY);
 	
 	private static final String DEFAULT_ENTITY_TYPE = "Unknown Entity Type";
@@ -67,6 +68,9 @@ public class XmlAppearanceSource implements AppearanceSource {
 	private float scoreRed;
 	private float scoreGreen;
 	private float scoreBlue;
+	
+	//private final ColorRanker colorRanker = new TripOrderColorRanker(TripOrderColorRanker.TripOrder.GRB);
+	private final ColorRanker colorRanker = new LeadColorRanker();
 
 	/**
 	 * Constructor prepares coloring properties for use.
@@ -82,12 +86,6 @@ public class XmlAppearanceSource implements AppearanceSource {
 			Color nextColor = parseForColor(properties.getProperty(nextKey));
 			if (nextColor != null) {
 				entityTypeToColor.put(nextKey, nextColor);
-				// for score coloring
-				if (isScoreColored(nextKey)) {
-					scoreRed = (float)nextColor.getRed();
-					scoreGreen = (float)nextColor.getGreen();
-					scoreBlue = (float)nextColor.getBlue();
-				}
 			}
 		}
 		
@@ -192,19 +190,10 @@ public class XmlAppearanceSource implements AppearanceSource {
         	diffuseColor = newColor.brighter().brighter();
         }
         else if (isScoreColored(entityType) && !lightenColor) {
-        	if (scoreBlue >= MIN_SCORE) {
-        		scoreBlue -= SCORE_RESOLUTION;
-        	}
-        	else if (scoreRed >= MIN_SCORE) {
-        		scoreRed -= SCORE_RESOLUTION;
-        	}
-        	else if (scoreGreen >= MIN_SCORE) {
-        		scoreGreen -= SCORE_RESOLUTION;
-        	}
-
-        	diffuseColor = new Color(scoreRed, scoreGreen, scoreBlue, OPACITY);
+        	diffuseColor = new Color(colorRanker.getScoreRed(), colorRanker.getScoreGreen(), colorRanker.getScoreBlue(), OPACITY);
         	entityTypeToColor.put(entityType, diffuseColor);
         	
+			colorRanker.decrementRank();
         }
         materialAppear.setDiffuseColor(diffuseColor);
     	legendModel.addColorString(buildLegendString(subEntity), subEntity,
@@ -248,7 +237,7 @@ public class XmlAppearanceSource implements AppearanceSource {
     	PhongMaterial material = new PhongMaterial();
         Color white = SPECULAR_WHITE_COLOR;
         material.setSpecularColor( white );
-        material.setSpecularPower( 64.0 ); //1.75
+        material.setSpecularPower( 4.0 ); //1.75
 
         return material;    	
     }
