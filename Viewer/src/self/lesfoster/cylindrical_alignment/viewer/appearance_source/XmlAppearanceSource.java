@@ -53,24 +53,18 @@ public class XmlAppearanceSource implements AppearanceSource {
 	private static final Color DEFAULT_COLOR = new Color(0.3f, 0.3f, 1.0f, OPACITY);
 	
 	private static final String DEFAULT_ENTITY_TYPE = "Unknown Entity Type";
-	private static final double SCORE_RESOLUTION = 0.0025;
-	private static final double MIN_SCORE = SCORE_RESOLUTION * 5;
 	
 	private static final String APPEARANCE_PROPS = "self/lesfoster/cylindrical_alignment/viewer/appearance_source/XmlAppearanceSource.properties";
 	private static final String NUM_COLORS_UNASSIGNED = "NumNonSpecificColors";
 	private static final String NON_SPECIFIC_DOMAIN_NAME = "NonSpecificDomain";
-	private Properties properties;
-	private Map<String, Color> entityTypeToColor;
+	private final Properties properties;
+	private final Map<String, Color> entityTypeToColor;
 	private LegendModel legendModel;
 	private int nextUnassignedDomain = 0;
 	private int highestDomainNum = -1;
 
-	private float scoreRed;
-	private float scoreGreen;
-	private float scoreBlue;
-	
 	//private final ColorRanker colorRanker = new TripOrderColorRanker(TripOrderColorRanker.TripOrder.GRB);
-	private final ColorRanker colorRanker = new LeadColorRanker();
+	private final ColorRanker colorRanker = new RustColorRanker();
 
 	/**
 	 * Constructor prepares coloring properties for use.
@@ -89,24 +83,20 @@ public class XmlAppearanceSource implements AppearanceSource {
 			}
 		}
 		
-		LegendModelContainer.getInstance().addListener(new SharedObjectContainer.ContainerListener<LegendModel>() {
-			@Override
-			public void setValue(LegendModel value) {
-				XmlAppearanceSource.this.legendModel = value;
-				Map residueColorMap = ResidueAppearanceHelper.getColorings();
-				for (Iterator it = residueColorMap.keySet().iterator(); it.hasNext();) {
-					String nextKey = (String) it.next();
-					// Must translate between coloring schemes, to the legend model.
-					final Color residueColor = (Color) residueColorMap.get(nextKey);
-					java.awt.Color color2d = new java.awt.Color(
-							(int) (255.0 * residueColor.getRed()),
-							(int) (255.0 * residueColor.getGreen()),
-							(int) (255.0 * residueColor.getBlue())
-					);
-					value.addColorString(nextKey, null, color2d);
-				}
+		LegendModelContainer.getInstance().addListener((SharedObjectContainer.ContainerListener<LegendModel>) (LegendModel value) -> {
+			XmlAppearanceSource.this.legendModel = value;
+			Map residueColorMap = ResidueAppearanceHelper.getColorings();
+			for (Iterator it = residueColorMap.keySet().iterator(); it.hasNext();) {
+				String nextKey = (String) it.next();
+				// Must translate between coloring schemes, to the legend model.
+				final Color residueColor = (Color) residueColorMap.get(nextKey);
+				java.awt.Color color2d = new java.awt.Color(
+						(int) (255.0 * residueColor.getRed()),
+						(int) (255.0 * residueColor.getGreen()),
+						(int) (255.0 * residueColor.getBlue())
+				);
+				value.addColorString(nextKey, null, color2d);
 			}
-			
 		});
 
 	}

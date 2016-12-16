@@ -13,6 +13,7 @@ import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker
  * @author Leslie L Foster
  */
 public class TripOrderColorRanker implements ColorRanker {
+
 	public enum TripOrder {		
 		BRG(new float[] {1.0f, 0.0f, 1.0f}),
 		BGR(new float[]{1.0f,1.0f,0}),
@@ -77,6 +78,18 @@ public class TripOrderColorRanker implements ColorRanker {
 			case RGB: rgbDimOrder();
 			          break;
 		}
+	}
+	
+	@Override
+	public void reset() {
+		scoreRed = tripOrder.getBaseColor()[0];
+		scoreGreen = tripOrder.getBaseColor()[1];
+		scoreBlue = tripOrder.getBaseColor()[2];		
+	}
+	
+	@Override
+	public String toString() {
+		return tripOrder.toString();
 	}
 	
 	private void brgDimOrder() {

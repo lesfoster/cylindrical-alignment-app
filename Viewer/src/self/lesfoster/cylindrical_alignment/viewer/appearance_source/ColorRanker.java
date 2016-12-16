@@ -15,4 +15,5 @@ public interface ColorRanker {
 	float getScoreGreen();
 	float getScoreBlue();
 	void decrementRank();
+	void reset();
 }

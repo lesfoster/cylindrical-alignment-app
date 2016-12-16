@@ -13,14 +13,16 @@ import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker
  * @author Leslie L Foster
  */
 public class RustColorRanker implements ColorRanker {
+	public static final float STEEL_LEVEL = 240.0f / 256.0f;
+	
 	private final static double SCORE_RESOLUTION = 0.0025 * 0.75;
 	private final static double BLUE_RESOLUTION = 0.0025 * 0.5;
 	private final static int[] RUSTCOLORS = new int[] { 183, 65, 14 };
 		
 	// Start out silvery.
-	private float scoreRed = 240.0f / 256.0f;
-	private float scoreBlue = 240.0f / 256.0f;
-	private float scoreGreen = 240.0f / 256.0f;
+	private float scoreRed = STEEL_LEVEL;
+	private float scoreBlue = STEEL_LEVEL;
+	private float scoreGreen = STEEL_LEVEL;
 
 	@Override
 	public float getScoreRed() {
@@ -49,4 +51,16 @@ public class RustColorRanker implements ColorRanker {
 			scoreBlue -= BLUE_RESOLUTION;
 		}
 	}	
+
+	@Override
+	public void reset() {
+		scoreRed = STEEL_LEVEL;
+		scoreBlue = STEEL_LEVEL;
+		scoreGreen = STEEL_LEVEL;		
+	}
+	
+	@Override
+	public String toString() {
+		return "Rust";
+	}
 }

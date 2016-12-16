@@ -13,14 +13,15 @@ import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker
  * @author Leslie L Foster
  */
 public class LeadColorRanker implements ColorRanker {
+	public static final float SILVER_LEVEL = 240.0f / 256.0f;
 	private static final double MIN_SCORE = 0.0025 * 5;
 	private static final double SCORE_RESOLUTION = 0.0025 * 0.75;
 	private static final int[] RUSTCOLORS = new int[] { 183, 65, 14 };
 		
 	// Start out silvery
-	private float scoreRed = 240.0f / 256.0f;
-	private float scoreBlue = 240.0f / 256.0f;
-	private float scoreGreen = 240.0f / 256.0f;
+	private float scoreRed = SILVER_LEVEL;
+	private float scoreBlue = SILVER_LEVEL;
+	private float scoreGreen = SILVER_LEVEL;
 
 	@Override
 	public float getScoreRed() {
@@ -49,5 +50,16 @@ public class LeadColorRanker implements ColorRanker {
 			scoreBlue -= SCORE_RESOLUTION;
 		}
 	}
+
+	@Override
+	public void reset() {
+		scoreRed = SILVER_LEVEL;
+		scoreGreen = SILVER_LEVEL;
+		scoreBlue = SILVER_LEVEL;
+	}
 	
+	@Override
+	public String toString() {
+		return "Leaden";
+	}
 }
