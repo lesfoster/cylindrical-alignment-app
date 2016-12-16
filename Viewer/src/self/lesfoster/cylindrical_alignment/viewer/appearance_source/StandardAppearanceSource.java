@@ -35,19 +35,21 @@ import java.util.Properties;
 import java.util.StringTokenizer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
+import org.openide.util.NbPreferences;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.*;
+import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.Swatch.COLOR_RANKER_KEY;
 import self.lesfoster.cylindrical_alignment.viewer.utils.ConfigUtils;
 import self.lesfoster.framework.integration.LegendModel;
 import self.lesfoster.framework.integration.LegendModelContainer;
 import self.lesfoster.framework.integration.SharedObjectContainer;
 
 /**
- * Source for appearances to entities generated via the XML Data Source.
+ * Source for appearances to entities.  Configured from properties.
  * @author Leslie L. Foster
  */
-public class XmlAppearanceSource implements AppearanceSource {
+public class StandardAppearanceSource implements AppearanceSource {
 	private static final Color PERFORATION_COLOR = Color.BLACK;
 	private static final Color SPECULAR_WHITE_COLOR = new Color( 0.95f, 0.95f, 0.95f, OPACITY );
 	private static final Color DEFAULT_COLOR = new Color(0.3f, 0.3f, 1.0f, OPACITY);
@@ -63,13 +65,13 @@ public class XmlAppearanceSource implements AppearanceSource {
 	private int nextUnassignedDomain = 0;
 	private int highestDomainNum = -1;
 
-	//private final ColorRanker colorRanker = new TripOrderColorRanker(TripOrderColorRanker.TripOrder.GRB);
-	private final ColorRanker colorRanker = new RustColorRanker();
+	private ColorRanker colorRanker;
 
 	/**
 	 * Constructor prepares coloring properties for use.
 	 */
-	public XmlAppearanceSource() {
+	public StandardAppearanceSource() {
+		initializeColorRanker();
 		//  Load the properties.
 		properties = ConfigUtils.getProperties(APPEARANCE_PROPS);
 		entityTypeToColor = new HashMap<>();
@@ -82,9 +84,8 @@ public class XmlAppearanceSource implements AppearanceSource {
 				entityTypeToColor.put(nextKey, nextColor);
 			}
 		}
-		
 		LegendModelContainer.getInstance().addListener((SharedObjectContainer.ContainerListener<LegendModel>) (LegendModel value) -> {
-			XmlAppearanceSource.this.legendModel = value;
+			StandardAppearanceSource.this.legendModel = value;
 			Map residueColorMap = ResidueAppearanceHelper.getColorings();
 			for (Iterator it = residueColorMap.keySet().iterator(); it.hasNext();) {
 				String nextKey = (String) it.next();
@@ -144,6 +145,22 @@ public class XmlAppearanceSource implements AppearanceSource {
 		legendModel.clear();
 	}
 
+	private void initializeColorRanker() {
+		String colorRankerClassName = NbPreferences.forModule(StandardAppearanceSource.class).get(COLOR_RANKER_KEY, RustColorRanker.class.getName());
+		if (colorRankerClassName == null) {
+			colorRanker = new RustColorRanker();
+		}
+		else {
+			try {
+				Class rankerClass = Class.forName(colorRankerClassName);
+				colorRanker = (ColorRanker)rankerClass.newInstance();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				colorRanker = new RustColorRanker();
+			}
+		}
+	}
+	
 	/**
 	 * Tells if this entity is to have its color affected by its scoring position or not.
 	 * @param entityType

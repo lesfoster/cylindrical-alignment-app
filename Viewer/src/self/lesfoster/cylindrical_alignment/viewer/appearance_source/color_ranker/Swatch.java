@@ -8,7 +8,11 @@ package self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_rank
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
+import org.openide.util.NbPreferences;
+import self.lesfoster.cylindrical_alignment.model.action.FileOpener;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker;
 
 /**
@@ -16,6 +20,7 @@ import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker
  * @author Leslie L Foster
  */
 public class Swatch extends JPanel {
+	public static final String COLOR_RANKER_KEY = "ColorRanker";
 	public static final int SWATCH_HEIGHT = 20;
 	public static final int SWATCH_WIDTH = 20;
 	
@@ -24,6 +29,7 @@ public class Swatch extends JPanel {
 		this.setBackground(Color.white);
 		this.colorRanker = colorRanker;
 		this.setToolTipText(colorRanker.toString());
+		this.addMouseListener(new SwatchMouseListener());
 	}
 	
 	@Override
@@ -36,6 +42,12 @@ public class Swatch extends JPanel {
 			for (int j = 0; j < 360 / SWATCH_HEIGHT; j++) {		
 				colorRanker.decrementRank();
 			}
+		}
+	}
+	
+	private class SwatchMouseListener extends MouseAdapter {
+		public void mouseClicked(MouseEvent me) {
+			NbPreferences.forModule(FileOpener.class).put(COLOR_RANKER_KEY, colorRanker.getClass().getName());			
 		}
 	}
 }

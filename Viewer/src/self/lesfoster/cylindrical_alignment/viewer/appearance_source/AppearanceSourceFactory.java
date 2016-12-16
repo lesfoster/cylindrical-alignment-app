@@ -40,7 +40,7 @@ public class AppearanceSourceFactory {
 	 */
     public static AppearanceSource getSourceForFile(String filename) {
     	//if (filename.endsWith(".xml")) {
-		return new XmlAppearanceSource();
+		return new StandardAppearanceSource();
     	//}
     }
 
