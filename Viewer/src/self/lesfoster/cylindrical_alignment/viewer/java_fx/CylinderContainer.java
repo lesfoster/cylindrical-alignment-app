@@ -266,7 +266,7 @@ public class CylinderContainer extends JFXPanel
 			root.getChildren().add(inSceneLabel);
 
 			// This must be populated after entities all created.
-			subEntitySelector = new GlyphSelector(selectionModel, idToShape, idToSubEntity);
+			subEntitySelector = new GlyphSelector(selectionModel, idToShape, idToSubEntity, appearanceSource);
 			handleMouse(scene);
 			handleKeyboard(scene);
 		});

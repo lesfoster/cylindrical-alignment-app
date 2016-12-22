@@ -17,7 +17,6 @@
         <group name="Cylindrical Alignment App">
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Legend/src/self/lesfoster/cylindrical_alignment/legend/top_component/LegendTopComponent.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Legend/src/self/lesfoster/cylindrical_alignment/legend/widget/LegendComponent.java</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Legend/src/self/lesfoster/cylindrical_alignment/legend/lifecycle/LegendStartup.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Legend/src/self/lesfoster/cylindrical_alignment/legend/widget/ConcreteLegendModel.java</file>
         </group>
     </open-files>

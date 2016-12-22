@@ -9,8 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Platform;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Shape3D;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
+import self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource;
 import self.lesfoster.framework.integration.SelectionModel;
 
 /**
@@ -24,8 +27,9 @@ public class GlyphSelector {
 	private final Map<String,SubEntity> idToSubEntity;
 	private final Map<String,Node> idToShape;
 	private final Map<SubEntity,Node> subEntityToNode;
+	private final PhongMaterial selectedMaterial;
 	
-	public GlyphSelector(SelectionModel selectionModel, Map<String,Node> idToShape, Map<String,SubEntity> idToSubEntity) {
+	public GlyphSelector(SelectionModel selectionModel, Map<String,Node> idToShape, Map<String,SubEntity> idToSubEntity, AppearanceSource appearanceSource) {
 		this.selectionModel = selectionModel;
 		this.idToShape = idToShape;
 		this.idToSubEntity = idToSubEntity;
@@ -33,6 +37,10 @@ public class GlyphSelector {
 		idToSubEntity.keySet().stream().forEach((id) -> {
 			subEntityToNode.put(idToSubEntity.get(id), idToShape.get(id));
 		});
+		selectedMaterial = new PhongMaterial();
+		float[] selectionColor = appearanceSource.getSelectionColor();
+		selectedMaterial.setDiffuseColor(new Color(selectionColor[0], selectionColor[1], selectionColor[2], 1.0));
+		selectedMaterial.setSpecularColor(Color.WHITE);
 	}
 	
 	/** Selection for the caller who knows sub-entities. */
@@ -62,7 +70,7 @@ public class GlyphSelector {
 		Shape3D shape = (Shape3D) node;
 		selectionModel.setUnselectedMaterialOfSelectedShape(shape.getMaterial());
 		selectionModel.setSelectedShape(shape);
-		shape.setMaterial(SelectionModel.SELECTED_MATERIAL);
+		shape.setMaterial(selectedMaterial);
 		//((Shape3D)idToShape.get(selectionModel.getSelectedId())).setMaterial(SelectionModel.SELECTED_MATERIAL);
 		System.out.println("Selected: " + node.getId());
 		

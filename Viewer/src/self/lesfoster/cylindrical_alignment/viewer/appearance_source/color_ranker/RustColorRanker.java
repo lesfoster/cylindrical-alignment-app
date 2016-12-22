@@ -40,6 +40,9 @@ public class RustColorRanker implements ColorRanker {
 	}
 
 	@Override
+	public float[] getSelectColor() { return MOLTEN_SELECT_COLOR; }
+
+	@Override
 	public void decrementRank() {
 		if (scoreRed >= RUSTCOLORS[0] / 256.0) {
 			scoreRed -= SCORE_RESOLUTION;

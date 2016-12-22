@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Material;
-import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Shape3D;
 
 /**
@@ -19,15 +17,6 @@ import javafx.scene.shape.Shape3D;
  * @author Leslie L Foster
  */
 public class SelectionModel {
-	public static final Material SELECTED_MATERIAL;
-	public static final Color SELECTION_COLOR = Color.GOLD;
-	public static final java.awt.Color SELECTION_COLOR_2D = new java.awt.Color(255,215,0);
-	static {
-		PhongMaterial mat = new PhongMaterial();
-		mat.setDiffuseColor(SELECTION_COLOR);
-		mat.setSpecularColor(Color.GOLDENROD);
-		SELECTED_MATERIAL = mat;
-	}
 	
 	private String selectedId;
 	private Material unselectedMaterialOfSelectedShape;

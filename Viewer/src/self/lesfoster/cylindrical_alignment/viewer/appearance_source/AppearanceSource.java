@@ -67,6 +67,8 @@ public interface AppearanceSource {
      */
     PhongMaterial createPerforatedAppearance(SubEntity subEntity);
 	
+	float[] getSelectionColor();
+	
 	/**
 	 * Disposal method.
 	 */

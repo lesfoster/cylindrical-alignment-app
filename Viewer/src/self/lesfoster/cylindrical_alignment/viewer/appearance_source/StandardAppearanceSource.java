@@ -86,6 +86,7 @@ public class StandardAppearanceSource implements AppearanceSource {
 		}
 		LegendModelContainer.getInstance().addListener((SharedObjectContainer.ContainerListener<LegendModel>) (LegendModel value) -> {
 			StandardAppearanceSource.this.legendModel = value;
+			value.setSelectionColor(getSelectionColor());
 			Map residueColorMap = ResidueAppearanceHelper.getColorings();
 			for (Iterator it = residueColorMap.keySet().iterator(); it.hasNext();) {
 				String nextKey = (String) it.next();
@@ -145,6 +146,11 @@ public class StandardAppearanceSource implements AppearanceSource {
 		legendModel.clear();
 	}
 
+	@Override
+	public float[] getSelectionColor() {
+		return (colorRanker != null) ? colorRanker.getSelectColor() : ColorRanker.GOLDEN_SELECT_COLOR;
+	}
+    
 	private void initializeColorRanker() {
 		String colorRankerClassName = NbPreferences.forModule(StandardAppearanceSource.class).get(COLOR_RANKER_KEY, RustColorRanker.class.getName());
 		if (colorRankerClassName == null) {
@@ -327,5 +333,5 @@ public class StandardAppearanceSource implements AppearanceSource {
     	}
     	return returnColor;
     }
-    
+
 }

@@ -47,6 +47,7 @@ public class ConcreteLegendModel implements LegendModel {
 	
 	private Map<Integer,Object> idToEntity = new HashMap<>();
 	private List<LegendSelectionListener> legendSelectionListeners = new ArrayList<>();
+	private float[] selectionColor;
 
     /**
      * Constructor builds collections.
@@ -188,5 +189,15 @@ public class ConcreteLegendModel implements LegendModel {
 				nextListener.selected(model);
 			}
 		}
+	}
+
+	@Override
+	public void setSelectionColor(float[] selectionColor) {
+		this.selectionColor = selectionColor;
+	}
+
+	@Override
+	public float[] getSelectionColor() {
+		return selectionColor;
 	}
 }

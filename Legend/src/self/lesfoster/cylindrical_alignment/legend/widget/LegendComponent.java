@@ -71,6 +71,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	private Object externallySelectedObject;
 	private Lookup objectLookup;
 	private SelectedObjectWrapper wrapper;
+	private Color selectionColor;
 	
 	private Logger log = Logger.getLogger(LegendComponent.class.getName());
 	
@@ -210,7 +211,11 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	 * Here is where the work of presenting the mappings to the user will be done.
 	 */
 	@Override
-	public void paintComponent(Graphics g) {		
+	public void paintComponent(Graphics g) {
+		if (selectionColor == null) {
+			float[] colorArr = legendModel.getSelectionColor();
+			selectionColor = new Color(colorArr[0], colorArr[1], colorArr[2]);			
+		}
 		g.setColor(Color.BLACK);
 		super.paintComponent(g);
 		Dimension preferredSize = getPreferredSize();
@@ -233,7 +238,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
             vertOffset += 1;
             Color idColor = null; 
 	    	if ( legendModelObj != null  &&  legendModelObj.equals( externallySelectedObject ) ) {
-	    		idColor = SelectionModel.SELECTION_COLOR_2D;
+	    		idColor = selectionColor;
 	    	}
 	    	else {
 	    		idColor = legendModel.getColorForString(nextString);

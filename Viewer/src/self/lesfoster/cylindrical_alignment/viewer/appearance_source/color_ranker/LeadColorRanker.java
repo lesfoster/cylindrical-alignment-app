@@ -50,6 +50,9 @@ public class LeadColorRanker implements ColorRanker {
 			scoreBlue -= SCORE_RESOLUTION;
 		}
 	}
+	
+	@Override
+	public float[] getSelectColor() { return MOLTEN_SELECT_COLOR; }
 
 	@Override
 	public void reset() {

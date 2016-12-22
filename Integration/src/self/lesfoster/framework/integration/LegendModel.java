@@ -99,6 +99,14 @@ public interface LegendModel {
 	void selectModel(Object model);
 	
 	/**
+	 * Allow programmatic setting of the selection's color.
+	 * @param selectionColor 
+	 */
+	void setSelectionColor(float[] selectionColor);
+	
+	float[] getSelectionColor();
+	
+	/**
 	 * Call this if the old context becomes meaningless, or at dispose.
 	 */
 	void clear();

@@ -5,6 +5,7 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker;
 
+import javafx.scene.paint.Color;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker;
 
 /**
@@ -13,14 +14,13 @@ import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker
  * @author Leslie L Foster
  */
 public class TripOrderColorRanker implements ColorRanker {
-
 	public enum TripOrder {		
 		BRG(new float[] {1.0f, 0.0f, 1.0f}),
 		BGR(new float[]{1.0f,1.0f,0}),
 		RGB(new float[]{1.0f,1.0f,0f}),
 		RBG(new float[]{1.0f,1.0f,0}),
 		GRB(new float[]{1.0f,1.0f,0.0f}),
-		GBR(new float[]{0,1.0f,1.0f});
+		GBR(new float[]{0,1.0f,1.0f});				
 		
 		private float[] baseColor;
 		
@@ -90,6 +90,11 @@ public class TripOrderColorRanker implements ColorRanker {
 	@Override
 	public String toString() {
 		return tripOrder.toString();
+	}
+	
+	@Override
+	public float[] getSelectColor() {
+		return GOLDEN_SELECT_COLOR;
 	}
 	
 	private void brgDimOrder() {
