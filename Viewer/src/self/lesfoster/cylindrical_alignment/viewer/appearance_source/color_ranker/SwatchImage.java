@@ -5,8 +5,12 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker;
+import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.Swatch.SWATCH_HEIGHT;
+import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.Swatch.SWATCH_WIDTH;
 
 /**
  * Special image extension, that renders the image to graphics, using a
@@ -37,16 +41,13 @@ public class SwatchImage extends BufferedImage {
 	
 	private void colorize() {
 		colorRanker.reset();
+		Graphics2D g2d = (Graphics2D)getGraphics();
 		for (int i = 0; i < SWATCH_HEIGHT; i++) {
-			for (int j = 0; j < SWATCH_WIDTH; j++) {
-				// Colors must be moved into integer 0-255 range first.  Then,
-				// there is a type of "shift" to get the byte into the correct
-				// part of the int's 4-byte.
-				colors[i][j] = (int)(colorRanker.getScoreRed() * 256) +
-				               (int)(colorRanker.getScoreGreen() * 256) * 256 +
-				               (int)(colorRanker.getScoreBlue() * 256) * 256 * 256;
+			g2d.setColor(new Color(colorRanker.getScoreRed(), colorRanker.getScoreGreen(), colorRanker.getScoreBlue()));
+			g2d.drawRect(0, i, SWATCH_WIDTH, 1);
+			for (int j = 0; j < 360 / SWATCH_HEIGHT; j++) {		
+				colorRanker.decrementRank();
 			}
-			colorRanker.decrementRank();
 		}
 	}
 		

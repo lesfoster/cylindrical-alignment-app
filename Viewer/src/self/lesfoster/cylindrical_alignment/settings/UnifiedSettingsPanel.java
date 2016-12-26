@@ -26,11 +26,8 @@ package self.lesfoster.cylindrical_alignment.settings;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
@@ -49,8 +46,8 @@ import self.lesfoster.cylindrical_alignment.viewer.top_component.EffectedContain
  * A settings panel for the viewer.
  */
 public class UnifiedSettingsPanel extends JPanel {
-    private int WIDTH = 300;
-    private int HEIGHT = 325;
+    private static final int WIDTH = 300;
+    private static final int HEIGHT = 325;
 	
 	private EffectorContainerListener ecl;
 	
@@ -168,6 +165,13 @@ public class UnifiedSettingsPanel extends JPanel {
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
         add( dragAroundYCheckbox, dragAroundYConstraints );
+		
+		gridY++;
+		JPanel colorRankerPanel = new ColorRankerPanel(WIDTH);
+        GridBagConstraints colorRankerConstraints = new GridBagConstraints(
+                gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
+        );
+        add( colorRankerPanel, colorRankerConstraints );
 
 		/*
 		   Anti-Alias is always-on for JavaFX.  May drop this later. LLF
@@ -209,5 +213,5 @@ public class UnifiedSettingsPanel extends JPanel {
 		if (ecl != null) {
 			ec.removeListener(ecl);
 		}
-	}
+	}	
 }

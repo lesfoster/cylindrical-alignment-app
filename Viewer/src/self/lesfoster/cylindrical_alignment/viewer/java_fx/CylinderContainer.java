@@ -341,7 +341,7 @@ public class CylinderContainer extends JFXPanel
 		rtnVal.getChildren().add(spinGroup);
 		try {
 			double rotOffs = 360.0 / entities.size();
-			double rotatePos = 0;
+			double rotatePos = 270.0;
 			SelectionModel selectionModel = SelectionModel.getSelectionModel();
 			for (Entity entity : entities) {
 				for (Object object : entity.getSubEntities()) {

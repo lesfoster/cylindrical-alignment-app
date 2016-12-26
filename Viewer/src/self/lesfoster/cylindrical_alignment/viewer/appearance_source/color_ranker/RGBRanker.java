@@ -13,7 +13,7 @@ package self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_rank
 public class RGBRanker extends TripOrderColorRanker {
 	
 	public RGBRanker() {
-		super(TripOrderColorRanker.TripOrder.GBR);
+		super(TripOrderColorRanker.TripOrder.RGB);
 	}
 	
 }

@@ -5,7 +5,6 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker;
 
-import javafx.scene.paint.Color;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker;
 
 /**
