@@ -14,12 +14,12 @@ import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker
  */
 public class TripOrderColorRanker implements ColorRanker {
 	public enum TripOrder {		
-		BRG(new float[] {1.0f, 0.0f, 1.0f}),
-		BGR(new float[]{1.0f,1.0f,0}),
-		RGB(new float[]{1.0f,1.0f,0f}),
-		RBG(new float[]{1.0f,1.0f,0}),
-		GRB(new float[]{1.0f,1.0f,0.0f}),
-		GBR(new float[]{0,1.0f,1.0f});				
+		BRG(new float[] {1.0f, 0.0f,  1.0f}),
+		BGR(new float[] {0,    1.0f,  1.0f}),
+		RGB(new float[] {1.0f, 1.0f,  0f}),
+		RBG(new float[] {1.0f, 0,     1.0f}),
+		GRB(new float[] {1.0f, 1.0f,  0.0f}),
+		GBR(new float[] {0,    1.0f,  1.0f});				
 		
 		private float[] baseColor;
 		
@@ -120,18 +120,6 @@ public class TripOrderColorRanker implements ColorRanker {
 		}
 	}
 	
-	private void rgbDimOrder() {
-		if (scoreRed >= MIN_SCORE) {
-			scoreRed -= SCORE_RESOLUTION;
-		}
-		else if (scoreGreen >= MIN_SCORE) {
-			scoreGreen -= SCORE_RESOLUTION;
-		}
-		else if (scoreBlue >= MIN_SCORE) {
-			scoreBlue -= SCORE_RESOLUTION;
-		}
-	}
-
 	private void gbrDimOrder() {
 		if (scoreGreen >= MIN_SCORE) {
 			scoreGreen -= SCORE_RESOLUTION;
@@ -165,6 +153,18 @@ public class TripOrderColorRanker implements ColorRanker {
 		}
 		else if (scoreGreen >= MIN_SCORE) {
 			scoreGreen -= SCORE_RESOLUTION;
+		}
+	}
+
+	private void rgbDimOrder() {
+		if (scoreRed >= MIN_SCORE) {
+			scoreRed -= SCORE_RESOLUTION;
+		}
+		else if (scoreGreen >= MIN_SCORE) {
+			scoreGreen -= SCORE_RESOLUTION;
+		}
+		else if (scoreBlue >= MIN_SCORE) {
+			scoreBlue -= SCORE_RESOLUTION;
 		}
 	}
 

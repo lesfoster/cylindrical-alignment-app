@@ -9,8 +9,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.ColorRanker;
-import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.Swatch.SWATCH_HEIGHT;
-import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.Swatch.SWATCH_WIDTH;
 
 /**
  * Special image extension, that renders the image to graphics, using a

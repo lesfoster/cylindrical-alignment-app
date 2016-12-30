@@ -36,12 +36,13 @@
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/ColorRanker.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/java_fx/CylinderContainer.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/StandardAppearanceSource.java</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/color_ranker/RustColorRanker.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/settings/UnifiedSettingsPanel.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/color_ranker/Swatch.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/settings/SettingsPanel.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/color_ranker/TripOrderColorRanker.java</file>
             <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/AppearanceSource.java</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/java_fx/events/GlyphSelector.java</file>
-            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/color_ranker/LeadColorRanker.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/viewer/appearance_source/color_ranker/SwatchImage.java</file>
+            <file>file:/C:/current_projects/gitfiles/CylindricalAlignmentApp/Viewer/src/self/lesfoster/cylindrical_alignment/settings/ColorRankerPanel.java</file>
         </group>
     </open-files>
 </project-private>

@@ -39,7 +39,7 @@ import org.openide.util.NbPreferences;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.SubEntity;
 import self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.*;
-import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.Swatch.COLOR_RANKER_KEY;
+import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker.SwatchImage.COLOR_RANKER_KEY;
 import self.lesfoster.cylindrical_alignment.viewer.utils.ConfigUtils;
 import self.lesfoster.framework.integration.LegendModel;
 import self.lesfoster.framework.integration.LegendModelContainer;
