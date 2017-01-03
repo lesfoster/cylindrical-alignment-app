@@ -362,7 +362,7 @@ public class CylinderContainer extends JFXPanel
 							generateResidueDentils(nextEntity, subHitGroup);
 						}
 						if (nextEntity.getPriority() == 0) {
-							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity);
+							subHitView = generatSubHitSolid(startSH, endSH + 1, nextEntity);
 						} else {
 							subHitView = generateRectSolid(startSH, endSH + 1, nextEntity.getPriority() * 0.01f, nextEntity);
 						}
@@ -426,8 +426,14 @@ public class CylinderContainer extends JFXPanel
 	/**
 	 * An override to support default offset.
 	 */
-	private MeshView generateRectSolid(int startSH, int endSH, SubEntity subEntity) {
-		return generateRectSolid(startSH, endSH, 0.0f, subEntity);
+	private MeshView generatSubHitSolid(int startSH, int endSH, SubEntity subEntity) {
+		if (subEntity.getStrand() == SubEntity.STRAND_NOT_APPLICABLE) {
+			return generateRectSolid(startSH, endSH, 0.0f, Constants.ZB, Constants.ZF, subEntity);
+		}
+		else {
+//			return generateRectSolid(startSH, endSH, 0.0f, Constants.ZB, Constants.ZF, subEntity);
+			return generateDirectionalSolid(startSH, endSH, 0.0f, Constants.ZB, Constants.ZF, subEntity);
+		}
 	}
 
 	/**
@@ -466,28 +472,74 @@ public class CylinderContainer extends JFXPanel
 		// Assume query IS coordinate system, and starts at zero.
 		float xl = translateToJava3dCoords(startSH); //((float)startSH * factor) - START_OF_CYLINDER;
 		float xr = translateToJava3dCoords(endSH);   //((float)endSH * factor) - START_OF_CYLINDER;
+		float[] coordinateData = getRectSolidCoordData(xl, extraYDisp, zBack, zFront, xr, 0f, subEntity.getStrand());
+
+		return createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), subEntity);
+	}
+
+	/**
+	 * Builds a rectangular solid geometry based on always-same Y,Z extents.
+	 */
+	private MeshView generateDirectionalSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront, SubEntity subEntity) {
+
+        // The translations: the start and end need to be normalized for
+		// a certain meter length.  They also need to be centered in that length.
+		// Assume query IS coordinate system, and starts at zero.
+		float xl = translateToJava3dCoords(startSH);
+		float xr = translateToJava3dCoords(endSH);
+		float[] coordinateData = getRectSolidCoordData(xl, extraYDisp, zBack, zFront, xr, 0.9f, subEntity.getStrand());
+		
+//		// Given we have these coords, let's tweak them a little.
+//		float offset = 0.6f;
+//		if (strand == SubEntity.POSITIVE_STRAND) {
+//			// Work on the right end, lid-side.
+//			for (int i = 0; i < 36; i++) {
+//				float xCoord = coordinateData[i * 3];
+//				if (xCoord == xr) {
+//					float zCoord = coordinateData[i * 3 + 2];
+//					if (zCoord == zBack) {
+//						zCoord += offset;
+//					}
+//					else if (zCoord == zFront) {
+//						zCoord -= offset;
+//					}
+//					coordinateData[i * 3 + 2] = zCoord;
+//				}
+//			}
+//		}
+//		else if (strand == SubEntity.NEGATIVE_STRAND) {
+//			// Work on the left end, lid-side.
+//		}
+//		else {
+//			// Do nothing. Should not happen.
+//		}
+
+		return createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), subEntity);
+	}
+	
+	public float[] getRectSolidCoordData(float xl, float extraYDisp, float zBack, float zFront, float xr, float extraZDisp, int strand) {
 		float[] coordinateData = new float[]{
 			// The 'lid'
-			xl, Constants.YT + extraYDisp, zBack, //0
+			xl, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //0
 			xl, Constants.YT + extraYDisp, zFront, //1
 			xr, Constants.YT + extraYDisp, zFront, //2
-			xl, Constants.YT + extraYDisp, zBack, //3
+			xl, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //3
 			xr, Constants.YT + extraYDisp, zFront, //4
-			xr, Constants.YT + extraYDisp, zBack, //5
+			xr, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //5
 			// The 'left'
-			xl, Constants.YT + extraYDisp, zBack, //6
-			xl, Constants.YB + extraYDisp, zBack, //7
+			xl, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //6
+			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //7
 			xl, Constants.YT + extraYDisp, zFront, //8
 			xl, Constants.YT + extraYDisp, zFront, //9
-			xl, Constants.YB + extraYDisp, zBack, //10
+			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //10
 			xl, Constants.YB + extraYDisp, zFront, //11
 			// The 'right'
-			xr, Constants.YT + extraYDisp, zBack, //12
+			xr, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //12
 			xr, Constants.YT + extraYDisp, zFront, //13
-			xr, Constants.YB + extraYDisp, zBack, //14
+			xr, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //14
 			xr, Constants.YT + extraYDisp, zFront, //15
 			xr, Constants.YB + extraYDisp, zFront, //16
-			xr, Constants.YB + extraYDisp, zBack, //17
+			xr, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //17
 			// The 'front'
 			xl, Constants.YT + extraYDisp, zFront, //18
 			xl, Constants.YB + extraYDisp, zFront, //19
@@ -496,22 +548,21 @@ public class CylinderContainer extends JFXPanel
 			xr, Constants.YB + extraYDisp, zFront, //22
 			xr, Constants.YT + extraYDisp, zFront, //23
 			// The 'bottom'
-			xl, Constants.YB + extraYDisp, zBack, //24
-			xr, Constants.YB + extraYDisp, zBack, //25
+			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //24
+			xr, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //25
 			xr, Constants.YB + extraYDisp, zFront, //26
-			xl, Constants.YB + extraYDisp, zBack, //27
+			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //27
 			xr, Constants.YB + extraYDisp, zFront, //28
 			xl, Constants.YB + extraYDisp, zFront, //29
 			// The 'back'
-			xr, Constants.YT + extraYDisp, zBack, //30
-			xr, Constants.YB + extraYDisp, zBack, //31
-			xl, Constants.YB + extraYDisp, zBack, //32
-			xr, Constants.YT + extraYDisp, zBack, //33
-			xl, Constants.YB + extraYDisp, zBack, //34
-			xl, Constants.YT + extraYDisp, zBack, //35
+			xr, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //30
+			xr, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //31
+			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //32
+			xr, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //33
+			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //34
+			xl, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //35
 		};
-
-		return createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), subEntity);
+		return coordinateData;
 	}
 
 	private float translateToJava3dCoords(int seqCoord) {
