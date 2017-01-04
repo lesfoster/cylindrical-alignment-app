@@ -489,30 +489,29 @@ public class CylinderContainer extends JFXPanel
 		float xr = translateToJava3dCoords(endSH);
 		float[] coordinateData = getRectSolidCoordData(xl, extraYDisp, zBack, zFront, xr, 0.9f, subEntity.getStrand());
 		
-//		// Given we have these coords, let's tweak them a little.
-//		float offset = 0.6f;
-//		if (strand == SubEntity.POSITIVE_STRAND) {
-//			// Work on the right end, lid-side.
-//			for (int i = 0; i < 36; i++) {
-//				float xCoord = coordinateData[i * 3];
-//				if (xCoord == xr) {
-//					float zCoord = coordinateData[i * 3 + 2];
-//					if (zCoord == zBack) {
-//						zCoord += offset;
-//					}
-//					else if (zCoord == zFront) {
-//						zCoord -= offset;
-//					}
-//					coordinateData[i * 3 + 2] = zCoord;
-//				}
-//			}
-//		}
-//		else if (strand == SubEntity.NEGATIVE_STRAND) {
-//			// Work on the left end, lid-side.
-//		}
-//		else {
-//			// Do nothing. Should not happen.
-//		}
+		// Given we have these coords, let's tweak them a little.
+		float offset = 0.9f;
+		final int strand = subEntity.getStrand();
+		// Work on the ends.
+		
+		// NOTE: I considered applying these changes at specific places in
+		// the "getRectSolidCoordData" method below, but it made that already
+		// detail-rich code even more convoluted.
+		for (int i = 0; i < 36; i++) {
+			float xCoord = coordinateData[i * 3];
+			boolean adjustedSide =
+					(xCoord == xr && strand == SubEntity.POSITIVE_STRAND) ||
+					(xCoord == xl && strand == SubEntity.NEGATIVE_STRAND);
+			if (adjustedSide) {
+				float zCoord = coordinateData[i * 3 + 2];
+				if (zCoord == zBack) {
+					zCoord += offset;
+				} else if (zCoord == zFront) {
+					zCoord -= offset;
+				}
+				coordinateData[i * 3 + 2] = zCoord;
+			}
+		}
 
 		return createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), subEntity);
 	}
@@ -520,26 +519,26 @@ public class CylinderContainer extends JFXPanel
 	public float[] getRectSolidCoordData(float xl, float extraYDisp, float zBack, float zFront, float xr, float extraZDisp, int strand) {
 		float[] coordinateData = new float[]{
 			// The 'lid'
-			xl, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //0
+			xl, Constants.YT + extraYDisp, zBack, //0
 			xl, Constants.YT + extraYDisp, zFront, //1
 			xr, Constants.YT + extraYDisp, zFront, //2
-			xl, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //3
+			xl, Constants.YT + extraYDisp, zBack, //3
 			xr, Constants.YT + extraYDisp, zFront, //4
-			xr, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //5
+			xr, Constants.YT + extraYDisp, zBack, //5
 			// The 'left'
-			xl, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //6
-			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //7
+			xl, Constants.YT + extraYDisp, zBack, //6
+			xl, Constants.YB + extraYDisp, zBack, //7
 			xl, Constants.YT + extraYDisp, zFront, //8
 			xl, Constants.YT + extraYDisp, zFront, //9
-			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //10
+			xl, Constants.YB + extraYDisp, zBack, //10
 			xl, Constants.YB + extraYDisp, zFront, //11
 			// The 'right'
-			xr, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //12
+			xr, Constants.YT + extraYDisp, zBack, //12
 			xr, Constants.YT + extraYDisp, zFront, //13
-			xr, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //14
+			xr, Constants.YB + extraYDisp, zBack, //14
 			xr, Constants.YT + extraYDisp, zFront, //15
 			xr, Constants.YB + extraYDisp, zFront, //16
-			xr, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //17
+			xr, Constants.YB + extraYDisp, zBack, //17
 			// The 'front'
 			xl, Constants.YT + extraYDisp, zFront, //18
 			xl, Constants.YB + extraYDisp, zFront, //19
@@ -548,19 +547,19 @@ public class CylinderContainer extends JFXPanel
 			xr, Constants.YB + extraYDisp, zFront, //22
 			xr, Constants.YT + extraYDisp, zFront, //23
 			// The 'bottom'
-			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //24
-			xr, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //25
+			xl, Constants.YB + extraYDisp, zBack, //24
+			xr, Constants.YB + extraYDisp, zBack, //25
 			xr, Constants.YB + extraYDisp, zFront, //26
-			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //27
+			xl, Constants.YB + extraYDisp, zBack, //27
 			xr, Constants.YB + extraYDisp, zFront, //28
 			xl, Constants.YB + extraYDisp, zFront, //29
 			// The 'back'
-			xr, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //30
-			xr, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //31
-			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //32
-			xr, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.POSITIVE_STRAND) ? -extraZDisp : 0f), //33
-			xl, Constants.YB + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //34
-			xl, Constants.YT + extraYDisp, zBack + ((strand == SubEntity.NEGATIVE_STRAND) ? extraZDisp : 0f), //35
+			xr, Constants.YT + extraYDisp, zBack, //30
+			xr, Constants.YB + extraYDisp, zBack, //31
+			xl, Constants.YB + extraYDisp, zBack, //32
+			xr, Constants.YT + extraYDisp, zBack, //33
+			xl, Constants.YB + extraYDisp, zBack, //34
+			xl, Constants.YT + extraYDisp, zBack, //35
 		};
 		return coordinateData;
 	}
