@@ -85,7 +85,7 @@ public class CylinderContainer extends JFXPanel
 	private int endRange = 0;
 	private int selectionEnvelope = 0;
 	
-	private boolean prominentDentils;
+	private boolean prominentDentils = false;
 	private boolean diffResiduesOnly;
 	private boolean usingResidueDentils = true;
 	private float factor = 0;
@@ -472,7 +472,7 @@ public class CylinderContainer extends JFXPanel
 		// Assume query IS coordinate system, and starts at zero.
 		float xl = translateToJava3dCoords(startSH); //((float)startSH * factor) - START_OF_CYLINDER;
 		float xr = translateToJava3dCoords(endSH);   //((float)endSH * factor) - START_OF_CYLINDER;
-		float[] coordinateData = getRectSolidCoordData(xl, extraYDisp, zBack, zFront, xr, 0f, subEntity.getStrand());
+		float[] coordinateData = getRectSolidCoordData(xl, extraYDisp, zBack, zFront, xr, 0f, subEntity != null ? subEntity.getStrand() : SubEntity.STRAND_NOT_APPLICABLE);
 
 		return createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), subEntity);
 	}
@@ -599,7 +599,7 @@ public class CylinderContainer extends JFXPanel
 			meshView.setMaterial(meshMaterial);
 		}
 
-		meshView.setId("Homemade Shape");
+		meshView.setId("Hit Solid Shape");
 		return meshView;
 	}
 
@@ -638,7 +638,24 @@ public class CylinderContainer extends JFXPanel
 		MeshView meshView = new MeshView(tm);
 		meshView.setCullFace(CullFace.BACK);
 
-		meshView.setId("Homemade Shape");
+		meshView.setId("Dentil Facade Shape");
+		return meshView;
+	}
+
+	private MeshView createSingleSideMesh(float[] vertices, float[] texCoords) {
+		TriangleMesh tm = new TriangleMesh();
+		tm.getPoints().addAll(vertices);
+		tm.getTexCoords().addAll(texCoords);
+		// Only one tex coord.
+		int[] faces = new int[]{
+			0, 0, 1, 0, 2, 0,
+			3, 0, 4, 0, 5, 0,
+		};
+		tm.getFaces().addAll(faces);
+		MeshView meshView = new MeshView(tm);
+		meshView.setCullFace(CullFace.BACK);
+
+		meshView.setId("Dentil Shape");
 		return meshView;
 	}
 
@@ -982,10 +999,13 @@ public class CylinderContainer extends JFXPanel
 					char residue = dentilResidues.charAt(i);
 
 					//generateRectSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront, SubEntity subEntity)
-        			if (prominentDentils)
-        			    gi = generateRectSolid(startPos + i, startPos + i + 1, 0.01f, Constants.ZF - 0.02f, Constants.ZF + 0.02f, null);
-        			else
-        				gi = generateFacadeBox(startPos + i, startPos + i + 1, 0.01f, Constants.ZF, Constants.ZF + 0.01f);
+        			if (prominentDentils) {
+        			    gi = generateRectSolid(startPos + i, startPos + i + 1, 0.5f, Constants.ZF - 0.5f, Constants.ZF + 0.5f, null);
+					}
+					else {
+        				gi = generateDentil(startPos + i, startPos + i + 1, 0.5f);
+        				//gi = generateFacadeBox(startPos + i, startPos + i + 1, 0.5f, Constants.ZF - 0.5f, Constants.ZF + 0.5f);
+					}
  
         			//Shape3D part = new Shape3D();
         			PhongMaterial materialAppearance = appearanceSource.createSubEntityAppearance(dentilResidues.charAt(i), isBase);
@@ -1034,6 +1054,31 @@ public class CylinderContainer extends JFXPanel
 			xl, Constants.YT + extraYDisp, zBack, //35
 		};
 		MeshView meshView = createFacadeMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
+		return meshView;	
+	}
+	
+	/**
+	 * Builds a rectangular solid geometry based on always-same Y,Z extents.
+	 */
+	private MeshView generateDentil(int startSH, int endSH, float extraYDisp) {
+		final float yTop = (Constants.YT + extraYDisp);
+		float dentilThickness = 0.5f;
+		final float zBack = (Constants.ZF - PERFORATION_HALF_WIDTH + dentilThickness);
+		final float zFront = zBack + dentilThickness;
+
+		float xl = translateToJava3dCoords(startSH);
+		float xr = translateToJava3dCoords(endSH);
+		float[] coordinateData = new float[]{
+			// The 'lid'
+			xl, yTop, zBack, //0
+			xl, yTop, zFront, //1
+			xr, yTop, zFront, //2
+			xl, yTop, zBack, //3
+			xr, yTop, zFront, //4
+			xr, yTop, zBack, //5
+		};
+		MeshView meshView = createArbitrarySizedMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
+		//MeshView meshView = createSingleSideMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData));
 		return meshView;	
 	}
 	
