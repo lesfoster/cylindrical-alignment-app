@@ -46,8 +46,8 @@ public class RemotePingCounter {
         // - minimal chatter on failure.
         try {
             // No-Op for demo
-            if ( 0 == 0 )
-                return;
+            //if ( 0 == 0 )
+            //    return;
             // Register usage so usership can be counted.  Give the user an option out.
             String remotePingProp = System.getProperty( "stat" );
             if ( remotePingProp == null  ||  remotePingProp.equals( "1" ) ) {
