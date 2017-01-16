@@ -214,7 +214,9 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 	public void paintComponent(Graphics g) {
 		if (selectionColor == null) {
 			float[] colorArr = legendModel.getSelectionColor();
-			selectionColor = new Color(colorArr[0], colorArr[1], colorArr[2]);			
+			if (colorArr != null) {
+				selectionColor = new Color(colorArr[0], colorArr[1], colorArr[2]);			
+			}
 		}
 		g.setColor(Color.BLACK);
 		super.paintComponent(g);
@@ -237,7 +239,7 @@ public class LegendComponent extends JPanel implements LegendModelListener, Look
 
             vertOffset += 1;
             Color idColor = null; 
-	    	if ( legendModelObj != null  &&  legendModelObj.equals( externallySelectedObject ) ) {
+	    	if ( legendModelObj != null  &&  legendModelObj.equals( externallySelectedObject )  &&  selectionColor != null ) {
 	    		idColor = selectionColor;
 	    	}
 	    	else {
