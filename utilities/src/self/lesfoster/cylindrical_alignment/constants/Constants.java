@@ -47,7 +47,7 @@ public class Constants {
 	public static final float CB_LABEL_HEIGHT = (.05f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
 	public static final float CB_OUTER_RADIUS = Constants.YB + 2.4f;  // Outside will reach beyond the outer surface of all solids.
 	public static final float CB_INNER_RADIUS = Constants.YB - 0.8f;  // Inside will be just lower than the inner surface of all solids.
-	public static final float YLABEL = (0.55f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
+	public static final float YLABEL = -(0.55f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
 	public static final float CENTER_X = 0.0f;
 	public static final float CENTER_Y = 0.0f;
 	public static final float CENTER_Z = 0.0f;
