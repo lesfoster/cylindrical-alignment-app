@@ -1,9 +1,9 @@
-/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/platform=1475191117000
-cluster./Users/fosterl/gitfiles/master/cylindrial-alignment-app/build/cluster=1480123848000
-cluster./Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/platform=1475191117000
-user=1480123848000
+C:\Program Files\NetBeans 8.2\platform=1479431852584
+cluster.C:/current_projects/gitfiles/master/cylindrial-alignment-app/build/cluster=1484614571615
+cluster.C:/Program Files/NetBeans 8.2/platform=1479431852584
+user=1484614571615
 crc=7
 locale=en_US
 branding=cylindricalalignmentapp
-java.version=1.8.0_112
-java.vm.version=25.112-b16
+java.version=1.8.0_111
+java.vm.version=25.111-b14

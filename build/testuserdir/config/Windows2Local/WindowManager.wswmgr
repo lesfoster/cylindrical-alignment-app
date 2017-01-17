@@ -15,7 +15,7 @@
    centered-vertically="false"
    maximize-if-width-below="0"
    maximize-if-height-below="0"
-   frame-state="0"
+   frame-state="6"
 />
   <separated-properties
    x="128"
@@ -40,12 +40,12 @@
   </constraints>
   <bounds x="422" y="170" width="537" height="311" />
     </editor-area>
-    <screen width="1280" height="800"/>
-    <active-mode name="explorer"/>
+    <screen width="1920" height="1080"/>
+    <active-mode name="editor"/>
     <toolbar configuration="Standard" preferred-icon-size="24"/>
     <tc-list>
-  <tc-id id="LegendTopComponent"/>
   <tc-id id="ViewerTopComponent"/>
+  <tc-id id="LegendTopComponent"/>
   <tc-id id="PropertyInspectorTopComponent"/>
   <tc-id id="ControlsTopComponent"/>
     </tc-list>

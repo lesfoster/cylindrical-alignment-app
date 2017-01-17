@@ -101,7 +101,6 @@
                 <package>self.lesfoster.cylindrical_alignment.geometry</package>
                 <package>self.lesfoster.cylindrical_alignment.input_stream_source</package>
                 <package>self.lesfoster.cylindrical_alignment.model.action</package>
-                <package>self.lesfoster.cylindrical_alignment.model.components</package>
                 <package>self.lesfoster.cylindrical_alignment.model.data_source</package>
                 <package>self.lesfoster.cylindrical_alignment.model.lifecycle</package>
                 <package>self.lesfoster.cylindrical_alignment.model.server_interaction</package>
@@ -135,6 +134,10 @@
             <class-path-extension>
                 <runtime-relative-path>ext/data_source.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/data_source.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/JGoogleAnalytics_0.4.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/JGoogleAnalytics_0.4.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
                 <runtime-relative-path>ext/xmlpull_1_0_5.jar</runtime-relative-path>
