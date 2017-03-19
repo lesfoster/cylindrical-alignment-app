@@ -76,7 +76,7 @@
     </subentity><xsl:text>&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="$prog='blastn'" >
-    <!-- Strand is positive if sstart greater than send -->
+    <!-- Strand is positive if qend greater than qstart -->
     <xsl:if test="$qend &gt; $qstart" >
     <xsl:variable name="strand" select="1" />
     <subentity qstart="{$qstart}" qend="{$qend}" sstart="{$sstart}" send="{$send}" strand="{$strand}"><xsl:text>&#xa;</xsl:text>

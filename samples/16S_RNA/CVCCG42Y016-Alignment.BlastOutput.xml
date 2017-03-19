@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastn</BlastOutput_program>
+  <BlastOutput_version>BLASTN 2.6.1+</BlastOutput_version>
+  <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
+  <BlastOutput_db>bioassay/bioassay_nucleotide</BlastOutput_db>
+  <BlastOutput_query-ID>NC_021111.1</BlastOutput_query-ID>
+  <BlastOutput_query-def>Cistanche deserticola chloroplast, complete genome</BlastOutput_query-def>
+  <BlastOutput_query-len>102657</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_expect>10</Parameters_expect>
+      <Parameters_sc-match>2</Parameters_sc-match>
+      <Parameters_sc-mismatch>-3</Parameters_sc-mismatch>
+      <Parameters_gap-open>5</Parameters_gap-open>
+      <Parameters_gap-extend>2</Parameters_gap-extend>
+      <Parameters_filter>L;m;</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>NC_021111.1</Iteration_query-ID>
+  <Iteration_query-def>Cistanche deserticola chloroplast, complete genome</Iteration_query-def>
+  <Iteration_query-len>102657</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>gi|84365506|emb|CT010467.6|</Hit_id>
+  <Hit_def>Mouse DNA sequence from clone RP23-81C12 on chromosome 17, complete sequence</Hit_def>
+  <Hit_accession>CT010467</Hit_accession>
+  <Hit_len>216559</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>64.4042</Hsp_bit-score>
+      <Hsp_score>70</Hsp_score>
+      <Hsp_evalue>6.97776e-09</Hsp_evalue>
+      <Hsp_query-from>14639</Hsp_query-from>
+      <Hsp_query-to>14750</Hsp_query-to>
+      <Hsp_hit-from>66530</Hsp_hit-from>
+      <Hsp_hit-to>66418</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>84</Hsp_identity>
+      <Hsp_positive>84</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>114</Hsp_align-len>
+      <Hsp_qseq>GGGGAGTACGTTCGCAAGAATGAAACTCAAAGGAATTGACGG--GGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGATGCAAAGCGAAGAACCTTACCAGGGCTTGACA</Hsp_qseq>
+      <Hsp_hseq>GGGGAGTATGGTTGCAAAGCTGAAACTTAAAGGAATTGACGGAAGGGCAC-CACCAGGAGTGGAGCCTGCGGCTTAATTTGACTCAACACGGGAAACCTCACCCGGCCCGGACA</Hsp_hseq>
+      <Hsp_midline>|||||||| | | ||||   ||||||| ||||||||||||||  |||| | ||| ||  ||||||| || || |||||| ||  |||  ||   ||||| ||| || |  ||||</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>3.38536</Hsp_evalue>
+      <Hsp_query-from>14268</Hsp_query-from>
+      <Hsp_query-to>14286</Hsp_query-to>
+      <Hsp_hit-from>67085</Hsp_hit-from>
+      <Hsp_hit-to>67067</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>19</Hsp_identity>
+      <Hsp_positive>19</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>19</Hsp_align-len>
+      <Hsp_qseq>GTGCCAGCAGCCGCGGTAA</Hsp_qseq>
+      <Hsp_hseq>GTGCCAGCAGCCGCGGTAA</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>2</Hit_num>
+  <Hit_id>gi|51260925|gb|BC079673.1|</Hit_id>
+  <Hit_def>Mus musculus solute carrier family 8 (sodium/calcium exchanger), member 1, mRNA (cDNA clone MGC:90693 IMAGE:30532156), complete cds</Hit_def>
+  <Hit_accession>BC079673</Hit_accession>
+  <Hit_len>4032</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>39.157</Hsp_bit-score>
+      <Hsp_score>42</Hsp_score>
+      <Hsp_evalue>0.277888</Hsp_evalue>
+      <Hsp_query-from>13917</Hsp_query-from>
+      <Hsp_query-to>13949</Hsp_query-to>
+      <Hsp_hit-from>2155</Hsp_hit-from>
+      <Hsp_hit-to>2189</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>31</Hsp_identity>
+      <Hsp_positive>31</Hsp_positive>
+      <Hsp_gaps>2</Hsp_gaps>
+      <Hsp_align-len>35</Hsp_align-len>
+      <Hsp_qseq>GAACCTG-CCCTTG-GGAGGGGAACAACAGCTGGA</Hsp_qseq>
+      <Hsp_hseq>GAACCTGGCCCTTGTGGTGGGGACCAACAGCTGGA</Hsp_hseq>
+      <Hsp_midline>||||||| |||||| || ||||| |||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>3</Hit_num>
+  <Hit_id>gi|1032200730|gb|KT896664.1|</Hit_id>
+  <Hit_def>Drosophila melanogaster mitochondrion, complete genome</Hit_def>
+  <Hit_accession>KT896664</Hit_accession>
+  <Hit_len>14913</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>0.969923</Hsp_evalue>
+      <Hsp_query-from>15246</Hsp_query-from>
+      <Hsp_query-to>15285</Hsp_query-to>
+      <Hsp_hit-from>14174</Hsp_hit-from>
+      <Hsp_hit-to>14135</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>32</Hsp_identity>
+      <Hsp_positive>32</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>40</Hsp_align-len>
+      <Hsp_qseq>AAGTCGTAACAAGGTAGCCGTACTGGAAGGTGCTGCTAGA</Hsp_qseq>
+      <Hsp_hseq>AAGTCGTAACATAGTAGATGTACTGGAAAGTGTATCTAGA</Hsp_hseq>
+      <Hsp_midline>|||||||||||  ||||  ||||||||| |||   |||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>4</Hit_num>
+  <Hit_id>gi|1039673934|ref|NG_050912.1|</Hit_id>
+  <Hit_def>Homo sapiens pecanex homolog 2 (Drosophila) (PCNX2), RefSeqGene on chromosome 1</Hit_def>
+  <Hit_accession>NG_050912</Hit_accession>
+  <Hit_len>318627</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>0.969923</Hsp_evalue>
+      <Hsp_query-from>13968</Hsp_query-from>
+      <Hsp_query-to>13992</Hsp_query-to>
+      <Hsp_hit-from>153283</Hsp_hit-from>
+      <Hsp_hit-to>153259</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>23</Hsp_identity>
+      <Hsp_positive>23</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>25</Hsp_align-len>
+      <Hsp_qseq>GTAGGCTGAGGAGCAAAAGGAGGAA</Hsp_qseq>
+      <Hsp_hseq>GTAGGCTGAGGAGGAGAAGGAGGAA</Hsp_hseq>
+      <Hsp_midline>||||||||||||| | |||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>5</Hit_num>
+  <Hit_id>gi|939619751|ref|NM_001316414.1|</Hit_id>
+  <Hit_def>Drosophila melanogaster pipsqueak (psq), transcript variant N, mRNA</Hit_def>
+  <Hit_accession>NM_001316414</Hit_accession>
+  <Hit_len>6336</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>0.969923</Hsp_evalue>
+      <Hsp_query-from>14075</Hsp_query-from>
+      <Hsp_query-to>14097</Hsp_query-to>
+      <Hsp_hit-from>4144</Hsp_hit-from>
+      <Hsp_hit-to>4166</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>22</Hsp_identity>
+      <Hsp_positive>22</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>23</Hsp_align-len>
+      <Hsp_qseq>GAGGATGATCAGCCACACTGGGA</Hsp_qseq>
+      <Hsp_hseq>GAGGATGATCAGCCACACAGGGA</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||| ||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>6</Hit_num>
+  <Hit_id>gi|25955604|gb|BC040206.1|</Hit_id>
+  <Hit_def>Mus musculus cAMP-regulated phosphoprotein 19, mRNA (cDNA clone MGC:36257 IMAGE:3485973), complete cds</Hit_def>
+  <Hit_accession>BC040206</Hit_accession>
+  <Hit_len>4045</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>0.969923</Hsp_evalue>
+      <Hsp_query-from>14285</Hsp_query-from>
+      <Hsp_query-to>14307</Hsp_query-to>
+      <Hsp_hit-from>1665</Hsp_hit-from>
+      <Hsp_hit-to>1643</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>22</Hsp_identity>
+      <Hsp_positive>22</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>23</Hsp_align-len>
+      <Hsp_qseq>AAGACAGAGGATGCAAGCGTTAT</Hsp_qseq>
+      <Hsp_hseq>AAGACAGAGGATGCAAGTGTTAT</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||| |||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>7</Hit_num>
+  <Hit_id>gi|34784361|gb|BC057209.1|</Hit_id>
+  <Hit_def>Mus musculus phospholipase A2, group VI, mRNA (cDNA clone MGC:68011 IMAGE:5329147), complete cds</Hit_def>
+  <Hit_accession>BC057209</Hit_accession>
+  <Hit_len>3352</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>3.38536</Hsp_evalue>
+      <Hsp_query-from>13827</Hsp_query-from>
+      <Hsp_query-to>13845</Hsp_query-to>
+      <Hsp_hit-from>1778</Hsp_hit-from>
+      <Hsp_hit-to>1760</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>19</Hsp_identity>
+      <Hsp_positive>19</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>19</Hsp_align-len>
+      <Hsp_qseq>GCTCAGGATGAACGCTGGC</Hsp_qseq>
+      <Hsp_hseq>GCTCAGGATGAACGCTGGC</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>35870</Statistics_db-num>
+      <Statistics_db-len>117791115</Statistics_db-len>
+      <Statistics_hsp-len>0</Statistics_hsp-len>
+      <Statistics_eff-space>0</Statistics_eff-space>
+      <Statistics_kappa>0.41</Statistics_kappa>
+      <Statistics_lambda>0.625</Statistics_lambda>
+      <Statistics_entropy>0.78</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>
+

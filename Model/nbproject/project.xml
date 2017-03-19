@@ -40,7 +40,6 @@
                 </dependency>
             </module-dependencies>
             <public-packages>
-                <package>cyl.jaxb</package>
                 <package>org.apache.commons.logging</package>
                 <package>org.apache.commons.logging.impl</package>
                 <package>org.apache.http</package>

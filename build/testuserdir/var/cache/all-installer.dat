@@ -1,4 +1,4 @@
-#Mon Jan 16 19:56:35 EST 2017
+#Sat Mar 18 21:17:39 EDT 2017
 org.netbeans.core.startup.OpenIDE-Module-Deprecated=\u0000
 self.lesfoster.cylindrical_alignment.legend.OpenIDE-Module-Deprecated=\u0000
 org.netbeans.modules.settings.AutoUpdate-Show-In-Client=false
@@ -329,8 +329,8 @@ org.netbeans.modules.sendopts.AutoUpdate-Show-In-Client=false
 self.lesfoster.cylindrical_alignment.model.AutoUpdate-Show-In-Client=true
 org.netbeans.api.progress.nb.OpenIDE-Module-Install=\u0000
 org.netbeans.api.progress.compat8.AutoUpdate-Show-In-Client=false
-org.jdesktop.layout.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.keyring.fallback.AutoUpdate-Show-In-Client=false
+org.jdesktop.layout.AutoUpdate-Show-In-Client=false
 org.openide.filesystems.nb.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.modules.options.api.AutoUpdate-Show-In-Client=false
 org.netbeans.modules.autoupdate.ui.OpenIDE-Module-Description=\u0000
@@ -407,8 +407,8 @@ org.netbeans.core.netigso.AutoUpdate-Show-In-Client=false
 org.netbeans.libs.felix.OpenIDE-Module-Hide-Classpath-Packages=\u0000
 org.netbeans.core.startup.base.OpenIDE-Module-Deprecated=\u0000
 self.lesfoster.framework.integration.OpenIDE-Module-Description=\u0000
-org.netbeans.core.execution.AutoUpdate-Show-In-Client=false
 org.openide.execution.AutoUpdate-Show-In-Client=false
+org.netbeans.core.execution.AutoUpdate-Show-In-Client=false
 org.netbeans.core.io.ui.OpenIDE-Module-Layer=org/netbeans/core/io/ui/layer.xml
 org.openide.util.OpenIDE-Module-Deprecated=\u0000
 org.openide.filesystems.compat8.OpenIDE-Module-Layer=\u0000

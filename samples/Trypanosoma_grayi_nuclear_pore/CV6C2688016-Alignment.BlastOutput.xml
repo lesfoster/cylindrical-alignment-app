@@ -1,0 +1,1108 @@
+<?xml version="1.0"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastn</BlastOutput_program>
+  <BlastOutput_version>BLASTN 2.6.1+</BlastOutput_version>
+  <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
+  <BlastOutput_db>bioassay/bioassay_nucleotide</BlastOutput_db>
+  <BlastOutput_query-ID>XM_009310341.1</BlastOutput_query-ID>
+  <BlastOutput_query-def>Trypanosoma grayi nuclear pore complex protein (NUP155) partial mRNA</BlastOutput_query-def>
+  <BlastOutput_query-len>3984</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_expect>10</Parameters_expect>
+      <Parameters_sc-match>2</Parameters_sc-match>
+      <Parameters_sc-mismatch>-3</Parameters_sc-mismatch>
+      <Parameters_gap-open>5</Parameters_gap-open>
+      <Parameters_gap-extend>2</Parameters_gap-extend>
+      <Parameters_filter>L;m;</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>XM_009310341.1</Iteration_query-ID>
+  <Iteration_query-def>Trypanosoma grayi nuclear pore complex protein (NUP155) partial mRNA</Iteration_query-def>
+  <Iteration_query-len>3984</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>gi|1026191086|ref|NG_047071.1|</Hit_id>
+  <Hit_def>Homo sapiens protein tyrosine phosphatase, non-receptor type 3 (PTPN3), RefSeqGene on chromosome 9</Hit_def>
+  <Hit_accession>NG_047071</Hit_accession>
+  <Hit_len>169660</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>39.157</Hsp_bit-score>
+      <Hsp_score>42</Hsp_score>
+      <Hsp_evalue>0.752443</Hsp_evalue>
+      <Hsp_query-from>810</Hsp_query-from>
+      <Hsp_query-to>837</Hsp_query-to>
+      <Hsp_hit-from>88424</Hsp_hit-from>
+      <Hsp_hit-to>88450</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>26</Hsp_identity>
+      <Hsp_positive>26</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>28</Hsp_align-len>
+      <Hsp_qseq>CAAACGCAGGCTATTATTTACTTTGGAT</Hsp_qseq>
+      <Hsp_hseq>CAAACGCAGGCTATTATTT-CTTTGTAT</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||| ||||| ||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>2</Hit_num>
+  <Hit_id>gi|50925340|gb|BC079617.1|</Hit_id>
+  <Hit_def>Mus musculus ATP-binding cassette, sub-family A (ABC1), member 3, mRNA (cDNA clone MGC:90532 IMAGE:30362309), complete cds</Hit_def>
+  <Hit_accession>BC079617</Hit_accession>
+  <Hit_len>5228</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>39.157</Hsp_bit-score>
+      <Hsp_score>42</Hsp_score>
+      <Hsp_evalue>0.752443</Hsp_evalue>
+      <Hsp_query-from>1407</Hsp_query-from>
+      <Hsp_query-to>1430</Hsp_query-to>
+      <Hsp_hit-from>2594</Hsp_hit-from>
+      <Hsp_hit-to>2617</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>23</Hsp_identity>
+      <Hsp_positive>23</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>24</Hsp_align-len>
+      <Hsp_qseq>ATTTGTTCATCGCCATGGCATTTC</Hsp_qseq>
+      <Hsp_hseq>ATTTGCTCATCGCCATGGCATTTC</Hsp_hseq>
+      <Hsp_midline>||||| ||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>3</Hit_num>
+  <Hit_id>gi|1068937317|ref|NG_007083.2|</Hit_id>
+  <Hit_def>Homo sapiens adhesion G protein-coupled receptor V1 (ADGRV1), RefSeqGene on chromosome 5</Hit_def>
+  <Hit_accession>NG_007083</Hit_accession>
+  <Hit_len>641873</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>2.62629</Hsp_evalue>
+      <Hsp_query-from>2709</Hsp_query-from>
+      <Hsp_query-to>2733</Hsp_query-to>
+      <Hsp_hit-from>68599</Hsp_hit-from>
+      <Hsp_hit-to>68623</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>23</Hsp_identity>
+      <Hsp_positive>23</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>25</Hsp_align-len>
+      <Hsp_qseq>GAAACAAAAGGTACTGGAGATGGTG</Hsp_qseq>
+      <Hsp_hseq>GAAACAACAGGTACTGGAGAGGGTG</Hsp_hseq>
+      <Hsp_midline>||||||| |||||||||||| ||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>4</Hit_num>
+  <Hit_id>gi|1034579510|ref|XM_011538331.2|</Hit_id>
+  <Hit_def>PREDICTED: Homo sapiens transmembrane protein 233 (TMEM233), transcript variant X6, mRNA</Hit_def>
+  <Hit_accession>XM_011538331</Hit_accession>
+  <Hit_len>2477</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>2.62629</Hsp_evalue>
+      <Hsp_query-from>1634</Hsp_query-from>
+      <Hsp_query-to>1660</Hsp_query-to>
+      <Hsp_hit-from>666</Hsp_hit-from>
+      <Hsp_hit-to>691</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>25</Hsp_identity>
+      <Hsp_positive>25</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>ATTTCCCCTTCTCTCAGATGGAGAAAT</Hsp_qseq>
+      <Hsp_hseq>ATTTCCCCTTTT-TCAGATGGAGAAAT</Hsp_hseq>
+      <Hsp_midline>|||||||||| | ||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>5</Hit_num>
+  <Hit_id>gi|117167770|gb|BC107391.2|</Hit_id>
+  <Hit_def>Mus musculus MAS-related GPR, member B2, mRNA (cDNA clone MGC:130391 IMAGE:40057816), complete cds</Hit_def>
+  <Hit_accession>BC107391</Hit_accession>
+  <Hit_len>1731</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>2.62629</Hsp_evalue>
+      <Hsp_query-from>967</Hsp_query-from>
+      <Hsp_query-to>991</Hsp_query-to>
+      <Hsp_hit-from>701</Hsp_hit-from>
+      <Hsp_hit-to>725</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>23</Hsp_identity>
+      <Hsp_positive>23</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>25</Hsp_align-len>
+      <Hsp_qseq>CTTGTCAAGATCTTCTGTGTCTCAC</Hsp_qseq>
+      <Hsp_hseq>CTTGTCAGGATCTTCTGTGGCTCAC</Hsp_hseq>
+      <Hsp_midline>||||||| ||||||||||| |||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>6</Hit_num>
+  <Hit_id>gi|37589216|gb|BC058951.1|</Hit_id>
+  <Hit_def>Mus musculus two pore channel 1, mRNA (cDNA clone MGC:66697 IMAGE:6821376), complete cds</Hit_def>
+  <Hit_accession>BC058951</Hit_accession>
+  <Hit_len>4666</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>2.62629</Hsp_evalue>
+      <Hsp_query-from>1640</Hsp_query-from>
+      <Hsp_query-to>1664</Hsp_query-to>
+      <Hsp_hit-from>2474</Hsp_hit-from>
+      <Hsp_hit-to>2498</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>23</Hsp_identity>
+      <Hsp_positive>23</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>25</Hsp_align-len>
+      <Hsp_qseq>CCTTCTCTCAGATGGAGAAATCCCA</Hsp_qseq>
+      <Hsp_hseq>CCCTCTCTCAGATGGAGAAATACCA</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||||||||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>7</Hit_num>
+  <Hit_id>gi|54292008|gb|AC137513.3|</Hit_id>
+  <Hit_def>Mus musculus BAC clone RP24-460O22 from 15, complete sequence</Hit_def>
+  <Hit_accession>AC137513</Hit_accession>
+  <Hit_len>179386</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>2.62629</Hsp_evalue>
+      <Hsp_query-from>1392</Hsp_query-from>
+      <Hsp_query-to>1411</Hsp_query-to>
+      <Hsp_hit-from>101322</Hsp_hit-from>
+      <Hsp_hit-to>101341</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>20</Hsp_identity>
+      <Hsp_positive>20</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>20</Hsp_align-len>
+      <Hsp_qseq>TCCAAGGCAGTTTGTATTTG</Hsp_qseq>
+      <Hsp_hseq>TCCAAGGCAGTTTGTATTTG</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>8</Hit_num>
+  <Hit_id>gi|34785726|gb|BC057338.1|</Hit_id>
+  <Hit_def>Mus musculus axin2, mRNA (cDNA clone MGC:66984 IMAGE:6827741), complete cds</Hit_def>
+  <Hit_accession>BC057338</Hit_accession>
+  <Hit_len>4263</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>37.3537</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>2.62629</Hsp_evalue>
+      <Hsp_query-from>1283</Hsp_query-from>
+      <Hsp_query-to>1305</Hsp_query-to>
+      <Hsp_hit-from>2681</Hsp_hit-from>
+      <Hsp_hit-to>2659</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>22</Hsp_identity>
+      <Hsp_positive>22</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>23</Hsp_align-len>
+      <Hsp_qseq>CAAGCTTTGAGCCTTCCGCATCC</Hsp_qseq>
+      <Hsp_hseq>CAAGCTTTGAGCCTTCAGCATCC</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||| ||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>9</Hit_num>
+  <Hit_id>gi|1147623326|ref|NG_029872.2|</Hit_id>
+  <Hit_def>Homo sapiens actin binding LIM protein 1 (ABLIM1), RefSeqGene on chromosome 10</Hit_def>
+  <Hit_accession>NG_029872</Hit_accession>
+  <Hit_len>397534</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>92575</Hsp_hit-from>
+      <Hsp_hit-to>92549</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>237306</Hsp_hit-from>
+      <Hsp_hit-to>237332</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>10</Hit_num>
+  <Hit_id>gi|1140392578|ref|NG_052831.1|</Hit_id>
+  <Hit_def>Homo sapiens glutamate metabotropic receptor 5 (GRM5), RefSeqGene on chromosome 11</Hit_def>
+  <Hit_accession>NG_052831</Hit_accession>
+  <Hit_len>568396</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>88097</Hsp_hit-from>
+      <Hsp_hit-to>88123</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>11</Hit_num>
+  <Hit_id>gi|1140176921|ref|NG_052828.1|</Hit_id>
+  <Hit_def>Homo sapiens bromodomain PHD finger transcription factor (BPTF), RefSeqGene on chromosome 17</Hit_def>
+  <Hit_accession>NG_052828</Hit_accession>
+  <Hit_len>165862</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>893</Hsp_query-to>
+      <Hsp_hit-from>80302</Hsp_hit-from>
+      <Hsp_hit-to>80281</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>21</Hsp_identity>
+      <Hsp_positive>21</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>22</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTAC</Hsp_qseq>
+      <Hsp_hseq>AGGATGGTCTCAAACTTCTCAC</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||| ||</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>112545</Hsp_hit-from>
+      <Hsp_hit-to>112519</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGATGGTCTCAAACTCCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||| || ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>12</Hit_num>
+  <Hit_id>gi|1139695580|ref|NG_052806.1|</Hit_id>
+  <Hit_def>Homo sapiens phospholipase A2 group IVE (PLA2G4E), RefSeqGene on chromosome 15</Hit_def>
+  <Hit_accession>NG_052806</Hit_accession>
+  <Hit_len>76122</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>674</Hsp_query-from>
+      <Hsp_query-to>692</Hsp_query-to>
+      <Hsp_hit-from>477</Hsp_hit-from>
+      <Hsp_hit-to>495</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>19</Hsp_identity>
+      <Hsp_positive>19</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>19</Hsp_align-len>
+      <Hsp_qseq>CAAAAATTAGACTTGTAAA</Hsp_qseq>
+      <Hsp_hseq>CAAAAATTAGACTTGTAAA</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>13</Hit_num>
+  <Hit_id>gi|1084352553|ref|NG_051927.1|</Hit_id>
+  <Hit_def>Homo sapiens SAM and SH3 domain containing 1 (SASH1), RefSeqGene on chromosome 6</Hit_def>
+  <Hit_accession>NG_051927</Hit_accession>
+  <Hit_len>286774</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>71978</Hsp_hit-from>
+      <Hsp_hit-to>72004</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGATGGTCTCAAACTGCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||| || ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>14</Hit_num>
+  <Hit_id>gi|1060856497|ref|NG_001332.3|</Hit_id>
+  <Hit_def>Homo sapiens T cell receptor alpha delta locus (TCRA/TCRD) on chromosome 14</Hit_def>
+  <Hit_accession>NG_001332</Hit_accession>
+  <Hit_len>930229</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>3185</Hsp_query-from>
+      <Hsp_query-to>3208</Hsp_query-to>
+      <Hsp_hit-from>558008</Hsp_hit-from>
+      <Hsp_hit-to>558033</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>2</Hsp_gaps>
+      <Hsp_align-len>26</Hsp_align-len>
+      <Hsp_qseq>AGCTTATGGA--GGCACAACTGCAGC</Hsp_qseq>
+      <Hsp_hseq>AGCTTATGGACTGGCACAACTGCAGC</Hsp_hseq>
+      <Hsp_midline>||||||||||  ||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>15</Hit_num>
+  <Hit_id>gi|1046552735|ref|NG_051213.1|</Hit_id>
+  <Hit_def>Homo sapiens karyopherin subunit alpha 7 (KPNA7), RefSeqGene on chromosome 7</Hit_def>
+  <Hit_accession>NG_051213</Hit_accession>
+  <Hit_len>80951</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>76819</Hsp_hit-from>
+      <Hsp_hit-to>76845</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGATGGTCTCAAACTCCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||| || ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>16</Hit_num>
+  <Hit_id>gi|1040460970|ref|NG_050926.1|</Hit_id>
+  <Hit_def>Homo sapiens microtubule-actin crosslinking factor 1 (MACF1), RefSeqGene on chromosome 1</Hit_def>
+  <Hit_accession>NG_050926</Hit_accession>
+  <Hit_len>412722</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>37428</Hsp_hit-from>
+      <Hsp_hit-to>37402</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>17</Hit_num>
+  <Hit_id>gi|1039778456|ref|XM_017322206.1|</Hit_id>
+  <Hit_def>PREDICTED: Mus musculus trinucleotide repeat containing 6a (Tnrc6a), transcript variant X13, mRNA</Hit_def>
+  <Hit_accession>XM_017322206</Hit_accession>
+  <Hit_len>8559</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>944</Hsp_query-from>
+      <Hsp_query-to>974</Hsp_query-to>
+      <Hsp_hit-from>4679</Hsp_hit-from>
+      <Hsp_hit-to>4708</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>27</Hsp_identity>
+      <Hsp_positive>27</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>31</Hsp_align-len>
+      <Hsp_qseq>CAGCAGCAGATGATACAAGTAGTCTTGTCAA</Hsp_qseq>
+      <Hsp_hseq>CAGCAGCAGATGATGCAA-CAGTCTCGTCAA</Hsp_hseq>
+      <Hsp_midline>|||||||||||||| |||  ||||| |||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>18</Hit_num>
+  <Hit_id>gi|1036030988|gb|AH010015.2|</Hit_id>
+  <Hit_def>Homo sapiens chromosome 1 SM-20 (C1orf12) gene, complete cds</Hit_def>
+  <Hit_accession>AH010015</Hit_accession>
+  <Hit_len>52490</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>34430</Hsp_hit-from>
+      <Hsp_hit-to>34456</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>19</Hit_num>
+  <Hit_id>gi|1027250648|ref|NG_047109.1|</Hit_id>
+  <Hit_def>Homo sapiens RAS protein activator like 2 (RASAL2), RefSeqGene on chromosome 1</Hit_def>
+  <Hit_accession>NG_047109</Hit_accession>
+  <Hit_len>392786</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>11596</Hsp_hit-from>
+      <Hsp_hit-to>11570</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTCCTTACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| |||||||||||| |||||| |||</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>44246</Hsp_hit-from>
+      <Hsp_hit-to>44272</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>20</Hit_num>
+  <Hit_id>gi|1027250627|ref|NG_047169.1|</Hit_id>
+  <Hit_def>Homo sapiens testis expressed 14, intercellular bridge forming factor (TEX14), RefSeqGene on chromosome 17</Hit_def>
+  <Hit_accession>NG_047169</Hit_accession>
+  <Hit_len>142403</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>42364</Hsp_hit-from>
+      <Hsp_hit-to>42338</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGGTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>21</Hit_num>
+  <Hit_id>gi|1017029589|ref|NG_023443.2|</Hit_id>
+  <Hit_def>Homo sapiens eyes shut homolog (Drosophila) (EYS), RefSeqGene on chromosome 6</Hit_def>
+  <Hit_accession>NG_023443</Hit_accession>
+  <Hit_len>1994246</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>1778810</Hsp_hit-from>
+      <Hsp_hit-to>1778784</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGATGGTCTCAAACTCCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||| || ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>22</Hit_num>
+  <Hit_id>gi|953768413|ref|NG_012269.3|</Hit_id>
+  <Hit_def>Homo sapiens kelch like family member 2 pseudogene 1 (KLHL2P1) on chromosome 4</Hit_def>
+  <Hit_accession>NG_012269</Hit_accession>
+  <Hit_len>44121</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>34013</Hsp_hit-from>
+      <Hsp_hit-to>34039</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>23</Hit_num>
+  <Hit_id>gi|672890589|ref|NG_016932.2|</Hit_id>
+  <Hit_def>Homo sapiens LIM domain containing preferred translocation partner in lipoma (LPP), RefSeqGene on chromosome 3</Hit_def>
+  <Hit_accession>NG_016932</Hit_accession>
+  <Hit_len>743797</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>665004</Hsp_hit-from>
+      <Hsp_hit-to>664978</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>24</Hit_num>
+  <Hit_id>gi|123998480|gb|DQ895916.2|</Hit_id>
+  <Hit_def>Synthetic construct Homo sapiens clone IMAGE:100010376; FLH188742.01L; RZPDo839F0863D N-acetylglucosamine kinase (NAGK) gene, encodes complete protein</Hit_def>
+  <Hit_accession>DQ895916</Hit_accession>
+  <Hit_len>1075</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>2739</Hsp_query-from>
+      <Hsp_query-to>2777</Hsp_query-to>
+      <Hsp_hit-from>732</Hsp_hit-from>
+      <Hsp_hit-to>770</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>31</Hsp_identity>
+      <Hsp_positive>31</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>39</Hsp_align-len>
+      <Hsp_qseq>AGCCTTGGAAGATGCATGGAATACACATCGTAGCATTGT</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGGGAGATGCTGGGCAGACACATCGTAGCAGTGT</Hsp_hseq>
+      <Hsp_midline>|| || || ||||||  || | ||||||||||||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>25</Hit_num>
+  <Hit_id>gi|111306751|gb|BC120689.1|</Hit_id>
+  <Hit_def>Mus musculus minichromosome maintenance deficient 10 (S. cerevisiae), mRNA (cDNA clone MGC:155926 IMAGE:40129612), complete cds</Hit_def>
+  <Hit_accession>BC120689</Hit_accession>
+  <Hit_len>2875</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>2704</Hsp_query-from>
+      <Hsp_query-to>2730</Hsp_query-to>
+      <Hsp_hit-from>1802</Hsp_hit-from>
+      <Hsp_hit-to>1828</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>CAGCAGAAACAAAAGGTACTGGAGATG</Hsp_qseq>
+      <Hsp_hseq>CAGCAGAAACAACAGATGCTGGAGATG</Hsp_hseq>
+      <Hsp_midline>|||||||||||| || | |||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>26</Hit_num>
+  <Hit_id>gi|16741762|gb|BC016675.1|</Hit_id>
+  <Hit_def>Homo sapiens dihydrolipoamide branched chain transacylase E2, mRNA (cDNA clone MGC:9061 IMAGE:3924492), complete cds</Hit_def>
+  <Hit_accession>BC016675</Hit_accession>
+  <Hit_len>2399</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>1830</Hsp_hit-from>
+      <Hsp_hit-to>1804</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTAACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>27</Hit_num>
+  <Hit_id>gi|52851472|gb|AC115618.3|</Hit_id>
+  <Hit_def>Homo sapiens chromosome X clone RP11-1148L6 map p11.23, complete sequence</Hit_def>
+  <Hit_accession>AC115618</Hit_accession>
+  <Hit_len>158454</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>890</Hsp_query-to>
+      <Hsp_hit-from>21990</Hsp_hit-from>
+      <Hsp_hit-to>22008</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>19</Hsp_identity>
+      <Hsp_positive>19</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>19</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCT</Hsp_qseq>
+      <Hsp_hseq>AGGATGGTCTCAAACTTCT</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>28</Hit_num>
+  <Hit_id>gi|20198727|gb|AC110611.3|</Hit_id>
+  <Hit_def>Homo sapiens BAC clone RP11-345F18 from 4, complete sequence</Hit_def>
+  <Hit_accession>AC110611</Hit_accession>
+  <Hit_len>195155</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>890</Hsp_query-to>
+      <Hsp_hit-from>174979</Hsp_hit-from>
+      <Hsp_hit-to>174961</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>19</Hsp_identity>
+      <Hsp_positive>19</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>19</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCT</Hsp_qseq>
+      <Hsp_hseq>AGGATGGTCTCAAACTTCT</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>29</Hit_num>
+  <Hit_id>gi|17861015|gb|AC010614.8|</Hit_id>
+  <Hit_def>Homo sapiens chromosome 19 clone CTD-2518G19, complete sequence</Hit_def>
+  <Hit_accession>AC010614</Hit_accession>
+  <Hit_len>158595</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>135897</Hsp_hit-from>
+      <Hsp_hit-to>135871</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>30</Hit_num>
+  <Hit_id>gi|29294032|gb|AC092384.5|</Hit_id>
+  <Hit_def>Homo sapiens chromosome 16 clone RP11-830F9, complete sequence</Hit_def>
+  <Hit_accession>AC092384</Hit_accession>
+  <Hit_len>219070</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>47702</Hsp_hit-from>
+      <Hsp_hit-to>47728</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>31</Hit_num>
+  <Hit_id>gi|29150346|gb|AC136940.2|</Hit_id>
+  <Hit_def>Homo sapiens chromosome 5 clone RP11-1252I4, complete sequence</Hit_def>
+  <Hit_accession>AC136940</Hit_accession>
+  <Hit_len>184055</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>52628</Hsp_hit-from>
+      <Hsp_hit-to>52602</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGATGGTCTCGAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||||||||||| ||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>32</Hit_num>
+  <Hit_id>gi|25141000|gb|AC022148.6|</Hit_id>
+  <Hit_def>Homo sapiens chromosome 19 clone CTD-3064H18, complete sequence</Hit_def>
+  <Hit_accession>AC022148</Hit_accession>
+  <Hit_len>196954</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>3916</Hsp_query-from>
+      <Hsp_query-to>3939</Hsp_query-to>
+      <Hsp_hit-from>98951</Hsp_hit-from>
+      <Hsp_hit-to>98974</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>22</Hsp_identity>
+      <Hsp_positive>22</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>24</Hsp_align-len>
+      <Hsp_qseq>ACAGCAGAGAGAATACTGGAACAG</Hsp_qseq>
+      <Hsp_hseq>ACAGAAGAGAGATTACTGGAACAG</Hsp_hseq>
+      <Hsp_midline>|||| ||||||| |||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>33</Hit_num>
+  <Hit_id>gi|29500745|emb|BX322557.1|</Hit_id>
+  <Hit_def>Homo sapiens chromosome 21 from PAC RP1-112E20 map 21q22.3 region D21S171-LA161, complete sequence</Hit_def>
+  <Hit_accession>BX322557</Hit_accession>
+  <Hit_len>124074</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>4180</Hsp_hit-from>
+      <Hsp_hit-to>4206</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGATGGTCTCAAACTCCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||| || ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>34</Hit_num>
+  <Hit_id>gi|21740328|emb|AL834516.1|</Hit_id>
+  <Hit_def>Homo sapiens mRNA; cDNA DKFZp434E1119 (from clone DKFZp434E1119)</Hit_def>
+  <Hit_accession>AL834516</Hit_accession>
+  <Hit_len>3724</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>872</Hsp_query-from>
+      <Hsp_query-to>898</Hsp_query-to>
+      <Hsp_hit-from>2609</Hsp_hit-from>
+      <Hsp_hit-to>2583</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>24</Hsp_identity>
+      <Hsp_positive>24</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>27</Hsp_align-len>
+      <Hsp_qseq>AGGATGGTCTCAAACTTCTTACCACAG</Hsp_qseq>
+      <Hsp_hseq>AGGCTGGTCTCAAACTTCTGACCTCAG</Hsp_hseq>
+      <Hsp_midline>||| ||||||||||||||| ||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>35</Hit_num>
+  <Hit_id>gi|18490519|gb|BC022726.1|</Hit_id>
+  <Hit_def>Mus musculus ankyrin repeat domain 33, mRNA (cDNA clone MGC:31569 IMAGE:4504539), complete cds</Hit_def>
+  <Hit_accession>BC022726</Hit_accession>
+  <Hit_len>1457</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>1887</Hsp_query-from>
+      <Hsp_query-to>1909</Hsp_query-to>
+      <Hsp_hit-from>766</Hsp_hit-from>
+      <Hsp_hit-to>743</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>23</Hsp_identity>
+      <Hsp_positive>23</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>24</Hsp_align-len>
+      <Hsp_qseq>TGTGTGGCAGGCAGTGCT-AGGAA</Hsp_qseq>
+      <Hsp_hseq>TGTGTGGCAGGCAGTGCTCAGGAA</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||| |||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>36</Hit_num>
+  <Hit_id>gi|15079298|gb|BC011488.1|</Hit_id>
+  <Hit_def>Mus musculus glia maturation factor, gamma, mRNA (cDNA clone MGC:7870 IMAGE:3581858), complete cds</Hit_def>
+  <Hit_accession>BC011488</Hit_accession>
+  <Hit_len>622</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>35.5503</Hsp_bit-score>
+      <Hsp_score>38</Hsp_score>
+      <Hsp_evalue>9.16664</Hsp_evalue>
+      <Hsp_query-from>261</Hsp_query-from>
+      <Hsp_query-to>282</Hsp_query-to>
+      <Hsp_hit-from>166</Hsp_hit-from>
+      <Hsp_hit-to>145</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>21</Hsp_identity>
+      <Hsp_positive>21</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>22</Hsp_align-len>
+      <Hsp_qseq>CATTGTTGGTCTCTTTTCAGAA</Hsp_qseq>
+      <Hsp_hseq>CATTGTTGGTCTCTTTTCGGAA</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>35870</Statistics_db-num>
+      <Statistics_db-len>117791115</Statistics_db-len>
+      <Statistics_hsp-len>0</Statistics_hsp-len>
+      <Statistics_eff-space>0</Statistics_eff-space>
+      <Statistics_kappa>0.41</Statistics_kappa>
+      <Statistics_lambda>0.625</Statistics_lambda>
+      <Statistics_entropy>0.78</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>
+

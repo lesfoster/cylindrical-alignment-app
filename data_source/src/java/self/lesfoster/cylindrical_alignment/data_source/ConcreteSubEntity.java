@@ -69,9 +69,20 @@ public class ConcreteSubEntity implements SubEntity {
 			throw new IllegalArgumentException("No negative values allowed for geometry.");
 		if (strand != SubEntity.NEGATIVE_STRAND && strand != SubEntity.POSITIVE_STRAND && strand != SubEntity.STRAND_NOT_APPLICABLE)
 			throw new IllegalArgumentException("Strand must be set to a STRAND constant as specified in sub entity interface");
-		if (startOnSubject > endOnSubject || startOnQuery > endOnQuery)
-			throw new IllegalArgumentException("Geometries should always start low, end high, and let directionality be set by strand value" +
-					"Seeing Subject:" + startOnSubject + " " + endOnSubject + ", Query:" + startOnQuery + " " + endOnQuery);
+		if (startOnSubject > endOnSubject || startOnQuery > endOnQuery) {
+			if (startOnSubject > endOnSubject) {
+				int temp = startOnSubject;
+				startOnSubject = endOnSubject;
+				endOnSubject = temp;
+			}
+			if (startOnQuery > endOnQuery) {
+				int temp = startOnQuery;
+				startOnQuery = endOnQuery;
+				endOnQuery = temp;
+			}
+			strand = -1;
+			properties.put("strand", "Reverse");
+		}
 
 		// Assign all internal values from constructor.
 		this.startOnQuery = startOnQuery;

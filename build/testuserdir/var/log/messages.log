@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
->Log Session: Monday, January 16, 2017 7:56:14 PM EST
+>Log Session: Saturday, March 18, 2017 9:17:15 PM EDT
 >System Info: 
   Product Version         = Cylindrical Alignment Viewer 201609300101
   Operating System        = Windows 10 version 10.0 running on amd64
@@ -53,7 +53,7 @@ INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
 	org.netbeans.api.templates [1.7.1 201609300101]
 	org.openide.loaders [7.66.1 201609300101]
 	org.netbeans.modules.settings/1 [1.49.1 201609300101]
-	self.lesfoster.cylindrical_alignment.model [1.0 170117]
+	self.lesfoster.cylindrical_alignment.model [1.0 170319]
 	org.netbeans.swing.plaf [1.41.1 201609300101]
 	org.netbeans.modules.keyring [1.24.1 201609300101]
 	org.netbeans.api.intent [1.2.1 201609300101]
@@ -64,9 +64,9 @@ INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
 	org.netbeans.spi.quicksearch [1.27.1 201609300101]
 	org.netbeans.modules.options.api/1 [1.45.1 201609300101]
 	org.netbeans.core.windows/2 [2.81.1 201609300101]
-	self.lesfoster.cylindrical_alignment.viewer [1.0 170117]
-	self.lesfoster.cylindrical_alignment.legend [1.0 170116]
-	self.lesfoster.cylindrical_alignment.inspector [1.0 170117]
+	self.lesfoster.cylindrical_alignment.viewer [1.0 170319]
+	self.lesfoster.cylindrical_alignment.legend [1.0 170319]
+	self.lesfoster.cylindrical_alignment.inspector [1.0 170319]
 	org.openide.filesystems.compat8 [9.9.1 201609300101]
 	org.netbeans.modules.templates/1 [1.7.1 201609300101]
 	org.netbeans.modules.sendopts/2 [2.35.1 201609300101]
@@ -91,6 +91,78 @@ INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
 	org.netbeans.core.multitabs/1 [1.12.1.1 1 201609300101]
 	org.netbeans.core.io.ui/1 [1.30.1 201609300101]
 INFO [org.netbeans.ui.metrics.laf]: USG_LOOK_AND_FEEL
+SEVERE [global]
+java.lang.IndexOutOfBoundsException: Index: 52, Size: 52
+	at java.util.ArrayList.rangeCheck(ArrayList.java:653)
+	at java.util.ArrayList.get(ArrayList.java:429)
+	at self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent.paintComponent(LegendComponent.java:231)
+	at javax.swing.JComponent.paint(JComponent.java:1056)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JViewport.paint(JViewport.java:728)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at org.netbeans.swing.tabcontrol.TabbedContainer.paint(TabbedContainer.java:994)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JLayeredPane.paint(JLayeredPane.java:586)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at org.netbeans.core.windows.view.ui.MainWindow$1.paint(MainWindow.java:189)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paint(JComponent.java:1065)
+	at javax.swing.JLayeredPane.paint(JLayeredPane.java:586)
+	at javax.swing.JComponent.paintChildren(JComponent.java:889)
+	at javax.swing.JComponent.paintToOffscreen(JComponent.java:5217)
+	at javax.swing.RepaintManager$PaintManager.paintDoubleBuffered(RepaintManager.java:1579)
+	at javax.swing.RepaintManager$PaintManager.paint(RepaintManager.java:1502)
+	at javax.swing.RepaintManager.paint(RepaintManager.java:1272)
+	at javax.swing.JComponent.paint(JComponent.java:1042)
+	at java.awt.GraphicsCallback$PaintCallback.run(GraphicsCallback.java:39)
+	at sun.awt.SunGraphicsCallback.runOneComponent(SunGraphicsCallback.java:79)
+	at sun.awt.SunGraphicsCallback.runComponents(SunGraphicsCallback.java:116)
+	at java.awt.Container.paint(Container.java:1975)
+	at java.awt.Window.paint(Window.java:3904)
+	at javax.swing.RepaintManager$4.run(RepaintManager.java:842)
+	at javax.swing.RepaintManager$4.run(RepaintManager.java:814)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at javax.swing.RepaintManager.paintDirtyRegions(RepaintManager.java:814)
+	at javax.swing.RepaintManager.paintDirtyRegions(RepaintManager.java:789)
+	at javax.swing.RepaintManager.prePaintDirtyRegions(RepaintManager.java:738)
+	at javax.swing.RepaintManager.access$1200(RepaintManager.java:64)
+	at javax.swing.RepaintManager$ProcessingRunnable.run(RepaintManager.java:1732)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:756)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:726)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:159)
+[catch] at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
 Diagnostic information
 Input arguments:
 	-Dnetbeans.logger.console=true
@@ -119,8 +191,26 @@ Heap memory usage: initial 256.0MB maximum 7282.0MB
 Non heap memory usage: initial 2.4MB maximum -1b
 Garbage collector: PS Scavenge (Collections=5 Total time spent=0s)
 Garbage collector: PS MarkSweep (Collections=2 Total time spent=0s)
-Classes: loaded=6288 total loaded=6288 unloaded 0
+Classes: loaded=6385 total loaded=6385 unloaded 0
 INFO [org.netbeans.core.ui.warmup.DiagnosticTask]: Total memory 17,161,457,664
 INFO [null]: Total physical memory 17,161,457,664
 WARNING [org.openide.filesystems.Ordering]: Not all children in Menu/Window/ marked with the position attribute: [self-lesfoster-cylindrical_alignment-legend-top_component-LegendTopComponent.shadow, self-lesfoster-cylindrical_alignment-viewer-top_component-ViewerTopComponent.shadow], but some are: [self-lesfoster-cylindrical_alignment-inspector-top_component-PropertyInspectorTopComponent.shadow, self-lesfoster-cylindrical_alignment-viewer-top_component-ControlsTopComponent.shadow, org-netbeans-modules-favorites-View.shadow, org-netbeans-core-io-ui-IOWindowAction.shadow, SwitchToRecentDocumentAction.shadow, Web, Tools, Separator3.instance, ConfigureWindow, org-netbeans-core-windows-actions-ResetWindowsAction.shadow, Separator4.instance, CloseWindowAction.shadow, CloseAllDocumentsAction.shadow, CloseAllButThisAction.shadow, GroupsMenuAction.shadow, DocumentsAction.shadow]
 WARNING [org.openide.filesystems.Ordering]: Found same position 1,300 for both Menu/Help/org-netbeans-modules-autoupdate-ui-actions-CheckForUpdatesAction.shadow and Menu/Help/self-lesfoster-cylindrical_alignment-action-HelpAction.shadow
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Mouse was clicked java.awt.event.MouseEvent[MOUSE_PRESSED,(39,349),absolute(44,455),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1] on self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent[,0,0,553x2485,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Legend Number: 13
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Mouse was clicked java.awt.event.MouseEvent[MOUSE_PRESSED,(58,324),absolute(63,430),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1] on self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent[,0,0,553x1060,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Legend Number: 12
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Mouse was clicked java.awt.event.MouseEvent[MOUSE_PRESSED,(64,281),absolute(69,387),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1] on self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent[,0,0,553x1060,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Legend Number: 10
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Mouse was clicked java.awt.event.MouseEvent[MOUSE_PRESSED,(66,252),absolute(71,358),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1] on self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent[,0,0,553x1060,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Legend Number: 9
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Mouse was clicked java.awt.event.MouseEvent[MOUSE_PRESSED,(69,204),absolute(74,310),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1] on self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent[,0,0,553x1060,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Legend Number: 7
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Mouse was clicked java.awt.event.MouseEvent[MOUSE_PRESSED,(53,477),absolute(58,583),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1] on self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent[,0,0,553x1060,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Legend Number: 18
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Mouse was clicked java.awt.event.MouseEvent[MOUSE_PRESSED,(56,510),absolute(61,616),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1] on self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent[,0,0,553x1060,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Legend Number: 20
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Mouse was clicked java.awt.event.MouseEvent[MOUSE_PRESSED,(62,584),absolute(67,690),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1] on self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent[,0,0,553x1060,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Legend Number: 22
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Mouse was clicked java.awt.event.MouseEvent[MOUSE_PRESSED,(70,658),absolute(75,764),button=1,modifiers=Button1,extModifiers=Button1,clickCount=1] on self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent[,0,0,553x1060,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+INFO [self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent]: Legend Number: 25

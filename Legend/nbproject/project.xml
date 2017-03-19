@@ -65,7 +65,6 @@
                 </dependency>
             </module-dependencies>
             <public-packages>
-                <package>cyl.jaxb</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source.blast_xml</package>
                 <package>self.lesfoster.cylindrical_alignment.data_source.converter</package>
