@@ -266,6 +266,8 @@ public class CylinderContainer extends JFXPanel
 	
 	private void init(final DataSource dataSource) {
 		Platform.runLater(() -> {
+			Platform.setImplicitExit(false);   // Always keep the thread running for the subsequent file.
+
 			//root.ry.setAngle(180.0);
 			scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);
 			scene.setCamera(cameraModel.getCamera());
