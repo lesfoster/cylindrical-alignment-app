@@ -10,8 +10,11 @@ The Cylindrical Alignment App is a port / rewrite, from Java3D to JavaFX, and wi
 ### How do I get set up? ###
 
 * Pull from the Git repos (containing this README)
-* It is recommended that you use the NetBeans IDE for this operation.
-* Run the ant Build script
+* It is recommended that you use the NetBeans 8.2 IDE for this operation.
+** Team / git / clone
+** Select the main Cylindrical Alignment Viewer project in the projects pane (top left by default)
+** Menu-click (right-mouse-click in Windows; other OS may vary)
+** Select <Run> to build and run the project using a preset sample input file
 * This application can read various XML formats, and GFF3 (if properly structured)
 * Simply launch the app and browse to an example file.  Examples should be included.
 * Deployment is one of the prime reasons for switching to NetBeans.  NetBeans can build out the deployment.
