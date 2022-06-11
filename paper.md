@@ -6,13 +6,14 @@ tags:
   - bioinformatics
   - 3D
 authors:
-  - name: Leslie Foster^[author]
+  - name: Leslie Foster
     orcid: 0000-0002-8909-3711
     affiliation: 1
 affiliations:
  - name: Independent Researcher, USA
    index: 1
 date: 04 June 2022
+---
 
 # Summary
 
