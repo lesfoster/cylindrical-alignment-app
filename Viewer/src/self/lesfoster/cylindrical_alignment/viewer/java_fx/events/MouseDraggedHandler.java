@@ -89,14 +89,6 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 			cameraModel.getCameraXform2().t.setY(cameraModel.getCameraXform2().t.getY() + mouseLocationModel.getMouseDeltaY() * modifierFactor * modifier * 0.3);  // -
 		}
 
-		// Select the shape visually.
-		PickResult pr = me.getPickResult();
-		if (pr != null) {
-			Node node = pr.getIntersectedNode();
-			if (node != null && node instanceof Shape3D) {
-				shapeSelector.select(node);
-			}
-		}
 	}
 	
 	public double getModifierFactor() {
