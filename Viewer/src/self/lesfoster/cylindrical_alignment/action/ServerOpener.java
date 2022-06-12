@@ -24,7 +24,7 @@
 package self.lesfoster.cylindrical_alignment.action;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.AbstractAction;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
@@ -32,19 +32,31 @@ import org.openide.util.NbBundle.Messages;
 import self.lesfoster.cylindrical_alignment.components.SearchPopup;
 import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
 
+/**
+ * This action has been carried out in past, but the target server is defunct.
+ * In future, upon request, a working, available server might be launched.
+ * 
+ * @author Leslie L Foster
+ */
 @ActionID(
 		category = "File",
 		id = "self.lesfoster.cylindrical_alignment.model.action.ServerOpener"
 )
 @ActionRegistration(
-		displayName = "#CTL_ServerOpener"
+		displayName = "#CTL_ServerOpener",
+		lazy = false
 )
 @ActionReference(path = "Menu/File", position = 1550)
 @Messages("CTL_ServerOpener=Fetch from Server")
-public final class ServerOpener implements ActionListener {
+public final class ServerOpener extends AbstractAction {
 	public static final int POPUP_HEIGHT = 600;
 	public static final int POPUP_WID = 800;
-
+	
+	public ServerOpener() {
+		super();
+		super.setEnabled(false);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		SearchPopup searchPopup = new SearchPopup(POPUP_WID, POPUP_HEIGHT);		
