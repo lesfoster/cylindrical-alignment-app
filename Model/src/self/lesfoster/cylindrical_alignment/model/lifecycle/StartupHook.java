@@ -51,7 +51,7 @@ public class StartupHook implements Runnable {
 	
 	public void run() {
 		try {
-			System.setProperty("netbeans.buildnumber", "0.1");
+			System.setProperty("netbeans.buildnumber", "1.0.1");
 			DataSource ds = getInitialDataSource();
 			Model.getInstance().setDataSource(ds);
 		} catch (Exception ex) {
