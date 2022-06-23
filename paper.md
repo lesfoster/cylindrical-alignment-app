@@ -51,9 +51,9 @@ by the author called the Cylindrical BLAST Viewer.
 
 ![Caption Dentals are small color bars on the main bar, showing base or Amino Acid characteristics.\label{fig:dentils}](images/rear_dental_view.PNG)
 
-![Caption Indels are either pits for deletions or floating boxes for insertions.\label{fig:indels}](images/indels_view.PNG)
+![Caption Indels are either pits for deletions or floating boxes for insertions.\label{fig:indels}](images/Indels_view.PNG)
 
-![Caption Properties are visible upon selection.\label{fig:props}](images/properties_sub_view.PNG)
+![Caption Properties are visible upon selection.\label{fig:props}](images/props_sub_view.PNG)
 
 ![Caption The Legend sub view allows selection by name.\label{fig:legend}](images/legend_sub_view.PNG)
 
