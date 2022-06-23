@@ -49,6 +49,14 @@ by the author called the Cylindrical BLAST Viewer.
 
 # Statement of Need
 
+The purpose of the viewer is to provide researchers a means of examining how
+large biomolecules (e.g., DNA, Amino Acid Chains, RNA) which have been
+judged to have some relationship via alignment software, compare to each other.
+Examples of "alignment software" include Basic Local Alignment Search Tool
+(BLAST), ClustalW, and Gene Machine.  The display is highly visual, using
+3D presentation, some animation and mouse interaction.  The 3D and interactive
+aspects set this viewer apart from many others that are available.
+
 Using this code to present alignments allows (up to a certain limit) more
 alignments to be seen on the screen at one time than viewing them flat normally
 does.  Having the alignments spinning allows users to see them flow past the eye
@@ -57,18 +65,33 @@ allows some level of interaction, and since properties may include web links,
 drilling down still further into interesting alignments is also possible, as are
 indels and substitutions.
 
+Researchers typically use this sort of visualization to inspect what their
+automated tools (BLAST, etc.) have reported - particularly if many results
+are returned.
+
 # Related
 
-https://en.wikipedia.org/wiki/List_of_alignment_visualization_software this
-Wikipedia page has several examples of 
-alignment software available at time of writing.
+The "MView" application is comparable.  http://desmid.github.io/mview/ .
+Another viewer that could be used similarly might be MSA Reveal at
+http://msareveal.org/index2.html. 
 
 # Past Users
 
 This project has been available on Source Forge at 
 https://sourceforge.net/projects/cylindrical-alignment-app/ for the past three 
 years and has been downloaded over 200 times.  Its predecessor was included in 
-a larger project at Universitat Sans Malaysia in 2010.
+a larger project at Universiti Malaya in 2009
+(https://github.com/choojun/mdg/wiki).
+
+Visualization software for alignment of large biomolecules was used in
+annotating the first Human Genome at Celera and NCBI--although not the software
+described in this paper.  Screen shots of such software may be provided
+in research papers as well.
+
+Such visualizations may in addition be used to compare the efficacy of different
+types of software in aligning sequences.  The alignments from one source
+may be compared to alignments from other sources.  Thus, visualizing serves
+as a means of software comparison.
 
 # Acknowledgements
 
@@ -79,3 +102,6 @@ Viewer" was created as a Master's degree project at Johns Hopkins
 University, with supervision by Dr. Russell Turner.
 
 # References
+International Journal of Computer Science and Information Security (IJCSIS),
+Vol. 14, No. 12, December 2016
+
