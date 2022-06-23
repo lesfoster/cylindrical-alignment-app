@@ -362,20 +362,7 @@ Multiple attributes of the same type are indicated by separating the values with
 
 			makeParentEntities();
 
-			if ( emptyFeatureIdBuffer.length() > 0 ) {
-				System.out.println( "WARNING: Empty ID attributes for GFF3 features in " + filename + " at line numbers: " + emptyFeatureIdBuffer.toString() );
-			}
-			if ( emptyNameBuffer.length() > 0 ) {
-				System.out.println( "WARNING: Empty name attribute for GFF3 features in " + filename + " at line numbers: " + emptyNameBuffer.toString() );
-			}
-
-			if ( nonSOFAFeatureTypes.size() > 0 ) {
-				System.out.println( "WARNING: these feature types were given, but not included in SOFA feature type list:" );
-				for ( String featureType: nonSOFAFeatureTypes ) {
-					System.out.print(" " + featureType);
-				}
-				System.out.println();
-			}
+			reportIrregularities(emptyFeatureIdBuffer, emptyNameBuffer, nonSOFAFeatureTypes);
 			
 		} catch (Exception e) {
 			System.out.println("ERROR: Failed to parse GFF3 file " + filename);
@@ -383,6 +370,26 @@ Multiple attributes of the same type are indicated by separating the values with
 		}
 		
 		return entityList;
+	}
+
+	/** Follow up with user info for perfecting input file. */
+	public void reportIrregularities(StringBuilder emptyFeatureIdBuffer, StringBuilder emptyNameBuffer, Set<String> nonSOFAFeatureTypes) {
+		StringBuilder reportBldr = new StringBuilder();
+		if ( emptyFeatureIdBuffer.length() > 0 ) {
+			reportBldr.append("WARNING: Empty ID attributes for GFF3 features in " + filename + " at line numbers: " + emptyFeatureIdBuffer.toString() ).append("\n");
+		}
+		if ( emptyNameBuffer.length() > 0 ) {
+			reportBldr.append( "WARNING: Empty name attribute for GFF3 features in " + filename + " at line numbers: " + emptyNameBuffer.toString() ).append("\n");
+		}
+		
+		if ( nonSOFAFeatureTypes.size() > 0 ) {
+			reportBldr.append( "WARNING: these feature types were given, but not included in SOFA feature type list:" ).append("\n");
+			for ( String featureType: nonSOFAFeatureTypes ) {
+				reportBldr.append(" " + featureType);
+			}
+			reportBldr.append("\n");
+		}
+		System.out.print(reportBldr.toString());
 	}
 
 	/**
