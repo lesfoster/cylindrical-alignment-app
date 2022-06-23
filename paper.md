@@ -47,6 +47,21 @@ alignment shape.
 The Cylindrical Alignment App is the successor of a previous viewer also written
 by the author called the Cylindrical BLAST Viewer.
 
+![Caption Main view with selection and controls.\label{fig:mainview}]
+(images/selected_view.png)
+
+![Caption Dentals are small color bars on the main bar, showing base or Amino Acid characteristics.\label{fig:dentils}]
+(images/rear_dental_view.png)
+
+![Caption Indels are either pits for deletions or floating boxes for insertions.\label{fig:indels}]
+(images/indels_view.png)
+
+![Caption Properties are visible upon selection.\label{fig:props}]
+(images/properties_sub_view.png)
+
+![Caption The Legend sub view allows selection by name.\label{fig:legend}]
+(images/legend_sub_view.png)
+
 # Statement of Need
 
 The purpose of the viewer is to provide researchers a means of examining how
