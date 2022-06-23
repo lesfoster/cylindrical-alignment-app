@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><module codename="self.lesfoster.cylindrical_alignment.inspector">
-    <module_version install_time="1489886234038" last="true" origin="installer" specification_version="1.0">
-        <file crc="2144914682" name="config/Modules/self-lesfoster-cylindrical_alignment-inspector.xml"/>
-        <file crc="3448314572" name="modules/self-lesfoster-cylindrical_alignment-inspector.jar"/>
-    </module_version>
-</module>
