@@ -30,7 +30,7 @@ package self.lesfoster.cylindrical_alignment.effector;
  *
  */
 public class ConcreteSettingsEffector implements SettingsEffector {
-	private SettingsEffectorTarget target;
+	private final SettingsEffectorTarget target;
 	
 	/**
 	 * Construct with the target.
@@ -46,14 +46,18 @@ public class ConcreteSettingsEffector implements SettingsEffector {
 	}
 
 	@Override
-	public void setSecondLightSource(boolean isSecondEnabled) {
-//		target.getDirectionLight().setEnable(isSecondEnabled);
-		System.out.println("setSecondLightSource has no effect.");
+	public void setAmbientLightSource(boolean isAmbientOn) {
+		target.setAmbient(isAmbientOn);
 	}
 
 	@Override
     public void setSelectionEnvelope(int envelopeDistance) {
         target.setEnvelopeDistance(envelopeDistance);
     }
+	
+	@Override
+	public void setDark(boolean isDark) {
+		target.setDark(isDark);
+	}
 
 }

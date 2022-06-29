@@ -1,3 +1,10 @@
+package self.lesfoster.cylindrical_alignment.settings;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
+
 /*
  CDDL HEADER START
 
@@ -21,17 +28,14 @@
 */
 
 
-package self.lesfoster.cylindrical_alignment.effector;
+public class AmbientLightActionListener implements ActionListener {
+    private final SettingsEffector settingsAffector;
+    public AmbientLightActionListener( SettingsEffector settingsAffector ) {
+        this.settingsAffector = settingsAffector;
+    }
 
-import javafx.scene.Scene;
-
-/**
- * Implement this to provide a settings affector with the hooks it needs to perform its task. 
- * @author Leslie L Foster
- */
-public interface SettingsEffectorTarget {
-	Scene getUniverse();
-	void setAmbient(boolean isAmbient);
-	void setDark(boolean dark);
-    void setEnvelopeDistance(int envelopeDistance);
+	@Override
+    public void actionPerformed(ActionEvent ae) {
+        settingsAffector.setAmbientLightSource(((AbstractButton)ae.getSource()).isSelected());
+    }
 }

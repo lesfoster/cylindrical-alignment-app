@@ -23,12 +23,8 @@
 
 package self.lesfoster.cylindrical_alignment.viewer.java_fx.events;
 
-import java.util.Map;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.PickResult;
-import javafx.scene.shape.Shape3D;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.CameraModel;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
 
@@ -41,18 +37,12 @@ public class MouseDraggedHandler implements EventHandler<MouseEvent> {
 	private final CameraModel cameraModel;
 	private double modifierFactor = 0.1;
 	private boolean useYAngle = true;
-	private Map<String, Node> idToShape;	
-	private final GlyphSelector shapeSelector;
 			
 	public MouseDraggedHandler(
 			MouseLocationModel mouseLocationModel, 
-			CameraModel cameraModel, 
-			Map<String,Node> idToShape, 
-			GlyphSelector glyphSelector) {
+			CameraModel cameraModel) {
 		this.mouseLocationModel = mouseLocationModel;
 		this.cameraModel = cameraModel;
-		this.idToShape = idToShape;
-		this.shapeSelector = glyphSelector;
 	}
 	
 	@Override

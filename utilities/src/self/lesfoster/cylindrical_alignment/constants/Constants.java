@@ -44,9 +44,12 @@ public class Constants {
 	public static final float YB = (-0.01f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER + Y_DISP;
     public static final float ZB = (-0.012f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
     public static final float ZF = (0.012f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
+	public static final float ZF_INS = ZF - 1.3f;  // Front of floating insertion shape
+	public static final float ZB_INS = ZB + 0.2f;  // Back of floating insertion shape
+	public static final float YT_INS = YT + 0.65f; // Top of floating insertion shape
 	public static final float CB_LABEL_HEIGHT = (.05f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
-	public static final float CB_OUTER_RADIUS = Constants.YB + 2.4f;  // Outside will reach beyond the outer surface of all solids.
-	public static final float CB_INNER_RADIUS = Constants.YB - 0.8f;  // Inside will be just lower than the inner surface of all solids.
+	public static final float CB_OUTER_RADIUS = YB + 2.4f;  // Outside will reach beyond the outer surface of all solids.
+	public static final float CB_INNER_RADIUS = YB - 0.8f;  // Inside will be just lower than the inner surface of all solids.
 	public static final float YLABEL = -(0.55f / CYL_RATIO_CONSTANT) * LENGTH_OF_CYLINDER;
 	public static final float CENTER_X = 0.0f;
 	public static final float CENTER_Y = 0.0f;

@@ -1,6 +1,7 @@
 ---
-title: 'Cylindrical Alignment App: A Java Application for Aligning Biomolecules
-       in 3-D'
+title: 'Cylindrical Alignment App: A Java Application for Viewing Alignments of
+       Biomolecules in 3-D'
+
 tags:
   - Java
   - bioinformatics
@@ -10,9 +11,10 @@ authors:
     orcid: 0000-0002-8909-3711
     affiliation: 1
 affiliations:
- - name: Independent Researcher, USA
-   index: 1
+  - name: Independent Researcher, USA
+    index: 1
 date: 04 June 2022
+
 ---
 
 # Summary
@@ -47,20 +49,25 @@ alignment shape.
 The Cylindrical Alignment App is the successor of a previous viewer also written
 by the author called the Cylindrical BLAST Viewer.
 
-![Caption Main view with selection and controls.\label{fig:mainview}](images/selected_view.PNG)
+![Caption Main view with selection and controls.](images/selected_view.PNG)
+
 Main view with selection and controls.
 
-![Caption Dentils are small color bars on the main bar, showing base or Amino Acid characteristics.\label{fig:dentils}](images/rear_dental_view.PNG)
-Dentils are small color bars on the main bar, showing base coloring or Amino Acid characteristics.
+![Caption Dentils are small color bars on the main bar, showing base or Amino Acid characteristics.](images/rear_dental_view.PNG)
 
-![Caption Indels are either pits for deletions or floating boxes for insertions.\label{fig:indels}](images/Indels_view.PNG)
-Indels are displayed as pits for deletions or as floating boxes for insertions, w.r.t. the axis of alignment.
+Dentils are small color bars on the main bar, showing base or Amino Acid characteristics.
 
-![Caption Properties are visible upon selection.\label{fig:props}](images/props_sub_view.PNG)
-Properties are visible upon selection, so that users can drill-down to more detail.
+![Caption Indels are either pits for deletions or floating boxes for insertions.](images/Indels_view.PNG)
 
-![Caption The Legend sub view allows selection by name.\label{fig:legend}](images/legend_sub_view.PNG)
-The Legend sub view allows by clicking a named bar in a flat panel.
+Indels are either pits for deletions or floating boxes for insertions.
+
+![Caption Properties are visible upon selection.](images/props_sub_view.PNG)
+
+Properties are visible upon selection.
+
+![Caption The Legend sub view allows selection by name.](images/legend_sub_view.PNG)
+
+The Legend sub view allows selection by name.
 
 # Statement of Need
 

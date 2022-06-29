@@ -34,6 +34,7 @@ package self.lesfoster.cylindrical_alignment.effector;
  */
 public interface SettingsEffector extends Effector {
 	void setAntialias(boolean isAntialias);
-	void setSecondLightSource(boolean isSecondEnabled);
+	void setAmbientLightSource(boolean isAmbientOn);
+	void setDark(boolean isDark);
     void setSelectionEnvelope(int envelopeDistance);
 }

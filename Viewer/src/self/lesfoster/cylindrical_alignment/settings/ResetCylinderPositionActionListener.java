@@ -1,6 +1,5 @@
 package self.lesfoster.cylindrical_alignment.settings;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
@@ -33,6 +32,7 @@ public class ResetCylinderPositionActionListener implements ActionListener {
     public ResetCylinderPositionActionListener(CylinderPositioningEffector cylinderPositioningAffector) {
         this.cylinderPositioningAffector = cylinderPositioningAffector;
     }
+	@Override
     public void actionPerformed(ActionEvent ae) {
         cylinderPositioningAffector.setDefaultCylinderPosition();
     }

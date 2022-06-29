@@ -28,12 +28,14 @@ import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
 */
 
 
-public class SecondDirectionalLightActionListener implements ActionListener {
-    private SettingsEffector settingsAffector;
-    public SecondDirectionalLightActionListener( SettingsEffector settingsAffector ) {
+public class DarkLightActionListener implements ActionListener {
+    private final SettingsEffector settingsAffector;
+    public DarkLightActionListener( SettingsEffector settingsAffector ) {
         this.settingsAffector = settingsAffector;
     }
+
+	@Override
     public void actionPerformed(ActionEvent ae) {
-        settingsAffector.setSecondLightSource(((AbstractButton)ae.getSource()).isSelected());
+        settingsAffector.setDark(((AbstractButton)ae.getSource()).isSelected());
     }
 }

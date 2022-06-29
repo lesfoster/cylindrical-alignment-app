@@ -34,6 +34,7 @@ import javafx.animation.RotateTransition;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.geometry.Point3D;
+import javafx.scene.AmbientLight;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -104,9 +105,9 @@ public class CylinderContainer extends JFXPanel
 	private int endRange = 0;
 	private int selectionEnvelope = 0;
 	
-	private boolean prominentDentils = false;
+	private final boolean prominentDentils = true;
 	private boolean diffResiduesOnly;
-	private boolean usingResidueDentils = true;
+	private final boolean usingResidueDentils = true;
 	private float factor = 0;
 
 	private final Group world = new Group();
@@ -119,9 +120,8 @@ public class CylinderContainer extends JFXPanel
 	
 	// TODO decide if these should be used or eliminated.
 	private TransformableGroup cylinder;
-	//private TransformableGroup ruler;
-	//private TransformableGroup anchor;
 	private Scene scene;
+	private final AmbientLight ambientLight = new AmbientLight();
 	private final Map<String,SubEntity> idToSubEntity = new HashMap<>();
 	private final Map<String,Node> idToShape = new HashMap<>();
 	private GlyphSelector subEntitySelector;
@@ -245,6 +245,31 @@ public class CylinderContainer extends JFXPanel
 		this.selectionEnvelope = envelopeDistance;
 	}
 
+	@Override
+	public void setDark(boolean dark) {
+		this.dark = dark;
+		if (dark) {
+			scene.setFill(Constants.FILL_DARK_COLOR);
+		} else {
+			scene.setFill(Constants.FILL_LIGHT_COLOR);
+		}		
+	}
+	
+	@Override
+	public void setAmbient(boolean ambient) {
+		Platform.runLater(new Runnable() {
+			public void run() {
+				if (ambient) {
+					ambientLight.setLightOn(true);
+					root.getChildren().add(ambientLight);
+				} else {
+					root.getChildren().remove(ambientLight);
+					ambientLight.setLightOn(false);
+				}
+			}
+		});
+	}
+
 	public void addAnchorLabel(Map<String, Object> props, TransformableGroup parentGroup) {
 		String name = (String) props.get(DataSource.NAME_PROPERTY);
 		if (name == null) {
@@ -271,7 +296,7 @@ public class CylinderContainer extends JFXPanel
 
 			//root.ry.setAngle(180.0);
 			scene = new Scene(world, this.getWidth(), this.getHeight(), true, SceneAntialiasing.BALANCED);
-			scene.setCamera(cameraModel.getCamera());
+			scene.setCamera(cameraModel.getCamera());			
 			if (dark) {
 				scene.setFill(Constants.FILL_DARK_COLOR);
 			} else {
@@ -285,6 +310,7 @@ public class CylinderContainer extends JFXPanel
 			createPositionableObjectHierarchy(dataSource);
 			root.getChildren().add(positionableObject);
 			root.getChildren().add(inSceneLabel);
+			ambientLight.setLightOn(false);
 
 			// This must be populated after entities all created.
 			subEntitySelector = new GlyphSelector(selectionModel, idToShape, idToSubEntity, appearanceSource);
@@ -452,7 +478,6 @@ public class CylinderContainer extends JFXPanel
 			return generateRectSolid(startSH, endSH, 0.0f, Constants.ZB, Constants.ZF, subEntity);
 		}
 		else {
-//			return generateRectSolid(startSH, endSH, 0.0f, Constants.ZB, Constants.ZF, subEntity);
 			return generateDirectionalSolid(startSH, endSH, 0.0f, Constants.ZB, Constants.ZF, subEntity);
 		}
 	}
@@ -501,6 +526,21 @@ public class CylinderContainer extends JFXPanel
 	/**
 	 * Builds a rectangular solid geometry based on always-same Y,Z extents.
 	 */
+	private MeshView generateRectSolid(int startSH, int endSH, float extraYDisp, float yBottom, float zBack, float zFront, SubEntity subEntity) {
+
+        // The translations: the start and end need to be normalized for
+		// a certain meter length.  They also need to be centered in that length.
+		// Assume query IS coordinate system, and starts at zero.
+		float xl = translateToJava3dCoords(startSH); //((float)startSH * factor) - START_OF_CYLINDER;
+		float xr = translateToJava3dCoords(endSH);   //((float)endSH * factor) - START_OF_CYLINDER;
+		float[] coordinateData = getRectSolidCoordData(xl, extraYDisp, yBottom, zBack, zFront, xr, 0f, subEntity != null ? subEntity.getStrand() : SubEntity.STRAND_NOT_APPLICABLE);
+
+		return createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), subEntity);
+	}
+
+	/**
+	 * Builds a rectangular solid geometry based on always-same Y,Z extents.
+	 */
 	private MeshView generateDirectionalSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront, SubEntity subEntity) {
 
         // The translations: the start and end need to be normalized for
@@ -508,6 +548,8 @@ public class CylinderContainer extends JFXPanel
 		// Assume query IS coordinate system, and starts at zero.
 		float xl = translateToJava3dCoords(startSH);
 		float xr = translateToJava3dCoords(endSH);
+		final float yBottom = Constants.YB + 1.5f + extraYDisp;
+		
 		float[] coordinateData = getRectSolidCoordData(xl, extraYDisp, zBack, zFront, xr, 0.9f, subEntity.getStrand());
 		
 		// Given we have these coords, let's tweak them a little.
@@ -537,50 +579,60 @@ public class CylinderContainer extends JFXPanel
 		return createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), subEntity);
 	}
 	
-	public float[] getRectSolidCoordData(float xl, float extraYDisp, float zBack, float zFront, float xr, float extraZDisp, int strand) {
+	public float[] getRectSolidCoordData(float xl, float extraYDisp,
+			float zBack, float zFront, float xr, float extraZDisp, int strand) {
+		final float yBottom = Constants.YB + extraYDisp;
+		return getRectSolidCoordData(xl, extraYDisp, yBottom, zBack, zFront, xr,
+				extraZDisp, strand);
+	}
+	
+	public float[] getRectSolidCoordData(float xl, float extraYDisp, 
+			float yBottom, float zBack, float zFront, float xr, 
+			float extraZDisp, int strand) {
+		final float yTop = Constants.YT + extraYDisp;
 		float[] coordinateData = new float[]{
 			// The 'lid'
-			xl, Constants.YT + extraYDisp, zBack, //0
-			xl, Constants.YT + extraYDisp, zFront, //1
-			xr, Constants.YT + extraYDisp, zFront, //2
-			xl, Constants.YT + extraYDisp, zBack, //3
-			xr, Constants.YT + extraYDisp, zFront, //4
-			xr, Constants.YT + extraYDisp, zBack, //5
+			xl, yTop, zBack, //0
+			xl, yTop, zFront, //1
+			xr, yTop, zFront, //2
+			xl, yTop, zBack, //3
+			xr, yTop, zFront, //4
+			xr, yTop, zBack, //5
 			// The 'left'
-			xl, Constants.YT + extraYDisp, zBack, //6
-			xl, Constants.YB + extraYDisp, zBack, //7
-			xl, Constants.YT + extraYDisp, zFront, //8
-			xl, Constants.YT + extraYDisp, zFront, //9
-			xl, Constants.YB + extraYDisp, zBack, //10
-			xl, Constants.YB + extraYDisp, zFront, //11
+			xl, yTop, zBack, //6
+			xl, yBottom, zBack, //7
+			xl, yTop, zFront, //8
+			xl, yTop, zFront, //9
+			xl, yBottom, zBack, //10
+			xl, yBottom, zFront, //11
 			// The 'right'
-			xr, Constants.YT + extraYDisp, zBack, //12
-			xr, Constants.YT + extraYDisp, zFront, //13
-			xr, Constants.YB + extraYDisp, zBack, //14
-			xr, Constants.YT + extraYDisp, zFront, //15
-			xr, Constants.YB + extraYDisp, zFront, //16
-			xr, Constants.YB + extraYDisp, zBack, //17
+			xr, yTop, zBack, //12
+			xr, yTop, zFront, //13
+			xr, yBottom, zBack, //14
+			xr, yTop, zFront, //15
+			xr, yBottom, zFront, //16
+			xr, yBottom, zBack, //17
 			// The 'front'
-			xl, Constants.YT + extraYDisp, zFront, //18
-			xl, Constants.YB + extraYDisp, zFront, //19
-			xr, Constants.YT + extraYDisp, zFront, //20
-			xl, Constants.YB + extraYDisp, zFront, //21
-			xr, Constants.YB + extraYDisp, zFront, //22
-			xr, Constants.YT + extraYDisp, zFront, //23
+			xl, yTop, zFront, //18
+			xl, yBottom, zFront, //19
+			xr, yTop, zFront, //20
+			xl, yBottom, zFront, //21
+			xr, yBottom, zFront, //22
+			xr, yTop, zFront, //23
 			// The 'bottom'
-			xl, Constants.YB + extraYDisp, zBack, //24
-			xr, Constants.YB + extraYDisp, zBack, //25
-			xr, Constants.YB + extraYDisp, zFront, //26
-			xl, Constants.YB + extraYDisp, zBack, //27
-			xr, Constants.YB + extraYDisp, zFront, //28
-			xl, Constants.YB + extraYDisp, zFront, //29
+			xl, yBottom, zBack, //24
+			xr, yBottom, zBack, //25
+			xr, yBottom, zFront, //26
+			xl, yBottom, zBack, //27
+			xr, yBottom, zFront, //28
+			xl, yBottom, zFront, //29
 			// The 'back'
-			xr, Constants.YT + extraYDisp, zBack, //30
-			xr, Constants.YB + extraYDisp, zBack, //31
-			xl, Constants.YB + extraYDisp, zBack, //32
-			xr, Constants.YT + extraYDisp, zBack, //33
-			xl, Constants.YB + extraYDisp, zBack, //34
-			xl, Constants.YT + extraYDisp, zBack, //35
+			xr, yTop, zBack, //30
+			xr, yBottom, zBack, //31
+			xl, yBottom, zBack, //32
+			xr, yTop, zBack, //33
+			xl, yBottom, zBack, //34
+			xl, yTop, zBack, //35
 		};
 		return coordinateData;
 	}
@@ -616,7 +668,6 @@ public class CylinderContainer extends JFXPanel
 
 		if (subEntity != null) {
 			PhongMaterial meshMaterial = createAppearance(subEntity);
-			//meshMaterial.setSpecularPower(10000);
 			meshView.setMaterial(meshMaterial);
 		}
 
@@ -956,12 +1007,15 @@ public class CylinderContainer extends JFXPanel
     /** Add shapes for any insertions in subject, relative to query. */
     private void generateSubjectInsertions(SubEntity subEntity, Group hitGroup, int[][] queryGaps) {
     	int startSH = subEntity.getStartOnQuery();
-		float extraYDisp = 1.3f;
-		float back = Constants.ZB + 0.5f;
-		float front = Constants.ZF - 0.5f;
-    	for (int i = 0; i < queryGaps.length; i++) {
-    		int[] nextGap = queryGaps[i];
-            MeshView insertion = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], extraYDisp, back, front, subEntity);
+		float back = Constants.ZB_INS;
+		float front = Constants.ZF_INS;
+
+		float extraYDisp = 1.5f;
+		final float yBottom = Constants.YT_INS; // TODO new constant.
+
+		for (int i = 0; i < queryGaps.length; i++) {
+    		int[] nextGap = queryGaps[i];			
+            MeshView insertion = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], extraYDisp, yBottom, back, front, subEntity);
 			PhongMaterial meshMaterial = appearanceSource.createSubEntityInsertionAppearance(subEntity);
 			insertion.setMaterial(meshMaterial);
 			hitGroup.getChildren().add(insertion);
@@ -1041,8 +1095,9 @@ public class CylinderContainer extends JFXPanel
     }
 	
 	/**
-	 * Builds a rectangular solid geometry based on always-same Y,Z extents.
+	 * Generates an alternative version of a rectangular solid with fewer faces.
 	 */
+	@SuppressWarnings("unused")
 	private MeshView generateFacadeBox(int startSH, int endSH, float extraYDisp, float zBack, float zFront) {
 
         // The translations: the start and end need to be normalized for
@@ -1397,7 +1452,7 @@ public class CylinderContainer extends JFXPanel
 	private void handleMouse(Scene scene) {
 		scene.setOnMouseClicked(new MouseClickedHandler(subEntitySelector));
 		scene.setOnMousePressed(new MousePressedHandler(mouseLocationModel));
-		this.mouseDraggedHandler = new MouseDraggedHandler(mouseLocationModel, cameraModel, idToShape, subEntitySelector);
+		this.mouseDraggedHandler = new MouseDraggedHandler(mouseLocationModel, cameraModel);
 		scene.setOnMouseDragged(mouseDraggedHandler);		
 	}
 

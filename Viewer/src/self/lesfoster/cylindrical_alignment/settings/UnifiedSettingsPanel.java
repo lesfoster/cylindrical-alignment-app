@@ -46,8 +46,7 @@ import self.lesfoster.cylindrical_alignment.viewer.top_component.EffectedContain
  * A settings panel for the viewer.
  */
 public class UnifiedSettingsPanel extends JPanel {
-    private static final int WIDTH = 300;
-    private static final int HEIGHT = 325;
+    private static final int USPWIDTH = 300;
 	
 	private EffectorContainerListener ecl;
 	
@@ -107,7 +106,7 @@ public class UnifiedSettingsPanel extends JPanel {
         int gridX = 1;
         int gridY = 1;
 
-        int gridWidth = 1;
+        int gridWidth = 2;
         int gridHeight = 1;
 
         double weightX = 4.0;
@@ -167,7 +166,7 @@ public class UnifiedSettingsPanel extends JPanel {
         add( dragAroundYCheckbox, dragAroundYConstraints );
 		
 		gridY++;
-		JPanel colorRankerPanel = new ColorRankerPanel(WIDTH);
+		JPanel colorRankerPanel = new ColorRankerPanel(USPWIDTH);
         GridBagConstraints colorRankerConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
@@ -185,18 +184,29 @@ public class UnifiedSettingsPanel extends JPanel {
         add( antiAliasCheckbox, antiAliasConstraints );
 		*/
 
-        /*
-			2nd light is not supported as yet.  Consider again later.
-		
-        JCheckBox secDirLightCheckbox = new JCheckBox( "Second Directional Light" );
-        secDirLightCheckbox.setSelected( true );  // On by default.
-        secDirLightCheckbox.addActionListener(new SecondDirectionalLightActionListener( settingsEffector ) );
+        JCheckBox ambientLightCheckbox = new JCheckBox( "Ambient Lighting" );
+		ambientLightCheckbox.setToolTipText(
+				"Switching to ambient lighting ensures all objects show up more uniformly, although it may not show some of the more interesting effects"
+		);
+        ambientLightCheckbox.setSelected( false );  // Off by default.
+        ambientLightCheckbox.addActionListener(new AmbientLightActionListener( settingsEffector ) );
         gridY++;
-        GridBagConstraints secDirConstraints = new GridBagConstraints(
-                gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
+        GridBagConstraints ambilightConstraints = new GridBagConstraints(
+                gridX, gridY, 1, gridHeight, weightX / 2.0, weightY, anchor, fill, insets, ipadx, ipady
         );
-        add( secDirLightCheckbox, secDirConstraints );
-		*/
+        add(ambientLightCheckbox, ambilightConstraints );
+
+        JCheckBox darkLightCheckbox = new JCheckBox( "Dark Background" );
+		darkLightCheckbox.setToolTipText(
+				"A dark background is better for computer viewing.  A light background is better for printing"
+		);
+        darkLightCheckbox.setSelected( true );  // Dark by default.
+        darkLightCheckbox.addActionListener(new DarkLightActionListener( settingsEffector ) );
+        GridBagConstraints lightDarkConstraints = new GridBagConstraints(
+                2, gridY, 1, gridHeight, weightX, weightY, GridBagConstraints.EAST, fill, insets, ipadx, ipady
+        );
+        add(darkLightCheckbox, lightDarkConstraints );
+
 		/*
         GuiUtils.upperLeftLocation(this, WIDTH, HEIGHT);
         GuiUtils.setIcon(this);
