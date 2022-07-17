@@ -18,24 +18,26 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
-
-/*
+ */
+ /*
  * Help Affector.
  * Created on Feb 5, 2005
  */
 package self.lesfoster.cylindrical_alignment.effector;
 
 /**
- * An affector to allow "gimme help" requests to be addressed within
- * the component.
+ * An affector to allow "gimme help" requests to be addressed within the
+ * component.
+ *
  * @author Leslie L. Foster
  */
 public interface HelpEffector extends Effector {
+
     void showAbout();
+
     void showInputData();
+
     void showApplicationHelp();
+
     void showUrlPingAdvisory();
 }

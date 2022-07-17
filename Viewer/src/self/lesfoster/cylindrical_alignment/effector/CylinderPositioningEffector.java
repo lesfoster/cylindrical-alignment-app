@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 /*
@@ -28,12 +26,16 @@ package self.lesfoster.cylindrical_alignment.effector;
  * characteristics.
  */
 public interface CylinderPositioningEffector extends Effector {
-	public static final int FAST_DRAG = 20;
-	public static final int SLOW_DRAG = 1;
-	public static final double DEFAULT_MOUSE_ROTATE_FACTOR = 0.05;
-	
-	void setFrozenMouseRotator( boolean isFrozen );
-	void setMouseRotatorFactor( double factor );
-	void setYOnlyMouseRotator( boolean isXOnly );
-	void setDefaultCylinderPosition();
+
+    public static final int FAST_DRAG = 20;
+    public static final int SLOW_DRAG = 1;
+    public static final double DEFAULT_MOUSE_ROTATE_FACTOR = 0.05;
+
+    void setFrozenMouseRotator(boolean isFrozen);
+
+    void setMouseRotatorFactor(double factor);
+
+    void setYOnlyMouseRotator(boolean isXOnly);
+
+    void setDefaultCylinderPosition();
 }

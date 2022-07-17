@@ -18,16 +18,19 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseDraggedHandler;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.gui_model.MouseLocationModel;
 
-/** Implement this to allow the positioning affector to get objects needed to carry out operations. */
+/**
+ * Implement this to allow the positioning affector to get objects needed to
+ * carry out operations.
+ */
 public interface CylinderPositioningEffectorTarget {
-	MouseLocationModel getMouseLocationModel();
-	MouseDraggedHandler getMouseDraggedHandler();
+
+    MouseLocationModel getMouseLocationModel();
+
+    MouseDraggedHandler getMouseDraggedHandler();
 }

@@ -18,10 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
-
+ */
 package self.lesfoster.cylindrical_alignment.settings;
 
 /*
@@ -37,44 +34,48 @@ import java.awt.BorderLayout;
 import self.lesfoster.cylindrical_alignment.effector.SpeedEffector;
 
 /**
- * Special control to popup and let the user control the spin rate of the cylinder.
- *  
+ * Special control to popup and let the user control the spin rate of the
+ * cylinder.
+ *
  * @author Leslie L Foster
  */
 public class SpinSliderFrame extends JFrame {
 
-	private static final long serialVersionUID = -1;
+    private static final long serialVersionUID = -1;
 
-	/** Will keep the instance hidden here */
-	private static SpinSliderFrame instance;
-	
-	/**
-	 * Private constructor.  Forces singleton.
-	 * 
-	 * @param affector what to call to change the speed of spin.
-	 */
-	private SpinSliderFrame(SpeedEffector affector) {
-        SpinSliderPanel panel = new SpinSliderPanel( affector );
-		getContentPane().add(panel, BorderLayout.CENTER);
+    /**
+     * Will keep the instance hidden here
+     */
+    private static SpinSliderFrame instance;
 
-		GuiUtils.upperLeftLocation(this, panel.getPreferredSize().width, panel.getPreferredSize().height);
-		GuiUtils.setIcon(this);
-	}
+    /**
+     * Private constructor. Forces singleton.
+     *
+     * @param affector what to call to change the speed of spin.
+     */
+    private SpinSliderFrame(SpeedEffector affector) {
+        SpinSliderPanel panel = new SpinSliderPanel(affector);
+        getContentPane().add(panel, BorderLayout.CENTER);
 
-	/**
-	 * Return only possible instance. 
-	 * 
-	 * @return the instance.  Create here if needed.
-	 * @param affector what to call to change the speed of spin.
-	 */
-	public static SpinSliderFrame getInstance(SpeedEffector affector) {
-		if (affector == null)
-			throw new RuntimeException("Need instance of affector");
+        GuiUtils.upperLeftLocation(this, panel.getPreferredSize().width, panel.getPreferredSize().height);
+        GuiUtils.setIcon(this);
+    }
 
-		if (instance == null) {
-			instance = new SpinSliderFrame(affector);
-		}
-		return instance;
-	}
+    /**
+     * Return only possible instance.
+     *
+     * @return the instance. Create here if needed.
+     * @param affector what to call to change the speed of spin.
+     */
+    public static SpinSliderFrame getInstance(SpeedEffector affector) {
+        if (affector == null) {
+            throw new RuntimeException("Need instance of affector");
+        }
+
+        if (instance == null) {
+            instance = new SpinSliderFrame(affector);
+        }
+        return instance;
+    }
 
 }

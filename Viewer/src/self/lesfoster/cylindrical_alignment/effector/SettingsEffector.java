@@ -18,11 +18,8 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
-
-/*
+ */
+ /*
  * Settings Affector
  * Created on Mar 23, 2005
  */
@@ -30,11 +27,16 @@ package self.lesfoster.cylindrical_alignment.effector;
 
 /**
  * Allows external manipulation of settings.
+ *
  * @author FosterLL
  */
 public interface SettingsEffector extends Effector {
-	void setAntialias(boolean isAntialias);
-	void setAmbientLightSource(boolean isAmbientOn);
-	void setDark(boolean isDark);
+
+    void setAntialias(boolean isAntialias);
+
+    void setAmbientLightSource(boolean isAmbientOn);
+
+    void setDark(boolean isDark);
+
     void setSelectionEnvelope(int envelopeDistance);
 }

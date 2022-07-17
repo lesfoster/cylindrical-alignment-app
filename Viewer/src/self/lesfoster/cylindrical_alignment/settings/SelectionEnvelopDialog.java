@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.settings;
 
 import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
@@ -30,27 +28,26 @@ import java.awt.*;
 import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Leslie L Foster
- * Date: 12/7/11
- * Time: 11:46 PM
+ * Created by IntelliJ IDEA. User: Leslie L Foster Date: 12/7/11 Time: 11:46 PM
  * This popup will operate against an affector when the user enters a value.
  */
 public class SelectionEnvelopDialog extends JDialog {
-    private SettingsEffector settingsAffector;
-    public SelectionEnvelopDialog( SettingsEffector settingsAffector ) {
+
+    private final SettingsEffector settingsAffector;
+
+    public SelectionEnvelopDialog(SettingsEffector settingsAffector) {
         super();
-        this.setTitle( "Selection Envelope" );
+        this.setTitle("Selection Envelope");
         this.settingsAffector = settingsAffector;
         init();
     }
 
     private void init() {
         GuiUtils.setupScreenRealestate(this, 200, 82);
-        setResizable( false );
-        getContentPane().setLayout( new BorderLayout() );
-        JPanel selectionEnvelopPanel = new SelectionEnvelopPanel( settingsAffector );
-        getContentPane().add( selectionEnvelopPanel, BorderLayout.CENTER );
+        setResizable(false);
+        getContentPane().setLayout(new BorderLayout());
+        JPanel selectionEnvelopPanel = new SelectionEnvelopPanel(settingsAffector);
+        getContentPane().add(selectionEnvelopPanel, BorderLayout.CENTER);
     }
 
 }

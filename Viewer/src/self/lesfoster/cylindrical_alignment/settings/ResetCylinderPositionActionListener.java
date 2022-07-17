@@ -24,15 +24,16 @@ import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 public class ResetCylinderPositionActionListener implements ActionListener {
-    private CylinderPositioningEffector cylinderPositioningAffector;
+
+    private final CylinderPositioningEffector cylinderPositioningAffector;
+
     public ResetCylinderPositionActionListener(CylinderPositioningEffector cylinderPositioningAffector) {
         this.cylinderPositioningAffector = cylinderPositioningAffector;
     }
-	@Override
+
+    @Override
     public void actionPerformed(ActionEvent ae) {
         cylinderPositioningAffector.setDefaultCylinderPosition();
     }

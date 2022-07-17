@@ -18,10 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
-
+ */
 package self.lesfoster.cylindrical_alignment.settings;
 
 /*
@@ -29,64 +26,60 @@ package self.lesfoster.cylindrical_alignment.settings;
  * 
  * Created on Feb 2, 2006
  */
-
 import javax.swing.JFrame;
-import javax.swing.JSlider;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.LineBorder;
 
 import java.awt.BorderLayout;
 
-import java.util.Hashtable;
 import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector;
 import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
 
 /**
- * Special control to popup and let the user control the spin rate of the cylinder.
- *  
+ * Special control to popup and let the user control the spin rate of the
+ * cylinder.
+ *
  * @author Leslie L Foster
  */
 public class DragFactorSliderFrame extends JFrame {
 
-	private static final long serialVersionUID = -1;
+    private static final long serialVersionUID = -1;
 
-	private static final int WIDTH = 300;
-	private static final int HEIGHT = 100;
+    private static final int DFSF_WIDTH = 300;
+    private static final int DFSF_HEIGHT = 100;
 
-	/** Will keep the instance hidden here */
-	private static DragFactorSliderFrame instance;
-	
-	/**
-	 * Private constructor.  Forces singleton.
-	 * 
-	 * @param affector what to call to change the speed of spin.
-	 */
-	private DragFactorSliderFrame(CylinderPositioningEffector affector) {
-        JPanel panel = new DragFactorSliderPanel( affector );
-		getContentPane().add( panel, BorderLayout.CENTER );
+    /**
+     * Will keep the instance hidden here
+     */
+    private static DragFactorSliderFrame instance;
 
-		GuiUtils.upperLeftLocation(this, WIDTH, HEIGHT);
-		GuiUtils.setIcon(this);
-	}
+    /**
+     * Private constructor. Forces singleton.
+     *
+     * @param affector what to call to change the speed of spin.
+     */
+    private DragFactorSliderFrame(CylinderPositioningEffector affector) {
+        JPanel panel = new DragFactorSliderPanel(affector);
+        getContentPane().add(panel, BorderLayout.CENTER);
 
-	/**
-	 * Return only possible instance. 
-	 * 
-	 * @return the instance.  Create here if needed.
-	 * @param affector what to call to change the rate of cyl drag.
-	 */
-	public static DragFactorSliderFrame getInstance(CylinderPositioningEffector affector) {
-		if (affector == null)
-			throw new RuntimeException("Need instance of affector");
+        GuiUtils.upperLeftLocation(this, DFSF_WIDTH, DFSF_HEIGHT);
+        GuiUtils.setIcon(this);
+    }
 
-		if (instance == null) {
-			instance = new DragFactorSliderFrame(affector);
-		}
-		return instance;
-	}
-	
+    /**
+     * Return only possible instance.
+     *
+     * @return the instance. Create here if needed.
+     * @param affector what to call to change the rate of cyl drag.
+     */
+    public static DragFactorSliderFrame getInstance(CylinderPositioningEffector affector) {
+        if (affector == null) {
+            throw new RuntimeException("Need instance of affector");
+        }
+
+        if (instance == null) {
+            instance = new DragFactorSliderFrame(affector);
+        }
+        return instance;
+    }
+
 }

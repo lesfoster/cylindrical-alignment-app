@@ -18,46 +18,45 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 /**
  * Will carry out settings modifications in response to user click.
- * 
+ *
  * @author Leslie L Foster
  *
  */
 public class ConcreteSettingsEffector implements SettingsEffector {
-	private final SettingsEffectorTarget target;
-	
-	/**
-	 * Construct with the target.
-	 */
-	public ConcreteSettingsEffector( SettingsEffectorTarget target ) {
-		this.target = target;
-	}
 
-	@Override
-	public void setAntialias(boolean isAntialias) {
+    private final SettingsEffectorTarget target;
+
+    /**
+     * Construct with the target.
+     */
+    public ConcreteSettingsEffector(SettingsEffectorTarget target) {
+        this.target = target;
+    }
+
+    @Override
+    public void setAntialias(boolean isAntialias) {
 //		target.getUniverse().getViewer().getView().setSceneAntialiasingEnable(isAntialias);
-		System.out.println("setAntialias has no effect");
-	}
+        System.out.println("setAntialias has no effect");
+    }
 
-	@Override
-	public void setAmbientLightSource(boolean isAmbientOn) {
-		target.setAmbient(isAmbientOn);
-	}
+    @Override
+    public void setAmbientLightSource(boolean isAmbientOn) {
+        target.setAmbient(isAmbientOn);
+    }
 
-	@Override
+    @Override
     public void setSelectionEnvelope(int envelopeDistance) {
         target.setEnvelopeDistance(envelopeDistance);
     }
-	
-	@Override
-	public void setDark(boolean isDark) {
-		target.setDark(isDark);
-	}
+
+    @Override
+    public void setDark(boolean isDark) {
+        target.setDark(isDark);
+    }
 
 }

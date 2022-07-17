@@ -25,14 +25,16 @@ import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 public class FreezeCylinderActionListener implements ActionListener {
-    private CylinderPositioningEffector cylinderPositioningAffector;
-    public FreezeCylinderActionListener( CylinderPositioningEffector cylinderPositioningAffector ) {
+
+    private final CylinderPositioningEffector cylinderPositioningAffector;
+
+    public FreezeCylinderActionListener(CylinderPositioningEffector cylinderPositioningAffector) {
         this.cylinderPositioningAffector = cylinderPositioningAffector;
     }
+
+    @Override
     public void actionPerformed(ActionEvent ae) {
         AbstractButton aButton = (AbstractButton) ae.getSource();
         boolean selected = aButton.getModel().isSelected();

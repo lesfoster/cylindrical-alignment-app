@@ -23,13 +23,10 @@
 
 package self.lesfoster.cylindrical_alignment.settings;
 
-import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
-
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
 
 /**
@@ -40,7 +37,7 @@ import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
  * The controls on this panel will operate against an affector when the user enters a value.
  */
 public class SelectionEnvelopPanel extends JPanel {
-    private SettingsEffector settingsAffector;
+    private final SettingsEffector settingsAffector;
     public SelectionEnvelopPanel(SettingsEffector settingsAffector) {
         super();
         this.settingsAffector = settingsAffector;
@@ -53,14 +50,12 @@ public class SelectionEnvelopPanel extends JPanel {
         envelopDistanceTF.setBorder( new TitledBorder( "Envelope Width" ) );
 
         JButton goButton = new JButton( "Set" );
-        goButton.addActionListener( new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Integer envelopeDistance = Integer.parseInt( envelopDistanceTF.getText() );
-                    settingsAffector.setSelectionEnvelope( envelopeDistance );
-                } catch ( NumberFormatException nfe ) {
-                    // nada
-                }
+        goButton.addActionListener((ActionEvent e) -> {
+            try {
+                Integer envelopeDistance = Integer.parseInt( envelopDistanceTF.getText() );
+                settingsAffector.setSelectionEnvelope( envelopeDistance );
+            } catch ( NumberFormatException nfe ) {
+                // nada
             }
         });
         BorderLayout borderLayout = new BorderLayout();

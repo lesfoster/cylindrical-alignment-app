@@ -25,17 +25,17 @@ import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 public class DarkLightActionListener implements ActionListener {
+
     private final SettingsEffector settingsAffector;
-    public DarkLightActionListener( SettingsEffector settingsAffector ) {
+
+    public DarkLightActionListener(SettingsEffector settingsAffector) {
         this.settingsAffector = settingsAffector;
     }
 
-	@Override
+    @Override
     public void actionPerformed(ActionEvent ae) {
-        settingsAffector.setDark(((AbstractButton)ae.getSource()).isSelected());
+        settingsAffector.setDark(((AbstractButton) ae.getSource()).isSelected());
     }
 }

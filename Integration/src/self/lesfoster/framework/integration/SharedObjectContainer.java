@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.framework.integration;
 
 /**
@@ -36,34 +34,34 @@ import java.util.Collection;
  * @author Leslie L Foster
  */
 public class SharedObjectContainer<T> {
-	private Collection<ContainerListener> listeners = new ArrayList<>();
-	private T value;
-	
-	public synchronized void addListener(ContainerListener listener) {
-		if (value != null) {
-			listener.setValue(value);
-		}
-		listeners.add(listener);
-	}
 
-	public synchronized void close() {
-		listeners.clear();
-	}
+    private final Collection<ContainerListener> listeners = new ArrayList<>();
+    private T value;
 
-	public void setValue(T value) {
-		this.value = value;
-		fireContainerEvent();
-	}
+    public synchronized void addListener(ContainerListener listener) {
+        if (value != null) {
+            listener.setValue(value);
+        }
+        listeners.add(listener);
+    }
 
-	public static interface ContainerListener<T> {
+    public synchronized void close() {
+        listeners.clear();
+    }
 
-		void setValue(T value);
-	}
+    public void setValue(T value) {
+        this.value = value;
+        fireContainerEvent();
+    }
 
-	private synchronized void fireContainerEvent() {
-		for (ContainerListener listener : listeners) {
-			listener.setValue(value);
-		}
-	}
+    public static interface ContainerListener<T> {
+
+        void setValue(T value);
+    }
+
+    private synchronized void fireContainerEvent() {
+        for (ContainerListener listener : listeners) {
+            listener.setValue(value);
+        }
+    }
 }
-

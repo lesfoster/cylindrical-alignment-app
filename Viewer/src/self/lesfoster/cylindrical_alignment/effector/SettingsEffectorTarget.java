@@ -18,20 +18,24 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 import javafx.scene.Scene;
 
 /**
- * Implement this to provide a settings affector with the hooks it needs to perform its task. 
+ * Implement this to provide a settings affector with the hooks it needs to
+ * perform its task.
+ *
  * @author Leslie L Foster
  */
 public interface SettingsEffectorTarget {
-	Scene getUniverse();
-	void setAmbient(boolean isAmbient);
-	void setDark(boolean dark);
+
+    Scene getUniverse();
+
+    void setAmbient(boolean isAmbient);
+
+    void setDark(boolean dark);
+
     void setEnvelopeDistance(int envelopeDistance);
 }

@@ -25,17 +25,17 @@ import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 public class AmbientLightActionListener implements ActionListener {
+
     private final SettingsEffector settingsAffector;
-    public AmbientLightActionListener( SettingsEffector settingsAffector ) {
+
+    public AmbientLightActionListener(SettingsEffector settingsAffector) {
         this.settingsAffector = settingsAffector;
     }
 
-	@Override
+    @Override
     public void actionPerformed(ActionEvent ae) {
-        settingsAffector.setAmbientLightSource(((AbstractButton)ae.getSource()).isSelected());
+        settingsAffector.setAmbientLightSource(((AbstractButton) ae.getSource()).isSelected());
     }
 }

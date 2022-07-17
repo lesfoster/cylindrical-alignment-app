@@ -25,15 +25,17 @@ import self.lesfoster.cylindrical_alignment.effector.SettingsEffector;
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 public class AntialiasActionListener implements ActionListener {
+
     private SettingsEffector settingsAffector;
-    public AntialiasActionListener( SettingsEffector settingsAffector ) {
+
+    public AntialiasActionListener(SettingsEffector settingsAffector) {
         this.settingsAffector = settingsAffector;
     }
+
+    @Override
     public void actionPerformed(ActionEvent ae) {
-        settingsAffector.setAntialias(((AbstractButton)ae.getSource()).isSelected());
+        settingsAffector.setAntialias(((AbstractButton) ae.getSource()).isSelected());
     }
 }

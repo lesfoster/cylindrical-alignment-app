@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.inspector.table;
 
 import java.awt.event.ActionEvent;
@@ -33,20 +31,21 @@ import javax.swing.AbstractAction;
  */
 public class LaunchLinkAction extends AbstractAction {
 
-	private static final long serialVersionUID = -1L;
-	private String value;
+    private static final long serialVersionUID = -1L;
+    private final String value;
 
-	public LaunchLinkAction(String value) {
-		super("Go There");
-		this.value = value;
-	}
+    public LaunchLinkAction(String value) {
+        super("Go There");
+        this.value = value;
+    }
 
-	public void actionPerformed(ActionEvent ae) {
-		// Goes to URL.
-		try {
-			BrowserControl.displayURL(value);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        // Goes to URL.
+        try {
+            BrowserControl.displayURL(value);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }

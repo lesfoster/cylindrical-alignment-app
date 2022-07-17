@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.settings;
 
 import java.awt.GridBagConstraints;
@@ -38,70 +36,70 @@ import self.lesfoster.cylindrical_alignment.viewer.top_component.EffectedContain
 import self.lesfoster.cylindrical_alignment.viewer.top_component.EffectedContainer.EffectorContainerListener;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Leslie L Foster
- * Date: 4/22/12
- * Time: 8:41 PM
+ * Created by IntelliJ IDEA. User: Leslie L Foster Date: 4/22/12 Time: 8:41 PM
  *
  * A settings panel for the viewer.
  */
 public class UnifiedSettingsPanel extends JPanel {
+
     private static final int USPWIDTH = 300;
-	
-	private EffectorContainerListener ecl;
-	
-	public UnifiedSettingsPanel() {
-		initWhenReady();
-	}
+
+    private EffectorContainerListener ecl;
+
+    public UnifiedSettingsPanel() {
+        initWhenReady();
+    }
 
     public UnifiedSettingsPanel(
             SpeedEffector speedEffector,
             SettingsEffector settingsEffector,
-            CylinderPositioningEffector cylinderPositioningEffector ) {
+            CylinderPositioningEffector cylinderPositioningEffector) {
         //super( "Adjust Settings" );
-        initGui( speedEffector, settingsEffector, cylinderPositioningEffector );
+        initGui(speedEffector, settingsEffector, cylinderPositioningEffector);
     }
 
-	private void initWhenReady() {
-		EffectedContainer ec = EffectedContainer.getInstance();
-		ecl = (Effected effected) -> {
-			//close();
-			launchInit(effected);
-		};
-		ec.addListener(ecl);
-	}
+    private void initWhenReady() {
+        EffectedContainer ec = EffectedContainer.getInstance();
+        ecl = (Effected effected) -> {
+            //close();
+            launchInit(effected);
+        };
+        ec.addListener(ecl);
+    }
 
-	public void launchInit(Effected effected) {
-		final Effector[] effectors = effected.getEffectors();
-		SpeedEffector speedEffector = null;
-		SettingsEffector settingsEffector = null;
-		CylinderPositioningEffector cylPosEffector = null;
-		for (Effector effector : effectors) {
-			if (effector instanceof SpeedEffector) {
-				speedEffector = (SpeedEffector) effector;
-			} else if (effector instanceof SettingsEffector) {
-				settingsEffector = (SettingsEffector) effector;
-			} else if (effector instanceof CylinderPositioningEffector) {
-				cylPosEffector = (CylinderPositioningEffector) effector;
-			}
-		}
-		initGui(speedEffector, settingsEffector, cylPosEffector);
-	}
+    public void launchInit(Effected effected) {
+        final Effector[] effectors = effected.getEffectors();
+        SpeedEffector speedEffector = null;
+        SettingsEffector settingsEffector = null;
+        CylinderPositioningEffector cylPosEffector = null;
+        for (Effector effector : effectors) {
+            if (effector instanceof SpeedEffector) {
+                speedEffector = (SpeedEffector) effector;
+            } else if (effector instanceof SettingsEffector) {
+                settingsEffector = (SettingsEffector) effector;
+            } else if (effector instanceof CylinderPositioningEffector) {
+                cylPosEffector = (CylinderPositioningEffector) effector;
+            }
+        }
+        initGui(speedEffector, settingsEffector, cylPosEffector);
+    }
 
-	/** Build out the GUI with all the effectors known here. */
+    /**
+     * Build out the GUI with all the effectors known here.
+     */
     private void initGui(
             SpeedEffector speedEffector,
             SettingsEffector settingsEffector,
-            CylinderPositioningEffector cylinderPositioningEffector ) {
+            CylinderPositioningEffector cylinderPositioningEffector) {
 
-		removeAll();
-		
-        SpinSliderPanel spinSliderPanel = new SpinSliderPanel( speedEffector );
-        SelectionEnvelopPanel selectionEnvelopPanel = new SelectionEnvelopPanel( settingsEffector );
-        DragFactorSliderPanel dragFactorSliderPanel = new DragFactorSliderPanel( cylinderPositioningEffector );
+        removeAll();
+
+        SpinSliderPanel spinSliderPanel = new SpinSliderPanel(speedEffector);
+        SelectionEnvelopPanel selectionEnvelopPanel = new SelectionEnvelopPanel(settingsEffector);
+        DragFactorSliderPanel dragFactorSliderPanel = new DragFactorSliderPanel(cylinderPositioningEffector);
 
         GridBagLayout gridBagLayout = new GridBagLayout();
-        this.setLayout( gridBagLayout );
+        this.setLayout(gridBagLayout);
 
         int gridX = 1;
         int gridY = 1;
@@ -127,52 +125,52 @@ public class UnifiedSettingsPanel extends JPanel {
         GridBagConstraints spinSliderConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
-        add( spinSliderPanel, spinSliderConstraints );
+        add(spinSliderPanel, spinSliderConstraints);
 
         gridY++;
         GridBagConstraints selectionEnvelopConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
-        add( selectionEnvelopPanel, selectionEnvelopConstraints );
+        add(selectionEnvelopPanel, selectionEnvelopConstraints);
 
         gridY++;
         GridBagConstraints dragFactorConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
-        add( dragFactorSliderPanel, dragFactorConstraints );
+        add(dragFactorSliderPanel, dragFactorConstraints);
 
-        JButton resetCylinderButton = new JButton( "Re-set Cylinder Position" );
+        JButton resetCylinderButton = new JButton("Re-set Cylinder Position");
         resetCylinderButton.addActionListener(new ResetCylinderPositionActionListener(cylinderPositioningEffector));
         gridY++;
         GridBagConstraints resetCylinderConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, GridBagConstraints.NONE, insets, ipadx, ipady
         );
-        add( resetCylinderButton, resetCylinderConstraints );
+        add(resetCylinderButton, resetCylinderConstraints);
 
-        JCheckBox freezeCylinderCheckbox = new JCheckBox( "Freeze Cylinder Position" );
-        freezeCylinderCheckbox.addActionListener(new FreezeCylinderActionListener( cylinderPositioningEffector ) );
+        JCheckBox freezeCylinderCheckbox = new JCheckBox("Freeze Cylinder Position");
+        freezeCylinderCheckbox.addActionListener(new FreezeCylinderActionListener(cylinderPositioningEffector));
         gridY++;
         GridBagConstraints freezeCylinderConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
-        add( freezeCylinderCheckbox, freezeCylinderConstraints );
+        add(freezeCylinderCheckbox, freezeCylinderConstraints);
 
-        JCheckBox dragAroundYCheckbox = new JCheckBox( "Drag Cylinder around Y Axis Only" );
-        dragAroundYCheckbox.addActionListener(new DragAroundYActionListener( cylinderPositioningEffector ) );
+        JCheckBox dragAroundYCheckbox = new JCheckBox("Drag Cylinder around Y Axis Only");
+        dragAroundYCheckbox.addActionListener(new DragAroundYActionListener(cylinderPositioningEffector));
         gridY++;
         GridBagConstraints dragAroundYConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
-        add( dragAroundYCheckbox, dragAroundYConstraints );
-		
-		gridY++;
-		JPanel colorRankerPanel = new ColorRankerPanel(USPWIDTH);
+        add(dragAroundYCheckbox, dragAroundYConstraints);
+
+        gridY++;
+        JPanel colorRankerPanel = new ColorRankerPanel(USPWIDTH);
         GridBagConstraints colorRankerConstraints = new GridBagConstraints(
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
-        add( colorRankerPanel, colorRankerConstraints );
+        add(colorRankerPanel, colorRankerConstraints);
 
-		/*
+        /*
 		   Anti-Alias is always-on for JavaFX.  May drop this later. LLF
 		
         JCheckBox antiAliasCheckbox = new JCheckBox( "Antialias" );
@@ -182,46 +180,47 @@ public class UnifiedSettingsPanel extends JPanel {
                 gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
         add( antiAliasCheckbox, antiAliasConstraints );
-		*/
-
-        JCheckBox ambientLightCheckbox = new JCheckBox( "Ambient Lighting" );
-		ambientLightCheckbox.setToolTipText(
-				"Switching to ambient lighting ensures all objects show up more uniformly, although it may not show some of the more interesting effects"
-		);
-        ambientLightCheckbox.setSelected( false );  // Off by default.
-        ambientLightCheckbox.addActionListener(new AmbientLightActionListener( settingsEffector ) );
+         */
+        JCheckBox ambientLightCheckbox = new JCheckBox("Ambient Lighting");
+        ambientLightCheckbox.setToolTipText(
+                "Switching to ambient lighting ensures all objects show up more uniformly, although it may not show some of the more interesting effects"
+        );
+        ambientLightCheckbox.setSelected(false);  // Off by default.
+        ambientLightCheckbox.addActionListener(new AmbientLightActionListener(settingsEffector));
         gridY++;
         GridBagConstraints ambilightConstraints = new GridBagConstraints(
                 gridX, gridY, 1, gridHeight, weightX / 2.0, weightY, anchor, fill, insets, ipadx, ipady
         );
-        add(ambientLightCheckbox, ambilightConstraints );
+        add(ambientLightCheckbox, ambilightConstraints);
 
-        JCheckBox darkLightCheckbox = new JCheckBox( "Dark Background" );
-		darkLightCheckbox.setToolTipText(
-				"A dark background is better for computer viewing.  A light background is better for printing"
-		);
-        darkLightCheckbox.setSelected( true );  // Dark by default.
-        darkLightCheckbox.addActionListener(new DarkLightActionListener( settingsEffector ) );
+        JCheckBox darkLightCheckbox = new JCheckBox("Dark Background");
+        darkLightCheckbox.setToolTipText(
+                "A dark background is better for computer viewing.  A light background is better for printing"
+        );
+        darkLightCheckbox.setSelected(true);  // Dark by default.
+        darkLightCheckbox.addActionListener(new DarkLightActionListener(settingsEffector));
         GridBagConstraints lightDarkConstraints = new GridBagConstraints(
                 2, gridY, 1, gridHeight, weightX, weightY, GridBagConstraints.EAST, fill, insets, ipadx, ipady
         );
-        add(darkLightCheckbox, lightDarkConstraints );
+        add(darkLightCheckbox, lightDarkConstraints);
 
-		/*
+        /*
         GuiUtils.upperLeftLocation(this, WIDTH, HEIGHT);
         GuiUtils.setIcon(this);
         setResizable( false );
-	    */
-		validate();
-		invalidate();
-		repaint();
+         */
+        validate();
+        invalidate();
+        repaint();
     }
-	
-	/** Close and init are opposite operations. */
-	public void close() {
-		EffectedContainer ec = EffectedContainer.getInstance();
-		if (ecl != null) {
-			ec.removeListener(ecl);
-		}
-	}	
+
+    /**
+     * Close and init are opposite operations.
+     */
+    public void close() {
+        EffectedContainer ec = EffectedContainer.getInstance();
+        if (ecl != null) {
+            ec.removeListener(ecl);
+        }
+    }
 }

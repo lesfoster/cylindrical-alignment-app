@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 import java.awt.Component;
@@ -28,69 +26,63 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import self.lesfoster.cylindrical_alignment.constants.Constants;
 
-/** Provides a response for user help-clicks. */
+/**
+ * Provides a response for user help-clicks.
+ */
 public class ConcreteHelpEffector implements HelpEffector {
-	private Component parentComponent;
-	private HelpEffectorTarget target;
 
-	public ConcreteHelpEffector( Component component, HelpEffectorTarget target ) {
-		this.parentComponent = component;
-		this.target = target;
-	}
+    private final Component parentComponent;
+    private final HelpEffectorTarget target;
 
-	@Override
-	public void showAbout() {
-    	SwingUtilities.invokeLater(new Runnable() {
-    		public void run() {
-                JOptionPane.showMessageDialog(
-                		parentComponent, 
-                		Constants.ABOUT_MESSAGE, 
-                		"About", 
-                		JOptionPane.INFORMATION_MESSAGE );            			
-    		}
-    	});
+    public ConcreteHelpEffector(Component component, HelpEffectorTarget target) {
+        this.parentComponent = component;
+        this.target = target;
+    }
 
-	}
+    @Override
+    public void showAbout() {
+        SwingUtilities.invokeLater(() -> {
+            JOptionPane.showMessageDialog(
+                    parentComponent,
+                    Constants.ABOUT_MESSAGE,
+                    "About",
+                    JOptionPane.INFORMATION_MESSAGE);
+        });
 
-	@Override
-	public void showInputData() {
-    	SwingUtilities.invokeLater(new Runnable() {
-    		public void run() {
-                JOptionPane.showMessageDialog(
-                		parentComponent, 
-                		"Now Viewing File: " + target.getInputFile(),
-                		"Input",
-                		JOptionPane.INFORMATION_MESSAGE );
-    		}
-    	});
+    }
 
-	}
+    @Override
+    public void showInputData() {
+        SwingUtilities.invokeLater(() -> {
+            JOptionPane.showMessageDialog(
+                    parentComponent,
+                    "Now Viewing File: " + target.getInputFile(),
+                    "Input",
+                    JOptionPane.INFORMATION_MESSAGE);
+        });
+
+    }
 
     @Override
     public void showApplicationHelp() {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                JOptionPane.showMessageDialog(
-                		parentComponent,
-                        Constants.APPLICATION_HELP_MSG,
-                		"Application Help",
-                		JOptionPane.INFORMATION_MESSAGE );
-    		}
+        SwingUtilities.invokeLater(() -> {
+            JOptionPane.showMessageDialog(
+                    parentComponent,
+                    Constants.APPLICATION_HELP_MSG,
+                    "Application Help",
+                    JOptionPane.INFORMATION_MESSAGE);
         });
 
     }
 
     @Override
     public void showUrlPingAdvisory() {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                JOptionPane.showMessageDialog(
-                		parentComponent,
-                        Constants.URL_PING_ADVISORY,
-                		"URL Ping",
-                		JOptionPane.INFORMATION_MESSAGE );
-
-            }
+        SwingUtilities.invokeLater(() -> {
+            JOptionPane.showMessageDialog(
+                    parentComponent,
+                    Constants.URL_PING_ADVISORY,
+                    "URL Ping",
+                    JOptionPane.INFORMATION_MESSAGE);
         });
     }
 

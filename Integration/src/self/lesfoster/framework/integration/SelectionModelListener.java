@@ -18,15 +18,15 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.framework.integration;
 
 /**
  * Implement this to hear about selections by user (picking).
+ *
  * @author Leslie L Foster
  */
 public interface SelectionModelListener {
-	void selected( Object obj );
+
+    void selected(Object obj);
 }
