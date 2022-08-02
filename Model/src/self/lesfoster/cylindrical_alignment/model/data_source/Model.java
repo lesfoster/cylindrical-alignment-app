@@ -59,7 +59,7 @@ public class Model {
         this.dataSource = effected;
         fireDataSourceEvent();
     }
-
+    
     public static interface DataSourceListener {
 
         void setDataSource(DataSource effected);

@@ -39,4 +39,6 @@ public interface SettingsEffector extends Effector {
     void setDark(boolean isDark);
 
     void setSelectionEnvelope(int envelopeDistance);
+    
+    void setDifferingDentils(boolean differingOnly);
 }

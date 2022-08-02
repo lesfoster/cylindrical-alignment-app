@@ -38,4 +38,6 @@ public interface SettingsEffectorTarget {
     void setDark(boolean dark);
 
     void setEnvelopeDistance(int envelopeDistance);
+    
+    void setDifferingDentils(boolean differingOnly);
 }

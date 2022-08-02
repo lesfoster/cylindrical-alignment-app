@@ -37,6 +37,7 @@ import self.lesfoster.cylindrical_alignment.viewer.top_component.EffectedContain
 
 /**
  * Created by IntelliJ IDEA. User: Leslie L Foster Date: 4/22/12 Time: 8:41 PM
+ * Updated 8/1/22
  *
  * A settings panel for the viewer.
  */
@@ -129,67 +130,71 @@ public class UnifiedSettingsPanel extends JPanel {
 
         gridY++;
         GridBagConstraints selectionEnvelopConstraints = new GridBagConstraints(
-                gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
+            gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
         add(selectionEnvelopPanel, selectionEnvelopConstraints);
 
         gridY++;
         GridBagConstraints dragFactorConstraints = new GridBagConstraints(
-                gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
+            gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
         add(dragFactorSliderPanel, dragFactorConstraints);
 
         JButton resetCylinderButton = new JButton("Re-set Cylinder Position");
-        resetCylinderButton.addActionListener(new ResetCylinderPositionActionListener(cylinderPositioningEffector));
+        resetCylinderButton.addActionListener(e -> cylinderPositioningEffector.setDefaultCylinderPosition());
         gridY++;
         GridBagConstraints resetCylinderConstraints = new GridBagConstraints(
-                gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, GridBagConstraints.NONE, insets, ipadx, ipady
+            gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor,
+            GridBagConstraints.NONE, insets, ipadx, ipady
         );
         add(resetCylinderButton, resetCylinderConstraints);
 
+        JCheckBox mismatchDentilsCheckbox = new JCheckBox("Only Differing Dentils");
+        mismatchDentilsCheckbox.setSelected(false);
+        mismatchDentilsCheckbox.addActionListener(
+            e -> settingsEffector.setDifferingDentils(
+                mismatchDentilsCheckbox.isSelected()
+            )
+        );
+        gridY++;
+        GridBagConstraints mismatchDentilsConstraints = new GridBagConstraints(
+            gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
+        );
+        add(mismatchDentilsCheckbox, mismatchDentilsConstraints);
+
         JCheckBox freezeCylinderCheckbox = new JCheckBox("Freeze Cylinder Position");
-        freezeCylinderCheckbox.addActionListener(new FreezeCylinderActionListener(cylinderPositioningEffector));
+        freezeCylinderCheckbox.addActionListener(
+            e -> cylinderPositioningEffector.setFrozenMouseRotator(freezeCylinderCheckbox.isSelected())
+        );
         gridY++;
         GridBagConstraints freezeCylinderConstraints = new GridBagConstraints(
-                gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
+            gridX, gridY, gridWidth/2, gridHeight, weightX / 2.0, weightY, anchor, fill, insets, ipadx, ipady
         );
         add(freezeCylinderCheckbox, freezeCylinderConstraints);
 
         JCheckBox dragAroundYCheckbox = new JCheckBox("Drag Cylinder around Y Axis Only");
         dragAroundYCheckbox.addActionListener(new DragAroundYActionListener(cylinderPositioningEffector));
-        gridY++;
         GridBagConstraints dragAroundYConstraints = new GridBagConstraints(
-                gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
+            gridX + 1, gridY, gridWidth/2, gridHeight, weightX / 2.0, weightY, anchor, fill, insets, ipadx, ipady
         );
         add(dragAroundYCheckbox, dragAroundYConstraints);
 
         gridY++;
         JPanel colorRankerPanel = new ColorRankerPanel(USPWIDTH);
         GridBagConstraints colorRankerConstraints = new GridBagConstraints(
-                gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
+            gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
         );
         add(colorRankerPanel, colorRankerConstraints);
 
-        /*
-		   Anti-Alias is always-on for JavaFX.  May drop this later. LLF
-		
-        JCheckBox antiAliasCheckbox = new JCheckBox( "Antialias" );
-        antiAliasCheckbox.addActionListener(new AntialiasActionListener( settingsEffector ) );
-        gridY++;
-        GridBagConstraints antiAliasConstraints = new GridBagConstraints(
-                gridX, gridY, gridWidth, gridHeight, weightX, weightY, anchor, fill, insets, ipadx, ipady
-        );
-        add( antiAliasCheckbox, antiAliasConstraints );
-         */
         JCheckBox ambientLightCheckbox = new JCheckBox("Ambient Lighting");
         ambientLightCheckbox.setToolTipText(
-                "Switching to ambient lighting ensures all objects show up more uniformly, although it may not show some of the more interesting effects"
+            "Switching to ambient lighting ensures all objects show up more uniformly, although it may not show some of the more interesting effects"
         );
         ambientLightCheckbox.setSelected(false);  // Off by default.
-        ambientLightCheckbox.addActionListener(new AmbientLightActionListener(settingsEffector));
+        ambientLightCheckbox.addActionListener(e -> settingsEffector.setAmbientLightSource(ambientLightCheckbox.isSelected()));
         gridY++;
         GridBagConstraints ambilightConstraints = new GridBagConstraints(
-                gridX, gridY, 1, gridHeight, weightX / 2.0, weightY, anchor, fill, insets, ipadx, ipady
+            gridX, gridY, 1, gridHeight, weightX / 2.0, weightY, anchor, fill, insets, ipadx, ipady
         );
         add(ambientLightCheckbox, ambilightConstraints);
 
@@ -198,9 +203,9 @@ public class UnifiedSettingsPanel extends JPanel {
                 "A dark background is better for computer viewing.  A light background is better for printing"
         );
         darkLightCheckbox.setSelected(true);  // Dark by default.
-        darkLightCheckbox.addActionListener(new DarkLightActionListener(settingsEffector));
+        darkLightCheckbox.addActionListener(e -> settingsEffector.setDark(darkLightCheckbox.isSelected()));
         GridBagConstraints lightDarkConstraints = new GridBagConstraints(
-                2, gridY, 1, gridHeight, weightX, weightY, GridBagConstraints.EAST, fill, insets, ipadx, ipady
+            2, gridY, 1, gridHeight, weightX, weightY, GridBagConstraints.EAST, fill, insets, ipadx, ipady
         );
         add(darkLightCheckbox, lightDarkConstraints);
 

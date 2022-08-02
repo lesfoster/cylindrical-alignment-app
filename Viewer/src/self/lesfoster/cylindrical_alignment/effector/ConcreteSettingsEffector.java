@@ -59,4 +59,9 @@ public class ConcreteSettingsEffector implements SettingsEffector {
         target.setDark(isDark);
     }
 
+    @Override
+    public void setDifferingDentils(boolean differingOnly) {
+        target.setDifferingDentils(differingOnly);
+    }
+
 }

@@ -24,7 +24,6 @@ package self.lesfoster.cylindrical_alignment.model.action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.List;
 import javax.swing.JFileChooser;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -33,7 +32,6 @@ import org.openide.util.NbBundle.Messages;
 import org.openide.util.NbPreferences;
 import self.lesfoster.cylindrical_alignment.data_source.DataSource;
 import self.lesfoster.cylindrical_alignment.data_source.DataSourceFactory;
-import self.lesfoster.cylindrical_alignment.data_source.Entity;
 import self.lesfoster.cylindrical_alignment.model.data_source.Model;
 
 @ActionID(
@@ -64,26 +62,8 @@ public final class FileOpener implements ActionListener {
             NbPreferences.forModule(FileOpener.class).put(DEFAULT_LOC_KEY, directoryStr);
             if (infile.canRead()) {
                 final DataSource dataSource = DataSourceFactory.getSourceForFile(infile.getAbsolutePath());
-                DataSource model = new DataSource() {
-
-                    @Override
-                    public List<Entity> getEntities() {
-                        return dataSource.getEntities();
-                    }
-
-                    @Override
-                    public int getAnchorLength() {
-                        return dataSource.getAnchorLength();
-                    }
-
-                    @Override
-                    public String toString() {
-                        return infile.getAbsolutePath();
-                    }
-
-                };
                 Model container = Model.getInstance();
-                container.setDataSource(model);
+                container.setDataSource(dataSource);
             }
         }
     }
