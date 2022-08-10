@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.viewer.java_fx.events;
 
 import javafx.event.EventHandler;
@@ -31,26 +29,28 @@ import javafx.scene.shape.Shape3D;
 
 /**
  * Handle mouse click by selecting picked node.
+ *
  * @author Leslie L Foster
  */
 public class MouseClickedHandler implements EventHandler<MouseEvent> {
-	private final GlyphSelector shapeSelector;
-			
-	public MouseClickedHandler(GlyphSelector glyphSelector) {
-		this.shapeSelector = glyphSelector;
-	}
-	
-	@Override
-	public void handle(MouseEvent me) {			
-		// Select the shape visually.
-		PickResult pr = me.getPickResult();
-		if (pr != null) {
-			Node node = pr.getIntersectedNode();
-			if (node != null && node instanceof Shape3D) {
-				shapeSelector.select(node);
-			}
-		}
 
-	}
-	
+    private final GlyphSelector shapeSelector;
+
+    public MouseClickedHandler(GlyphSelector glyphSelector) {
+        this.shapeSelector = glyphSelector;
+    }
+
+    @Override
+    public void handle(MouseEvent me) {
+        // Select the shape visually.
+        PickResult pr = me.getPickResult();
+        if (pr != null) {
+            Node node = pr.getIntersectedNode();
+            if (node != null && node instanceof Shape3D) {
+                shapeSelector.select(node);
+            }
+        }
+
+    }
+
 }

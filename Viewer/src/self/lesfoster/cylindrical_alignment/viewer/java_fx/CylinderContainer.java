@@ -83,6 +83,7 @@ import self.lesfoster.framework.integration.SelectionModel;
 import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.AppearanceSource.OPACITY;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.GlyphSelector;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseClickedHandler;
+import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseScrollHandler;
 import self.lesfoster.framework.integration.SelectedObjectWrapper;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
@@ -1459,6 +1460,8 @@ public class CylinderContainer extends JFXPanel
     private void handleMouse(Scene scene) {
         scene.setOnMouseClicked(new MouseClickedHandler(subEntitySelector));
         scene.setOnMousePressed(new MousePressedHandler(mouseLocationModel));
+        scene.setOnScroll(new MouseScrollHandler(mouseLocationModel, cameraModel));
+
         this.mouseDraggedHandler = new MouseDraggedHandler(mouseLocationModel, cameraModel);
         scene.setOnMouseDragged(mouseDraggedHandler);
     }
