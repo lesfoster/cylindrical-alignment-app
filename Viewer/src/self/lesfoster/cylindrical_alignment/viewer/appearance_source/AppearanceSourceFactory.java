@@ -18,11 +18,8 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
-
-/*
+ */
+ /*
  * Appearance Source
  * Created on Mar 3, 2005
  */
@@ -30,18 +27,19 @@ package self.lesfoster.cylindrical_alignment.viewer.appearance_source;
 
 /**
  * Returns an appearance source.
+ *
  * @author Leslie L. Foster
  */
 public class AppearanceSourceFactory {
-	/**
-	 * TODO change this to prop-file-driven.
-	 * @param filename
-	 * @return
-	 */
+
+    /**
+     * TODO change this to prop-file-driven.
+     *
+     * @param filename
+     * @return
+     */
     public static AppearanceSource getSourceForFile(String filename) {
-    	//if (filename.endsWith(".xml")) {
-		return new StandardAppearanceSource();
-    	//}
+        return new StandardAppearanceSource();
     }
 
 }

@@ -444,6 +444,7 @@ public class CylinderContainer extends JFXPanel
                         }
                     }
                 }
+                appearanceSource.advanceRank();
             }
         } catch (Throwable ex) {
             ex.printStackTrace();
