@@ -18,16 +18,18 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 /**
- * Implement this to provide the speed affector a means of affecting its changes.
+ * Implement this to provide the speed affector a means of affecting its
+ * changes.
+ *
  * @author Leslie L Foster
  */
 public interface SpeedEffectorTarget {
-	int getDuration();
-	void setDuration(int duration);
+
+    int getDuration();
+
+    void setDuration(int duration);
 }

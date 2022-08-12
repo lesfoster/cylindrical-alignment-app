@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 import java.io.Serializable;
@@ -31,5 +29,5 @@ import java.io.Serializable;
  * @author Leslie L Foster
  */
 public interface Effected extends Serializable {
-	Effector[] getEffectors();
+    Effector[] getEffectors();
 }

@@ -18,17 +18,17 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.framework.integration;
 
 /**
- * Tells listener that the target object has been selected by user or other action.
+ * Tells listener that the target object has been selected by user or other
+ * action.
+ *
  * @author Leslie L Foster
  */
 public interface LegendSelectionListener {
 
-	/* Tells listener that the target object has been selected by user or other action. */
-	void selected(Object target);
+    /* Tells listener that the target object has been selected by user or other action. */
+    void selected(Object target);
 }

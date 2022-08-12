@@ -18,16 +18,15 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.lifecycle;
 
-import java.awt.Color;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.synth.SynthLookAndFeel;
-import org.openide.windows.OnShowing;
 
 /**
  * Startup hook to set the look and feel.
@@ -36,10 +35,13 @@ import org.openide.windows.OnShowing;
  */
 //@OnShowing
 public class AppInitializer implements Runnable {
-	public void run() {
-		try {
-			//UIManager.setLookAndFeel( "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-			/*
+    private Logger logger = Logger.getLogger(AppInitializer.class.getName());
+
+    @Override
+    public void run() {
+        try {
+            //UIManager.setLookAndFeel( "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+            /*
 			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
 					UIManager.setLookAndFeel(info.getClassName());
@@ -51,18 +53,17 @@ public class AppInitializer implements Runnable {
 					break;
 				}
 			}
-		    */
-			SynthLookAndFeel laf = new SynthLookAndFeel();
-			final InputStream lafStream = AppInitializer.class.getResourceAsStream("/laf.xml");
-			if (lafStream == null) {
-				throw new RuntimeException("Cannot locate the XML file.");
-			}
-			laf.load(lafStream, AppInitializer.class);
-			UIManager.setLookAndFeel(laf);
-		} catch (Exception ex) {
-			System.err.println("Low priority LaF operation has failed.  Proceeding.");
-			ex.printStackTrace();
-		}
-	}
-	
+             */
+            SynthLookAndFeel laf = new SynthLookAndFeel();
+            final InputStream lafStream = AppInitializer.class.getResourceAsStream("/laf.xml");
+            if (lafStream == null) {
+                throw new RuntimeException("Cannot locate the XML file.");
+            }
+            laf.load(lafStream, AppInitializer.class);
+            UIManager.setLookAndFeel(laf);
+        } catch (RuntimeException | ParseException | UnsupportedLookAndFeelException ex) {
+            logger.warning(() -> "Low priority LaF operation has failed.  Proceeding  " + ex.getMessage());
+        }
+    }
+
 }

@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.framework.integration;
 
 /**
@@ -29,7 +27,12 @@ package self.lesfoster.framework.integration;
  * @author Leslie L Foster
  */
 public class LegendModelContainer extends SharedObjectContainer<LegendModel> {
-	private LegendModelContainer() {}
-	private static LegendModelContainer instance = new LegendModelContainer();
-	public static LegendModelContainer getInstance() { return instance; }
+
+    private LegendModelContainer() {
+    }
+    private static LegendModelContainer instance = new LegendModelContainer();
+
+    public static LegendModelContainer getInstance() {
+        return instance;
+    }
 }

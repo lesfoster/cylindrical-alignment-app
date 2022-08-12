@@ -18,18 +18,16 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
-
-/*
+ */
+ /*
  * Affector interface
  */
 package self.lesfoster.cylindrical_alignment.effector;
 
 /**
- * A marker interface for ability to affect goings-on in the viewer.
- * Created on Feb 5, 2005
+ * A marker interface for ability to affect goings-on in the viewer. Created on
+ * Feb 5, 2005
+ *
  * @author Leslie L. Foster
  */
 public interface Effector {

@@ -18,11 +18,8 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
-
-/*
+ */
+ /*
  * Table model for display of selection to table.
  * Created on Sep 21, 2004
  */
@@ -33,86 +30,110 @@ import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 import javafx.application.Platform;
-import javax.swing.SwingUtilities;
 
 import javax.swing.table.AbstractTableModel;
 
 /**
- * Table model builds table out of info about a blast hit from the BioJava package.
+ * Table model builds table out of info about a blast hit from the BioJava
+ * package.
+ *
  * @author FosterLL
  */
 public class SubHitTableModel extends AbstractTableModel {
-	
-	private static final long serialVersionUID = -1;
 
-    private List<String> names = new ArrayList<>();
-    private List<String> values = new ArrayList<>();
+    private static final long serialVersionUID = -1;
 
-	/** Can see the model data on initialization-- or not. */
-	public SubHitTableModel(Map<String, String> properties) {
-		setModelInfo(properties);
-	}
+    private final List<String> names = new ArrayList<>();
+    private final List<String> values = new ArrayList<>();
 
-	/** Re-populate model info.  Empty model if null map. */
-	public synchronized void setModelInfo(Map properties) {
+    /**
+     * Can see the model data on initialization-- or not.
+     */
+    public SubHitTableModel(Map<String, String> properties) {
+        setModelInfo(properties);
+    }
+
+    /**
+     * Re-populate model info. Empty model if null map.
+     */
+    public synchronized void setModelInfo(Map properties) {
         // Don't adjust model unless some table (at least) wants to know.
-        if (this.getTableModelListeners().length == 0)
+        if (this.getTableModelListeners().length == 0) {
             return;
-		if (properties == null)
-			return;
+        }
+        if (properties == null) {
+            return;
+        }
 
         // Reset the model content.
         names.clear();
         values.clear();
 
-    	for (Iterator it = properties.keySet().iterator(); it.hasNext(); ) {
-    		Object nextKey = it.next();
-    		names.add(nextKey.toString());
-    		values.add(properties.get(nextKey).toString());
-    	}
-		Platform.runLater(() -> {
-	        fireTableDataChanged();
-		});
-	}
+        for (Iterator it = properties.keySet().iterator(); it.hasNext();) {
+            Object nextKey = it.next();
+            names.add(nextKey.toString());
+            values.add(properties.get(nextKey).toString());
+        }
+        Platform.runLater(() -> {
+            fireTableDataChanged();
+        });
+    }
 
-	/** Return a header name for the column. */
-	public String getColumnName(int col) {
-	    if (col == 0)
-	    	return "Property";
-	    else if (col == 1)
-	    	return "Value";
-	    else
-	    	return null;
-	}
-	/** How many columns here? */
+    /**
+     * Return a header name for the column.
+     */
+    @Override
+    public String getColumnName(int col) {
+        switch (col) {
+            case 0:
+                return "Property";
+            case 1:
+                return "Value";
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * How many columns here?
+     */
+    @Override
     public int getColumnCount() {
-		return 2;
-	}
-    
-    /** Never editable. */
+        return 2;
+    }
+
+    /**
+     * Never editable.
+     */
+    @Override
     public boolean isCellEditable(int col, int row) {
-    	return false;
+        return false;
     }
 
-    /** How long is this table? */
+    /**
+     * How long is this table?
+     */
+    @Override
     public synchronized int getRowCount() {
-    	if (names == null)
-    		return 0;
-    	return names.size();
+        if (names == null) {
+            return 0;
+        }
+        return names.size();
     }
 
-	/** Override the method from parent. */
-	public synchronized Object getValueAt(int row, int column) {
-		if (row < 0 || row > (names.size() - 1))
-			return "";
-		else if (column == 0) {
-			return names.get(row);
-		}
-		else if (column == 1) {
-			return values.get(row);
-		}
-		else {
-			return null;
-		}
-	}
+    /**
+     * Override the method from parent.
+     */
+    @Override
+    public synchronized Object getValueAt(int row, int column) {
+        if (row < 0 || row > (names.size() - 1)) {
+            return "";
+        } else if (column == 0) {
+            return names.get(row);
+        } else if (column == 1) {
+            return values.get(row);
+        } else {
+            return null;
+        }
+    }
 }

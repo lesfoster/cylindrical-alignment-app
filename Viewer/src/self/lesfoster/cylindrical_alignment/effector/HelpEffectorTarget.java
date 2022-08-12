@@ -18,12 +18,13 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 public interface HelpEffectorTarget {
-	/** Tells name of input file being shown. */
-	String getInputFile();
+
+    /**
+     * Tells name of input file being shown.
+     */
+    String getInputFile();
 }

@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 import javafx.application.Platform;
@@ -36,69 +34,74 @@ import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseDraggedHa
  * Perhaps make this interface large enough to include more affectors. 
  */
 public class ConcreteCylinderPositioningEffector implements CylinderPositioningEffector {
-	private CylinderPositioningEffectorTarget positioningTarget;
-	private double mouseRotateFactor = 0.1;
-	private boolean mouseRotateIsFrozen = false;
-	private boolean mouseRotateIsAboutYOnly = false;
-	
-	public ConcreteCylinderPositioningEffector( 
-			CylinderPositioningEffectorTarget positioningTarget
-		) {
-		this.positioningTarget = positioningTarget;
-	}
-	
-	/** These effectors take their inputs and apply changes to the mouse-rotate behavior. */
-	@Override
-	public void setFrozenMouseRotator( boolean isFrozen ) {
-		this.mouseRotateIsFrozen = isFrozen;
-		setBehaviorCharacteristics();
-	}
-	@Override
-	public void setMouseRotatorFactor( double factor ) {
-		this.mouseRotateFactor = factor;
-		setBehaviorCharacteristics();
-	}
-	@Override
-	public void setYOnlyMouseRotator( boolean isYOnly ) {
-		this.mouseRotateIsAboutYOnly = isYOnly;
-		setBehaviorCharacteristics();
-	}
-	
-	/** This affector sets the cylinder's position to whatever it was at the beginning. */
-	@Override
-	public void setDefaultCylinderPosition() {
-		
-		Platform.runLater(new Runnable() {
-			public void run() {
-				MouseDraggedHandler mouseDraggedHandler = positioningTarget.getMouseDraggedHandler();
-				mouseDraggedHandler.setDefaultPosition();
-			}
-		});    			
-		
-	}
-	
-	/** Helper to ensure that all characteristics are applied consistently, w.r.t. rules of precedence. */
-	private void setBehaviorCharacteristics() {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				// The rules of precedence are:
-				//   if is-frozen, apply zero as factor, overriding member variable.
-				//   if is-y-only, use zero for y-component.
-				//   finally, use whatever current factor, if it has not been bypassed above.
-				double finalModifierFactor = 0;
-				if (mouseRotateIsFrozen) {
-					finalModifierFactor = 0.0;
-				}
-				else {
-					finalModifierFactor = mouseRotateFactor;
-				}
-				final MouseDraggedHandler mouseDraggedHandler = positioningTarget.getMouseDraggedHandler();
-				mouseDraggedHandler.setModifierFactor(finalModifierFactor);
-				mouseDraggedHandler.setUseYAngle(! mouseRotateIsAboutYOnly);
-				
-			}
-		});    			
 
-	}
+    private final CylinderPositioningEffectorTarget positioningTarget;
+    private double mouseRotateFactor = 0.1;
+    private boolean mouseRotateIsFrozen = false;
+    private boolean mouseRotateIsAboutYOnly = false;
+
+    public ConcreteCylinderPositioningEffector(
+            CylinderPositioningEffectorTarget positioningTarget
+    ) {
+        this.positioningTarget = positioningTarget;
+    }
+
+    /**
+     * These effectors take their inputs and apply changes to the mouse-rotate
+     * behavior.
+     */
+    @Override
+    public void setFrozenMouseRotator(boolean isFrozen) {
+        this.mouseRotateIsFrozen = isFrozen;
+        setBehaviorCharacteristics();
+    }
+
+    @Override
+    public void setMouseRotatorFactor(double factor) {
+        this.mouseRotateFactor = factor;
+        setBehaviorCharacteristics();
+    }
+
+    @Override
+    public void setYOnlyMouseRotator(boolean isYOnly) {
+        this.mouseRotateIsAboutYOnly = isYOnly;
+        setBehaviorCharacteristics();
+    }
+
+    /**
+     * This affector sets the cylinder's position to whatever it was at the
+     * beginning.
+     */
+    @Override
+    public void setDefaultCylinderPosition() {
+
+        Platform.runLater(() -> {
+            MouseDraggedHandler mouseDraggedHandler = positioningTarget.getMouseDraggedHandler();
+            mouseDraggedHandler.setDefaultPosition();
+        });
+
+    }
+
+    /**
+     * Helper to ensure that all characteristics are applied consistently,
+     * w.r.t. rules of precedence.
+     */
+    private void setBehaviorCharacteristics() {
+        SwingUtilities.invokeLater(() -> {
+            // The rules of precedence are:
+            //   if is-frozen, apply zero as factor, overriding member variable.
+            //   if is-y-only, use zero for y-component.
+            //   finally, use whatever current factor, if it has not been bypassed above.
+            double finalModifierFactor = 0;
+            if (mouseRotateIsFrozen) {
+                finalModifierFactor = 0.0;
+            } else {
+                finalModifierFactor = mouseRotateFactor;
+            }
+            final MouseDraggedHandler mouseDraggedHandler = positioningTarget.getMouseDraggedHandler();
+            mouseDraggedHandler.setModifierFactor(finalModifierFactor);
+            mouseDraggedHandler.setUseYAngle(!mouseRotateIsAboutYOnly);
+        });
+
+    }
 }

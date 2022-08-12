@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.model.data_source;
 
 import java.util.ArrayList;
@@ -33,42 +31,43 @@ import self.lesfoster.cylindrical_alignment.data_source.DataSource;
  * @author Leslie L Foster
  */
 public class Model {
-	private Collection<DataSourceListener> listeners = new ArrayList<>();
 
-	private Model() {
-	}
-	private static Model instance = new Model();
+    private final Collection<DataSourceListener> listeners = new ArrayList<>();
 
-	private DataSource dataSource;
+    private Model() {
+    }
+    private static final Model instance = new Model();
 
-	public static Model getInstance() {
-		return instance;
-	}
+    private DataSource dataSource;
 
-	public synchronized void addListener(DataSourceListener dsl) {
-		if (dataSource != null) {
-			dsl.setDataSource(dataSource);
-		}
-		listeners.add(dsl);
-	}
+    public static Model getInstance() {
+        return instance;
+    }
 
-	public synchronized void close() {
-		listeners.clear();
-	}
+    public synchronized void addListener(DataSourceListener dsl) {
+        if (dataSource != null) {
+            dsl.setDataSource(dataSource);
+        }
+        listeners.add(dsl);
+    }
 
-	public void setDataSource(DataSource effected) {
-		this.dataSource = effected;
-		fireDataSourceEvent();
-	}
+    public synchronized void close() {
+        listeners.clear();
+    }
 
-	public static interface DataSourceListener {
+    public void setDataSource(DataSource effected) {
+        this.dataSource = effected;
+        fireDataSourceEvent();
+    }
+    
+    public static interface DataSourceListener {
 
-		void setDataSource(DataSource effected);
-	}
+        void setDataSource(DataSource effected);
+    }
 
-	private synchronized void fireDataSourceEvent() {
-		for (DataSourceListener listener : listeners) {
-			listener.setDataSource(dataSource);
-		}
-	}
+    private synchronized void fireDataSourceEvent() {
+        for (DataSourceListener listener : listeners) {
+            listener.setDataSource(dataSource);
+        }
+    }
 }

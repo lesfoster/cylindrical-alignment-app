@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.legend.lifecycle;
 
 import org.openide.modules.OnStart;
@@ -35,15 +33,16 @@ import self.lesfoster.framework.integration.LegendModel;
  */
 @OnStart
 public class LegendStartup implements Runnable {
-	@Override
-	public void run() {
-		try {
-			LegendModel legendModel = new ConcreteLegendModel();
-			LegendModelContainer container = LegendModelContainer.getInstance();
-			container.setValue(legendModel);
-			
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
+
+    @Override
+    public void run() {
+        try {
+            LegendModel legendModel = new ConcreteLegendModel();
+            LegendModelContainer container = LegendModelContainer.getInstance();
+            container.setValue(legendModel);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }

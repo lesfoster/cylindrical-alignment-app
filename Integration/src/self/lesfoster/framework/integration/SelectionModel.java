@@ -38,8 +38,8 @@ public class SelectionModel {
 	
 	private String selectedId;
 	private Material unselectedMaterialOfSelectedShape;
-	private Map<String,Object> idToObject = new HashMap<String,Object>();
-	private List<SelectionModelListener> selectionListeners = new ArrayList<>();
+	private final Map<String,Object> idToObject = new HashMap<>();
+	private final List<SelectionModelListener> selectionListeners = new ArrayList<>();
 
 	private static final SelectionModel selectionModel = new SelectionModel();
 	public static SelectionModel getSelectionModel() {

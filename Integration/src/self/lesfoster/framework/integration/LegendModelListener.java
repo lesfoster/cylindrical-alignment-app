@@ -18,11 +18,8 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
-
-/*
+ */
+ /*
  * Legend Model Listener
  * Created on Apr 10, 2005
  */
@@ -30,8 +27,10 @@ package self.lesfoster.framework.integration;
 
 /**
  * Allows reaction to changes in legend model.
+ *
  * @author Leslie L Foster
  */
 public interface LegendModelListener {
-	void updateLegendModel();
+
+    void updateLegendModel();
 }

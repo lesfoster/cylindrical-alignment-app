@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.inspector.table;
 
 import java.awt.BorderLayout;
@@ -41,44 +39,41 @@ import self.lesfoster.cylindrical_alignment.utils.GuiUtils;
  */
 public class ViewStringAction extends AbstractAction {
 
-	private static final long serialVersionUID = -1L;
-	private final String name;
-	private final String value;
+    private static final long serialVersionUID = -1L;
+    private final String name;
+    private final String value;
 
-	public ViewStringAction(String[] nameValue) {
-		super("View Full Value");
-		this.name = nameValue[0];
-		this.value = nameValue[1];
-	}
+    public ViewStringAction(String[] nameValue) {
+        super("View Full Value");
+        this.name = nameValue[0];
+        this.value = nameValue[1];
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent ae) {
-		final JFrame subFrame = new JFrame(name);
-		JTextArea area = new JTextArea(breakUp(value));
-		Font oldFont = area.getFont();
-		area.setFont(new Font("Courier", oldFont.getStyle(), oldFont.getSize()));
-		subFrame.getContentPane().setLayout(new BorderLayout());
-		JScrollPane pane = new JScrollPane(area);
-		subFrame.getContentPane().add(pane, BorderLayout.CENTER);
-		JButton dismiss = new JButton("Dismiss");
-		dismiss.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent ae) {
-				subFrame.setVisible(false);
-			}
-		});
-		subFrame.getContentPane().add(dismiss, BorderLayout.SOUTH);
-		GuiUtils.setupScreenRealestate(subFrame, 500, 250);
-		subFrame.setVisible(true);
-	}
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        final JFrame subFrame = new JFrame(name);
+        JTextArea area = new JTextArea(breakUp(value));
+        Font oldFont = area.getFont();
+        area.setFont(new Font("Courier", oldFont.getStyle(), oldFont.getSize()));
+        subFrame.getContentPane().setLayout(new BorderLayout());
+        JScrollPane pane = new JScrollPane(area);
+        subFrame.getContentPane().add(pane, BorderLayout.CENTER);
+        JButton dismiss = new JButton("Dismiss");
+        dismiss.addActionListener((ActionEvent ae1) -> {
+            subFrame.setVisible(false);
+        });
+        subFrame.getContentPane().add(dismiss, BorderLayout.SOUTH);
+        GuiUtils.setupScreenRealestate(subFrame, 500, 250);
+        subFrame.setVisible(true);
+    }
 
-	private String breakUp(String value) {
-		StringBuilder returnBuffer = new StringBuilder();
-		for (int i = 0; i < value.length(); i += 60) {
-			returnBuffer.append(value.substring(i, Math.min(i + 60, value.length())));
-			returnBuffer.append("\n");
-		}
-		return returnBuffer.toString();
-	}
+    private String breakUp(String value) {
+        StringBuilder returnBuffer = new StringBuilder();
+        for (int i = 0; i < value.length(); i += 60) {
+            returnBuffer.append(value.substring(i, Math.min(i + 60, value.length())));
+            returnBuffer.append("\n");
+        }
+        return returnBuffer.toString();
+    }
 
 }

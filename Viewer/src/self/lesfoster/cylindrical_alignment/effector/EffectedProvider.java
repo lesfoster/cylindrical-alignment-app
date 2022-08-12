@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.effector;
 
 import org.openide.util.lookup.ServiceProvider;
@@ -32,22 +30,21 @@ import self.lesfoster.cylindrical_alignment.viewer.top_component.ViewerTopCompon
  *
  * @author Leslie L Foster
  */
-@ServiceProvider(service=Effected.class)
+@ServiceProvider(service = Effected.class)
 public class EffectedProvider implements Effected {
-	
-	public EffectedProvider() {}
 
-	@Override
-	public Effector[] getEffectors() {
-		ViewerTopComponent vtc = (ViewerTopComponent)
-				WindowManager.getDefault()
-						.findTopComponent(ViewerTopComponent.PREFERRED_ID);
-		if (vtc == null) {
-			return null;
-		}
-		else {
-			return vtc.getContainer().getEffectors();
-		}
-	}
-	
+    public EffectedProvider() {
+    }
+
+    @Override
+    public Effector[] getEffectors() {
+        ViewerTopComponent vtc = (ViewerTopComponent) WindowManager.getDefault()
+                .findTopComponent(ViewerTopComponent.PREFERRED_ID);
+        if (vtc == null) {
+            return null;
+        } else {
+            return vtc.getContainer().getEffectors();
+        }
+    }
+
 }

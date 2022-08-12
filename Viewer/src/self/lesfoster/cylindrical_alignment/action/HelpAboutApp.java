@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.action;
 
 import java.awt.event.ActionEvent;
@@ -37,30 +35,29 @@ import self.lesfoster.cylindrical_alignment.effector.Effector;
 import self.lesfoster.cylindrical_alignment.effector.HelpEffector;
 
 @ActionID(
-		category = "Help",
-		id = "self.lesfoster.cylindrical_alignment.action.HelpAboutApp"
+        category = "Help",
+        id = "self.lesfoster.cylindrical_alignment.action.HelpAboutApp"
 )
 @ActionRegistration(
-		displayName = "#CTL_HelpAboutApp"
+        displayName = "#CTL_HelpAboutApp"
 )
 @ActionReference(path = "Menu/Help", position = 350)
 @Messages("CTL_HelpAboutApp=Application Help")
 public final class HelpAboutApp implements ActionListener {
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		//Effected effected = Utilities.actionsGlobalContext().lookup(Effected.class);
-		Effected effected = Lookup.getDefault().lookup(Effected.class);
-		if (effected == null) {
-			JOptionPane.showMessageDialog(null, "Sorry, no information is available.");			
-		}
-		else {
-			for (Effector effector : effected.getEffectors()) {
-				if (effector instanceof HelpEffector) {
-					HelpEffector he = (HelpEffector) effector;
-					he.showApplicationHelp();
-				}
-			}
-		}
-	}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        //Effected effected = Utilities.actionsGlobalContext().lookup(Effected.class);
+        Effected effected = Lookup.getDefault().lookup(Effected.class);
+        if (effected == null) {
+            JOptionPane.showMessageDialog(null, "Sorry, no information is available.");
+        } else {
+            for (Effector effector : effected.getEffectors()) {
+                if (effector instanceof HelpEffector) {
+                    HelpEffector he = (HelpEffector) effector;
+                    he.showApplicationHelp();
+                }
+            }
+        }
+    }
 }

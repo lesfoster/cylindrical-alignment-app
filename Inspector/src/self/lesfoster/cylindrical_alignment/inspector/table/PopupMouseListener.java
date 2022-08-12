@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.inspector.table;
 
 import java.awt.Point;
@@ -37,70 +35,70 @@ import javax.swing.JTable;
  */
 public class PopupMouseListener extends MouseAdapter {
 
-	private boolean isLinux() {
-		return (System.getProperty("os.name").equalsIgnoreCase("Linux"));
-	}
+    private boolean isLinux() {
+        return (System.getProperty("os.name").equalsIgnoreCase("Linux"));
+    }
 
-	private boolean isMac() {
-		return (System.getProperty("os.name").toLowerCase().contains("mac"));
-	}
+    private boolean isMac() {
+        return (System.getProperty("os.name").toLowerCase().contains("mac"));
+    }
 
-	@Override
-	public void mouseReleased(MouseEvent me) {
-		handleEvent(me);
-	}
-	
-	public void handleEvent(MouseEvent me) {
-		if (me.isPopupTrigger() || isLinux()  ||  isMac()) {
-			JTable table = (JTable) me.getComponent();
-			String[] values = getValueUnderClick(table, me.getX(), me.getY());
-			JPopupMenu menu = null;
-			if (isLongString(values[1])) {
-				menu = new JPopupMenu();
-				ViewStringAction action = new ViewStringAction(values);
-				JMenuItem item = new JMenuItem(action);
-				menu.add(item);
-			}
-			if (isLink(values[1])) {
-				if (menu == null) {
-					menu = new JPopupMenu();
-				}
-				LaunchLinkAction action = new LaunchLinkAction(values[1]);
-				JMenuItem item = new JMenuItem(action);
-				menu.add(item);
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        handleEvent(me);
+    }
 
-			}
-			if (menu != null) {
-				menu.setEnabled(true);
-				menu.show(me.getComponent(), me.getX(), me.getY());
+    public void handleEvent(MouseEvent me) {
+        if (me.isPopupTrigger() || isLinux() || isMac()) {
+            JTable table = (JTable) me.getComponent();
+            String[] values = getValueUnderClick(table, me.getX(), me.getY());
+            JPopupMenu menu = null;
+            if (isLongString(values[1])) {
+                menu = new JPopupMenu();
+                ViewStringAction action = new ViewStringAction(values);
+                JMenuItem item = new JMenuItem(action);
+                menu.add(item);
+            }
+            if (isLink(values[1])) {
+                if (menu == null) {
+                    menu = new JPopupMenu();
+                }
+                LaunchLinkAction action = new LaunchLinkAction(values[1]);
+                JMenuItem item = new JMenuItem(action);
+                menu.add(item);
 
-			}
-		}
-	}
-	
-	/**
-	 * Tells what is in table, where user clicked.
-	 */
-	private String[] getValueUnderClick(JTable table, int x, int y) {
-		Point p = new Point(x, y);
-		int row = table.rowAtPoint(p);
-		int col = table.columnAtPoint(p);
-		String[] returnArray = new String[2];
-		if (table.getValueAt(row, col) != null) {
-			String nameString = table.getValueAt(row, 0).toString();
-			String valString = table.getValueAt(row, 1).toString();
-			returnArray[0] = nameString;
-			returnArray[1] = valString;
-		}
-		return returnArray;
-	}
+            }
+            if (menu != null) {
+                menu.setEnabled(true);
+                menu.show(me.getComponent(), me.getX(), me.getY());
 
-	private boolean isLongString(String str) {
-		return (str != null && str.length() > 5);
-	}
+            }
+        }
+    }
 
-	private boolean isLink(String str) {
-		return str != null && str.trim().toLowerCase().startsWith("http://");
-	}
+    /**
+     * Tells what is in table, where user clicked.
+     */
+    private String[] getValueUnderClick(JTable table, int x, int y) {
+        Point p = new Point(x, y);
+        int row = table.rowAtPoint(p);
+        int col = table.columnAtPoint(p);
+        String[] returnArray = new String[2];
+        if (table.getValueAt(row, col) != null) {
+            String nameString = table.getValueAt(row, 0).toString();
+            String valString = table.getValueAt(row, 1).toString();
+            returnArray[0] = nameString;
+            returnArray[1] = valString;
+        }
+        return returnArray;
+    }
+
+    private boolean isLongString(String str) {
+        return (str != null && str.length() > 5);
+    }
+
+    private boolean isLink(String str) {
+        return str != null && str.trim().toLowerCase().startsWith("http://");
+    }
 
 }

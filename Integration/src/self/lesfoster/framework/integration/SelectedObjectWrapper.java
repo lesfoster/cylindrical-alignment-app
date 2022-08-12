@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.framework.integration;
 
 /**
@@ -29,20 +27,21 @@ package self.lesfoster.framework.integration;
  * @author Leslie L Foster
  */
 public class SelectedObjectWrapper {
-	private Object selectedObject;
 
-	/**
-	 * @return the selectedObject
-	 */
-	public Object getSelectedObject() {
-		return selectedObject;
-	}
+    private Object selectedObject;
 
-	/**
-	 * @param selectedObject the selectedObject to set
-	 */
-	public SelectedObjectWrapper setSelectedObject(Object selectedObject) {
-		this.selectedObject = selectedObject;
-		return this;
-	}
+    /**
+     * @return the selectedObject
+     */
+    public Object getSelectedObject() {
+        return selectedObject;
+    }
+
+    /**
+     * @param selectedObject the selectedObject to set
+     */
+    public SelectedObjectWrapper setSelectedObject(Object selectedObject) {
+        this.selectedObject = selectedObject;
+        return this;
+    }
 }

@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.model.lifecycle;
 
 import java.io.File;
@@ -42,75 +40,75 @@ import self.lesfoster.cylindrical_alignment.model.data_source.Model;
  */
 @OnStart
 public class StartupHook implements Runnable {
-	private static final String SAMPLES_WIN_PREFIX = "C:\\current_projects\\gitfiles\\CylindricalAlignmentApp\\";
-	private static final String LAST_PREFIX = "samples";
-	private static final String WIN_BYSSAL_PREFIX = "\\zebra_mussel_byssal\\";
-	private static final String STARNIX_BYSSAL_PREFIX = "~/zebra_mussel_byssal/";
-	private static final String XML_FILENAME = "AF265353_1.cyl.xml";
-	private static final Logger logger = Logger.getLogger(StartupHook.class.getName());
-	
-	public void run() {
-		try {
-			System.setProperty("netbeans.buildnumber", "1.0.1");
-			DataSource ds = getInitialDataSource();
-			Model.getInstance().setDataSource(ds);
-		} catch (Exception ex) {
-			logger.log(Level.SEVERE, "Failed to run startup hook.");
-			ex.printStackTrace();
-		}
-	}
-	
-	private DataSource getInitialDataSource() {
-		String filePrefix = SAMPLES_WIN_PREFIX + LAST_PREFIX;
-		//String filePath = filePrefix + "\\pyrimidinergic_receptor\\gi66932905.BlastOutput.xml";
-		//String filePath = filePrefix + "\\h4_muscle_histones\\h4_muscle.cyl.xml";
-		//String filePath = filePrefix + "\\gene_machine\\gene_machine_2.cyl.xml";
-		//String filePath = filePrefix + "\\gff3\\chromosome_3F.gff";
-		String dosFilePath = filePrefix + WIN_BYSSAL_PREFIX + XML_FILENAME;
-		String unixFilePath = STARNIX_BYSSAL_PREFIX + XML_FILENAME;
-		final String filePath
-				= (System.getProperty("os.name").toLowerCase().contains("windows"))
-						? dosFilePath
-						: unixFilePath;
 
-		InputStream inputStream = null;
-		if (!new File(filePath).exists()) {
-			// Try pulling the file in via classpath.
-			inputStream = this.getClass().getClassLoader().getResourceAsStream(LAST_PREFIX + "/" + XML_FILENAME);
-			if (inputStream == null) {
-				throw new IllegalArgumentException(filePath + " does not exist.");
-			}
-		}
-		final DataSource dataSource = getSelectedDataSource(inputStream, filePath);
-		DataSource descriptiveDataSourceWrapper = new DataSource() {
+    private static final String SAMPLES_WIN_PREFIX = "C:\\current_projects\\gitfiles\\CylindricalAlignmentApp\\";
+    private static final String LAST_PREFIX = "samples";
+    private static final String WIN_BYSSAL_PREFIX = "\\zebra_mussel_byssal\\";
+    private static final String STARNIX_BYSSAL_PREFIX = "~/zebra_mussel_byssal/";
+    private static final String XML_FILENAME = "AF265353_1.cyl.xml";
+    private static final Logger logger = Logger.getLogger(StartupHook.class.getName());
 
-			@Override
-			public List<Entity> getEntities() {
-				return dataSource.getEntities();
-			}
+    public void run() {
+        try {
+            System.setProperty("netbeans.buildnumber", "1.0.1");
+            DataSource ds = getInitialDataSource();
+            Model.getInstance().setDataSource(ds);
+        } catch (Exception ex) {
+            logger.log(Level.SEVERE, "Failed to run startup hook.");
+            ex.printStackTrace();
+        }
+    }
 
-			@Override
-			public int getAnchorLength() {
-				return dataSource.getAnchorLength();
-			}
+    private DataSource getInitialDataSource() {
+        String filePrefix = SAMPLES_WIN_PREFIX + LAST_PREFIX;
+        //String filePath = filePrefix + "\\pyrimidinergic_receptor\\gi66932905.BlastOutput.xml";
+        //String filePath = filePrefix + "\\h4_muscle_histones\\h4_muscle.cyl.xml";
+        //String filePath = filePrefix + "\\gene_machine\\gene_machine_2.cyl.xml";
+        //String filePath = filePrefix + "\\gff3\\chromosome_3F.gff";
+        String dosFilePath = filePrefix + WIN_BYSSAL_PREFIX + XML_FILENAME;
+        String unixFilePath = STARNIX_BYSSAL_PREFIX + XML_FILENAME;
+        final String filePath
+                = (System.getProperty("os.name").toLowerCase().contains("windows"))
+                ? dosFilePath
+                : unixFilePath;
 
-			@Override
-			public String toString() {
-				return filePath;
-			}
+        InputStream inputStream = null;
+        if (!new File(filePath).exists()) {
+            // Try pulling the file in via classpath.
+            inputStream = this.getClass().getClassLoader().getResourceAsStream(LAST_PREFIX + "/" + XML_FILENAME);
+            if (inputStream == null) {
+                throw new IllegalArgumentException(filePath + " does not exist.");
+            }
+        }
+        final DataSource dataSource = getSelectedDataSource(inputStream, filePath);
+        DataSource descriptiveDataSourceWrapper = new DataSource() {
 
-		};
-		return descriptiveDataSourceWrapper;
-	}
-	
-	private DataSource getSelectedDataSource(InputStream inputStream, String filePath) {
-		if (inputStream != null) {
-			logger.info("Pulling data from input stream.");
-			return new JAXBDataSource(inputStream);
-		}
-		else {
-			logger.info("Pulling data from file " + filePath);
-			return DataSourceFactory.getSourceForFile(filePath);
-		}
-	}
+            @Override
+            public List<Entity> getEntities() {
+                return dataSource.getEntities();
+            }
+
+            @Override
+            public int getAnchorLength() {
+                return dataSource.getAnchorLength();
+            }
+
+            @Override
+            public String toString() {
+                return filePath;
+            }
+
+        };
+        return descriptiveDataSourceWrapper;
+    }
+
+    private DataSource getSelectedDataSource(InputStream inputStream, String filePath) {
+        if (inputStream != null) {
+            logger.info("Pulling data from input stream.");
+            return new JAXBDataSource(inputStream);
+        } else {
+            logger.info(() -> "Pulling data from file " + filePath);
+            return DataSourceFactory.getSourceForFile(filePath);
+        }
+    }
 }

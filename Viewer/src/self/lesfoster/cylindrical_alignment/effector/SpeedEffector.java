@@ -18,11 +18,8 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
-
-/*
+ */
+ /*
  * Speed Affector.
  * 
  * Created on Jan 30, 2005
@@ -31,18 +28,21 @@ package self.lesfoster.cylindrical_alignment.effector;
 
 /**
  * Interface to expose controls for speed of cylinder rotation.
- *  
+ *
  * @author Leslie L. Foster
  */
 public interface SpeedEffector extends Effector {
-	public static final int HALTED_DURATION = -1;
-	public static final int FAST_SPEED_DURATION = 3000;
+
+    public static final int HALTED_DURATION = -1;
+    public static final int FAST_SPEED_DURATION = 3000;
     public static final int SLOW_SPEED_DURATION = 50000;
-	public static final int INITIAL_SPEED_DURATION = (FAST_SPEED_DURATION + SLOW_SPEED_DURATION) / 2; // TEMP
+    public static final int INITIAL_SPEED_DURATION = (FAST_SPEED_DURATION + SLOW_SPEED_DURATION) / 2; // TEMP
 
-	void setSlow();
-	void setFast();
-	void setImmobile();
-	void setDuration(int duration);
+    void setSlow();
+
+    void setFast();
+
+    void setImmobile();
+
+    void setDuration(int duration);
 }
-

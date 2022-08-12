@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.inspector.table;
 
 /*
@@ -45,8 +43,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-*/
-
+ */
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -54,87 +51,85 @@ import java.net.URISyntaxException;
 import javax.swing.JOptionPane;
 
 /**
-* A simple, static class to display a URL in the system browser.
-
-  Found at:
-  
-  	http://www.javaworld.com/javaworld/javatips/jw-javatip66.html
-  	
-  	A JavaWorld article by Steven Spencer.
-
-*
-* Under Unix, the system browser is hard-coded to be 'netscape'.
-* Netscape must be in your PATH for this to work.  This has been
-* tested with the following platforms: AIX, HP-UX and Solaris.
-
-
-*
-* Under Windows, this will bring up the default browser under windows,
-* usually either Netscape or Microsoft IE.  The default browser is
-* determined by the OS.  This has been tested under Windows 95/98/NT.
-
-
-*
-* Examples:
-
-
-* 
-BrowserControl.displayURL("http://www.javaworld.com")
-* 
-BrowserControl.displayURL("file://c:\\docs\\index.html")
-* 
-BrowserContorl.displayURL("file:///user/joe/index.html");
-* 
-
-* Note - you must include the url type -- either "http://" or
-* "file://".
-*/
+ * A simple, static class to display a URL in the system browser.
+ *
+ * Found at:
+ *
+ * http://www.javaworld.com/javaworld/javatips/jw-javatip66.html
+ *
+ * A JavaWorld article by Steven Spencer.
+ *
+ *
+ * Under Unix, the system browser is hard-coded to be 'netscape'. Netscape must
+ * be in your PATH for this to work. This has been tested with the following
+ * platforms: AIX, HP-UX and Solaris.
+ *
+ *
+ *
+ * Under Windows, this will bring up the default browser under windows, usually
+ * either Netscape or Microsoft IE. The default browser is determined by the OS.
+ * This has been tested under Windows 95/98/NT.
+ *
+ *
+ *
+ * Examples:
+ *
+ *
+ *
+ * BrowserControl.displayURL("http://www.javaworld.com")
+ *
+ * BrowserControl.displayURL("file://c:\\docs\\index.html")
+ *
+ * BrowserContorl.displayURL("file:///user/joe/index.html");
+ *
+ *
+ * Note - you must include the url type -- either "http://" or "file://".
+ */
 public class BrowserControl {
-	// Used to identify the windows platform.
+    // Used to identify the windows platform.
+
     private static final String WIN_ID = "Windows";
 
     /**
-     * Display a file in the system browser.  If you want to display a
-     * file, you must include the absolute path name.
+     * Display a file in the system browser. If you want to display a file, you
+     * must include the absolute path name.
      *
-     * @param url the file's url (the url must start with either "http://"
-or
+     * @param url the file's url (the url must start with either "http://" or
      * "file://").
      */
     public static void displayURL(String url) {
-		String cmd = null;
-		try {
-			try {
-				if (Desktop.isDesktopSupported()) {
-					Desktop.getDesktop().browse(new URI(url));
-				} else {
-					JOptionPane.showMessageDialog(null, "Cannot open URL.  Not supported.");
-				}
-			} catch (URISyntaxException use) {
-				System.err.println("Error bringing up browser, cmd='"
-						+ cmd + "'");
-				System.err.println("Caught: " + use);
-			}
-		} catch (IOException x) {
-			// couldn't exec browser
-			System.err.println("Could not invoke browser, command=" + cmd);
-			System.err.println("Caught: " + x);
-		}
-	}
+        String cmd = null;
+        try {
+            try {
+                if (Desktop.isDesktopSupported()) {
+                    Desktop.getDesktop().browse(new URI(url));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cannot open URL.  Not supported.");
+                }
+            } catch (URISyntaxException use) {
+                System.err.println("Error bringing up browser, cmd='"
+                        + cmd + "'");
+                System.err.println("Caught: " + use);
+            }
+        } catch (IOException x) {
+            // couldn't exec browser
+            System.err.println("Could not invoke browser, command=" + cmd);
+            System.err.println("Caught: " + x);
+        }
+    }
+
     /**
-     * Try to determine whether this application is running under Windows
-     * or some other platform by examing the "os.name" property.
+     * Try to determine whether this application is running under Windows or
+     * some other platform by examing the "os.name" property.
      *
      * @return true if this application is running under a Windows OS
      */
     public static boolean isWindowsPlatform() {
         String os = System.getProperty("os.name");
-        if ( os != null && os.startsWith(WIN_ID))
-            return true;
-        else
-            return false;
+        return os != null && os.startsWith(WIN_ID);
 
     }
+
     /**
      * Simple example.
      */
@@ -142,4 +137,3 @@ or
         displayURL("http://www.javaworld.com");
     }
 }
-

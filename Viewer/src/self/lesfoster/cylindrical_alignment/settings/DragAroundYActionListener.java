@@ -25,16 +25,16 @@ import self.lesfoster.cylindrical_alignment.effector.CylinderPositioningEffector
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 public class DragAroundYActionListener implements ActionListener {
-    private CylinderPositioningEffector cylinderPositioningAffector;
 
-    public DragAroundYActionListener( CylinderPositioningEffector cylinderPositioningAffector ) {
+    private final CylinderPositioningEffector cylinderPositioningAffector;
+
+    public DragAroundYActionListener(CylinderPositioningEffector cylinderPositioningAffector) {
         this.cylinderPositioningAffector = cylinderPositioningAffector;
     }
 
+    @Override
     public void actionPerformed(ActionEvent ae) {
         AbstractButton aButton = (AbstractButton) ae.getSource();
         boolean selected = aButton.getModel().isSelected();
