@@ -32,7 +32,7 @@ public class LeadColorRanker implements ColorRanker {
 
     public static final float SILVER_LEVEL = 240.0f / 256.0f;
     private static final double MIN_SCORE = 0.0025 * 5;
-    private static final double SCORE_RESOLUTION = 0.0025 * 0.75;
+    private static final double SCORE_RESOLUTION = 0.0075 * 0.75;
 
     // Start out silvery
     private float scoreRed = SILVER_LEVEL;

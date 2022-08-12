@@ -32,8 +32,8 @@ public class RustColorRanker implements ColorRanker {
 
     public static final float STEEL_LEVEL = 240.0f / 256.0f;
 
-    private final static double SCORE_RESOLUTION = 0.0025 * 0.75;
-    private final static double BLUE_RESOLUTION = 0.0025 * 0.5;
+    private final static double SCORE_RESOLUTION = 0.01 * 0.75;
+    private final static double BLUE_RESOLUTION = 0.01 * 0.5;
     private final static int[] RUSTCOLORS = new int[]{183, 65, 14};
 
     // Start out silvery.
