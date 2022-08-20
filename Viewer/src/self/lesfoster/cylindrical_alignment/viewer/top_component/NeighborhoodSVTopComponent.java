@@ -19,57 +19,48 @@
 
  CDDL HEADER END
  */
-package self.lesfoster.cylindrical_alignment.legend.top_component;
+package self.lesfoster.cylindrical_alignment.viewer.top_component;
 
-import java.awt.BorderLayout;
-import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
-import self.lesfoster.cylindrical_alignment.legend.widget.LegendComponent;
-import self.lesfoster.framework.integration.LegendModel;
-import self.lesfoster.framework.integration.LegendModelContainer;
-import self.lesfoster.framework.integration.SharedObjectContainer.ContainerListener;
 
 /**
- * Top component which displays something.
+ * Neighborhood TopComponent.  Displays and allows interactions with
+ * "neighborhoods", which are vertically-confined, isolated groups of
+ * disagreeing residues occurring to some lower-bound frequency around
+ * the cylinder.
  */
 @ConvertAsProperties(
-        dtd = "-//self.lesfoster.cylindrical_alignment.legend.top_component//Legend//EN",
+        dtd = "-//self.lesfoster.cylindrical_alignment.viewer.top_component//NeighborhoodSV//EN",
         autostore = false
 )
 @TopComponent.Description(
-        preferredID = LegendTopComponent.PREFERRED_ID,
-        //iconBase="SET/PATH/TO/ICON/HERE", 
+        preferredID = "NeighborhoodSVTopComponent",
+        //iconBase="SET/PATH/TO/ICON/HERE",
         persistenceType = TopComponent.PERSISTENCE_ALWAYS
 )
-@TopComponent.Registration(mode = "explorer", openAtStartup = true)
-@ActionID(category = "Window", id = "self.lesfoster.cylindrical_alignment.legend.top_component.LegendTopComponent")
+@TopComponent.Registration(mode = "explorer", openAtStartup = false)
+@ActionID(category = "Window", id = "self.lesfoster.cylindrical_alignment.viewer.top_component.NeighborhoodSVTopComponent")
 @ActionReference(path = "Menu/Window" /*, position = 333 */)
 @TopComponent.OpenActionRegistration(
-        displayName = "#CTL_LegendAction",
-        preferredID = LegendTopComponent.PREFERRED_ID
+        displayName = "#CTL_NeighborhoodSVAction",
+        preferredID = "NeighborhoodSVTopComponent"
 )
 @Messages({
-    "CTL_LegendAction=Legend",
-    "CTL_LegendTopComponent=Legend",
-    "HINT_LegendTopComponent=Clickable name/color combinations to select in other views."
+    "CTL_NeighborhoodSVAction=NeighborhoodSV",
+    "CTL_NeighborhoodSVTopComponent=NeighborhoodSV Window",
+    "HINT_NeighborhoodSVTopComponent=This is a NeighborhoodSV window"
 })
-public final class LegendTopComponent extends TopComponent {
+public final class NeighborhoodSVTopComponent extends TopComponent {
 
-    public static final String PREFERRED_ID = "LegendTopComponent";
-    private ContainerListener<LegendModel> containerListener;
-    private final LegendComponent legendComponent;
-
-    public LegendTopComponent() {
-        legendComponent = new LegendComponent();
-        LegendTopComponent.this.associateLookup(legendComponent.getLookup());
+    public NeighborhoodSVTopComponent() {
         initComponents();
-        setName(Bundle.CTL_LegendTopComponent());
-        setToolTipText(Bundle.HINT_LegendTopComponent());
+        setName(Bundle.CTL_NeighborhoodSVTopComponent());
+        setToolTipText(Bundle.HINT_NeighborhoodSVTopComponent());
+        putClientProperty(TopComponent.PROP_KEEP_PREFERRED_SIZE_WHEN_SLIDED_IN, Boolean.TRUE);
 
     }
 
@@ -81,36 +72,43 @@ public final class LegendTopComponent extends TopComponent {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        legendBasePanel = new javax.swing.JPanel();
+        neighborhoodPanel = new javax.swing.JPanel();
 
-        legendBasePanel.setLayout(new java.awt.BorderLayout());
+        javax.swing.GroupLayout neighborhoodPanelLayout = new javax.swing.GroupLayout(neighborhoodPanel);
+        neighborhoodPanel.setLayout(neighborhoodPanelLayout);
+        neighborhoodPanelLayout.setHorizontalGroup(
+            neighborhoodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        neighborhoodPanelLayout.setVerticalGroup(
+            neighborhoodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(legendBasePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(neighborhoodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(legendBasePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(neighborhoodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel legendBasePanel;
+    private javax.swing.JPanel neighborhoodPanel;
     // End of variables declaration//GEN-END:variables
-	@Override
+    @Override
     public void componentOpened() {
-        containerListener = (value) -> {
-            SwingUtilities.invokeLater(() -> {
-                legendComponent.setModel(value);
-                legendBasePanel.add(new JScrollPane(legendComponent), BorderLayout.CENTER);
-                legendComponent.repaint();
-            });
-        };
-
-        LegendModelContainer.getInstance().addListener(containerListener);
+        
     }
 
     @Override
@@ -118,7 +116,6 @@ public final class LegendTopComponent extends TopComponent {
         // TODO add custom code on component closing
     }
 
-    @SuppressWarnings("unused")
     void writeProperties(java.util.Properties p) {
         // better to version settings since initial version as advocated at
         // http://wiki.apidesign.org/wiki/PropertyFiles
@@ -126,7 +123,6 @@ public final class LegendTopComponent extends TopComponent {
         // TODO store your settings
     }
 
-    @SuppressWarnings("unused")
     void readProperties(java.util.Properties p) {
         String version = p.getProperty("version");
         // TODO read your settings according to their version

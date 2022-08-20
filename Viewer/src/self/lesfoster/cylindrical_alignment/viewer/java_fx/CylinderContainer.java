@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
@@ -168,6 +169,12 @@ public class CylinderContainer extends JFXPanel
                     //System.out.println("Got selected sub-entity " + se.toString());                    
                     propMap = se.getProperties();
                     instanceContent.add(propMap);
+                } else {
+                    Node shape = idToShape.get(obj.toString());
+                    if (shape != null) {
+                        // May need another map just for the residentils.
+                        // Keeping track of what to hand off to the Neighborhood SV.
+                    }
                 }
             });
 
@@ -676,7 +683,7 @@ public class CylinderContainer extends JFXPanel
             meshView.setMaterial(meshMaterial);
         }
 
-        meshView.setId("Hit Solid Shape");
+        meshView.setId(UUID.randomUUID().toString());
         return meshView;
     }
 
@@ -1025,6 +1032,7 @@ public class CylinderContainer extends JFXPanel
             PhongMaterial meshMaterial = appearanceSource.createSubEntityInsertionAppearance(subEntity);
             insertion.setMaterial(meshMaterial);
             hitGroup.getChildren().add(insertion);
+            idToShape.put(insertion.getId(), insertion);            
         }
     }
 
@@ -1093,6 +1101,7 @@ public class CylinderContainer extends JFXPanel
                         materialAppearance = appearanceSource.createSubEntityAppearance(residue, isBase);
                     }
                     gi.setMaterial(materialAppearance);
+                    idToShape.put(gi.getId(), gi);
 
                     hitGroup.getChildren().add(gi);
                     // Register non-differing residues.  May wish to hide them
@@ -1475,24 +1484,18 @@ public class CylinderContainer extends JFXPanel
 
         @Override
         public void resultChanged(LookupEvent le) {
-            if (selectionWrapperResult.allInstances().size() > 0) {
-                SelectedObjectWrapper lastWrapper = null;
-                for (SelectedObjectWrapper wrapper : selectionWrapperResult.allInstances()) {
-                    lastWrapper = wrapper;
-                }
-                if (lastWrapper != null) {
-                    Object obj = lastWrapper.getSelectedObject();
-                    if (obj instanceof SubEntity) {
-                        SubEntity se = (SubEntity) obj;
-                        positionCigarBands(se);
-                        if (subEntitySelector != null) {
-                            subEntitySelector.select(se);
-                        } else {
-                            log.warning("No sub entity selector available.");
-                        }
+            selectionWrapperResult.allInstances().stream().reduce((a,b) -> b).ifPresent(lastWrapper -> {
+                Object obj = lastWrapper.getSelectedObject();
+                if (obj instanceof SubEntity) {
+                    SubEntity se = (SubEntity) obj;
+                    positionCigarBands(se);
+                    if (subEntitySelector != null) {
+                        subEntitySelector.select(se);
+                    } else {
+                        log.warning("No sub entity selector available.");
                     }
                 }
-            }
+            });
         }
     }
 
