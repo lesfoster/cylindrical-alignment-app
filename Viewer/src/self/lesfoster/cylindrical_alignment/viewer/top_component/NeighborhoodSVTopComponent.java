@@ -22,6 +22,8 @@
 package self.lesfoster.cylindrical_alignment.viewer.top_component;
 
 import java.util.Map;
+import java.util.Optional;
+import java.util.TreeMap;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -159,6 +161,8 @@ public final class NeighborhoodSVTopComponent extends TopComponent {
         }        
     }
     
+    private static final int MAX_CLUSTER = 20; // arbitrary.
+
     /** Map holder is from main view. */
     private class MapLookupListener implements LookupListener {
 
@@ -168,13 +172,30 @@ public final class NeighborhoodSVTopComponent extends TopComponent {
                     .filter(m -> m.containsKey("diff_residue") &&
                             m.get("diff_residue") != null &&
                             Boolean.parseBoolean(m.get("diff_residue").toString()))
-                    .ifPresent(lastModelInfo -> {
-                        System.out.println("Got new props map");
-                        if (residueData != null) {
-                            int residuePos = Integer.parseInt(lastModelInfo.get("residue_pos").toString());
-                            residueData.getDentilPosToIds().get(residuePos).forEach(System.out::println);
-                        }                        
-                    });
+                    .filter(lastModelInfo -> residueData != null)
+                    .ifPresent(this::report);
+        }
+        
+        private void report(Map<Object,Object> modelInfo) {
+            System.out.println("Got new props map");
+            int residuePos = (Integer)modelInfo.get("residue_pos");
+            residueData.getDentilPosToIds().get(residuePos).forEach(System.out::println);
+            System.out.println("Neighborhood counts:");
+            Map<Integer,Integer> neighborhoodCounts = new TreeMap<>();
+            for (int i = residuePos; i >= Math.max(0, residuePos - MAX_CLUSTER); i--) {
+                final int pos = i;
+                Optional.ofNullable(residueData.getDentilPosToIds()
+                        .get(i)).map(l -> l.size())
+                        .ifPresent(ct -> neighborhoodCounts.put(pos, ct));
+            }
+            for (int i = residuePos + 1; i < residuePos + 1 + MAX_CLUSTER; i++) {
+                final int pos = i;
+                Optional.ofNullable(residueData.getDentilPosToIds()
+                        .get(i)).map(l -> l.size())
+                        .ifPresent(ct -> neighborhoodCounts.put(pos, ct));
+                
+            }
+            neighborhoodCounts.forEach((n,v) -> System.out.println(String.format("Pos: %d   Count: %d", n, v)));
         }
     }    
 }

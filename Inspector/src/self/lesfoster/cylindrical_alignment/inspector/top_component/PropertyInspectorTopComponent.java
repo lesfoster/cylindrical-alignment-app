@@ -157,15 +157,11 @@ public final class PropertyInspectorTopComponent extends TopComponent {
         @Override
         public void resultChanged(LookupEvent le) {
             selectionWrapperResult.allInstances().stream().reduce((a, b) -> b)
-                .ifPresent(
-                    lastWrapper -> {
-                        Object obj = lastWrapper.getSelectedObject();
-                        if (obj instanceof SubEntity) {
-                            SubEntity se = (SubEntity) obj;
-                            subHitTableModel.setModelInfo(se.getProperties());
-                        }
-                    }
-                );
+                    .map(SelectedObjectWrapper::getSelectedObject)
+                    .filter(SubEntity.class::isInstance)
+                    .map(SubEntity.class::cast)
+                    .map(SubEntity::getProperties)
+                    .ifPresent(subHitTableModel::setModelInfo);
         }
     }
 
