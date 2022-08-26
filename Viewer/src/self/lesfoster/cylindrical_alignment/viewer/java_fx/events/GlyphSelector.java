@@ -93,8 +93,6 @@ public class GlyphSelector {
         selectionModel.setUnselectedMaterialOfSelectedShape(shape.getMaterial());
         selectionModel.setSelectedShape(shape);
         shape.setMaterial(selectedMaterial);
-        //((Shape3D)idToShape.get(selectionModel.getSelectedId())).setMaterial(SelectionModel.SELECTED_MATERIAL);
-        System.out.println("Selected: " + node.getId());
 
     }
 

@@ -85,6 +85,7 @@ import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.Appe
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.GlyphSelector;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseClickedHandler;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseScrollHandler;
+import self.lesfoster.framework.integration.ResidueData;
 import self.lesfoster.framework.integration.SelectedObjectWrapper;
 import self.lesfoster.framework.integration.SelectionModelListener;
 
@@ -125,6 +126,8 @@ public class CylinderContainer extends JFXPanel
     private final AmbientLight ambientLight = new AmbientLight();
     private final Map<String, SubEntity> idToSubEntity = new HashMap<>();
     private final Map<String, Node> idToShape = new HashMap<>();
+    private final Map<String, Integer> idToDentilPos = new HashMap<>();
+    private final Map<Integer, List<String>> dentilPosToIds = new HashMap<>();
     private GlyphSelector subEntitySelector;
     private int latestGraphId = 1;
     private int duration = SpeedEffector.INITIAL_SPEED_DURATION;
@@ -144,10 +147,11 @@ public class CylinderContainer extends JFXPanel
     private SelectionModelListener selectionListener;
     private LookupListener selectedObjLookupListener;
     private Lookup.Result<SelectedObjectWrapper> selectionWrapperResult;
+    private Lookup.Result<ResidueData> residueDataResult;
     private final List<MeshView> dentilsInAgreement = new ArrayList<>();
 
     private final TexCoordGenerator texCoordGenerator = new TexCoordGenerator();
-    private final Logger log = Logger.getLogger(CylinderContainer.class.getName());
+    private static final Logger log = Logger.getLogger(CylinderContainer.class.getName());
 
     public CylinderContainer(DataSource dataSource, InstanceContent instanceContent) {
         this(dataSource, 0, dataSource.getAnchorLength(), instanceContent);
@@ -164,22 +168,33 @@ public class CylinderContainer extends JFXPanel
         selectionListener = (Object obj) -> {
             SwingUtilities.invokeLater(() -> {
                 instanceContent.remove(propMap);
-                SubEntity se = idToSubEntity.get(obj.toString());
+                final String id = obj.toString();
+                SubEntity se = idToSubEntity.get(id);
                 if (se != null) {
                     //System.out.println("Got selected sub-entity " + se.toString());                    
                     propMap = se.getProperties();
                     instanceContent.add(propMap);
                 } else {
-                    Node shape = idToShape.get(obj.toString());
+                    Node shape = idToShape.get(id);
                     if (shape != null) {
                         // May need another map just for the residentils.
                         // Keeping track of what to hand off to the Neighborhood SV.
+                        // Use standard instanceContent for now!
+                        if (idToDentilPos.containsKey(id)) {
+                            propMap = new HashMap<>();
+                            propMap.put("id", id);
+                            propMap.put("diff_residue", "true");
+                            propMap.put("residue_pos", idToDentilPos.get(id));
+                            instanceContent.add(propMap);
+                        }
                     }
                 }
             });
 
             positionCigarBands(obj);
         };
+        instanceContent.add(new ResidueData(idToDentilPos, dentilPosToIds));
+
         selectionModel.addListener(selectionListener);
         Lookup global = Utilities.actionsGlobalContext();
         selectionWrapperResult = global.lookupResult(SelectedObjectWrapper.class);
@@ -1031,8 +1046,8 @@ public class CylinderContainer extends JFXPanel
             MeshView insertion = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], extraYDisp, yBottom, back, front, subEntity);
             PhongMaterial meshMaterial = appearanceSource.createSubEntityInsertionAppearance(subEntity);
             insertion.setMaterial(meshMaterial);
+            insertion.setDisable(true);
             hitGroup.getChildren().add(insertion);
-            idToShape.put(insertion.getId(), insertion);            
         }
     }
 
@@ -1052,6 +1067,7 @@ public class CylinderContainer extends JFXPanel
             MeshView gap = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), null);
             PhongMaterial meshMaterial = appearanceSource.createPerforatedAppearance(subEntity);
             gap.setMaterial(meshMaterial);
+            gap.setDisable(true);
             hitGroup.getChildren().add(gap);
         }
     }
@@ -1086,29 +1102,37 @@ public class CylinderContainer extends JFXPanel
                     }
 
                     char residue = dentilResidues.charAt(i);
+                    final int dentilPos = startPos + i;
 
-                    //generateRectSolid(int startSH, int endSH, float extraYDisp, float zBack, float zFront, SubEntity subEntity)
                     if (prominentDentils) {
-                        gi = generateRectSolid(startPos + i, startPos + i + 1, 0.5f, Constants.ZF - 0.5f, Constants.ZF + 0.5f, null);
+                        gi = generateRectSolid(dentilPos, dentilPos + 1, 0.5f, Constants.ZF - 0.5f, Constants.ZF + 0.5f, null);
                     } else {
-                        gi = generateDentil(startPos + i, startPos + i + 1, 0.5f);
+                        gi = generateDentil(dentilPos, dentilPos + 1, 0.5f);
                         //gi = generateFacadeBox(startPos + i, startPos + i + 1, 0.5f, Constants.ZF - 0.5f, Constants.ZF + 0.5f);
                     }
 
-                    //Shape3D part = new Shape3D();
                     PhongMaterial materialAppearance = appearanceSource.createSubEntityAppearance(dentilResidues.charAt(i), isBase);
                     if (materialAppearance == null) {
                         materialAppearance = appearanceSource.createSubEntityAppearance(residue, isBase);
                     }
-                    gi.setMaterial(materialAppearance);
+                    gi.setMaterial(materialAppearance);                    
                     idToShape.put(gi.getId(), gi);
 
                     hitGroup.getChildren().add(gi);
-                    // Register non-differing residues.  May wish to hide them
-                    if ((!isAnchor) && (queryResidues != null) && (queryResidues.charAt(i) == subjectResidues.charAt(i))) {
-                        dentilsInAgreement.add(gi);
+                    // Treatment for agreeing vs differing dentils
+                    if ((!isAnchor) && (queryResidues != null)) {
+                        if (queryResidues.charAt(i) == subjectResidues.charAt(i)) {
+                            // May wish to hide these
+                            dentilsInAgreement.add(gi);
+                        }
+                        else {
+                            // Track the position.
+                            idToDentilPos.put(gi.getId(), dentilPos);
+                            dentilPosToIds
+                                .computeIfAbsent(dentilPos, ArrayList::new)
+                                .add(gi.getId());
+                        }
                     }
-                    
                 }
             }
         }

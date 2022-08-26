@@ -130,7 +130,7 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 
     @Override
     public void componentClosed() {
-        // TODO add custom code on component closing
+        mapResult.removeLookupListener(mapLookupListener);
     }
 
     void writeProperties(java.util.Properties p) {
