@@ -56,7 +56,7 @@ public class SubHitTableModel extends AbstractTableModel {
     /**
      * Re-populate model info. Empty model if null map.
      */
-    public synchronized void setModelInfo(Map properties) {
+    public final synchronized void setModelInfo(Map properties) {
         // Don't adjust model unless some table (at least) wants to know.
         if (this.getTableModelListeners().length == 0) {
             return;

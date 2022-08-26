@@ -21,9 +21,13 @@
  */
 package self.lesfoster.cylindrical_alignment.viewer.top_component;
 
+import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.TreeMap;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
@@ -33,6 +37,8 @@ import org.openide.util.LookupListener;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import org.openide.util.Utilities;
+import self.lesfoster.cylindrical_alignment.neighborhood.tablemodel.Neighbor;
+import self.lesfoster.cylindrical_alignment.neighborhood.tablemodel.NeighborhoodTableModel;
 import self.lesfoster.framework.integration.ResidueData;
 
 /**
@@ -63,11 +69,14 @@ import self.lesfoster.framework.integration.ResidueData;
     "HINT_NeighborhoodSVTopComponent=This is a NeighborhoodSV window"
 })
 public final class NeighborhoodSVTopComponent extends TopComponent {
+    private static final int MAX_CLUSTER = 20; // arbitrary.
+
     private Lookup.Result<Map> mapResult;
     private Lookup.Result<ResidueData> rdResult;
     private LookupListener mapLookupListener;
     private ResidueDataLookupListener residueDataLookupListener; 
-    
+    private final NeighborhoodTableModel neighborhoodTableModel = new NeighborhoodTableModel();
+
     public NeighborhoodSVTopComponent() {
         initComponents();
         setName(Bundle.CTL_NeighborhoodSVTopComponent());
@@ -83,32 +92,24 @@ public final class NeighborhoodSVTopComponent extends TopComponent {
 
         neighborhoodPanel = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout neighborhoodPanelLayout = new javax.swing.GroupLayout(neighborhoodPanel);
-        neighborhoodPanel.setLayout(neighborhoodPanelLayout);
-        neighborhoodPanelLayout.setHorizontalGroup(
-            neighborhoodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        neighborhoodPanelLayout.setVerticalGroup(
-            neighborhoodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        setToolTipText(org.openide.util.NbBundle.getMessage(NeighborhoodSVTopComponent.class, "NeighborhoodSVTopComponent.toolTipText")); // NOI18N
+        setPreferredSize(new java.awt.Dimension(0, 0));
+
+        neighborhoodPanel.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(neighborhoodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(neighborhoodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(neighborhoodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(neighborhoodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -118,6 +119,9 @@ public final class NeighborhoodSVTopComponent extends TopComponent {
     @Override
     public void componentOpened() {
         establishLookups();
+        JTable neighborTable = new JTable(neighborhoodTableModel);
+        //propsTable.setDefaultRenderer(Object.class, new TextAreaRenderer());
+        neighborhoodPanel.add(new JScrollPane(neighborTable), BorderLayout.CENTER);        
     }
 
     @Override
@@ -161,7 +165,6 @@ public final class NeighborhoodSVTopComponent extends TopComponent {
         }        
     }
     
-    private static final int MAX_CLUSTER = 20; // arbitrary.
 
     /** Map holder is from main view. */
     private class MapLookupListener implements LookupListener {
@@ -179,23 +182,20 @@ public final class NeighborhoodSVTopComponent extends TopComponent {
         private void report(Map<Object,Object> modelInfo) {
             System.out.println("Got new props map");
             int residuePos = (Integer)modelInfo.get("residue_pos");
-            residueData.getDentilPosToIds().get(residuePos).forEach(System.out::println);
-            System.out.println("Neighborhood counts:");
-            Map<Integer,Integer> neighborhoodCounts = new TreeMap<>();
+            //residueData.getDentilPosToIds().get(residuePos).forEach(System.out::println);
+            List<Neighbor> neighbors = new ArrayList<>();
             for (int i = residuePos; i >= Math.max(0, residuePos - MAX_CLUSTER); i--) {
                 final int pos = i;
-                Optional.ofNullable(residueData.getDentilPosToIds()
-                        .get(i)).map(l -> l.size())
-                        .ifPresent(ct -> neighborhoodCounts.put(pos, ct));
+                Optional.ofNullable(residueData.getDentilPosToIds().get(i))
+                        .ifPresent(l -> neighbors.add(new Neighbor(pos, l)));
             }
             for (int i = residuePos + 1; i < residuePos + 1 + MAX_CLUSTER; i++) {
                 final int pos = i;
-                Optional.ofNullable(residueData.getDentilPosToIds()
-                        .get(i)).map(l -> l.size())
-                        .ifPresent(ct -> neighborhoodCounts.put(pos, ct));
+                Optional.ofNullable(residueData.getDentilPosToIds().get(i))
+                        .ifPresent(l -> neighbors.add(new Neighbor(pos, l)));
                 
             }
-            neighborhoodCounts.forEach((n,v) -> System.out.println(String.format("Pos: %d   Count: %d", n, v)));
+            neighborhoodTableModel.setNeighbors(neighbors, residuePos);
         }
     }    
 }
