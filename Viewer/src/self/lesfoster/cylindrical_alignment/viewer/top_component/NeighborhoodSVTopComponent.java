@@ -65,8 +65,8 @@ import self.lesfoster.framework.integration.ResidueData;
 )
 @Messages({
     "CTL_NeighborhoodSVAction=NeighborhoodSV",
-    "CTL_NeighborhoodSVTopComponent=NeighborhoodSV Window",
-    "HINT_NeighborhoodSVTopComponent=This is a NeighborhoodSV window"
+    "CTL_NeighborhoodSVTopComponent=Neighborhood SubView",
+    "HINT_NeighborhoodSVTopComponent=Neighborhood of selected residue dentil"
 })
 public final class NeighborhoodSVTopComponent extends TopComponent {
     private static final int MAX_CLUSTER = 20; // arbitrary.
@@ -102,13 +102,11 @@ public final class NeighborhoodSVTopComponent extends TopComponent {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(neighborhoodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(neighborhoodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -184,16 +182,10 @@ public final class NeighborhoodSVTopComponent extends TopComponent {
             int residuePos = (Integer)modelInfo.get("residue_pos");
             //residueData.getDentilPosToIds().get(residuePos).forEach(System.out::println);
             List<Neighbor> neighbors = new ArrayList<>();
-            for (int i = residuePos; i >= Math.max(0, residuePos - MAX_CLUSTER); i--) {
+            for (int i = Math.max(0, residuePos - MAX_CLUSTER); i <= residuePos + MAX_CLUSTER; i++) {
                 final int pos = i;
                 Optional.ofNullable(residueData.getDentilPosToIds().get(i))
                         .ifPresent(l -> neighbors.add(new Neighbor(pos, l)));
-            }
-            for (int i = residuePos + 1; i < residuePos + 1 + MAX_CLUSTER; i++) {
-                final int pos = i;
-                Optional.ofNullable(residueData.getDentilPosToIds().get(i))
-                        .ifPresent(l -> neighbors.add(new Neighbor(pos, l)));
-                
             }
             neighborhoodTableModel.setNeighbors(neighbors, residuePos);
         }

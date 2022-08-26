@@ -35,10 +35,13 @@ public class NeighborhoodTableModel extends AbstractTableModel {
     private static final long serialVersionUID = -1;
 
     private static final int COL_COUNT = 4;
+    private static final String[] COL_NAMES = {
+        "Query Offset", "Count", "Relative Position", "Type"
+    };
 
     private List<Neighbor> neighbors;
     private int selectedPos;
-
+    
     public NeighborhoodTableModel() {
         neighbors = Collections.EMPTY_LIST;
         selectedPos = 0;
@@ -98,4 +101,11 @@ public class NeighborhoodTableModel extends AbstractTableModel {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    @Override
+    public String getColumnName(int column) {
+        if (column > COL_COUNT  ||  column < 0) {
+            return null;
+        }
+        return COL_NAMES[column];
+    }
 }
