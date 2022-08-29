@@ -58,12 +58,12 @@ import self.lesfoster.cylindrical_alignment.settings.UnifiedSettingsPanel;
 public final class ControlsTopComponent extends TopComponent {
 	public static final String CONTROLS_TOP_COMPONENT_PREFERRED_ID = "ControlsTopComponent";
 
-	public ControlsTopComponent() {
-		initComponents();
-		setName(Bundle.CTL_ControlsTopComponent());
-		setToolTipText(Bundle.HINT_ControlsTopComponent());
+    public ControlsTopComponent() {
+        initComponents();
+        setName(Bundle.CTL_ControlsTopComponent());
+        setToolTipText(Bundle.HINT_ControlsTopComponent());
 
-	}
+    }
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -85,30 +85,30 @@ public final class ControlsTopComponent extends TopComponent {
     private javax.swing.JPanel contentPanel;
     // End of variables declaration//GEN-END:variables
 	@Override
-	public void componentOpened() {
-		contentPanel.setLayout(new BorderLayout());
-		unifiedSettingsPanel = new UnifiedSettingsPanel();
-		contentPanel.add(unifiedSettingsPanel, BorderLayout.CENTER);
-	}
-	public UnifiedSettingsPanel unifiedSettingsPanel;
+    public void componentOpened() {
+        contentPanel.setLayout(new BorderLayout());
+        unifiedSettingsPanel = new UnifiedSettingsPanel();
+        contentPanel.add(unifiedSettingsPanel, BorderLayout.CENTER);
+    }
+    public UnifiedSettingsPanel unifiedSettingsPanel;
 
 	@Override
-	public void componentClosed() {
-		if (unifiedSettingsPanel != null) {
-			unifiedSettingsPanel.close();
-			contentPanel.remove(unifiedSettingsPanel);
-		}
-	}
+    public void componentClosed() {
+        if (unifiedSettingsPanel != null) {
+            unifiedSettingsPanel.close();
+            contentPanel.remove(unifiedSettingsPanel);
+        }
+    }
 
-	void writeProperties(java.util.Properties p) {
-		// better to version settings since initial version as advocated at
-		// http://wiki.apidesign.org/wiki/PropertyFiles
-		p.setProperty("version", "1.0");
-		// TODO store your settings
-	}
+    void writeProperties(java.util.Properties p) {
+        // better to version settings since initial version as advocated at
+        // http://wiki.apidesign.org/wiki/PropertyFiles
+        p.setProperty("version", "1.0");
+        // TODO store your settings
+    }
 
-	void readProperties(java.util.Properties p) {
-		String version = p.getProperty("version");
-		// TODO read your settings according to their version
-	}
+    void readProperties(java.util.Properties p) {
+        String version = p.getProperty("version");
+        // TODO read your settings according to their version
+    }
 }

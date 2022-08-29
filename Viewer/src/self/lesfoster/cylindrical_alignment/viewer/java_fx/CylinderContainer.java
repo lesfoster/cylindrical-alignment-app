@@ -108,7 +108,7 @@ public class CylinderContainer extends JFXPanel
     private int selectionEnvelope = 0;
 
     private final boolean prominentDentils = true;
-    private boolean diffResiduesOnly;
+    private boolean diffResiduesOnly = true;
     private final boolean usingResidueDentils = true;
     private float factor = 0;
 
@@ -1123,6 +1123,7 @@ public class CylinderContainer extends JFXPanel
                     if ((!isAnchor) && (queryResidues != null)) {
                         if (queryResidues.charAt(i) == subjectResidues.charAt(i)) {
                             // May wish to hide these
+                            gi.setVisible(! diffResiduesOnly);
                             dentilsInAgreement.add(gi);
                         }
                         else {

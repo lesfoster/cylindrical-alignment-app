@@ -37,6 +37,8 @@ import org.openide.util.LookupListener;
 import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
 import org.openide.util.Utilities;
+import self.lesfoster.cylindrical_alignment.neighborhood.renderer.MagnitudeFractionRenderer;
+import self.lesfoster.cylindrical_alignment.neighborhood.tablemodel.DepthFraction;
 import self.lesfoster.cylindrical_alignment.neighborhood.tablemodel.Neighbor;
 import self.lesfoster.cylindrical_alignment.neighborhood.tablemodel.NeighborhoodTableModel;
 import self.lesfoster.framework.integration.ResidueData;
@@ -118,7 +120,9 @@ public final class NeighborhoodSVTopComponent extends TopComponent {
     public void componentOpened() {
         establishLookups();
         JTable neighborTable = new JTable(neighborhoodTableModel);
-        //propsTable.setDefaultRenderer(Object.class, new TextAreaRenderer());
+        neighborTable.getColumnModel().getColumn(1).setCellRenderer(new MagnitudeFractionRenderer());
+        // This does not help:
+        //  neighborTable.setDefaultRenderer(DepthFraction.class, new MagnitudeFractionRenderer());
         neighborhoodPanel.add(new JScrollPane(neighborTable), BorderLayout.CENTER);        
     }
 

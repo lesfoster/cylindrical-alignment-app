@@ -22,6 +22,7 @@
 package self.lesfoster.cylindrical_alignment.neighborhood.tablemodel;
 
 import java.util.Collections;
+import static java.util.Comparator.naturalOrder;
 import java.util.List;
 import javafx.application.Platform;
 import javax.swing.table.AbstractTableModel;
@@ -80,11 +81,13 @@ public class NeighborhoodTableModel extends AbstractTableModel {
         if (rowIndex >= neighbors.size() || columnIndex >= COL_COUNT) {
             return null;
         }
+        int maxDepth = neighbors.stream().map(Neighbor::getDepth).max(naturalOrder()).orElse(1);
+        
         switch (columnIndex) {
             case 0:
                 return residueQueryPos;
             case 1:
-                return neighbors.get(rowIndex).getDepth();
+                return new DepthFraction(neighbors.get(rowIndex).getDepth(), maxDepth);
             case 2:
                 if (residueQueryPos == selectedPos) {
                     return "selected";
@@ -97,8 +100,9 @@ public class NeighborhoodTableModel extends AbstractTableModel {
                 }
             case 3:
                 return "indel";
-        }
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            default:
+                return null;
+        }        
     }
     
     @Override
@@ -108,4 +112,5 @@ public class NeighborhoodTableModel extends AbstractTableModel {
         }
         return COL_NAMES[column];
     }
+    
 }

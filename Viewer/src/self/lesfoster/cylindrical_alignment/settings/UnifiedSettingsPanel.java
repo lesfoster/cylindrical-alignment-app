@@ -150,7 +150,7 @@ public class UnifiedSettingsPanel extends JPanel {
         add(resetCylinderButton, resetCylinderConstraints);
 
         JCheckBox mismatchDentilsCheckbox = new JCheckBox("Only Differing Dentils");
-        mismatchDentilsCheckbox.setSelected(false);
+        mismatchDentilsCheckbox.setSelected(true);
         mismatchDentilsCheckbox.addActionListener(
             e -> settingsEffector.setDifferingDentils(
                 mismatchDentilsCheckbox.isSelected()
