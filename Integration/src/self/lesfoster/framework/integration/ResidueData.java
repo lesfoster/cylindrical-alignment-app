@@ -30,22 +30,22 @@ import java.util.Map;
  * @author lesfo
  */
 public class ResidueData {
-    private Map<String,Integer> idToDentilPos;
+    private Map<String,Polymorphism> idToPolymorphism;
     private Map<Integer,List<String>> dentilPosToIds;
 
-    public ResidueData(Map<String,Integer> idToDentilPos, Map<Integer,List<String>> dentilPosToIds) {
-        this.idToDentilPos = idToDentilPos;
+    public ResidueData(Map<String,Polymorphism> idToDentilPos, Map<Integer,List<String>> dentilPosToIds) {
+        this.idToPolymorphism = idToDentilPos;
         this.dentilPosToIds = dentilPosToIds;
     }
     
-    public ResidueData setResidueData(Map<String,Integer> idToDentilPos, Map<Integer,List<String>> dentilPosToIds) {
-        this.idToDentilPos = idToDentilPos;
+    public ResidueData setResidueData(Map<String,Polymorphism> idToDentilPos, Map<Integer,List<String>> dentilPosToIds) {
+        this.idToPolymorphism = idToDentilPos;
         this.dentilPosToIds = dentilPosToIds;
         return this;
     }
 
-    public Map<String,Integer> getIdToDentilPos() {
-        return idToDentilPos;
+    public Map<String,Polymorphism> getIdToPolymorphism() {
+        return idToPolymorphism;
     }
 
     public Map<Integer,List<String>> getDentilPosToIds() {

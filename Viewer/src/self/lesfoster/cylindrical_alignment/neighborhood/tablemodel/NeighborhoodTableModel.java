@@ -37,7 +37,7 @@ public class NeighborhoodTableModel extends AbstractTableModel {
 
     private static final int COL_COUNT = 4;
     private static final String[] COL_NAMES = {
-        "Query Offset", "Count", "Relative Position", "Type"
+        "Query Offset", "Count: Fraction", "Relative Position", "Type"
     };
 
     private List<Neighbor> neighbors;
@@ -99,7 +99,7 @@ public class NeighborhoodTableModel extends AbstractTableModel {
                     return "interior";
                 }
             case 3:
-                return "indel";
+                return neighbors.get(rowIndex).getTypeDesc();
             default:
                 return null;
         }        

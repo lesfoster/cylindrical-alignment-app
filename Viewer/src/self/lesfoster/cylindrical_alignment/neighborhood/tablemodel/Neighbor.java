@@ -22,6 +22,8 @@
 package self.lesfoster.cylindrical_alignment.neighborhood.tablemodel;
 
 import java.util.List;
+import static java.util.stream.Collectors.joining;
+import self.lesfoster.framework.integration.Polymorphism;
 
 /**
  * One item in a neighborhood of clustered differing residues.
@@ -32,10 +34,12 @@ import java.util.List;
 public class Neighbor {
     private final int residueQueryPos;
     private final List<String> residueIds;
+    private final List<Polymorphism.Type> types;
     
-    public Neighbor(int residueQueryPos, List<String> residueIds) {
+    public Neighbor(int residueQueryPos, List<String> residueIds, List<Polymorphism.Type> types) {
         this.residueQueryPos = residueQueryPos;
         this.residueIds = residueIds;
+        this.types = types;
     }
     
     public int getResidueQueryPos() {
@@ -48,6 +52,14 @@ public class Neighbor {
     
     public int getDepth() {
         return residueIds.size();
+    }
+
+    public List<Polymorphism.Type> getTypes() {
+        return types;
+    }
+    
+    public String getTypeDesc() {
+        return types.stream().map(t -> t.toString()).collect(joining(","));
     }
 }
 

@@ -85,6 +85,7 @@ import static self.lesfoster.cylindrical_alignment.viewer.appearance_source.Appe
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.GlyphSelector;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseClickedHandler;
 import self.lesfoster.cylindrical_alignment.viewer.java_fx.events.MouseScrollHandler;
+import self.lesfoster.framework.integration.Polymorphism;
 import self.lesfoster.framework.integration.ResidueData;
 import self.lesfoster.framework.integration.SelectedObjectWrapper;
 import self.lesfoster.framework.integration.SelectionModelListener;
@@ -126,7 +127,7 @@ public class CylinderContainer extends JFXPanel
     private final AmbientLight ambientLight = new AmbientLight();
     private final Map<String, SubEntity> idToSubEntity = new HashMap<>();
     private final Map<String, Node> idToShape = new HashMap<>();
-    private final Map<String, Integer> idToDentilPos = new HashMap<>();
+    private final Map<String, Polymorphism> idToPolymorphism = new HashMap<>();
     private final Map<Integer, List<String>> dentilPosToIds = new HashMap<>();
     private GlyphSelector subEntitySelector;
     private int latestGraphId = 1;
@@ -180,12 +181,14 @@ public class CylinderContainer extends JFXPanel
                         // May need another map just for the residentils.
                         // Keeping track of what to hand off to the Neighborhood SV.
                         // Use standard instanceContent for now!
-                        if (idToDentilPos.containsKey(id)) {
+                        if (idToPolymorphism.containsKey(id)) {
                             propMap = new HashMap<>();
                             propMap.put("id", id);
                             propMap.put("diff_residue", "true");
-                            propMap.put("residue_pos", idToDentilPos.get(id));
+                            propMap.put("residue_pos", idToPolymorphism.get(id).getStart());
                             instanceContent.add(propMap);
+                            // TODO - add a length for gaps and insertions
+                            //  if > 1.  Add only starting position to idToDentilPos.
                         }
                     }
                 }
@@ -193,7 +196,7 @@ public class CylinderContainer extends JFXPanel
 
             positionCigarBands(obj);
         };
-        instanceContent.add(new ResidueData(idToDentilPos, dentilPosToIds));
+        instanceContent.add(new ResidueData(idToPolymorphism, dentilPosToIds));
 
         selectionModel.addListener(selectionListener);
         Lookup global = Utilities.actionsGlobalContext();
@@ -1046,8 +1049,8 @@ public class CylinderContainer extends JFXPanel
             MeshView insertion = generateRectSolid(startSH + nextGap[0], startSH + nextGap[1], extraYDisp, yBottom, back, front, subEntity);
             PhongMaterial meshMaterial = appearanceSource.createSubEntityInsertionAppearance(subEntity);
             insertion.setMaterial(meshMaterial);
-            insertion.setDisable(true);
             hitGroup.getChildren().add(insertion);
+            trackInDelMesh(insertion, startSH + nextGap[0], startSH + nextGap[1], false);
         }
     }
 
@@ -1067,7 +1070,7 @@ public class CylinderContainer extends JFXPanel
             MeshView gap = createMesh(coordinateData, texCoordGenerator.generateTexCoords(coordinateData), null);
             PhongMaterial meshMaterial = appearanceSource.createPerforatedAppearance(subEntity);
             gap.setMaterial(meshMaterial);
-            gap.setDisable(true);
+            trackInDelMesh(gap, startSH + nextGap[0], startSH + nextGap[1], true);
             hitGroup.getChildren().add(gap);
         }
     }
@@ -1128,7 +1131,7 @@ public class CylinderContainer extends JFXPanel
                         }
                         else {
                             // Track the position.
-                            idToDentilPos.put(gi.getId(), dentilPos);
+                            idToPolymorphism.put(gi.getId(), new Polymorphism(dentilPos, dentilPos, Polymorphism.Type.InDel));
                             dentilPosToIds
                                 .computeIfAbsent(dentilPos, ArrayList::new)
                                 .add(gi.getId());
@@ -1470,13 +1473,11 @@ public class CylinderContainer extends JFXPanel
             int endSH = subEntity.getEndOnQuery();
             float xl = translateToJava3dCoords(startSH);
             float xr = translateToJava3dCoords(endSH);
-            Runnable runnable = new Runnable() {
-                public void run() {
-                    lowCigarBandSlide.setTranslate(xl - getCylLeftX() - selectionEnvelope, 0, 0);
-                    lowCigarBandLabel.setText("" + startSH);
-                    highCigarBandSlide.setTranslate(xr - getCylRightX() + selectionEnvelope, 0, 0);
-                    highCigarBandLabel.setText("" + endSH);
-                }
+            Runnable runnable = () -> {
+                lowCigarBandSlide.setTranslate(xl - getCylLeftX() - selectionEnvelope, 0, 0);
+                lowCigarBandLabel.setText("" + startSH);
+                highCigarBandSlide.setTranslate(xr - getCylRightX() + selectionEnvelope, 0, 0);
+                highCigarBandLabel.setText("" + endSH);
             };
             if (Platform.isFxApplicationThread()) {
                 runnable.run();
@@ -1484,6 +1485,17 @@ public class CylinderContainer extends JFXPanel
                 Platform.runLater(runnable);
             }
         }
+    }
+
+    private void trackInDelMesh(MeshView mesh, int startSH, int endSH, boolean isDeletion) {
+        final String id = UUID.randomUUID().toString();
+        mesh.setId(id);
+        this.dentilPosToIds.computeIfAbsent(startSH, ArrayList::new).add(id);
+        this.idToPolymorphism.put(id, 
+                new Polymorphism(startSH, endSH, isDeletion ?
+                        Polymorphism.Type.Deletion : 
+                        Polymorphism.Type.Insertion));
+        idToShape.put(id, mesh);
     }
 
     //
