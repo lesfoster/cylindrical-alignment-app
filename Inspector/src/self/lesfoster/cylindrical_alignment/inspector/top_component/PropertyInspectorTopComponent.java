@@ -108,7 +108,7 @@ public final class PropertyInspectorTopComponent extends TopComponent {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel inspectorPanel;
     // End of variables declaration//GEN-END:variables
-	@Override
+    @Override
     public void componentOpened() {
         final SubHitTableModel subHitTableModel = new SubHitTableModel(new HashMap<>());
         JTable propsTable = new JTable(subHitTableModel);
@@ -130,7 +130,7 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 
     @Override
     public void componentClosed() {
-        // TODO add custom code on component closing
+        mapResult.removeLookupListener(mapLookupListener);
     }
 
     void writeProperties(java.util.Properties p) {
@@ -145,9 +145,10 @@ public final class PropertyInspectorTopComponent extends TopComponent {
         // TODO read your settings according to their version
     }
 
+    /** Wrapper-holder is from sub-view. */
     private class ModelSelectionWrapperLookupListener implements LookupListener {
 
-        private SubHitTableModel subHitTableModel;
+        private final SubHitTableModel subHitTableModel;
 
         public ModelSelectionWrapperLookupListener(SubHitTableModel subHitTableModel) {
             this.subHitTableModel = subHitTableModel;
@@ -155,22 +156,16 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 
         @Override
         public void resultChanged(LookupEvent le) {
-            if (!selectionWrapperResult.allInstances().isEmpty()) {
-                SelectedObjectWrapper lastWrapper = null;
-                for (SelectedObjectWrapper wrapper : selectionWrapperResult.allInstances()) {
-                    lastWrapper = wrapper;
-                }
-                if (lastWrapper != null) {
-                    Object obj = lastWrapper.getSelectedObject();
-                    if (obj instanceof SubEntity) {
-                        SubEntity se = (SubEntity) obj;
-                        subHitTableModel.setModelInfo(se.getProperties());
-                    }
-                }
-            }
+            selectionWrapperResult.allInstances().stream().reduce((a, b) -> b)
+                    .map(SelectedObjectWrapper::getSelectedObject)
+                    .filter(SubEntity.class::isInstance)
+                    .map(SubEntity.class::cast)
+                    .map(SubEntity::getProperties)
+                    .ifPresent(subHitTableModel::setModelInfo);
         }
     }
 
+    /** Map holder is from main view. */
     private class MapLookupListener implements LookupListener {
 
         private final SubHitTableModel subHitTableModel;
@@ -181,15 +176,8 @@ public final class PropertyInspectorTopComponent extends TopComponent {
 
         @Override
         public void resultChanged(LookupEvent le) {
-            if (!mapResult.allInstances().isEmpty()) {
-                Map lastModelInfo = null;
-                for (Map modelInfo : mapResult.allInstances()) {
-                    lastModelInfo = modelInfo;
-                }
-                if (lastModelInfo != null) {
-                    subHitTableModel.setModelInfo(lastModelInfo);
-                }
-            }
+            mapResult.allInstances().stream().reduce((a, b) -> b).ifPresent(
+                lastModelInfo -> subHitTableModel.setModelInfo(lastModelInfo));
         }
     }
 }

@@ -118,6 +118,7 @@ public final class LegendTopComponent extends TopComponent {
         // TODO add custom code on component closing
     }
 
+    @SuppressWarnings("unused")
     void writeProperties(java.util.Properties p) {
         // better to version settings since initial version as advocated at
         // http://wiki.apidesign.org/wiki/PropertyFiles
@@ -125,6 +126,7 @@ public final class LegendTopComponent extends TopComponent {
         // TODO store your settings
     }
 
+    @SuppressWarnings("unused")
     void readProperties(java.util.Properties p) {
         String version = p.getProperty("version");
         // TODO read your settings according to their version

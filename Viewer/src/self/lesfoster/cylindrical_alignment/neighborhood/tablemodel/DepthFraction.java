@@ -19,17 +19,28 @@
 
  CDDL HEADER END
  */
-package self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker;
+package self.lesfoster.cylindrical_alignment.neighborhood.tablemodel;
 
-/**
- * Convenience, no-args constructor version of a Trip order ranker.
- *
- * @author Leslie L Foster
- */
-public class RBGRanker extends TripOrderColorRanker {
-
-    public RBGRanker() {
-        super(TripOrderColorRanker.TripOrder.RBG);
+public class DepthFraction {
+    private final Integer depth;
+    private final Integer max;
+    private final String ident;
+    public DepthFraction(Integer depth, Integer max) {
+        this.depth = depth;
+        this.max = max;
+        this.ident = String.format("%d: %4.3f%%", depth, 100.0 * ((double)depth/(double)max));
     }
 
+    public double getFraction() {
+        return (double)depth / (double)max;
+    }
+
+    public Integer getDepth() {
+        return depth;
+    }
+
+    @Override
+    public String toString() {
+        return ident;
+    }
 }

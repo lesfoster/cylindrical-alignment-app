@@ -18,9 +18,7 @@
  information: Portions Copyright [yyyy] [name of copyright owner]
 
  CDDL HEADER END
-*/
-
-
+ */
 package self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker;
 
 /**
@@ -29,9 +27,9 @@ package self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_rank
  * @author Leslie L Foster
  */
 public class RGBRanker extends TripOrderColorRanker {
-	
-	public RGBRanker() {
-		super(TripOrderColorRanker.TripOrder.RGB);
-	}
-	
+
+    public RGBRanker() {
+        super(TripOrderColorRanker.TripOrder.RGB);
+    }
+
 }

@@ -19,17 +19,34 @@
 
  CDDL HEADER END
  */
-package self.lesfoster.cylindrical_alignment.viewer.appearance_source.color_ranker;
+package self.lesfoster.framework.integration;
 
 /**
- * Convenience, no-args constructor version of a Trip order ranker.
+ * Holds metadata about a differing residue or contiguous series of residues
+ * when compared against the query.
  *
- * @author Leslie L Foster
+ * @author lesfo
  */
-public class RBGRanker extends TripOrderColorRanker {
-
-    public RBGRanker() {
-        super(TripOrderColorRanker.TripOrder.RBG);
+public class Polymorphism {
+    public enum Type {
+        Insertion, Deletion, InDel
     }
-
+    private final int startPos;
+    private final int endPos; // May be same as start.
+    private final Type type;
+    public Polymorphism(int startPos, int endPos, Type type) {
+        this.startPos = startPos;
+        this.endPos = endPos;
+        this.type = type;
+    }
+    
+    public int getStart() {
+        return startPos;
+    }
+    public int getEnd() {
+        return endPos;
+    }
+    public Type getType() {
+        return type;
+    }
 }
